@@ -1,0 +1,1147 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  scrPTORequest:
+    Properties:
+      Fill: |
+        =RGBA(255, 255, 255, 1)
+      Height: |
+        =Max(App.Height, App.MinScreenHeight)
+      LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+      OnVisible: |+
+        =// Workstream dropdown
+        ClearCollect(
+            colWorkstreamDD,
+            { Value: "All" }
+        );
+        Collect(
+            colWorkstreamDD,
+            Choices([@Deliverables].Workstream)
+        );
+
+        // Status dropdown
+        ClearCollect(
+            colStatusDD,
+            { Value: "All" }
+        );
+        Collect(
+            colStatusDD,
+            Choices([@Deliverables].Status)
+        );
+
+        //Reset(DatePickerCanvas1_1);
+
+        // Always start from *this* week's Monday when arriving on the screen
+        Set(
+           varWeekStart,
+           DateAdd(
+               Today(),
+               1 - Weekday(Today(), StartOfWeek.Monday),
+               TimeUnit.Days
+           )
+        );
+
+        // Build 7 days for that week
+        ClearCollect(
+            colWeekDays,
+            { Label: "Monday",    Date: varWeekStart     },
+            { Label: "Tuesday",   Date: varWeekStart + 1 },
+            { Label: "Wednesday", Date: varWeekStart + 2 },
+            { Label: "Thursday",  Date: varWeekStart + 3 },
+            { Label: "Friday",    Date: varWeekStart + 4 },
+            { Label: "Saturday",  Date: varWeekStart + 5 },
+            { Label: "Sunday",    Date: varWeekStart + 6 }
+        );
+
+        // Merge with existing WeeklyHours rows for this user
+        ClearCollect(
+            colMergedHours,
+            AddColumns(
+                colWeekDays As wd,
+                Hours,
+                    LookUp(
+                        WeeklyHours,
+                        EmployeeEmail = User().Email && Date = wd.Date,
+                        HoursWorked
+                    ),
+                Notes,
+                    LookUp(
+                        WeeklyHours,
+                        EmployeeEmail = User().Email && Date = wd.Date,
+                        Notes
+                    )
+            )
+        );
+
+    Children:
+      - Container11_16:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            Fill: =RGBA(255, 245, 237, 1)//ColorFade(Color.AliceBlue,0.5)
+            Height: =Parent.Height
+            LayoutDirection: =LayoutDirection.Horizontal
+            LayoutGap: =50
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Width: =Parent.Width
+          Children:
+            - SidebarContainer1_18:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  DropShadow: =DropShadow.None
+                  Fill: =RGBA(255, 255, 255, 1)
+                  FillPortions: =0
+                  Height: =Parent.Height
+                  LayoutDirection: =LayoutDirection.Vertical
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                  Width: |-
+                    =If(
+                        scrPTORequest.Size = 1,
+                        43,
+                        If(
+                            scrPTORequest.Size = 2,
+                            43,
+                            If(
+                                scrPTORequest.Size = 3,
+                                165,
+                                260
+                            )
+                        )
+                    )
+                  X: =2
+                Children:
+                  - ContainerFirstButton_17:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        FillPortions: =0
+                        Height: =80
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutJustifyContent: =LayoutJustifyContent.Center
+                        LayoutMinWidth: =0
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                      Children:
+                        - TitleButton_15:
+                            Control: GroupContainer@1.3.0
+                            Variant: AutoLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.SetByContainer
+                              DropShadow: =DropShadow.None
+                              FillPortions: =0
+                              Height: =50
+                              LayoutAlignItems: =LayoutAlignItems.Center
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutJustifyContent: =LayoutJustifyContent.Center
+                              LayoutMinWidth: =0
+                              PaddingLeft: =4
+                              RadiusBottomLeft: =0
+                              RadiusBottomRight: =0
+                              RadiusTopLeft: =0
+                              RadiusTopRight: =0
+                              Width: =Parent.Width
+                            Children:
+                              - Image1_63:
+                                  Control: Image@2.2.3
+                                  Properties:
+                                    BorderColor: =RGBA(0, 0, 0, 0)
+                                    BorderStyle: =BorderStyle.None
+                                    BorderThickness: =2
+                                    DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                                    DisabledFill: =RGBA(0, 0, 0, 0)
+                                    FocusedBorderThickness: =4
+                                    Height: =32
+                                    HoverBorderColor: =RGBA(0, 0, 0, 0)
+                                    HoverFill: =RGBA(0, 0, 0, 0)
+                                    Image: =TD_logo
+                                    OnSelect: =Set(Size,scrAllDeliverables.Size)
+                                    PressedBorderColor: =RGBA(0, 0, 0, 0)
+                                    PressedFill: =RGBA(0, 0, 0, 0)
+                                    Width: =40
+                              - TextCanvas1_15:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Align: ='TextCanvas.Align'.Center
+                                    AlignInContainer: =AlignInContainer.Center
+                                    FillPortions: =1
+                                    Font: =Font.'Segoe UI'
+                                    FontColor: =RGBA(254, 124, 57, 1)
+                                    Height: =Parent.Height
+                                    PaddingLeft: =5
+                                    Size: =15
+                                    Text: ="TD Bank Project Governance"
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Visible: |-
+                                      =If(
+                                          scrAllDeliverables.Size = 1 || scrAllDeliverables.Size = 2 ||scrAllDeliverables.Size = 3,
+                                          false,
+                                          true
+                                      )
+                                    Weight: ='TextCanvas.Weight'.Bold
+                  - NavigationContainer_19:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        FillPortions: =0
+                        Height: =Parent.Height-140
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutMinHeight: =0
+                        LayoutMinWidth: =0
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Width: =
+                        X: =40
+                        Y: =40
+                      Children:
+                        - ContainerComponent_13:
+                            Control: GroupContainer@1.3.0
+                            Variant: AutoLayout
+                            Properties:
+                              DropShadow: =DropShadow.None
+                              Height: =Parent.Height
+                              LayoutDirection: =LayoutDirection.Vertical
+                              RadiusBottomLeft: =0
+                              RadiusBottomRight: =0
+                              RadiusTopLeft: =0
+                              RadiusTopRight: =0
+                              Width: =Parent.Width
+                            Children:
+                              - NavGallery_13:
+                                  Control: Gallery@2.15.0
+                                  Variant: VariableHeight
+                                  Properties:
+                                    BorderColor: =RGBA(245, 245, 245, 1)
+                                    Items: =NavCollection
+                                    LayoutMinHeight: =0
+                                    LayoutMinWidth: =0
+                                    LoadingSpinner: =LoadingSpinner.None
+                                  Children:
+                                    - ContainerMain_13:
+                                        Control: GroupContainer@1.3.0
+                                        Variant: AutoLayout
+                                        Properties:
+                                          DropShadow: =DropShadow.None
+                                          Height: =ContainerHeight_13.Y
+                                          LayoutDirection: =LayoutDirection.Vertical
+                                          LayoutJustifyContent: =LayoutJustifyContent.Center
+                                          RadiusBottomLeft: =0
+                                          RadiusBottomRight: =0
+                                          RadiusTopLeft: =0
+                                          RadiusTopRight: =0
+                                          Width: =Parent.TemplateWidth
+                                        Children:
+                                          - ContainerButton_13:
+                                              Control: GroupContainer@1.3.0
+                                              Variant: AutoLayout
+                                              Properties:
+                                                DropShadow: =DropShadow.None
+                                                Fill: |-
+                                                  =If(
+                                                      VarCurrentScreen = ThisItem.ItemScreen,
+                                                      RGBA(254, 124, 57, 1),
+                                                      RGBA(0,0,0,0)
+                                                  )
+                                                FillPortions: =0
+                                                Height: =40
+                                                LayoutAlignItems: =LayoutAlignItems.Center
+                                                LayoutDirection: =LayoutDirection.Horizontal
+                                                LayoutMinWidth: =0
+                                                RadiusBottomLeft: =8
+                                                RadiusBottomRight: =8
+                                                RadiusTopLeft: =8
+                                                RadiusTopRight: =8
+                                              Children:
+                                                - ButtonNav_13:
+                                                    Control: Button@0.0.45
+                                                    Properties:
+                                                      Align: =Align.Left
+                                                      Appearance: ='ButtonCanvas.Appearance'.Secondary
+                                                      BasePaletteColor: |-
+                                                        = RGBA(
+                                                                65,
+                                                                105,
+                                                                225,
+                                                                1
+                                                            )
+                                                      BorderRadius: =0
+                                                      FillPortions: =1
+                                                      Font: =Font.'Segoe UI'
+                                                      FontColor: |-
+                                                        =If(
+                                                            VarCurrentScreen = ThisItem.ItemScreen,
+                                                            RGBA(255,255,255,1),
+                                                            RGBA(0,0,0,1)
+                                                        )
+                                                      FontWeight: =FontWeight.Lighter
+                                                      Icon: =ThisItem.ItemIconName
+                                                      IconStyle: ='ButtonCanvas.IconStyle'.Outline
+                                                      Layout: |-
+                                                        =If(
+                                                           scrAllDeliverables.Size = 1 || scrAllDeliverables.Size = 2 || scrAllDeliverables.Size = 3,
+                                                            'ButtonCanvas.Layout'.IconOnly,
+                                                            'ButtonCanvas.Layout'.IconBefore
+                                                        )
+                                                      LayoutMinWidth: =0
+                                                      OnSelect: |
+                                                        =Set(VarCurrentScreen, ThisItem.ItemScreen);
+                                                        Navigate(ThisItem.ItemScreen);
+                                                      PaddingLeft: =6
+                                                      Text: =ThisItem.ItemDisplayName
+                                                - ButtonArrow_9:
+                                                    Control: Button@0.0.45
+                                                    Properties:
+                                                      Align: =Align.Center
+                                                      Appearance: ='ButtonCanvas.Appearance'.Subtle
+                                                      BasePaletteColor: |-
+                                                        = RGBA(
+                                                                65,
+                                                                105,
+                                                                225,
+                                                                1
+                                                            )
+                                                      BorderRadius: =0
+                                                      FontColor: |-
+                                                        =If(
+                                                            VarCurrentScreen = ThisItem.ItemScreen,
+                                                            RGBA(255,255,255,1),
+                                                            RGBA(0,0,0,1)
+                                                        )
+                                                      FontWeight: =FontWeight.Normal
+                                                      Icon: ="ChevronRight"
+                                                      IconStyle: ='ButtonCanvas.IconStyle'.Outline
+                                                      Layout: ='ButtonCanvas.Layout'.IconOnly
+                                                      LayoutMinWidth: =0
+                                                      OnSelect: |
+                                                        =Set(VarCurrentScreen, ThisItem.ItemScreen);
+                                                        Navigate(ThisItem.ItemScreen);
+                                                      Text: =ThisItem.ItemDisplayName
+                                                      Visible: |-
+                                                        =If(
+                                                            scrAllDeliverables.Size = 1 || scrAllDeliverables.Size = 2 || scrAllDeliverables.Size = 3,
+                                                            false,
+                                                            true
+                                                        )
+                                                      Width: =32
+                                          - ContainerHeight_13:
+                                              Control: GroupContainer@1.3.0
+                                              Variant: AutoLayout
+                                              Properties:
+                                                DropShadow: =DropShadow.None
+                                                FillPortions: =0
+                                                Height: =1
+                                                LayoutDirection: =LayoutDirection.Vertical
+                                                LayoutMinWidth: =0
+                  - ContainerLastButton_18:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        FillPortions: =0
+                        Height: =35
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutJustifyContent: =LayoutJustifyContent.Center
+                        LayoutMinWidth: =0
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                      Children:
+                        - LastButton_18:
+                            Control: GroupContainer@1.3.0
+                            Variant: AutoLayout
+                            Properties:
+                              DropShadow: =DropShadow.None
+                              Fill: =Color.Transparent
+                              FillPortions: =0
+                              Height: =40
+                              LayoutAlignItems: =LayoutAlignItems.Center
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutMinWidth: =0
+                              PaddingLeft: =6
+                              RadiusBottomLeft: =0
+                              RadiusBottomRight: =0
+                              RadiusTopLeft: =0
+                              RadiusTopRight: =0
+                            Children:
+                              - BtnLast_18:
+                                  Control: Button@0.0.45
+                                  Properties:
+                                    Align: =Align.Left
+                                    AlignInContainer: =AlignInContainer.Stretch
+                                    Appearance: ='ButtonCanvas.Appearance'.Subtle
+                                    BasePaletteColor: |-
+                                      = RGBA(
+                                              65,
+                                              105,
+                                              225,
+                                              1
+                                          )
+                                    BorderRadius: =0
+                                    FillPortions: =1
+                                    FontWeight: =FontWeight.Bold
+                                    Layout: ='ButtonCanvas.Layout'.TextOnly
+                                    LayoutMinWidth: =0
+                                    PaddingLeft: =6
+                                    Text: =User().FullName
+                                    Visible: =If(scrPTORequest.Size=1 || scrPTORequest.Size=2 ,false,true)
+                              - Image1_66:
+                                  Control: Image@2.2.3
+                                  Properties:
+                                    BorderColor: =RGBA(0, 0, 0, 0)
+                                    BorderStyle: =BorderStyle.None
+                                    BorderThickness: =2
+                                    DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                                    DisabledFill: =RGBA(0, 0, 0, 0)
+                                    FocusedBorderThickness: =4
+                                    Height: =32
+                                    HoverBorderColor: =RGBA(0, 0, 0, 0)
+                                    HoverFill: =RGBA(0, 0, 0, 0)
+                                    Image: =User().Image
+                                    PressedBorderColor: =RGBA(0, 0, 0, 0)
+                                    PressedFill: =RGBA(0, 0, 0, 0)
+                                    RadiusBottomLeft: =32
+                                    RadiusBottomRight: =32
+                                    RadiusTopLeft: =32
+                                    RadiusTopRight: =32
+                                    Width: =32
+                              - BtnArrow_17:
+                                  Control: Button@0.0.45
+                                  Properties:
+                                    Align: =Align.Justify
+                                    AlignInContainer: =AlignInContainer.Center
+                                    Appearance: ='ButtonCanvas.Appearance'.Subtle
+                                    BasePaletteColor: |-
+                                      = RGBA(
+                                              65,
+                                              105,
+                                              225,
+                                              1
+                                          )
+                                    BorderRadius: =0
+                                    Icon: ="ChevronDown"
+                                    Layout: ='ButtonCanvas.Layout'.IconOnly
+                                    Visible: =If(scrPTORequest.Size=1 || scrPTORequest.Size=2 ,false,true)
+                                    Width: =32
+            - MainContainer1_18:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  Fill: =RGBA(255, 245, 237, 1)//ColorFade(Color.AliceBlue,0.5)
+                  FillPortions: =0
+                  Height: =766
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =18
+                  LayoutMinHeight: =0
+                  LayoutMinWidth: =0
+                  PaddingBottom: =25
+                  RadiusBottomLeft: =2
+                  RadiusBottomRight: =2
+                  RadiusTopLeft: =2
+                  RadiusTopRight: =2
+                  Width: |-
+                    =If(
+                        scrPTORequest.Size = 1,
+                        280,
+                        If(
+                            scrPTORequest.Size = 2,
+                            700,
+                            If(
+                                scrPTORequest.Size = 3,
+                                800,
+                                Parent.Width -SidebarContainer1_18.Width
+                            )
+                        )
+                    )
+                  X: =256
+                  Y: =2
+                Children:
+                  - FirstContainer_17:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        DropShadow: =DropShadow.None
+                        Fill: =RGBA(255, 245, 237, 1)//ColorFade(Color.AliceBlue,0.5)
+                        FillPortions: =0
+                        Height: =60
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutMinHeight: =0
+                        LayoutMinWidth: =0
+                        RadiusBottomLeft: =12
+                        RadiusBottomRight: =12
+                        RadiusTopLeft: =12
+                        RadiusTopRight: =12
+                        Width: |-
+                          =
+                          If(
+                              scrPTORequest.Size = 1,
+                              265,
+                              If(
+                                  scrPTORequest.Size = 2,
+                                  620,
+                                  If(
+                                      scrPTORequest.Size = 3,
+                                      900,
+                                      Parent.Width-100
+                                  )
+                              )
+                          )
+                      Children:
+                        - ContainerTitle_21:
+                            Control: GroupContainer@1.3.0
+                            Variant: AutoLayout
+                            Properties:
+                              DropShadow: =DropShadow.None
+                              FillPortions: =0
+                              Height: =Parent.Height
+                              LayoutAlignItems: =LayoutAlignItems.Center
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutGap: =550
+                              LayoutMinWidth: =0
+                              PaddingLeft: =2
+                              PaddingRight: =2
+                              RadiusBottomLeft: =0
+                              RadiusBottomRight: =0
+                              RadiusTopLeft: =0
+                              RadiusTopRight: =0
+                              Width: =Parent.Width
+                            Children:
+                              - TextCanvas5_51:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Align: ='TextCanvas.Align'.Start
+                                    AlignInContainer: =//AlignInContainer.SetByContainer
+                                    Font: =Font.'Segoe UI'
+                                    Height: =40
+                                    LayoutMinWidth: =0
+                                    Size: =20
+                                    Text: ="Hello " & User().FullName
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Weight: ='TextCanvas.Weight'.Semibold
+                                    Width: =400
+                              - Arrow1_22:
+                                  Control: Arrow@2.3.0
+                                  Variant: BackArrow
+                                  Properties:
+                                    BorderColor: =RGBA(254, 124, 57, 1)
+                                    Fill: =RGBA(254, 124, 57, 1)
+                                    LayoutMaxHeight: =0
+                                    LayoutMaxWidth: =0
+                                    LayoutMinHeight: =16
+                                    LayoutMinWidth: =16
+                                    OnSelect: =Back()
+                                    X: =40
+                                    Y: =40
+                  - MiddleContainer_23:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        Fill: =RGBA(255, 255, 255, 1)
+                        FillPortions: =0
+                        Height: =100
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutMinHeight: =0
+                        LayoutMinWidth: =0
+                        LayoutOverflowX: =LayoutOverflow.Scroll
+                        RadiusBottomLeft: =20
+                        RadiusBottomRight: =20
+                        RadiusTopLeft: =20
+                        RadiusTopRight: =20
+                        Width: |-
+                          =
+                          If(
+                              scrAllDeliverables.Size = 1,
+                              265,
+                              If(
+                                  scrAllDeliverables.Size = 2,
+                                  530,
+                                  If(
+                                      scrAllDeliverables.Size = 3,
+                                      700,
+                                      Parent.Width-100
+                                  )
+                              )
+                          )
+                      Children:
+                        - TextCanvas5_29:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              AlignInContainer: =AlignInContainer.Center
+                              Height: =Parent.Height
+                              LayoutMinWidth: =0
+                              Size: =20
+                              Text: ="PTO Request"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =300
+                  - LastContainer_17:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        DropShadow: =DropShadow.Semibold
+                        Fill: =RGBA(255, 255, 255, 1)
+                        Height: =400
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutMinHeight: =0
+                        LayoutMinWidth: =0
+                        RadiusBottomLeft: =20
+                        RadiusBottomRight: =20
+                        RadiusTopLeft: =20
+                        RadiusTopRight: =20
+                        Width: |-
+                          =
+                          If(
+                              scrPTORequest.Size = 1,
+                              265,
+                              If(
+                                  scrPTORequest.Size = 2,
+                                  530,
+                                  If(
+                                      scrPTORequest.Size = 3,
+                                      700,
+                                      Parent.Width-100
+                                  )
+                              )
+                          )
+                      Children:
+                        - Container6_16:
+                            Control: GroupContainer@1.3.0
+                            Variant: AutoLayout
+                            Properties:
+                              DropShadow: =DropShadow.None
+                              FillPortions: =0
+                              Height: |-
+                                =If(
+                                    scrPTORequest.Size = 1,
+                                    60,
+                                    If(
+                                        scrPTORequest.Size = 2,
+                                        60,
+                                        If(
+                                            scrPTORequest.Size = 3,
+                                            80,
+                                            80
+                                        )
+                                    )
+                                )
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutMinHeight: =0
+                              LayoutMinWidth: =0
+                              RadiusBottomLeft: =0
+                              RadiusBottomRight: =0
+                              RadiusTopLeft: =0
+                              RadiusTopRight: =0
+                            Children:
+                              - Container8_13:
+                                  Control: GroupContainer@1.3.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    AlignInContainer: =AlignInContainer.Start
+                                    DropShadow: =DropShadow.None
+                                    FillPortions: =0
+                                    Height: =Parent.Height
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    LayoutMinHeight: =0
+                                    RadiusBottomLeft: =0
+                                    RadiusBottomRight: =0
+                                    RadiusTopLeft: =0
+                                    RadiusTopRight: =0
+                                    Width: =Parent.Width
+                                  Children:
+                                    - Container5_31:
+                                        Control: GroupContainer@1.3.0
+                                        Variant: AutoLayout
+                                        Properties:
+                                          DropShadow: =DropShadow.None
+                                          FillPortions: =0
+                                          Height: =Parent.Height
+                                          LayoutDirection: =LayoutDirection.Horizontal
+                                          LayoutMinHeight: =0
+                                          RadiusBottomLeft: =0
+                                          RadiusBottomRight: =0
+                                          RadiusTopLeft: =0
+                                          RadiusTopRight: =0
+                                          Width: =20
+                                    - Container5_32:
+                                        Control: GroupContainer@1.3.0
+                                        Variant: AutoLayout
+                                        Properties:
+                                          DropShadow: =DropShadow.None
+                                          FillPortions: =0
+                                          Height: =Parent.Height
+                                          LayoutDirection: =LayoutDirection.Horizontal
+                                          LayoutMinHeight: =0
+                                          RadiusBottomLeft: =0
+                                          RadiusBottomRight: =0
+                                          RadiusTopLeft: =0
+                                          RadiusTopRight: =0
+                                          Width: =100
+                                    - Container5_33:
+                                        Control: GroupContainer@1.3.0
+                                        Variant: AutoLayout
+                                        Properties:
+                                          DropShadow: =DropShadow.None
+                                          FillPortions: =0
+                                          Height: =Parent.Height
+                                          LayoutDirection: =LayoutDirection.Horizontal
+                                          LayoutMinHeight: =0
+                                          RadiusBottomLeft: =0
+                                          RadiusBottomRight: =0
+                                          RadiusTopLeft: =0
+                                          RadiusTopRight: =0
+                                          Width: =100
+                        - Container7_27:
+                            Control: GroupContainer@1.3.0
+                            Variant: AutoLayout
+                            Properties:
+                              DropShadow: =DropShadow.None
+                              FillPortions: =0
+                              Height: =40
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutMinWidth: =0
+                              RadiusBottomLeft: =0
+                              RadiusBottomRight: =0
+                              RadiusTopLeft: =0
+                              RadiusTopRight: =0
+                              Width: =Parent.Width
+                        - Container1:
+                            Control: GroupContainer@1.3.0
+                            Variant: ManualLayout
+                            Properties:
+                              LayoutMaxHeight: =0
+                              LayoutMaxWidth: =0
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                            Children:
+                              - txtDetails3:
+                                  Control: TextInput@0.0.54
+                                  Properties:
+                                    X: =563
+                                    Y: =250
+                              - drpCover3:
+                                  Control: Classic/DropDown@2.3.1
+                                  Properties:
+                                    BorderColor: =RGBA(214, 221, 224, 1)
+                                    ChevronBackground: =RGBA(254, 124, 57, 1)
+                                    ChevronFill: =RGBA(255, 255, 255, 1)
+                                    ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                                    ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                                    Default: =
+                                    Font: =Font.'Open Sans'
+                                    HoverFill: =RGBA(186, 202, 226, 1)
+                                    Items: "=With(\r\n\r\n    {\r\n\r\n        hasDates: !IsBlank(dpStart.SelectedDate) && !IsBlank(dpEnd.SelectedDate)\r\n\r\n    },\r\n\r\n    If(\r\n\r\n        !hasDates,\r\n\r\n        // No dates yet -> just active staff except yourself\r\n\r\n        Filter(\r\n\r\n            Staff As s,\r\n\r\n            s.Active && s.Email <> User().Email\r\n\r\n        ),\r\n\r\n        // Dates chosen -> exclude people with Approved PTO overlapping\r\n\r\n        With(\r\n\r\n            {\r\n\r\n                startDate: dpStart.SelectedDate,\r\n\r\n                endDate: dpEnd.SelectedDate\r\n\r\n            },\r\n\r\n            Filter(\r\n\r\n                Staff As s,\r\n\r\n                s.Active &&\r\n\r\n                s.Email <> User().Email &&\r\n\r\n                IsBlank(\r\n\r\n                    LookUp(\r\n\r\n                        TimeOffRequests,\r\n\r\n                        Status.Value = \"Approved\" &&         // ✅ use Status.Value\r\n\r\n                        Requester.Email = s.Email &&\r\n\r\n                        !(EndDate < startDate || StartDate > endDate)\r\n\r\n                    )\r\n\r\n                )\r\n\r\n            )\r\n\r\n        )\r\n\r\n    )\r\n\r\n)\r\n "
+                                    Items.Value: =Title
+                                    PressedColor: =RGBA(255, 255, 255, 1)
+                                    PressedFill: =RGBA(0, 18, 107, 1)
+                                    SelectionColor: =RGBA(255, 255, 255, 1)
+                                    SelectionFill: =RGBA(56, 96, 178, 1)
+                                    Visible: |
+                                      =true
+                                    Width: =188
+                                    X: =155
+                                    Y: =299
+                              - txtDetails2:
+                                  Control: TextInput@0.0.54
+                                  Properties:
+                                    X: =563
+                                    Y: =198
+                              - drpCover2:
+                                  Control: Classic/DropDown@2.3.1
+                                  Properties:
+                                    BorderColor: =RGBA(214, 221, 224, 1)
+                                    ChevronBackground: =RGBA(254, 124, 57, 1)
+                                    ChevronFill: =RGBA(255, 255, 255, 1)
+                                    ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                                    ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                                    Default: =
+                                    Font: =Font.'Open Sans'
+                                    HoverFill: =RGBA(186, 202, 226, 1)
+                                    Items: "=With(\r\n\r\n    {\r\n\r\n        hasDates: !IsBlank(dpStart.SelectedDate) && !IsBlank(dpEnd.SelectedDate)\r\n\r\n    },\r\n\r\n    If(\r\n\r\n        !hasDates,\r\n\r\n        // No dates yet -> just active staff except yourself\r\n\r\n        Filter(\r\n\r\n            Staff As s,\r\n\r\n            s.Active && s.Email <> User().Email\r\n\r\n        ),\r\n\r\n        // Dates chosen -> exclude people with Approved PTO overlapping\r\n\r\n        With(\r\n\r\n            {\r\n\r\n                startDate: dpStart.SelectedDate,\r\n\r\n                endDate: dpEnd.SelectedDate\r\n\r\n            },\r\n\r\n            Filter(\r\n\r\n                Staff As s,\r\n\r\n                s.Active &&\r\n\r\n                s.Email <> User().Email &&\r\n\r\n                IsBlank(\r\n\r\n                    LookUp(\r\n\r\n                        TimeOffRequests,\r\n\r\n                        Status.Value = \"Approved\" &&         // ✅ use Status.Value\r\n\r\n                        Requester.Email = s.Email &&\r\n\r\n                        !(EndDate < startDate || StartDate > endDate)\r\n\r\n                    )\r\n\r\n                )\r\n\r\n            )\r\n\r\n        )\r\n\r\n    )\r\n\r\n)\r\n "
+                                    Items.Value: =Title
+                                    PressedColor: =RGBA(255, 255, 255, 1)
+                                    PressedFill: =RGBA(0, 18, 107, 1)
+                                    SelectionColor: =RGBA(255, 255, 255, 1)
+                                    SelectionFill: =RGBA(56, 96, 178, 1)
+                                    Visible: |
+                                      =true
+                                    Width: =188
+                                    X: =155
+                                    Y: =244
+                              - txtDetails1:
+                                  Control: TextInput@0.0.54
+                                  Properties:
+                                    X: =563
+                                    Y: =307
+                              - drpCover1:
+                                  Control: Classic/DropDown@2.3.1
+                                  Properties:
+                                    BorderColor: =RGBA(214, 221, 224, 1)
+                                    ChevronBackground: =RGBA(254, 124, 57, 1)
+                                    ChevronFill: =RGBA(255, 255, 255, 1)
+                                    ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                                    ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                                    Default: =
+                                    Font: =Font.'Open Sans'
+                                    HoverFill: =RGBA(186, 202, 226, 1)
+                                    Items: "=With(\r\n\r\n    {\r\n\r\n        hasDates: !IsBlank(dpStart.SelectedDate) && !IsBlank(dpEnd.SelectedDate)\r\n\r\n    },\r\n\r\n    If(\r\n\r\n        !hasDates,\r\n\r\n        // No dates yet -> just active staff except yourself\r\n\r\n        Filter(\r\n\r\n            Staff As s,\r\n\r\n            s.Active && s.Email <> User().Email\r\n\r\n        ),\r\n\r\n        // Dates chosen -> exclude people with Approved PTO overlapping\r\n\r\n        With(\r\n\r\n            {\r\n\r\n                startDate: dpStart.SelectedDate,\r\n\r\n                endDate: dpEnd.SelectedDate\r\n\r\n            },\r\n\r\n            Filter(\r\n\r\n                Staff As s,\r\n\r\n                s.Active &&\r\n\r\n                s.Email <> User().Email &&\r\n\r\n                IsBlank(\r\n\r\n                    LookUp(\r\n\r\n                        TimeOffRequests,\r\n\r\n                        Status.Value = \"Approved\" &&         // ✅ use Status.Value\r\n\r\n                        Requester.Email = s.Email &&\r\n\r\n                        !(EndDate < startDate || StartDate > endDate)\r\n\r\n                    )\r\n\r\n                )\r\n\r\n            )\r\n\r\n        )\r\n\r\n    )\r\n\r\n)\r\n "
+                                    Items.Value: =Title
+                                    PressedColor: =RGBA(255, 255, 255, 1)
+                                    PressedFill: =RGBA(0, 18, 107, 1)
+                                    SelectionColor: =RGBA(255, 255, 255, 1)
+                                    SelectionFill: =RGBA(56, 96, 178, 1)
+                                    Visible: |
+                                      =true
+                                    Width: =188
+                                    X: =155
+                                    Y: =194
+                              - drpWorkstream:
+                                  Control: Classic/DropDown@2.3.1
+                                  Properties:
+                                    BorderColor: =RGBA(214, 221, 224, 1)
+                                    ChevronBackground: =RGBA(254, 124, 57, 1)
+                                    ChevronFill: =RGBA(255, 255, 255, 1)
+                                    ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                                    ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                                    Default: =
+                                    Font: =Font.'Open Sans'
+                                    HoverFill: =RGBA(186, 202, 226, 1)
+                                    Items: |-
+                                      =Filter(
+                                         Workstreams,
+                                         Active = true
+                                      )
+                                    Items.Value: ={Name}
+                                    PressedColor: =RGBA(255, 255, 255, 1)
+                                    PressedFill: =RGBA(0, 18, 107, 1)
+                                    SelectionColor: =RGBA(255, 255, 255, 1)
+                                    SelectionFill: =RGBA(56, 96, 178, 1)
+                                    Visible: |
+                                      =true
+                                    Width: =188
+                                    X: =230
+                                    Y: =133
+                              - dpEnd:
+                                  Control: DatePicker@0.0.46
+                                  Properties:
+                                    AccessibleLabel: =
+                                    OnChange: |
+                                      =Set(
+                                         varWeekStart,
+                                         DateAdd(
+                                             dpEnd.SelectedDate,
+                                             1 - Weekday(dpEnd.SelectedDate, StartOfWeek.Monday),
+                                             TimeUnit.Days
+                                         )
+                                      );
+
+                                      // Build 7 days
+                                      ClearCollect(
+                                          colWeekDays,
+                                          { Label: "Monday",    Date: varWeekStart     },
+                                          { Label: "Tuesday",   Date: varWeekStart + 1 },
+                                          { Label: "Wednesday", Date: varWeekStart + 2 },
+                                          { Label: "Thursday",  Date: varWeekStart + 3 },
+                                          { Label: "Friday",    Date: varWeekStart + 4 },
+                                          { Label: "Saturday",  Date: varWeekStart + 5 },
+                                          { Label: "Sunday",    Date: varWeekStart + 6 }
+                                      );
+
+                                      // Merge again
+                                      ClearCollect(
+                                          colMergedHours,
+                                          AddColumns(
+                                              colWeekDays As wd,
+                                              Hours,
+                                                  LookUp(
+                                                      WeeklyHours,
+                                                      EmployeeEmail = User().Email && Date = wd.Date,
+                                                      HoursWorked
+                                                  ),
+                                              Notes,
+                                                  LookUp(
+                                                      WeeklyHours,
+                                                      EmployeeEmail = User().Email && Date = wd.Date,
+                                                      Notes
+                                                  )
+                                          )
+                                      );
+                                    Placeholder: ="Select Week Start..."
+                                    SelectedDate: =Today()
+                                    StartDate: =Date(2025,1,1)
+                                    StartOfWeek: ="Monday"
+                                    X: =230
+                                    Y: =90
+                              - dpStart:
+                                  Control: DatePicker@0.0.46
+                                  Properties:
+                                    AccessibleLabel: =
+                                    OnChange: |
+                                      =Set(
+                                         varWeekStart,
+                                         DateAdd(
+                                             dpStart.SelectedDate,
+                                             1 - Weekday(dpStart.SelectedDate, StartOfWeek.Monday),
+                                             TimeUnit.Days
+                                         )
+                                      );
+
+                                      // Build 7 days
+                                      ClearCollect(
+                                          colWeekDays,
+                                          { Label: "Monday",    Date: varWeekStart     },
+                                          { Label: "Tuesday",   Date: varWeekStart + 1 },
+                                          { Label: "Wednesday", Date: varWeekStart + 2 },
+                                          { Label: "Thursday",  Date: varWeekStart + 3 },
+                                          { Label: "Friday",    Date: varWeekStart + 4 },
+                                          { Label: "Saturday",  Date: varWeekStart + 5 },
+                                          { Label: "Sunday",    Date: varWeekStart + 6 }
+                                      );
+
+                                      // Merge again
+                                      ClearCollect(
+                                          colMergedHours,
+                                          AddColumns(
+                                              colWeekDays As wd,
+                                              Hours,
+                                                  LookUp(
+                                                      WeeklyHours,
+                                                      EmployeeEmail = User().Email && Date = wd.Date,
+                                                      HoursWorked
+                                                  ),
+                                              Notes,
+                                                  LookUp(
+                                                      WeeklyHours,
+                                                      EmployeeEmail = User().Email && Date = wd.Date,
+                                                      Notes
+                                                  )
+                                          )
+                                      );
+                                    Placeholder: ="Select Week Start..."
+                                    SelectedDate: =Today()
+                                    StartDate: =Date(2025,1,1)
+                                    StartOfWeek: ="Monday"
+                                    X: =230
+                                    Y: =30
+                              - btnSubmitPTO:
+                                  Control: Classic/Button@2.2.0
+                                  Properties:
+                                    BorderColor: =ColorFade(Self.Fill, -15%)
+                                    Color: =RGBA(255, 255, 255, 1)
+                                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                                    Fill: =RGBA(254, 124, 57, 1)
+                                    Font: =Font.'Open Sans'
+                                    HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+                                    HoverColor: =RGBA(255, 255, 255, 1)
+                                    HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                                    OnSelect: |-
+                                      =// 1) Basic validation
+                                      If(
+                                         IsBlank(dpStart.SelectedDate) || IsBlank(dpEnd.SelectedDate),
+                                         Notify("Please select both start and end dates.", NotificationType.Error),
+                                         dpEnd.SelectedDate < dpStart.SelectedDate,
+                                         Notify("End date cannot be before start date.", NotificationType.Error),
+                                         // 2) If validation passed, patch the request
+                                         Patch(
+                                             TimeOffRequests,
+                                             Defaults(TimeOffRequests),
+                                             {
+                                                 Title: "PTO - " & User().FullName,
+                                                 // Requester (Person)
+                                                 Requester: {
+                                                     '@odata.type': "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedUser",
+                                                     Claims: "i:0#.f|membership|" & Lower(User().Email),
+                                                     DisplayName: User().FullName,
+                                                     Email: User().Email,
+                                                     Department: "",
+                                                     JobTitle: "",
+                                                     Picture: ""
+                                                 },
+                                                 // Workstream (Lookup)
+                                                 Workstream:
+                                                     If(
+                                                         IsBlank(drpWorkstream.Selected),
+                                                         Blank(),
+                                                         {
+                                                             '@odata.type': "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
+                                                             Id: drpWorkstream.Selected.ID,
+                                                             Value: drpWorkstream.Selected.WorkstreamName
+                                                         }
+                                                     ),
+                                                 // Dates
+                                                 StartDate: dpStart.SelectedDate,
+                                                 EndDate: dpEnd.SelectedDate,
+                                                 // Covering person 1
+                                                 CoveringPerson1:
+                                                     If(
+                                                         IsBlank(drpCover1.Selected.Email),
+                                                         Blank(),
+                                                         {
+                                                             '@odata.type': "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedUser",
+                                                             Claims: "i:0#.f|membership|" & Lower(drpCover1.Selected.Email),
+                                                             DisplayName: drpCover1.Selected.FullName,
+                                                             Email: drpCover1.Selected.Email,
+                                                             Department: "",
+                                                             JobTitle: "",
+                                                             Picture: ""
+                                                         }
+                                                     ),
+                                                 CoveringDetails1: txtDetails1.Value,
+                                                 // Covering person 2
+                                                 CoveringPerson2:
+                                                     If(
+                                                         IsBlank(drpCover2.Selected.Email),
+                                                         Blank(),
+                                                         {
+                                                             '@odata.type': "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedUser",
+                                                             Claims: "i:0#.f|membership|" & Lower(drpCover2.Selected.Email),
+                                                             DisplayName: drpCover2.Selected.FullName,
+                                                             Email: drpCover2.Selected.Email,
+                                                             Department: "",
+                                                             JobTitle: "",
+                                                             Picture: ""
+                                                         }
+                                                     ),
+                                                 CoveringDetails2: txtDetails2.Value,
+                                                 // Covering person 3
+                                                 CoveringPerson3:
+                                                     If(
+                                                         IsBlank(drpCover3.Selected.Email),
+                                                         Blank(),
+                                                         {
+                                                             '@odata.type': "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedUser",
+                                                             Claims: "i:0#.f|membership|" & Lower(drpCover3.Selected.Email),
+                                                             DisplayName: drpCover3.Selected.FullName,
+                                                             Email: drpCover3.Selected.Email,
+                                                             Department: "",
+                                                             JobTitle: "",
+                                                             Picture: ""
+                                                         }
+                                                     ),
+                                                 CoveringDetails3: txtDetails3.Value,
+                                                 SubmittedOn: Now(),
+                                                 // Status (Choice)
+                                                 Status: { Value: "Requested" },
+                                                  // NEW helper fields for Power BI
+                                                  EmployeeEmail: User().Email,
+                                                  EmployeeName: LookUp(Staff, Email = User().Email).FullName
+                                             }
+                                         );
+                                         Notify("PTO request submitted.", NotificationType.Success);
+                                         // 3) Reset controls
+                                         Reset(dpStart);
+                                         Reset(dpEnd);
+                                         Reset(drpWorkstream);
+                                         Reset(drpCover1);
+                                         Reset(drpCover2);
+                                         Reset(drpCover3);
+                                         Reset(txtDetails1);
+                                         Reset(txtDetails2);
+                                         Reset(txtDetails3)
+                                      );
+
+                                      Navigate(scrWeeklyHours, ScreenTransition.Fade)
+                                    PressedBorderColor: =Self.Fill
+                                    PressedColor: =Self.Fill
+                                    PressedFill: =Self.Color
+                                    Text: ="Submit PTO"
+                                    X: =660
+                                    Y: =365
+                              - TextCanvas3_3:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Font: =Font.'Segoe UI'
+                                    Text: ="PTO First Day"
+                                    Width: =150
+                                    X: =32
+                                    Y: =30
+                              - TextCanvas3_4:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Font: =Font.'Segoe UI'
+                                    Text: ="PTO Last Day"
+                                    Width: =150
+                                    X: =32
+                                    Y: =90
+                              - TextCanvas3_5:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Font: =Font.'Segoe UI'
+                                    Text: ="Workstream"
+                                    Width: =150
+                                    X: =32
+                                    Y: =135
+                              - TextCanvas3_6:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Font: =Font.'Segoe UI'
+                                    Text: ="Cover 1"
+                                    Width: =150
+                                    X: =32
+                                    Y: =192
+                              - TextCanvas3_7:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Font: =Font.'Segoe UI'
+                                    Text: ="Cover 2"
+                                    Width: =150
+                                    X: =32
+                                    Y: =245
+                              - TextCanvas3_8:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Font: =Font.'Segoe UI'
+                                    Text: ="Cover 3"
+                                    Width: =150
+                                    X: =32
+                                    Y: =299
+                              - TextCanvas3_9:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Font: =Font.'Segoe UI'
+                                    Height: =34
+                                    Text: ="Details 1"
+                                    Width: =98
+                                    X: =452
+                                    Y: =198
+                              - TextCanvas3_10:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Font: =Font.'Segoe UI'
+                                    Height: =34
+                                    Text: ="Details 2"
+                                    Width: =98
+                                    X: =452
+                                    Y: =251
+                              - TextCanvas3_11:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Font: =Font.'Segoe UI'
+                                    Height: =34
+                                    Text: ="Details 3"
+                                    Width: =98
+                                    X: =452
+                                    Y: =305

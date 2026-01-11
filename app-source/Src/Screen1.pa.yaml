@@ -1,0 +1,463 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  Screen1:
+    Properties:
+      LoadingSpinnerColor: =RGBA(56, 96, 178, 1)
+    Children:
+      - Breadcrumbs_1:
+          Control: CanvasComponent
+          ComponentName: Breadcrumbs
+          ComponentLibraryUniqueName: coe_breadcrumb_c086b
+          Properties:
+            BreadcrumbItems: |-
+              =/*Use the outline below to alter the text or use the RenameColumns to enter dynamic titles based on data source. Use the labelSizeAdjustor to manipulate the width of the breadcrumb item. Avoid using external data sources with this control, as it is not set up to use any other schema.*/
+              Table(
+                  {Title: "First Page", Screen: App.ActiveScreen ,Icon: Icon.Folder, labelSizeAdjustor: 1.0},
+                  {Title: "Second Page", Screen: App.ActiveScreen,Icon: Icon.Folder, labelSizeAdjustor: 0.89},
+                  {Title: "Third Page", Screen: App.ActiveScreen,Icon: Icon.Folder, labelSizeAdjustor: 0.7}
+              )
+            BreadcrumbItemsWidth: =If(Breadcrumbs_1.Icons = true,190, 160)
+            DefaultItem: ="First Page"
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =50
+            Icons: =false
+            PrimaryOrange: =true
+            Width: =740
+            X: =571
+            Y: =558
+            galleryOnSelect: =
+      - Combo Drop Down with Header_1:
+          Control: CanvasComponent
+          ComponentName: Combo Drop Down with Header
+          ComponentLibraryUniqueName: coe_dropdown_70d36
+          Properties:
+            Default: |-
+              =//Default selected items should be defined in a table. For example: ["New", "Closed"]
+              []
+            DisplayFields: =["Value"]
+            DisplayMode: =DisplayMode.Edit
+            DropDownItems: |-
+              =//Use the RenameColumns function to substitute the sample columns names with your own.
+              Table({dropdownText: "New", dropdownValue: ""},{dropdownText: "Closed", dropdownValue: ""},{dropdownText: "Inactive", dropdownValue: ""},{dropdownText: "Pending", dropdownValue: ""},{dropdownText: "In progress", dropdownValue: ""})
+            DropDownTitle: ="Text"
+            Height: =100
+            PrimaryOrange: =true
+            Required: =true
+            Reset: =true
+            SearchFields: =["Value"]
+            SelectMultiple: =true
+            TextPlaceholder: ="Find items"
+            Width: =357
+            X: =504
+            Y: =532
+            onChange: =
+            onSelect: =
+      - Form_1:
+          Control: CanvasComponent
+          ComponentName: Form
+          ComponentLibraryUniqueName: coe_inputfield_c09e5
+          Properties:
+            AccessibleLabel: =""
+            ClearIcon: =true
+            Default: =
+            DisplayMode: =DisplayMode.Edit
+            ErrorMessageText: ="Error"
+            ErrorMessageVisibility: =false
+            FormTitle: ="Text"
+            Height: =80
+            MaxLength: =100
+            NumbersOnly: =false
+            PrimaryOrange: =true
+            Required: =true
+            Reset: =true
+            TextBoxHint: =
+            X: =580
+            Y: =170
+            onChange: =
+      - Global Notification_1:
+          Control: CanvasComponent
+          ComponentName: Global Notification
+          ComponentLibraryUniqueName: coe_notification_59729
+          Properties:
+            AlertColor: =ColorValue("#252525")
+            AlertText: ="A simple, dismissible info alert—check it out!"
+            Height: =50
+            TextColor: =Color.White
+            Width: =650
+            X: =619
+            Y: =11
+            onSelectClose: =
+      - Header w/ Avatar_1:
+          Control: CanvasComponent
+          ComponentName: Header w/ Avatar
+          ComponentLibraryUniqueName: coe_header_c8d89
+          Properties:
+            Height: =72
+            LogoTopPadding: =5
+            PrimaryOrange: =true
+            PwCAppHeader: ="Insert Header Name"
+            PwCLogo: ='PwC-Logo'
+            Separator: =true
+            Width: =917
+            X: =448
+            Y: =696
+      - Header w/ Avatar and Menu_1:
+          Control: CanvasComponent
+          ComponentName: Header w/ Avatar and Menu
+          ComponentLibraryUniqueName: coe_header_c8d89
+          Properties:
+            CloseMenu: =
+            ExpandMenu: =
+            Height: =42
+            LogoTopPadding: =5
+            PrimaryOrange: =true
+            PwCAppHeader: ="Insert Header Name"
+            PwCLogo: ='PwC-Logo'
+            Separator: =true
+            Width: =824
+            X: =540
+            Y: =470
+      - Header w/ Avatar and Icon_1:
+          Control: CanvasComponent
+          ComponentName: Header w/ Avatar and Icon
+          ComponentLibraryUniqueName: coe_header_c8d89
+          Properties:
+            Height: =41
+            Icon: =Icon.Home
+            IconLabel: ="Home"
+            IconOnSelect: =
+            IconWidth: =100
+            LogoTopPadding: =5
+            PrimaryOrange: =true
+            PwCAppHeader: ="Insert Header Name"
+            PwCLogo: ='PwC-Logo'
+            SecondIcon: =Icon.Help
+            SecondIconLabel: ="Support"
+            SecondIconOnSelect: =
+            SecondIconVisible: =true
+            SecondIconWidth: =120
+            Separator: =true
+            Width: =891
+            X: =474
+            Y: =493
+      - Powered By LCS_1:
+          Control: CanvasComponent
+          ComponentName: Powered By LCS
+          ComponentLibraryUniqueName: coe_footer_2b2f1
+          Properties:
+            FooterText: |-
+              ="<div align='Center'><font color = #252525><a href='https://pwc.sharepoint.com/sites/US-IFS-Low-Code-Services' '>
+              <!-- Hyperlink Title below -->
+               Powered By Low Code Services </a></font>"
+            Height: =30
+            Tooltip: ="Visit the Low Code Service's SharePoint site."
+            Width: =1200
+            X: =20
+            Y: =364
+      - PwC Legal Footer Links_1:
+          Control: CanvasComponent
+          ComponentName: PwC Legal Footer Links
+          ComponentLibraryUniqueName: coe_footer_2b2f1
+          Properties:
+            FooterText: "=\"<div align='left'>© \"&Year(Now())&\" PwC. PwC refers to the PwC network and/or one or more of its member firms, each of which is a separate legal entity.<br>\r\n\r\n<!-- Use the line below as formatting for new hyperlinks or editing the link title and destination. -->\r\n<font color = \"&If('PwC Legal Footer Links_1'.PrimaryOrange, \"#D04A02\", \"#415385\" )&\"><a href='https://www.pwc.com/us/en/site/privacy.html'  '>\r\n\r\n<!-- Hyperlink Title below -->\r\n Privacy </a></font> |\r\n\r\n <!-- Use the line below as formatting for new hyperlinks or editing the link title and destination. -->\r\n<font color = \"&If('PwC Legal Footer Links_1'.PrimaryOrange, \"#D04A02\", \"#415385\" )&\"><a href='https://www.pwc.com/us/en/site/terms-and-conditions.html'  '>\r\n\r\n<!-- Hyperlink Title below -->\r\n Terms and Conditions </a></font> |\r\n\r\n \r\n <!-- Use the line below as formatting for new hyperlinks or editing the link title and destination. -->\r\n<font color = \"&If('PwC Legal Footer Links_1'.PrimaryOrange, \"#D04A02\", \"#415385\" )&\"><a href='https://www.pwc.com/us/en/site/legal.html'  '>\r\n\r\n<!-- Hyperlink Title below -->\r\n Legal </a></font>\r\n\r\n\r\n  \""
+            Height: =27
+            PrimaryOrange: =true
+            Tooltip: =""
+            Width: =529
+            X: =760
+            Y: =119
+      - Slider w/ Value_1:
+          Control: CanvasComponent
+          ComponentName: Slider w/ Value
+          ComponentLibraryUniqueName: coe_slider_fe9b5
+          Properties:
+            DefaultValue: =70
+            Height: =90
+            PrimaryOrange: =true
+            Required: =false
+            SliderMax: =100
+            SliderMin: =0
+            SliderTitle: ="Single slider"
+            Tooltip: ="Text"
+            Width: =550
+            X: =651
+            Y: =632
+      - Tabs (Icons and Labels)_1:
+          Control: CanvasComponent
+          ComponentName: Tabs (Icons and Labels)
+          ComponentLibraryUniqueName: coe_tab_079f3
+          Properties:
+            DefaultTab: ="TAB ONE"
+            Filled: =true
+            Height: =60
+            IconsOnly: =true
+            PrimaryOrange: =true
+            TabItems: |-
+              =//Use the schema below to edit the text and screen to navigate to. Avoid using external data sources with this control, as it is not set up to use any other schema.
+              Table(
+                  {
+                      Tab_Name: "TAB ONE", Screen: App.ActiveScreen, labelSizeAdjustor: 1,Icon: Icon.Message
+                  }, {Tab_Name: "TAB TWO", Screen: App.ActiveScreen, labelSizeAdjustor: 1, Icon: Icon.Message
+                  }, {Tab_Name: "TAB THREE", Screen: App.ActiveScreen,labelSizeAdjustor: 1, Icon: Icon.Message}
+              )
+            TabTemplateSize: =170
+            Width: =If('Tabs (Icons and Labels)_1'.IconsOnly = true, 260, 550)
+            X: =709
+            Y: =534
+            galleryOnSelect: =
+      - Table w/ Action Item_1:
+          Control: CanvasComponent
+          ComponentName: Table w/ Action Item
+          ComponentLibraryUniqueName: coe_table_2f377
+          Properties:
+            ActionButtonVisibility: =true
+            ActionIcon: =Icon.Edit
+            ActionOnSelect: =
+            Column1Title: ="State"
+            Column2Title: ="Population"
+            Column3Title: ="Capital"
+            Column4Title: ="State Number"
+            Column5Title: ="State Flower"
+            Column6Title: ="State Animal"
+            EditIconTooltip: ="Edit"
+            GalleryItems: |-
+              =Table({Column1: "Texas",Column2: "29,730,311",Column3: "Austin",Column4: "28",Column5: "Bluebonnet",Column6: "Longhorn", ID: "1"},{Column1: "California",Column2: "39,613,493",Column3: "Sacramento",Column4: "31",Column5: "Poppy",Column6: "Grizzly Bear", ID: "2"},{Column1: "New York",Column2: "19,299,981",Column3: "Albany",Column4: "11",Column5: "Rose",Column6: "Beaver", ID: "3"})
+            Height: =300
+            PrimaryOrange: =true
+            Titles: =true
+            Width: =830
+            X: =371
+            Y: =234
+      - Table_1:
+          Control: CanvasComponent
+          ComponentName: Table
+          ComponentLibraryUniqueName: coe_table_2f377
+          Properties:
+            Column1Title: ="Text"
+            Column2Title: ="Text"
+            Column3Title: ="Text"
+            Column4Title: ="Text"
+            Dropdown1Title: ="Column 1"
+            Dropdown2Title: ="Column 2"
+            Dropdown3Title: ="Column 3"
+            Dropdown4Title: ="Column 4"
+            Filters: =true
+            GalleryItems: |+
+              =Table({Column1: "Texas",Column2: "29,730,311",Column3: "Austin",Column4: "28", ID:"1"},{Column1: "California",Column2: "39,613,493",Column3: "Sacramento",Column4: "31", ID:"2"},{Column1: "New York",Column2: "19,299,//981",Column3: "Albany",Column4: "11", ID:"3"})
+            GalleryOnSelect: =
+            Height: =308
+            PrimaryOrange: =true
+            Search: =true
+            Titles: =true
+            Width: =905
+            X: =406
+            Y: =117
+      - Notice_1:
+          Control: CanvasComponent
+          ComponentName: Notice
+          ComponentLibraryUniqueName: coe_notification_59729
+          Properties:
+            AlertBody: ="You have been invited to a meeting."
+            AlertTitle: ="Google Alert"
+            BodyHeight: =30
+            CloseOnSelect: =
+            Height: =95
+            HyperlinkText: |-
+              ="<!-- Use the line below as formatting for new hyperlinks or editing the link title and destination. -->
+              <font color = "&If(Notice_1.PrimaryOrange, "#D04A02", "#415385" )&"><a href='https://www.pwc.com/us/en.html'>
+
+              <!-- Hyperlink Title below -->
+               Add to calendar </a></font>"
+            HyperlinkToggle: =false
+            Icon: =PwC_Funct_Icons_Calendar_Outline_DarkGrey_RGB
+            IconToggle: =false
+            PrimaryOrange: =true
+            ShowCloseIcon: =true
+            ToggleTitle: =true
+            X: =406
+            Y: =234
+      - PwC Legal Footer Text_1:
+          Control: CanvasComponent
+          ComponentName: PwC Legal Footer Text
+          ComponentLibraryUniqueName: coe_footer_2b2f1
+          Properties:
+            FooterText: |-
+              ="<div align='left'>© "&Year(Now())&" PwC. PwC refers to the PwC network and/or one or more of its member firms, each of which is a separate legal entity.  Please see 
+
+              <!-- Use the line below as formatting for new hyperlinks or editing the link title and destination. -->
+              <font color = "&If('PwC Legal Footer Text_1'.PrimaryOrange, "#D04A02", "#415385" )&"><a href='www.pwc.com/structure' '>
+
+              <!-- Hyperlink Title below -->
+               www.pwc.com/structure </a></font>
+
+                for further details."
+            Height: =17
+            PrimaryOrange: =true
+            Tooltip: =""
+            Width: =755
+            X: =580
+            Y: =79
+      - Sidebar (Collapsed)_1:
+          Control: CanvasComponent
+          ComponentName: Sidebar (Collapsed)
+          ComponentLibraryUniqueName: coe_sidebars_4fe41
+          Properties:
+            CollapseButtonOnSelect: =
+            DefaultParentItem: ="Home"
+            Fill: =If('Sidebar (Collapsed)_1'.Solid = false, ColorValue("#F3F3F3"), RGBA(0,0,0,0))
+            Height: =768
+            PrimaryOrange: =true
+            ShowExpandButton: =true
+            ShowUserIcon: =true
+            SidebarItems: |-
+              =//Replace App.ActiveScreen with your screen name to navigate to specified screen associated with the item.
+              Table(
+                  {
+                      title: "Home",
+                      Icon: Icon.Home,
+                      customIcon: PwC_Funct_Icons_Home_Outline_DarkGrey_RGB,
+                      Screen: App.ActiveScreen        
+                  },
+                  {
+                      title: "Portfolio",
+                      Icon: Icon.DetailList,
+                      customIcon: PwC_Pictograms_ProductPortfolioBalance_DarkGrey_RGB,
+                      Screen: App.ActiveScreen}
+                  ,
+                  {
+                      title: "Deployment",
+                      Icon: Icon.AddUser,
+                      customIcon: PwC_Pictograms_ToolsPlansDesign_DarkGrey_RGB,
+                      Screen: App.ActiveScreen
+                  },
+                  {
+                      title: "People",
+                      Icon: Icon.Person,
+                      customIcon: PwC_Funct_Icons_Audience_Outline_DarkGrey_RGB,
+                      Screen: App.ActiveScreen
+                  },
+                  {
+                      title: "Insights",
+                      Icon: Icon.Trending,
+                      customIcon: PwC_Funct_Icons_SparkLine_Fill_DarkGrey_RGB,
+                      Screen: App.ActiveScreen
+                  }
+              )
+            Solid: =false
+            UseCustomIcons: =false
+            Width: =75
+      - Sidebar (Expanded)_1:
+          Control: CanvasComponent
+          ComponentName: Sidebar (Expanded)
+          ComponentLibraryUniqueName: coe_sidebars_4fe41
+          Properties:
+            DefaultParentItem: ="Home"
+            ExpandButtonOnSelect: =
+            Fill: =If('Sidebar (Expanded)_1'.Solid = false, ColorValue("#F3F3F3"), RGBA(0,0,0,0))
+            HeaderText: ="Appkit"
+            Height: =768
+            PrimaryOrange: =true
+            PwCLogo: =PwC_fl_30mmh_c_black_text_logo
+            ShowCollapseButton: =true
+            ShowSidebarHeading: =true
+            SidebarItems: |-
+              =/*Replace App.ActiveScreen with your screen name to navigate to specified screen associated with the item. Remove the SubMenu record and set ShowDropDown to false if item does not need to show submenu items.*/
+
+              Table(
+                  {
+                      title: "Home",
+                      Icon: Icon.Home,
+                      customIcon: PwC_Funct_Icons_Home_Outline_DarkGrey_RGB,
+                      Screen: App.ActiveScreen, 
+                      ShowDropDown: true,
+                      SubMenu: Table(
+                          {
+                              title: "Getting started",
+                              Screen: App.ActiveScreen,
+                              Icon: Icon.Lightbulb,
+                      customIcon: PwC_Funct_Icons_Home_Outline_DarkGrey_RGB
+                          },
+                          {
+                              title: "Career & learning",
+                              Screen: App.ActiveScreen,
+                              Icon: Icon.Globe,
+                      customIcon: PwC_Funct_Icons_Home_Outline_DarkGrey_RGB
+                          }
+                      )
+                  },
+                  {
+                      title: "Portfolio",
+                      Icon: Icon.DetailList,
+                      customIcon: PwC_Pictograms_ProductPortfolioBalance_DarkGrey_RGB,
+                      Screen: App.ActiveScreen, 
+                      ShowDropDown: true,
+                      SubMenu: Table(
+                          {
+                              title: "Case studies",
+                              Screen: App.ActiveScreen,
+                              Icon: Icon.Document
+                          }
+                      )
+                  },
+                  {
+                      title: "Deployment",
+                      Icon: Icon.AddUser,
+                      customIcon: PwC_Pictograms_ToolsPlansDesign_DarkGrey_RGB,
+                      Screen: App.ActiveScreen,
+                      ShowDropDown: false
+                  },
+                  {
+                      title: "People",
+                      Icon: Icon.Person,
+                      customIcon: PwC_Funct_Icons_Audience_Outline_DarkGrey_RGB,
+                      Screen: App.ActiveScreen,
+                      ShowDropDown: true,
+                      SubMenu: Table(
+                          {
+                              title: "Our team",
+                              Screen: App.ActiveScreen,
+                              Icon: Icon.People
+                          }
+                      )
+                  },
+                  {
+                      title: "Insights",
+                      Icon: Icon.Trending,
+                      customIcon: PwC_Funct_Icons_SparkLine_Fill_DarkGrey_RGB,
+                      ShowDropDown: true,
+                      SubMenu: Table(
+                          {
+                              title: "Emerging tech",
+                              Screen: App.ActiveScreen,
+                              Icon: Icon.Newspaper
+                          },
+                          {
+                              title: "Artificial intelligence",
+                              Screen: App.ActiveScreen,
+                              Icon: Icon.Database
+                          }
+                      )
+                  }
+              )
+            Solid: =false
+            UseCustomIcons: =false
+            Width: =181
+            X: =150
+      - HtmlText1:
+          Control: HtmlViewer@2.1.0
+          Properties:
+            Font: =Font.'Open Sans'
+            Height: =632
+            Width: =484
+            X: =225
+      - Copilot1:
+          Control: Copilot@0.0.695
+          Properties:
+            X: =251

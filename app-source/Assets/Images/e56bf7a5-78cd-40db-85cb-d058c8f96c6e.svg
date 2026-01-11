@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icon/Outline/folder-closed-outline</title>
+    <g id="Icon/Outline/folder-closed-outline" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(-0.000000, 1.500000)" fill="#474747" fill-rule="nonzero">
+            <g id="folder-closed">
+                <path d="M22.5,4.50000002 C23.3290001,4.50000002 24,5.17200002 24,6.00000002 L24,19.5 C24,20.3280001 23.3290001,21 22.5,21 L1.5,21 C0.672000003,21 0,20.3280001 0,19.5 L0,4.50000002 L22.5,4.50000002 Z M1.50000001,19.5 L22.5,19.5 L22.5,6.00000002 L1.50000001,6.00000002 L1.50000001,19.5 Z M1.5,1.5 L1.5,3 L0,3 L0,1.5 C0,0.672000003 0.672000003,0 1.5,0 L7.5,0 C8.32900001,0 9,0.672000003 9,1.5 L9,3 L7.5,3 L7.5,1.5 L1.5,1.5 Z" id="Combined-Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>
