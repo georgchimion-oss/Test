@@ -1,0 +1,21 @@
+{
+  "DocVersion": "1.338",
+  "MinVersionToLoad": "1.331",
+  "MSAppStructureVersion": "2.1",
+  "Author": "",
+  "Format": "Canvas",
+  "ScreenWidth": 1366,
+  "ScreenHeight": 768,
+  "ScreenOrientation": "Landscape",
+  "DocumentLayoutScaleMode": "Scale",
+  "DocumentLayoutWidth": 1366,
+  "DocumentLayoutHeight": 768,
+  "DocumentLayoutOrientation": "Landscape",
+  "DocumentLayoutMaintainAspectRatio": true,
+  "DocumentLayoutLockOrientation": false,
+  "DocumentType": "App",
+  "AppPreviewFlagsMap": {},
+  "LocalDatabaseReferencesAsEmpty": false,
+  "LocalConnectionReferencesAsEmpty": false,
+  "LibraryDependencies": []
+}
