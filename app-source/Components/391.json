@@ -1,0 +1,1057 @@
+{
+  "TopParent": {
+    "Type": "ControlInfo",
+    "Name": "Combo Drop Down",
+    "Template": {
+      "Id": "http://microsoft.com/appmagic/Component",
+      "Version": "637725909060974911",
+      "LastModifiedTimestamp": "639032211245405498",
+      "Name": "4f4736ffa477449391bc41bbcac00561",
+      "FirstParty": true,
+      "IsPremiumPcfControl": false,
+      "IsCustomGroupControlTemplate": false,
+      "CustomGroupControlTemplateName": "",
+      "IsComponentDefinition": true,
+      "CustomProperties": [
+        {
+          "Name": "DropDownItems",
+          "Category": 0,
+          "Type": "{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Table\",\"EnumString\":\"\",\"Type\":[{\"Name\":\"dropdownText\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"dropdownValue\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}]}}",
+          "PropertyDataTypeKey": "Table",
+          "Hidden": false,
+          "DisplayName": "Drop Down Items",
+          "Tooltip": "List of items in drop down"
+        },
+        {
+          "Name": "SelectedItems",
+          "Category": 0,
+          "Type": "{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Table\",\"EnumString\":\"\",\"Type\":[{\"Name\":\"dropdownText\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"dropdownValue\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}]}}",
+          "PropertyDataTypeKey": "Table",
+          "Hidden": true,
+          "DisplayName": "SelectedItems",
+          "Tooltip": "A custom property for the selected value text"
+        },
+        {
+          "Name": "Selected",
+          "Category": 0,
+          "Type": "{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Record\",\"EnumString\":\"\",\"Type\":[{\"Name\":\"dropdownText\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"dropdownValue\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}]}}",
+          "PropertyDataTypeKey": "Record",
+          "Hidden": true,
+          "DisplayName": "Selected",
+          "Tooltip": "A custom property for the output property of the Selected value"
+        },
+        {
+          "Name": "Default",
+          "Category": 0,
+          "Type": "{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Table\",\"EnumString\":\"\",\"Type\":[]}}",
+          "PropertyDataTypeKey": "Table",
+          "Hidden": false,
+          "DisplayName": "Default",
+          "Tooltip": "Table of item that should be selected by default."
+        },
+        {
+          "Name": "PrimaryOrange",
+          "Category": 0,
+          "Type": "{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}}",
+          "PropertyDataTypeKey": "Boolean",
+          "Hidden": false,
+          "DisplayName": "Primary Orange",
+          "Tooltip": "A custom property to toggle the primary color when the control is in focus."
+        },
+        {
+          "Name": "DisplayMode",
+          "Category": 0,
+          "Type": "{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}",
+          "PropertyDataTypeKey": "String",
+          "Hidden": false,
+          "DisplayName": "Display Mode",
+          "Tooltip": "A custom property to set the display mode."
+        },
+        {
+          "Name": "TextPlaceholder",
+          "Category": 0,
+          "Type": "{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}",
+          "PropertyDataTypeKey": "String",
+          "Hidden": false,
+          "DisplayName": "Text placeholder",
+          "Tooltip": "A custom property"
+        },
+        {
+          "Name": "SelectMultiple",
+          "Category": 0,
+          "Type": "{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}}",
+          "PropertyDataTypeKey": "Boolean",
+          "Hidden": false,
+          "DisplayName": "Select Multiple",
+          "Tooltip": "A custom property"
+        },
+        {
+          "Name": "Reset",
+          "Category": 0,
+          "Type": "{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}}",
+          "PropertyDataTypeKey": "Boolean",
+          "Hidden": false,
+          "DisplayName": "Reset",
+          "Tooltip": "A custom property"
+        },
+        {
+          "Name": "DisplayFields",
+          "Category": 0,
+          "Type": "{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Table\",\"EnumString\":\"\",\"Type\":[{\"Name\":\"Value\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}]}}",
+          "PropertyDataTypeKey": "Table",
+          "Hidden": false,
+          "DisplayName": "Display Fields",
+          "Tooltip": "List of fields to display in item template."
+        },
+        {
+          "Name": "onChange",
+          "Category": 2,
+          "Type": "{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Void\",\"EnumString\":\"\",\"Type\":[]}}",
+          "PropertyDataTypeKey": "Void",
+          "Hidden": false,
+          "PropertyScopeKey": {
+            "PropertyScopeRuleNamespaceKey": "391",
+            "PropertyScopeRulesKey": []
+          },
+          "DisplayName": "onChange",
+          "Tooltip": "A custom property"
+        },
+        {
+          "Name": "SearchFields",
+          "Category": 0,
+          "Type": "{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Table\",\"EnumString\":\"\",\"Type\":[{\"Name\":\"Value\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}]}}",
+          "PropertyDataTypeKey": "Table",
+          "Hidden": false,
+          "DisplayName": "Search Fields",
+          "Tooltip": "List of fields to search when isSearchable is true. List of fields to search for user input."
+        },
+        {
+          "Name": "SearchText",
+          "Category": 0,
+          "Type": "{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}",
+          "PropertyDataTypeKey": "String",
+          "Hidden": true,
+          "DisplayName": "SearchText",
+          "Tooltip": "A custom property to output the search text."
+        },
+        {
+          "Name": "onSelect",
+          "Category": 2,
+          "Type": "{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Void\",\"EnumString\":\"\",\"Type\":[]}}",
+          "PropertyDataTypeKey": "Void",
+          "Hidden": false,
+          "PropertyScopeKey": {
+            "PropertyScopeRuleNamespaceKey": "391",
+            "PropertyScopeRulesKey": []
+          },
+          "DisplayName": "onSelect",
+          "Tooltip": "A custom property"
+        }
+      ],
+      "ComponentType": "CanvasComponent",
+      "SourceLibraryId": "d7ff3759-5e36-475b-af8d-b235f5d0ab1e",
+      "SourceLibraryLogicalName": "coe_dropdown_70d36",
+      "OverridableProperties": {}
+    },
+    "Index": 60,
+    "PublishOrderIndex": 0,
+    "VariantName": "",
+    "LayoutName": "",
+    "MetaDataIDKey": "",
+    "PersistMetaDataIDKey": false,
+    "IsFromScreenLayout": false,
+    "StyleName": "",
+    "Parent": "",
+    "IsDataControl": false,
+    "AllowAccessToGlobals": false,
+    "OptimizeForDevices": "Off",
+    "IsGroupControl": false,
+    "IsAutoGenerated": false,
+    "Rules": [
+      {
+        "Property": "SearchText",
+        "Category": "Data",
+        "InvariantScript": "ComboBox1_4.SearchText",
+        "RuleProviderType": "System"
+      },
+      {
+        "Property": "DisplayMode",
+        "Category": "Data",
+        "InvariantScript": "DisplayMode.Edit",
+        "RuleProviderType": "System"
+      },
+      {
+        "Property": "PrimaryOrange",
+        "Category": "Data",
+        "InvariantScript": "true",
+        "RuleProviderType": "System"
+      },
+      {
+        "Property": "SearchFields",
+        "Category": "Data",
+        "InvariantScript": "[\"Value\"]",
+        "RuleProviderType": "System"
+      },
+      {
+        "Property": "DisplayFields",
+        "Category": "Data",
+        "InvariantScript": "[\"Value\"]",
+        "RuleProviderType": "System"
+      },
+      {
+        "Property": "Reset",
+        "Category": "Data",
+        "InvariantScript": "true",
+        "RuleProviderType": "System"
+      },
+      {
+        "Property": "SelectMultiple",
+        "Category": "Data",
+        "InvariantScript": "true",
+        "RuleProviderType": "System"
+      },
+      {
+        "Property": "TextPlaceholder",
+        "Category": "Data",
+        "InvariantScript": "\"Find items\"",
+        "RuleProviderType": "System"
+      },
+      {
+        "Property": "DropDownItems",
+        "Category": "Data",
+        "InvariantScript": "//Use the RenameColumns function to substitute the sample columns names with your own.\r\nTable({dropdownText: \"New\", dropdownValue: \"\"},{dropdownText: \"Closed\", dropdownValue: \"\"},{dropdownText: \"Inactive\", dropdownValue: \"\"},{dropdownText: \"Pending\", dropdownValue: \"\"},{dropdownText: \"In progress\", dropdownValue: \"\"})",
+        "RuleProviderType": "System"
+      },
+      {
+        "Property": "SelectedItems",
+        "Category": "Data",
+        "InvariantScript": "ComboBox1_4.SelectedItems",
+        "RuleProviderType": "System"
+      },
+      {
+        "Property": "Selected",
+        "Category": "Data",
+        "InvariantScript": "ComboBox1_4.Selected",
+        "RuleProviderType": "System"
+      },
+      {
+        "Property": "Default",
+        "Category": "Data",
+        "InvariantScript": "//Default selected items should be defined in a table. For example: [\"New\", \"Closed\"]\n[]",
+        "RuleProviderType": "System"
+      },
+      {
+        "Property": "X",
+        "Category": "Design",
+        "InvariantScript": "0",
+        "RuleProviderType": "Unknown"
+      },
+      {
+        "Property": "Y",
+        "Category": "Design",
+        "InvariantScript": "0",
+        "RuleProviderType": "Unknown"
+      },
+      {
+        "Property": "ZIndex",
+        "Category": "Design",
+        "InvariantScript": "1",
+        "RuleProviderType": "Unknown"
+      },
+      {
+        "Property": "Fill",
+        "Category": "Design",
+        "InvariantScript": "RGBA(0, 0, 0, 0)",
+        "RuleProviderType": "System"
+      },
+      {
+        "Property": "Height",
+        "Category": "Design",
+        "InvariantScript": "44",
+        "RuleProviderType": "System"
+      },
+      {
+        "Property": "Width",
+        "Category": "Design",
+        "InvariantScript": "640",
+        "RuleProviderType": "Unknown"
+      },
+      {
+        "Property": "OnReset",
+        "Category": "Behavior",
+        "InvariantScript": "Reset(ComboBox1_4)",
+        "RuleProviderType": "System"
+      },
+      {
+        "Property": "onSelect",
+        "Category": "Behavior",
+        "InvariantScript": "",
+        "RuleProviderType": "System"
+      },
+      {
+        "Property": "onChange",
+        "Category": "Behavior",
+        "InvariantScript": "",
+        "RuleProviderType": "System"
+      }
+    ],
+    "ControlPropertyState": [
+      "Fill",
+      {
+        "InvariantPropertyName": "Height",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "",
+        "NameMapSourceSchema": "?",
+        "IsLockable": false,
+        "AFDDataSourceName": ""
+      },
+      "Width",
+      "X",
+      "Y",
+      "ZIndex",
+      {
+        "InvariantPropertyName": "DropDownItems",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "//Any table can be used, even from a data source (i.e. SharePoint and others)\r\nTable({dropdownText: \"sampleText\", dropdownValue: \"\"})",
+        "NameMapSourceSchema": "?",
+        "IsLockable": false,
+        "AFDDataSourceName": ""
+      },
+      "SelectedItems",
+      "Selected",
+      "onChange",
+      {
+        "InvariantPropertyName": "TextPlaceholder",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "\"Text\"",
+        "NameMapSourceSchema": "?",
+        "IsLockable": false,
+        "AFDDataSourceName": ""
+      },
+      "onSelect",
+      "SelectMultiple",
+      "Reset",
+      "DisplayFields",
+      "SearchFields",
+      {
+        "InvariantPropertyName": "OnReset",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "",
+        "NameMapSourceSchema": "?",
+        "IsLockable": false,
+        "AFDDataSourceName": ""
+      },
+      "PrimaryOrange",
+      {
+        "InvariantPropertyName": "DisplayMode",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "\"Text\"",
+        "NameMapSourceSchema": "?",
+        "IsLockable": false,
+        "AFDDataSourceName": ""
+      },
+      {
+        "InvariantPropertyName": "SearchText",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "\"Text\"",
+        "NameMapSourceSchema": "?",
+        "IsLockable": false,
+        "AFDDataSourceName": ""
+      },
+      "Default"
+    ],
+    "IsLocked": false,
+    "ControlUniqueId": "391",
+    "Children": [
+      {
+        "Type": "ControlInfo",
+        "Name": "ComboBox1_4",
+        "HasDynamicProperties": false,
+        "Template": {
+          "Id": "http://microsoft.com/appmagic/combobox",
+          "Version": "2.4.0",
+          "LastModifiedTimestamp": "0",
+          "Name": "combobox",
+          "FirstParty": true,
+          "IsPremiumPcfControl": false,
+          "IsCustomGroupControlTemplate": false,
+          "CustomGroupControlTemplateName": "",
+          "IsComponentDefinition": false,
+          "OverridableProperties": {}
+        },
+        "Index": 0,
+        "PublishOrderIndex": 1127,
+        "VariantName": "",
+        "LayoutName": "",
+        "MetaDataIDKey": "",
+        "PersistMetaDataIDKey": false,
+        "IsFromScreenLayout": false,
+        "StyleName": "defaultComboBoxStyle",
+        "Parent": "Combo Drop Down",
+        "IsDataControl": false,
+        "AllowAccessToGlobals": true,
+        "OptimizeForDevices": "Off",
+        "IsGroupControl": false,
+        "IsAutoGenerated": false,
+        "Rules": [
+          {
+            "Property": "NavigateFields",
+            "Category": "Data",
+            "InvariantScript": "[]",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "DisplayFields",
+            "Category": "Data",
+            "InvariantScript": "[\"dropdownText\"]",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "SearchFields",
+            "Category": "Data",
+            "InvariantScript": "[\"dropdownText\"]",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "Reset",
+            "Category": "Data",
+            "InvariantScript": "'Combo Drop Down'.Reset",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "Items",
+            "Category": "Data",
+            "InvariantScript": "'Combo Drop Down'.DropDownItems",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "SelectMultiple",
+            "Category": "Data",
+            "InvariantScript": "'Combo Drop Down'.SelectMultiple",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "InputTextPlaceholder",
+            "Category": "Data",
+            "InvariantScript": "'Combo Drop Down'.TextPlaceholder",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "SearchItems",
+            "Category": "Data",
+            "InvariantScript": "Search('Combo Drop Down'.DropDownItems,ComboBox1_4.SearchText,dropdownText)",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "Default",
+            "Category": "Data",
+            "InvariantScript": "",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "DefaultSelectedItems",
+            "Category": "Data",
+            "InvariantScript": "Parent.Default",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "FocusedBorderColor",
+            "Category": "Design",
+            "InvariantScript": "If(Parent.PrimaryOrange = true, ColorValue(\"#D04A02\"), ColorValue(\"#415385\"))",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "DisplayMode",
+            "Category": "Design",
+            "InvariantScript": "'Combo Drop Down'.DisplayMode",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "Template",
+            "Category": "Design",
+            "InvariantScript": "ListItemTemplate.Single",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "MoreItemsButtonColor",
+            "Category": "Design",
+            "InvariantScript": "Self.ChevronBackground",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "SelectionColor",
+            "Category": "Design",
+            "InvariantScript": "RGBA(71, 71, 71, 1)",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "ChevronFill",
+            "Category": "Design",
+            "InvariantScript": "RGBA(70, 70, 70, 1)",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "ChevronHoverFill",
+            "Category": "Design",
+            "InvariantScript": "RGBA(70, 70, 70, 1)",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "ChevronDisabledFill",
+            "Category": "Design",
+            "InvariantScript": "RGBA(244, 244, 244, 1)",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "ChevronBackground",
+            "Category": "Design",
+            "InvariantScript": "RGBA(255, 255, 255, 1)",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "ChevronHoverBackground",
+            "Category": "Design",
+            "InvariantScript": "",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "ChevronDisabledBackground",
+            "Category": "Design",
+            "InvariantScript": "ColorFade(Self.Fill, 50%)",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "SelectionFill",
+            "Category": "Design",
+            "InvariantScript": "RGBA(243, 243, 243, 1)",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "SelectionTagFill",
+            "Category": "Design",
+            "InvariantScript": "Self.HoverFill",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "SelectionTagColor",
+            "Category": "Design",
+            "InvariantScript": "Self.HoverColor",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "Color",
+            "Category": "Design",
+            "InvariantScript": "RGBA(71, 71, 71, 1)",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "HoverColor",
+            "Category": "Design",
+            "InvariantScript": "RGBA(71, 71, 71, 1)",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "PressedColor",
+            "Category": "Design",
+            "InvariantScript": "RGBA(71, 71, 71, 1)",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "DisabledColor",
+            "Category": "Design",
+            "InvariantScript": "ColorFade(Self.Color, 50%)",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "BorderColor",
+            "Category": "Design",
+            "InvariantScript": "RGBA(209, 209, 209, 1)",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "DisabledBorderColor",
+            "Category": "Design",
+            "InvariantScript": "ColorFade(Self.BorderColor,50%)",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "HoverBorderColor",
+            "Category": "Design",
+            "InvariantScript": "ColorFade(Self.BorderColor, 15%)",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "PressedBorderColor",
+            "Category": "Design",
+            "InvariantScript": "Self.FocusedBorderColor",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "BorderStyle",
+            "Category": "Design",
+            "InvariantScript": "BorderStyle.Solid",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "Fill",
+            "Category": "Design",
+            "InvariantScript": "RGBA(255, 255, 255, 1)",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "DisabledFill",
+            "Category": "Design",
+            "InvariantScript": "ColorFade(Self.Fill, 50%)",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "PressedFill",
+            "Category": "Design",
+            "InvariantScript": "RGBA(243, 243, 243, 1)",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "HoverFill",
+            "Category": "Design",
+            "InvariantScript": "RGBA(243, 243, 243, 1)",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "Font",
+            "Category": "Design",
+            "InvariantScript": "Font.Arial",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "FontWeight",
+            "Category": "Design",
+            "InvariantScript": "FontWeight.Normal",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "X",
+            "Category": "Design",
+            "InvariantScript": "5",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "Y",
+            "Category": "Design",
+            "InvariantScript": "5",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "Height",
+            "Category": "Design",
+            "InvariantScript": "34",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "Width",
+            "Category": "Design",
+            "InvariantScript": "Parent.Width - 10",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "ZIndex",
+            "Category": "Design",
+            "InvariantScript": "1",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "BorderThickness",
+            "Category": "Design",
+            "InvariantScript": "1",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "FocusedBorderThickness",
+            "Category": "Design",
+            "InvariantScript": "2",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "Size",
+            "Category": "Design",
+            "InvariantScript": "11",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "PaddingBottom",
+            "Category": "Design",
+            "InvariantScript": "3",
+            "RuleProviderType": "System"
+          },
+          {
+            "Property": "PaddingLeft",
+            "Category": "Design",
+            "InvariantScript": "5",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "PaddingTop",
+            "Category": "Design",
+            "InvariantScript": "3",
+            "RuleProviderType": "System"
+          },
+          {
+            "Property": "PaddingRight",
+            "Category": "Design",
+            "InvariantScript": "5",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "OnSelect",
+            "Category": "Behavior",
+            "InvariantScript": "'Combo Drop Down'.onSelect()",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Property": "OnChange",
+            "Category": "Behavior",
+            "InvariantScript": "'Combo Drop Down'.onChange()",
+            "RuleProviderType": "Unknown"
+          }
+        ],
+        "ControlPropertyState": [
+          "NavigateFields",
+          "Template",
+          {
+            "InvariantPropertyName": "SearchItems",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          "MoreItemsButtonColor",
+          {
+            "InvariantPropertyName": "DisplayFields",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "[\"Value\"]",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          "SearchFields",
+          {
+            "InvariantPropertyName": "Items",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "ComboBoxSample",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "SelectionColor",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "ChevronFill",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "ChevronHoverFill",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          "ChevronDisabledFill",
+          {
+            "InvariantPropertyName": "ChevronBackground",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "ChevronHoverBackground",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "ColorFade(RGBA(56, 96, 178, 1), -20%)",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "ChevronDisabledBackground",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "RGBA(166, 166, 166, 1)",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "SelectionFill",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          "SelectionTagFill",
+          "SelectionTagColor",
+          {
+            "InvariantPropertyName": "Color",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "HoverColor",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "PressedColor",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "DisabledColor",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "RGBA(166, 166, 166, 1)",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "BorderColor",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "DisabledBorderColor",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "RGBA(166, 166, 166, 1)",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "HoverBorderColor",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "ColorFade(Self.BorderColor, 15%)",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "PressedBorderColor",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          "BorderStyle",
+          {
+            "InvariantPropertyName": "FocusedBorderColor",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "Self.BorderColor",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          "Fill",
+          {
+            "InvariantPropertyName": "DisabledFill",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "RGBA(244, 244, 244, 1)",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "PressedFill",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "HoverFill",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "Font",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          "FontWeight",
+          "X",
+          {
+            "InvariantPropertyName": "Y",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "Width",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "575",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "Height",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "DisplayMode",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "DisplayMode.Edit",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          "ZIndex",
+          {
+            "InvariantPropertyName": "BorderThickness",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "FocusedBorderThickness",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "4",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "Size",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "PaddingBottom",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "PaddingLeft",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "OnChange",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "false",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "InputTextPlaceholder",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "\"Find items\"",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "OnSelect",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "false",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "SelectMultiple",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "true",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "Reset",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "false",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "PaddingTop",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          {
+            "InvariantPropertyName": "PaddingRight",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          },
+          "Default",
+          {
+            "InvariantPropertyName": "DefaultSelectedItems",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "NameMapSourceSchema": "?",
+            "IsLockable": false,
+            "AFDDataSourceName": ""
+          }
+        ],
+        "IsLocked": false,
+        "ControlUniqueId": "392",
+        "Children": []
+      }
+    ]
+  }
+}
