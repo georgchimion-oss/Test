@@ -1,38 +1,65 @@
-# 📦 Download This File
+# 🎯 How to Add the Kanban Screen to Your App
 
-## ⭐ **ProjectGovernance_Enhanced.msapp**
+## The Problem
+Simply zipping YAML files doesn't create a proper .msapp file. You need Microsoft's official tools.
 
-This is your working PowerApp with the new Kanban screen.
+## ✅ THE SOLUTION (3 Minutes)
 
----
+### What You Need:
+1. **Power Platform CLI** (Microsoft's official tool - free)
+2. **This repository** (clone or download to your computer)
+3. **PowerShell** (already on Windows)
 
-## Files Explained
+### Steps:
 
-| File | What It Is | Do You Need It? |
-|------|------------|----------------|
-| **ProjectGovernance_Enhanced.msapp** | ✅ **YOUR APP - DOWNLOAD THIS** | **YES - This is the one!** |
-| ProjectGovernance.msapp | Original app (no Kanban) | No - old version |
-| KANBAN_SCREEN_DETAILS.md | Documentation for Kanban screen | Optional - read if curious |
+#### 1️⃣ Install Power Platform CLI
+Download and install from: **https://aka.ms/PowerAppsCLI**
+(Takes 2 minutes)
 
----
+#### 2️⃣ Download This Repository
+Get all files from this repo to your computer
 
-## 🚀 Quick Steps
+#### 3️⃣ Run the Script
+Open PowerShell in the `Test` folder and run:
+```powershell
+.\Pack-AppWithKanban.ps1
+```
 
-1. **Download**: `ProjectGovernance_Enhanced.msapp`
-2. **Import** at make.powerapps.com
-3. **Open** and find screen: `scrKanbanModern`
-4. **Test** it!
-
----
-
-## What's Inside
-
-- All your existing 15 screens
-- **NEW**: `scrKanbanModern` - Modern Kanban board with collapsible sidebar
-- Connected to your SharePoint Deliverables list
-- PWC colors
-- Professional design
+#### 4️⃣ Import the Result
+- Script creates: `ProjectGovernance_WithKanban.msapp`
+- Upload it at make.powerapps.com
+- Open app → Find screen: `scrKanbanModern`
+- Done!
 
 ---
 
-That's it. Just get **ProjectGovernance_Enhanced.msapp** and ignore everything else.
+## What You Get
+
+✅ Your complete app with all 15 existing screens
+✅ NEW: `scrKanbanModern` - Modern Kanban board
+✅ Collapsible sidebar with metrics
+✅ 4 status columns (Not Started, In Progress, In Review, Completed)
+✅ Progress bars, due dates, owner info
+✅ PWC branded colors
+✅ Professional, sleek design
+
+---
+
+## Files in This Repo
+
+| File | Purpose |
+|------|---------|
+| **Pack-AppWithKanban.ps1** | ⭐ Script that creates the working .msapp |
+| app-source/ | Your app's source code with new Kanban screen |
+| KANBAN_SCREEN_DETAILS.md | Full design documentation |
+| ProjectGovernance.msapp | Your original app (backup) |
+
+---
+
+## Why This Works
+
+Microsoft's `pac canvas pack` tool properly compiles the YAML files into a real .msapp that PowerApps recognizes. Simple zipping doesn't work.
+
+---
+
+**That's it. Run the script, get your .msapp, import it.**
