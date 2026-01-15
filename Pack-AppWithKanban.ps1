@@ -24,15 +24,38 @@ $pacExists = Get-Command pac -ErrorAction SilentlyContinue
 
 if (-not $pacExists) {
     Write-Host ""
-    Write-Host "Power Platform CLI not found. Please install it:" -ForegroundColor Red
+    Write-Host "Power Platform CLI not found. Installing it now..." -ForegroundColor Yellow
     Write-Host ""
-    Write-Host "Option 1 (Recommended):" -ForegroundColor White
-    Write-Host "  Download installer from: https://aka.ms/PowerAppsCLI" -ForegroundColor Cyan
+
+    # Try to install via .NET tool (doesn't require admin)
+    $dotnetExists = Get-Command dotnet -ErrorAction SilentlyContinue
+
+    if ($dotnetExists) {
+        Write-Host "Installing via .NET (no admin required)..." -ForegroundColor Cyan
+        dotnet tool install --global Microsoft.PowerApps.CLI.Tool
+
+        if ($LASTEXITCODE -eq 0) {
+            Write-Host "✓ Installed successfully!" -ForegroundColor Green
+            Write-Host ""
+            Write-Host "⚠️  IMPORTANT: Close this PowerShell window and open a NEW one" -ForegroundColor Yellow
+            Write-Host "   Then run this script again." -ForegroundColor Yellow
+            Write-Host ""
+            exit 0
+        }
+    }
+
+    # If .NET method failed or .NET not found
+    Write-Host "Automatic installation failed. Manual options:" -ForegroundColor Red
     Write-Host ""
-    Write-Host "Option 2 (If you have .NET):" -ForegroundColor White
+    Write-Host "Option 1 (NO ADMIN NEEDED):" -ForegroundColor White
+    Write-Host "  1. Download standalone from: https://aka.ms/PowerAppsCLI" -ForegroundColor Cyan
+    Write-Host "  2. Extract the ZIP to a folder (e.g., C:\Tools\PowerPlatformCLI)" -ForegroundColor Cyan
+    Write-Host "  3. Add that folder to your PATH environment variable" -ForegroundColor Cyan
+    Write-Host ""
+    Write-Host "Option 2 (If you have .NET installed):" -ForegroundColor White
     Write-Host "  Run: dotnet tool install --global Microsoft.PowerApps.CLI.Tool" -ForegroundColor Cyan
     Write-Host ""
-    Write-Host "After installing, run this script again." -ForegroundColor Yellow
+    Write-Host "After installing, CLOSE and REOPEN PowerShell, then run this script again." -ForegroundColor Yellow
     Write-Host ""
     exit 1
 }
