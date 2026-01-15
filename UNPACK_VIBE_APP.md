@@ -16,82 +16,87 @@ This is actually the **recommended approach** - start with a working app from vi
 4. **Test it** - make sure CRUD operations work
 5. Note the **App Name** (you'll need this)
 
-### Step 2: Find Your App in Power Platform
+### Step 2: Check if Vibe Created a GitHub Repo (Usually YES)
 
-1. Go to **make.powerapps.com**
-2. Click **Apps** → Find your Vibe-created app
-3. Click **...** (three dots) → **Details**
-4. Copy the **App ID** (looks like: `abc123-def456-ghi789`)
+**Vibe apps are CODE COMPONENT apps, not canvas apps!**
 
-### Step 3: Download the App
-
-#### Option A: Using Power Platform CLI (Recommended)
-
-```bash
-# Login to your environment
-pac auth create --environment https://yourorg.crm.dynamics.com
-
-# List all apps to find yours
-pac application list
-
-# Download the app package
-pac application download --application-id YOUR-APP-ID --path ./my-vibe-app.zip
-```
-
-#### Option B: Manual Export from Portal
-
-1. **make.powerapps.com** → **Apps**
-2. Select your app → **Export package**
-3. Download the `.zip` file
-4. Extract it
-
-### Step 4: Unpack for Local Development
-
-```bash
-# Create a folder for your app
-mkdir my-kanban-app
-cd my-kanban-app
-
-# Unpack the .msapp or code component
-pac canvas unpack --msapp ./my-vibe-app.msapp --sources ./src
-
-# OR if it's a code component app:
-pac pcf init --namespace YourNamespace --name KanbanApp --template dataset
-pac pcf push --import
-```
-
-**IMPORTANT:** Vibe apps are usually **code component apps**, not traditional canvas apps. Check what type you have:
-
-- **Canvas App** → Use `pac canvas unpack`
-- **Code Component App** → Already in source code format, just clone the repository
-
-### Step 5: Check if It's Already a Code Component
-
-Vibe apps created with React are likely already code components. Check:
-
-1. In **make.powerapps.com** → **Apps** → Your app
-2. If it says **"Code component"** or **"Custom page"**, it's already code
-3. You can find the source repository linked in the app details
-
-### Step 6: Clone from GitHub (If Vibe Created a Repo)
-
-Vibe often creates a GitHub repository automatically:
-
-1. **vibe.powerapps.com** → Your app → **Settings**
-2. Look for **GitHub repository** link
-3. Clone it:
+1. Go to **vibe.powerapps.com** → Your project
+2. Look for **GitHub repository** link in settings
+3. If you see it, **just clone the repo** - you're done!
 
 ```bash
 git clone https://github.com/your-org/your-vibe-app.git
 cd your-vibe-app
 npm install
+npm start
 ```
 
-### Step 7: Understand the Dataverse Connection
+**If no GitHub repo is visible**, proceed to Step 3.
+
+### Step 3: Download via Power Platform CLI
+
+Code apps can't be downloaded like canvas apps. You need to export the **solution** they're in.
+
+```bash
+# Login to your environment
+pac auth create --environment https://yourorg.crm.dynamics.com
+
+# List solutions (your app is in one of these)
+pac solution list
+
+# Find your solution name (look for one matching your app name)
+# Then export it
+pac solution export \
+  --name YourSolutionName \
+  --path ./my-app.zip \
+  --managed false
+
+# Unpack to source code
+pac solution unpack \
+  --zipfile ./my-app.zip \
+  --folder ./my-app-src \
+  --processCanvasApps
+```
+
+**See UNPACK_CODE_APPS.md for detailed commands and troubleshooting.**
+
+### Step 4: Find Your Code in the Unpacked Solution
+
+After unpacking, your code component is in:
+
+```
+./my-app-src/
+└── Other/
+    └── Customizations/
+        └── YourPCFControl/          ← Your code is here!
+            ├── ControlManifest.Input.xml
+            ├── package.json
+            ├── index.ts
+            └── src/
+                ├── index.tsx
+                ├── components/
+                │   ├── KanbanBoard.tsx    ← Edit this!
+                │   └── KanbanCard.tsx
+                └── services/
+                    └── dataverseService.ts ← Dataverse connection!
+```
+
+```bash
+# Navigate to your component
+cd ./my-app-src/Other/Customizations/YourPCFControl/
+
+# Install dependencies
+npm install
+
+# Start development
+npm start
+```
+
+### Step 5: Understand the Dataverse Connection
 
 Once you have the source code, look for:
 
-**File: `src/services/dataServices.ts`** or similar
+**File: `src/services/dataverseService.ts`** or similar
 
 ```typescript
 // Vibe likely created something like this:
@@ -106,34 +111,49 @@ export const fetchDeliverables = async () => {
 
 **This is the gold!** The Dataverse table names and column names are already configured correctly.
 
-### Step 8: Edit Locally
+### Step 6: Edit Locally
 
 ```bash
+# Navigate to your PCF control
+cd ./my-app-src/Other/Customizations/YourPCFControl/
+
 # Install dependencies
 npm install
 
-# Start local development
+# Start local development (with hot reload)
 npm start
 
 # Or use Power Platform Tools in VS Code
 # Install extension: "Power Platform Tools" by Microsoft
 ```
 
-### Step 9: Test Your Changes
+### Step 7: Build and Deploy Your Changes
 
 ```bash
-# Build the app
+# Build your component
 npm run build
 
-# Deploy to your environment
+# Go back to solution root
+cd ../../../..  # Back to my-app-src/
+
+# Pack the solution
+pac solution pack --zipfile ../my-app-updated.zip --folder .
+
+# Import to environment
+pac solution import --path ../my-app-updated.zip
+```
+
+**Alternative: Direct push (if supported)**
+```bash
 pac code push --environment https://yourorg.crm.dynamics.com
 ```
 
-### Step 10: Verify in PowerApps
+### Step 8: Verify in PowerApps
 
 1. Go to **make.powerapps.com** → **Apps**
-2. Your app should show your changes
-3. Test CRUD operations still work
+2. Open your app
+3. Your changes should be visible
+4. Test CRUD operations still work with Dataverse
 
 ---
 
@@ -279,16 +299,18 @@ A: Yes, but it's easier to start with Vibe (tables configured) and edit it.
 
 ---
 
-## Recommended Workflow
+## Recommended Workflow for Code Apps
 
 ```
-1. Create basic app in Vibe → Get working Dataverse connection
-2. Export/clone the app → Get source code
-3. Edit locally in VS Code → Customize UI/UX
-4. pac code push → Deploy changes
-5. Test in PowerApps → Verify everything works
+1. Create app in vibe.powerapps.com → Get Dataverse configured
+2. Clone from GitHub OR export solution → Get source code
+3. Edit locally in VS Code → Customize React components
+4. npm run build → pac solution pack/import → Deploy
+5. Test in PowerApps → Verify Dataverse CRUD works
 6. Repeat steps 3-5 as needed
 ```
+
+**For detailed pac commands, see: UNPACK_CODE_APPS.md**
 
 ---
 
