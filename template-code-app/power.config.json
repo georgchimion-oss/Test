@@ -1,0 +1,42 @@
+{
+  "appDisplayName": "Project Governance Tool",
+  "description": "Governance tool for leaders and teams to manage deliverables, staff, and workstreams with Dataverse-backed Power Apps.",
+  "environmentId": "deccb389-10c5-4d5c-8716-1093a04538e1",
+  "buildPath": "./dist",
+  "buildEntryPoint": "index.html",
+  "logoPath": "Default",
+  "localAppUrl": "http://localhost:5173/",
+  "appId": "YOUR_APP_ID_HERE",
+  "connectionReferences": {},
+  "databaseReferences": {
+    "default.cds": {
+      "dataSources": {
+        "crda8_deliverables": {
+          "entitySetName": "crda8_deliverabless",
+          "logicalName": "crda8_deliverables",
+          "isHidden": false
+        },
+        "crda8_staff4": {
+          "entitySetName": "crda8_staff4s",
+          "logicalName": "crda8_staff4",
+          "isHidden": false
+        },
+        "crda8_workstreams": {
+          "entitySetName": "crda8_workstreamss",
+          "logicalName": "crda8_workstreams",
+          "isHidden": false
+        },
+        "crda8_timeoffrequests": {
+          "entitySetName": "crda8_timeoffrequestss",
+          "logicalName": "crda8_timeoffrequests",
+          "isHidden": false
+        },
+        "crda8_weeklyhours": {
+          "entitySetName": "crda8_weeklyhours",
+          "logicalName": "crda8_weeklyhours",
+          "isHidden": false
+        }
+      }
+    }
+  }
+}
