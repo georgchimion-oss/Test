@@ -229,10 +229,20 @@ if ($LASTEXITCODE -ne 0) {
 # Success!
 #------------------------------------------------------------------------------
 
+$pushTime = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+
 Write-Host "`n========================================" -ForegroundColor Green
 Write-Host "SUCCESS!" -ForegroundColor Green
 Write-Host "========================================" -ForegroundColor Green
-Write-Host "`nv5 Changes:" -ForegroundColor Cyan
+Write-Host ""
+Write-Host "##################################################" -ForegroundColor Magenta
+Write-Host "#  LOOK FOR THIS PUSH TIME IN YOUR APP:          #" -ForegroundColor Magenta
+Write-Host "#                                                #" -ForegroundColor Magenta
+Write-Host "#  $pushTime                        #" -ForegroundColor White
+Write-Host "#                                                #" -ForegroundColor Magenta
+Write-Host "##################################################" -ForegroundColor Magenta
+Write-Host ""
+Write-Host "v5 Changes:" -ForegroundColor Cyan
 Write-Host "  * Added index.css with CSS variables" -ForegroundColor White
 Write-Host "  * Added tailwind.config.ts" -ForegroundColor White
 Write-Host "  * Added lib/utils.ts (cn function)" -ForegroundColor White
