@@ -9,6 +9,16 @@ import { logAudit } from '../data/auditLayer'
 
 const STATUSES: DeliverableStatus[] = ['Not Started', 'In Progress', 'At Risk', 'Blocked', 'Completed']
 
+// Map UI status strings to Dataverse numeric enum values
+// Dataverse: 0=NotStarted, 1=InProgress, 2=Completed, 3=OnHold, 4=Deferred, 5=Descoped
+const STATUS_TO_DATAVERSE: Record<DeliverableStatus, number> = {
+  'Not Started': 0,
+  'In Progress': 1,
+  'At Risk': 1,      // Map to InProgress (no exact match in Dataverse)
+  'Blocked': 3,      // Map to OnHold
+  'Completed': 2,
+}
+
 const STATUS_COLORS: Record<DeliverableStatus, string> = {
   'Not Started': '#94a3b8',
   'In Progress': '#3b82f6',
@@ -76,9 +86,9 @@ export default function Kanban() {
       updateDeliverable(draggableId, { status: newStatus })
       setDeliverables(getDeliverables())
 
-      // Persist to Dataverse
+      // Persist to Dataverse (cast to any to bypass strict typing - Dataverse accepts number)
       updateMutation.mutate(
-        { id: draggableId, updates: { crda8_status: newStatus } },
+        { id: draggableId, updates: { crda8_status: STATUS_TO_DATAVERSE[newStatus] } as any },
         {
           onSuccess: () => {
             if (currentUser) {
@@ -108,9 +118,9 @@ export default function Kanban() {
       updateDeliverable(draggableId, { workstreamId: newWorkstreamId || '' })
       setDeliverables(getDeliverables())
 
-      // Persist to Dataverse
+      // Persist to Dataverse (crda8_workstream is the field name, not _value)
       updateMutation.mutate(
-        { id: draggableId, updates: { _crda8_workstream_value: newWorkstreamId || undefined } },
+        { id: draggableId, updates: { crda8_workstream: newWorkstreamId || undefined } },
         {
           onSuccess: () => {
             const wsName = workstreams.find((w) => w.id === newWorkstreamId)?.name || 'Unassigned'
@@ -140,9 +150,9 @@ export default function Kanban() {
       updateDeliverable(draggableId, { ownerId: newOwnerId })
       setDeliverables(getDeliverables())
 
-      // Persist to Dataverse
+      // Persist to Dataverse (crda8_owner is the field name, not _value)
       updateMutation.mutate(
-        { id: draggableId, updates: { _crda8_owner_value: newOwnerId } },
+        { id: draggableId, updates: { crda8_owner: newOwnerId } },
         {
           onSuccess: () => {
             const ownerName = staff.find((s) => s.id === newOwnerId)?.name || 'Unknown'
