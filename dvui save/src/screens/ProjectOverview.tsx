@@ -5,7 +5,6 @@ import {
   CheckCircle2,
   AlertTriangle,
   Target,
-  Clock,
   BarChart3,
   ArrowLeft,
   CalendarDays,
@@ -19,31 +18,7 @@ import {
 import Layout from '../components/Layout';
 import { useGetDeliverables, useGetWorkstreams, useGetStaff } from "@/services/dataverseService";
 import { getAuditLogs } from '../data/auditLayer';
-import { format, isAfter, isBefore, addDays, startOfMonth, endOfMonth, isWithinInterval } from 'date-fns';
-
-// Types
-interface Deliverable {
-  crda8_deliverablesid: string;
-  crda8_title: string;
-  crda8_status: number;
-  crda8_risk: number;
-  crda8_duedate?: string;
-  crda8_completion_x0020__x0025_?: string;
-  crda8_comment?: string;
-  crda8_workstream?: string;
-  crda8_owner?: string;
-}
-
-interface AuditLog {
-  id: string;
-  timestamp: string;
-  userId: string;
-  userName: string;
-  action: string;
-  entity: string;
-  entityId?: string;
-  details?: string;
-}
+import { format, isBefore, addDays, startOfMonth, endOfMonth, isWithinInterval } from 'date-fns';
 
 // Status mapping
 const STATUS_LABELS: Record<number, string> = {
@@ -179,15 +154,15 @@ const KPICard = ({ icon: Icon, label, value, color, bgColor, onClick, isActive }
 
 // Deliverable List Item
 interface DeliverableListItemProps {
-  deliverable: Deliverable;
+  deliverable: any;
   workstreams: any[];
   staff: any[];
   onClick: () => void;
 }
 
 const DeliverableListItem = ({ deliverable, workstreams, staff, onClick }: DeliverableListItemProps) => {
-  const workstream = workstreams.find(w => w.crda8_workstreamsid === deliverable.crda8_workstream);
-  const owner = staff.find(s => s.crda8_staff4id === deliverable.crda8_owner);
+  const workstream = workstreams.find((w: any) => w.crda8_workstreamsid === deliverable.crda8_workstream);
+  const owner = staff.find((s: any) => s.crda8_staff4id === deliverable.crda8_owner);
   const progress = parseInt(deliverable.crda8_completion_x0020__x0025_ || '0') || 0;
   const dueDate = deliverable.crda8_duedate ? new Date(deliverable.crda8_duedate) : null;
   const isOverdue = dueDate && isBefore(dueDate, new Date()) && deliverable.crda8_status !== 2;
@@ -264,24 +239,24 @@ const DeliverableListItem = ({ deliverable, workstreams, staff, onClick }: Deliv
 
 // Deliverable Detail Modal
 interface DeliverableDetailProps {
-  deliverable: Deliverable;
+  deliverable: any;
   workstreams: any[];
   staff: any[];
   onClose: () => void;
 }
 
 const DeliverableDetail = ({ deliverable, workstreams, staff, onClose }: DeliverableDetailProps) => {
-  const workstream = workstreams.find(w => w.crda8_workstreamsid === deliverable.crda8_workstream);
-  const owner = staff.find(s => s.crda8_staff4id === deliverable.crda8_owner);
+  const workstream = workstreams.find((w: any) => w.crda8_workstreamsid === deliverable.crda8_workstream);
+  const owner = staff.find((s: any) => s.crda8_staff4id === deliverable.crda8_owner);
   const progress = parseInt(deliverable.crda8_completion_x0020__x0025_ || '0') || 0;
   const dueDate = deliverable.crda8_duedate ? new Date(deliverable.crda8_duedate) : null;
 
   // Get audit logs for this deliverable
   const auditLogs = useMemo(() => {
-    const allLogs = getAuditLogs() as AuditLog[];
+    const allLogs = getAuditLogs() as any[];
     return allLogs
-      .filter(log => log.entityId === deliverable.crda8_deliverablesid)
-      .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
+      .filter((log: any) => log.entityId === deliverable.crda8_deliverablesid)
+      .sort((a: any, b: any) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
       .slice(0, 20);
   }, [deliverable.crda8_deliverablesid]);
 
@@ -398,7 +373,7 @@ const DeliverableDetail = ({ deliverable, workstreams, staff, onClose }: Deliver
               </div>
             ) : (
               <div className="space-y-3">
-                {auditLogs.map((log, index) => (
+                {auditLogs.map((log: any, index: number) => (
                   <motion.div
                     key={log.id}
                     initial={{ opacity: 0, x: -10 }}
@@ -411,11 +386,11 @@ const DeliverableDetail = ({ deliverable, workstreams, staff, onClose }: Deliver
                       className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium text-white flex-shrink-0"
                       style={{ backgroundColor: '#3b82f6' }}
                     >
-                      {log.userName.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2)}
+                      {(log.userName || 'U').split(' ').map((n: string) => n[0]).join('').toUpperCase().slice(0, 2)}
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
-                        <span className="font-medium text-sm">{log.userName}</span>
+                        <span className="font-medium text-sm">{log.userName || 'Unknown'}</span>
                         <span className="text-xs opacity-50">
                           {format(new Date(log.timestamp), 'MMM d, yyyy h:mm a')}
                         </span>
@@ -477,7 +452,7 @@ const ProjectOverview = () => {
 
   // View state
   const [activeKPI, setActiveKPI] = useState<'month' | 'twoWeeks' | 'late' | null>(null);
-  const [selectedDeliverable, setSelectedDeliverable] = useState<Deliverable | null>(null);
+  const [selectedDeliverable, setSelectedDeliverable] = useState<any | null>(null);
 
   // Calculate KPI data
   const today = new Date();
@@ -486,21 +461,21 @@ const ProjectOverview = () => {
   const monthEnd = endOfMonth(today);
 
   const kpiData = useMemo(() => {
-    const dueThisMonth = deliverables.filter((d: Deliverable) => {
+    const dueThisMonth = (deliverables as any[]).filter((d: any) => {
       if (d.crda8_status === 2) return false; // Exclude completed
       if (!d.crda8_duedate) return false;
       const dueDate = new Date(d.crda8_duedate);
       return isWithinInterval(dueDate, { start: monthStart, end: monthEnd });
     });
 
-    const dueNextTwoWeeks = deliverables.filter((d: Deliverable) => {
+    const dueNextTwoWeeks = (deliverables as any[]).filter((d: any) => {
       if (d.crda8_status === 2) return false; // Exclude completed
       if (!d.crda8_duedate) return false;
       const dueDate = new Date(d.crda8_duedate);
       return isWithinInterval(dueDate, { start: today, end: twoWeeksFromNow });
     });
 
-    const lateDeliverables = deliverables.filter((d: Deliverable) => {
+    const lateDeliverables = (deliverables as any[]).filter((d: any) => {
       if (d.crda8_status === 2) return false; // Exclude completed
       if (!d.crda8_duedate) return false;
       const dueDate = new Date(d.crda8_duedate);
@@ -526,9 +501,9 @@ const ProjectOverview = () => {
 
   // Overall stats
   const totalDeliverables = deliverables.length;
-  const completedDeliverables = deliverables.filter((d: Deliverable) => d.crda8_status === 2).length;
+  const completedDeliverables = (deliverables as any[]).filter((d: any) => d.crda8_status === 2).length;
   const overallProgress = totalDeliverables > 0
-    ? Math.round(deliverables.reduce((acc: number, d: Deliverable) => acc + (parseInt(d.crda8_completion_x0020__x0025_ || '0') || 0), 0) / totalDeliverables)
+    ? Math.round((deliverables as any[]).reduce((acc: number, d: any) => acc + (parseInt(d.crda8_completion_x0020__x0025_ || '0') || 0), 0) / totalDeliverables)
     : 0;
 
   const workstreamColors = [
@@ -628,12 +603,12 @@ const ProjectOverview = () => {
                     </div>
                   ) : (
                     <div className="space-y-3">
-                      {currentList.map((deliverable: Deliverable) => (
+                      {currentList.map((deliverable: any) => (
                         <DeliverableListItem
                           key={deliverable.crda8_deliverablesid}
                           deliverable={deliverable}
-                          workstreams={workstreams}
-                          staff={staff}
+                          workstreams={workstreams as any[]}
+                          staff={staff as any[]}
                           onClick={() => setSelectedDeliverable(deliverable)}
                         />
                       ))}
@@ -690,7 +665,7 @@ const ProjectOverview = () => {
                 <span className="text-sm opacity-70">At Risk</span>
               </div>
               <div className="text-3xl font-bold">
-                <AnimatedCounter value={deliverables.filter((d: Deliverable) => d.crda8_risk === 2).length} />
+                <AnimatedCounter value={(deliverables as any[]).filter((d: any) => d.crda8_risk === 2).length} />
               </div>
             </motion.div>
 
@@ -725,10 +700,10 @@ const ProjectOverview = () => {
               {isLoading ? (
                 <div className="text-center py-4 opacity-50">Loading...</div>
               ) : (
-                workstreams.slice(0, 5).map((ws: any, index: number) => {
-                  const wsDeliverables = deliverables.filter((d: Deliverable) => d.crda8_workstream === ws.crda8_workstreamsid);
+                (workstreams as any[]).slice(0, 5).map((ws: any, index: number) => {
+                  const wsDeliverables = (deliverables as any[]).filter((d: any) => d.crda8_workstream === ws.crda8_workstreamsid);
                   const wsProgress = wsDeliverables.length > 0
-                    ? Math.round(wsDeliverables.reduce((acc: number, d: Deliverable) => acc + (parseInt(d.crda8_completion_x0020__x0025_ || '0') || 0), 0) / wsDeliverables.length)
+                    ? Math.round(wsDeliverables.reduce((acc: number, d: any) => acc + (parseInt(d.crda8_completion_x0020__x0025_ || '0') || 0), 0) / wsDeliverables.length)
                     : 0;
 
                   return (
@@ -751,8 +726,8 @@ const ProjectOverview = () => {
           {selectedDeliverable && (
             <DeliverableDetail
               deliverable={selectedDeliverable}
-              workstreams={workstreams}
-              staff={staff}
+              workstreams={workstreams as any[]}
+              staff={staff as any[]}
               onClose={() => setSelectedDeliverable(null)}
             />
           )}
