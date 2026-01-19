@@ -1,35 +1,27 @@
-# DVUI - One Command Setup
+# DVUI - Complete One-Command Workflow
 
-**Always run the same command. That's it.**
-
----
-
-## The Only Command You Need
-
-```powershell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/powerapp-sharepoint-deliverables-vbZKv/setup-dvui-lovable.ps1" -OutFile "setup-dvui-lovable.ps1" -Force; .\setup-dvui-lovable.ps1
-```
-
-**What it does:**
-- Downloads the latest setup script
-- Runs it automatically
-- Sets up/fixes everything
+**Just run this. That's it.**
 
 ---
 
-## After First Setup
-
-**Every time I make updates, just run:**
+## Step 1: Run the Setup Script
 
 ```powershell
+Remove-Item setup-dvui-lovable.ps1 -ErrorAction SilentlyContinue
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/powerapp-sharepoint-deliverables-vbZKv/setup-dvui-lovable.ps1" -OutFile "setup-dvui-lovable.ps1"
 .\setup-dvui-lovable.ps1
 ```
 
-(The script is already downloaded, just run it again)
+**This script does EVERYTHING:**
+- ✅ Cleans up old files
+- ✅ Installs all dependencies
+- ✅ Configures Tailwind, TypeScript, Vite (with correct `base: './'` for Power Apps)
+- ✅ Creates working UI components
+- ✅ Creates test page with version timestamp
 
 ---
 
-## Then Deploy
+## Step 2: Build and Deploy
 
 ```powershell
 npm run build
@@ -38,10 +30,36 @@ pac code push
 
 ---
 
-## That's It!
+## Step 3: Verify It Worked
 
-- **First time:** Run the long command (downloads + runs)
-- **Updates:** Run `.\setup-dvui-lovable.ps1`
-- **Deploy:** `npm run build && pac code push`
+Open your app in Power Apps. You should see a **big blue/purple banner** at the top that says:
 
-Same commands every single time. No thinking required. 🚀
+```
+VERSION: Jan 19, 2026 - 12:05 AM
+```
+
+**If you see that exact timestamp, it worked!**
+
+Every time I update the script, I'll change the timestamp so you know it's the latest version.
+
+---
+
+## That's All You Need
+
+**Setup:** 3 commands (copy/paste the whole block)
+**Deploy:** 2 commands (`npm run build` and `pac code push`)
+**Verify:** Check the version timestamp in the app
+
+No file editing. No troubleshooting. Just works. 🚀
+
+---
+
+## If Something Goes Wrong
+
+Just run the setup script again:
+
+```powershell
+.\setup-dvui-lovable.ps1
+```
+
+It's idempotent - you can run it as many times as you want and it won't break anything.
