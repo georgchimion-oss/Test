@@ -926,17 +926,10 @@ export default function Deliverables() {
   }
 
   const handleSaveUpdate = () => {
-    if (!updatingDeliverable) return
+    if (!updatingDeliverable || !updateForm.comment.trim()) return
 
     const updates: Record<string, any> = {
-      crda8_targetdate: updateForm.dueDate || null,
-      crda8_partnerreviewdate: updateForm.partnerReviewDate || null,
-      crda8_clientreviewdate: updateForm.clientReviewDate || null,
-      crda8_testingdate: updateForm.testingDate || null,
-      crda8_status: mapStatusToDataverse(updateForm.status as DeliverableStatus),
-      crda8_risk: mapRiskToDataverse(updateForm.risk as RiskLevel),
-      crda8_completion_x0020__x0025_: Number(updateForm.progress) || 0,
-      crda8_comment: updateForm.comment || null,
+      crda8_comment: updateForm.comment.trim(),
     }
 
     updateMutation.mutate(
@@ -944,23 +937,13 @@ export default function Deliverables() {
       {
         onSuccess: () => {
           if (currentUser) {
-            const changes: string[] = []
-            if (updatingDeliverable.dueDate !== updateForm.dueDate) changes.push(`Due Date -> ${updateForm.dueDate}`)
-            if (updatingDeliverable.partnerReviewDate !== updateForm.partnerReviewDate) changes.push(`Partner Review -> ${updateForm.partnerReviewDate}`)
-            if (updatingDeliverable.clientReviewDate !== updateForm.clientReviewDate) changes.push(`Client Review -> ${updateForm.clientReviewDate}`)
-            if (updatingDeliverable.testingDate !== updateForm.testingDate) changes.push(`Testing Date -> ${updateForm.testingDate}`)
-            if (updatingDeliverable.status !== updateForm.status) changes.push(`Status -> ${updateForm.status}`)
-            if (updatingDeliverable.risk !== updateForm.risk) changes.push(`Risk -> ${updateForm.risk}`)
-            if (updatingDeliverable.progress !== updateForm.progress) changes.push(`Progress -> ${updateForm.progress}%`)
-            if (updateForm.comment && updatingDeliverable.comment !== updateForm.comment) changes.push('Comment updated')
-
             logAudit(
               currentUser.id,
               currentUser.name,
-              'Quick Update',
+              'Added Comment',
               'Deliverable',
               updatingDeliverable.id,
-              changes.length > 0 ? changes.join('; ') : 'Updated deliverable'
+              `Comment: ${updateForm.comment.trim()}`
             )
           }
           setShowUpdateModal(false)
@@ -1439,9 +1422,9 @@ export default function Deliverables() {
 
       {showUpdateModal && updatingDeliverable && (
         <div className="modal-overlay" onClick={() => setShowUpdateModal(false)}>
-          <div className="modal" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '560px' }}>
+          <div className="modal" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '480px' }}>
             <div className="modal-header">
-              <h3 className="modal-title">Quick Update: {updatingDeliverable.title}</h3>
+              <h3 className="modal-title">Add Comment: {updatingDeliverable.title}</h3>
               <button
                 onClick={() => setShowUpdateModal(false)}
                 className="btn btn-secondary btn-sm"
@@ -1452,89 +1435,14 @@ export default function Deliverables() {
             </div>
 
             <div className="modal-body">
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                <div className="form-group">
-                  <label className="form-label">Due Date</label>
-                  <input
-                    type="date"
-                    value={updateForm.dueDate}
-                    onChange={(e) => setUpdateForm({ ...updateForm, dueDate: e.target.value })}
-                  />
-                </div>
-                <div className="form-group">
-                  <label className="form-label">Partner Review</label>
-                  <input
-                    type="date"
-                    value={updateForm.partnerReviewDate}
-                    onChange={(e) => setUpdateForm({ ...updateForm, partnerReviewDate: e.target.value })}
-                  />
-                </div>
-              </div>
-
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                <div className="form-group">
-                  <label className="form-label">Client Review</label>
-                  <input
-                    type="date"
-                    value={updateForm.clientReviewDate}
-                    onChange={(e) => setUpdateForm({ ...updateForm, clientReviewDate: e.target.value })}
-                  />
-                </div>
-                <div className="form-group">
-                  <label className="form-label">Testing Date</label>
-                  <input
-                    type="date"
-                    value={updateForm.testingDate}
-                    onChange={(e) => setUpdateForm({ ...updateForm, testingDate: e.target.value })}
-                  />
-                </div>
-              </div>
-
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem' }}>
-                <div className="form-group">
-                  <label className="form-label">Status</label>
-                  <select
-                    value={updateForm.status}
-                    onChange={(e) => setUpdateForm({ ...updateForm, status: e.target.value })}
-                  >
-                    <option value="Not Started">Not Started</option>
-                    <option value="In Progress">In Progress</option>
-                    <option value="At Risk">At Risk</option>
-                    <option value="Blocked">Blocked</option>
-                    <option value="Completed">Completed</option>
-                  </select>
-                </div>
-                <div className="form-group">
-                  <label className="form-label">Risk</label>
-                  <select
-                    value={updateForm.risk}
-                    onChange={(e) => setUpdateForm({ ...updateForm, risk: e.target.value })}
-                  >
-                    <option value="Low">Low</option>
-                    <option value="Medium">Medium</option>
-                    <option value="High">High</option>
-                    <option value="Critical">Critical</option>
-                  </select>
-                </div>
-                <div className="form-group">
-                  <label className="form-label">Progress %</label>
-                  <input
-                    type="number"
-                    min="0"
-                    max="100"
-                    value={updateForm.progress}
-                    onChange={(e) => setUpdateForm({ ...updateForm, progress: parseInt(e.target.value) || 0 })}
-                  />
-                </div>
-              </div>
-
               <div className="form-group">
-                <label className="form-label">Comment / Update</label>
+                <label className="form-label">Comment / Status Update</label>
                 <textarea
-                  rows={3}
+                  rows={4}
                   value={updateForm.comment}
                   onChange={(e) => setUpdateForm({ ...updateForm, comment: e.target.value })}
                   placeholder="Add a comment or status update..."
+                  autoFocus
                 />
               </div>
             </div>
@@ -1544,7 +1452,7 @@ export default function Deliverables() {
                 Cancel
               </button>
               <button type="button" className="btn btn-primary" onClick={handleSaveUpdate}>
-                Save Update
+                Post Comment
               </button>
             </div>
           </div>
