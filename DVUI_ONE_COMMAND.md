@@ -7,9 +7,9 @@
 ## Step 1: Run the Setup Script
 
 ```powershell
-Remove-Item setup-enhanced-dvui.ps1 -ErrorAction SilentlyContinue
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/powerapp-sharepoint-deliverables-vbZKv/setup-enhanced-dvui.ps1" -OutFile "setup-enhanced-dvui.ps1"
-.\setup-enhanced-dvui.ps1
+Remove-Item setup-dvui-lovable.ps1 -ErrorAction SilentlyContinue
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/powerapp-sharepoint-deliverables-vbZKv/setup-dvui-lovable.ps1" -OutFile "setup-dvui-lovable.ps1"
+.\setup-dvui-lovable.ps1
 ```
 
 **This script does EVERYTHING:**
@@ -25,6 +25,7 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/georgchimion-oss/Test/
 ## Step 2: Build and Deploy
 
 ```powershell
+npm install
 npm run build
 pac code push
 ```
@@ -48,7 +49,7 @@ Every time I update the script, I'll change the timestamp so you know it's the l
 ## That's All You Need
 
 **Setup:** 3 commands (copy/paste the whole block)
-**Deploy:** 2 commands (`npm run build` and `pac code push`)
+**Deploy:** 3 commands (`npm install`, `npm run build`, and `pac code push`)
 **Verify:** Check the version timestamp in the app
 
 No file editing. No troubleshooting. Just works. 🚀
@@ -60,7 +61,7 @@ No file editing. No troubleshooting. Just works. 🚀
 Just run the setup script again:
 
 ```powershell
-.\setup-enhanced-dvui.ps1
+.\setup-dvui-lovable.ps1
 ```
 
 It's idempotent - you can run it as many times as you want and it won't break anything.
