@@ -1,11 +1,11 @@
 # ============================================================
 # DVUI + Lovable UI + CommandCenter Setup Script
-# Version: Jan 18, 2026 - 09:31 PM EST
+# Version: Jan 18, 2026 - 09:33 PM EST
 # ============================================================
 
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host "DVUI Enhanced Setup Script" -ForegroundColor Cyan
-Write-Host "Version: Jan 18, 2026 - 09:31 PM EST" -ForegroundColor Yellow
+Write-Host "Version: Jan 18, 2026 - 09:33 PM EST" -ForegroundColor Yellow
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 
@@ -463,7 +463,7 @@ Write-Host "What was done:" -ForegroundColor Yellow
 Write-Host "  [OK] Cleaned up conflicting files" -ForegroundColor White
 Write-Host "  [OK] Installed all dependencies (Radix UI, Framer Motion, etc.)" -ForegroundColor White
 Write-Host "  [OK] Configured Tailwind CSS with PWC design system" -ForegroundColor White
-Write-Host "  [OK] Configured TypeScript & Vite with @ path aliases" -ForegroundColor White
+Write-Host "  [OK] Configured TypeScript and Vite with path aliases" -ForegroundColor White
 Write-Host "  [OK] Downloaded 50+ Lovable UI components from GitHub" -ForegroundColor White
 Write-Host "  [OK] Downloaded CommandCenter, dashboard, and layout components" -ForegroundColor White
 Write-Host "  [OK] Downloaded enhanced App.tsx and Layout.tsx with all routes`n" -ForegroundColor White
@@ -475,7 +475,7 @@ Write-Host "  pac code push`n" -ForegroundColor White
 
 Write-Host "Your app now has:" -ForegroundColor Yellow
 Write-Host "  * All original screens (Dashboard, Kanban, Gantt, etc.)" -ForegroundColor White
-Write-Host "  * CommandCenter with animations (⚡ in sidebar)" -ForegroundColor White
+Write-Host "  * CommandCenter with animations (Zap icon in sidebar)" -ForegroundColor White
 Write-Host "  * 50+ Lovable UI components ready to use" -ForegroundColor White
 Write-Host "  * Enhanced navigation and layouts`n" -ForegroundColor White
 
