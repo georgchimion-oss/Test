@@ -1,13 +1,14 @@
 # ============================================================
-# DVUI Build Fix Script v8 - Deliverables Quick Update Modal
-# Version: Jan 20, 2026 - 12:15 AM
-# Adds Quick Update modal to Deliverables screen
-# (like My Work has - dates, status, risk, progress, comment)
+# DVUI Build Fix Script v9 - Kanban Dataverse Persistence + Filters
+# Version: Jan 20, 2026 - 12:45 AM
+# - Kanban drag now persists to Dataverse (status, workstream, owner)
+# - Added filter dropdowns: Workstream, User, Status
+# - Filter count badge, Clear Filters button
 # ============================================================
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "DVUI Build Fix Script v8" -ForegroundColor Cyan
-Write-Host "Deliverables Quick Update Modal" -ForegroundColor Cyan
+Write-Host "DVUI Build Fix Script v9" -ForegroundColor Cyan
+Write-Host "Kanban Dataverse Persistence + Filters" -ForegroundColor Cyan
 Write-Host "Timestamp: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Yellow
 Write-Host "========================================" -ForegroundColor Cyan
 
@@ -54,7 +55,7 @@ Invoke-WebRequest -Uri "$baseUrl/src/services/dataverseService.ts" -OutFile "src
 Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 4: Download ThemeContext (NEW - 15 fun themes!)
+# Step 4: Download ThemeContext (15 fun themes!)
 #------------------------------------------------------------------------------
 
 Write-Host "`n[4/8] Downloading ThemeContext (15 themes!)..." -ForegroundColor Yellow
@@ -86,9 +87,13 @@ Write-Host "  Staff.tsx (removed Role & Department)" -ForegroundColor Gray
 Invoke-WebRequest -Uri "$baseUrl/src/screens/DashboardEnhanced.tsx" -OutFile "src\screens\DashboardEnhanced.tsx"
 Write-Host "  DashboardEnhanced.tsx (uses ThemeContext)" -ForegroundColor Gray
 
-# Deliverables (Quick Update modal added!)
+# Deliverables (Quick Update modal)
 Invoke-WebRequest -Uri "$baseUrl/src/screens/Deliverables.tsx" -OutFile "src\screens\Deliverables.tsx"
-Write-Host "  Deliverables.tsx (Quick Update modal)" -ForegroundColor Gray
+Write-Host "  Deliverables.tsx (comment button)" -ForegroundColor Gray
+
+# Kanban (NEW - Dataverse persistence + filters!)
+Invoke-WebRequest -Uri "$baseUrl/src/screens/Kanban.tsx" -OutFile "src\screens\Kanban.tsx"
+Write-Host "  Kanban.tsx (Dataverse persist + filters)" -ForegroundColor Green
 
 Write-Host "  OK" -ForegroundColor Green
 
@@ -173,13 +178,19 @@ Write-Host "#     $buildStamp                      #" -ForegroundColor White
 Write-Host "#                                                #" -ForegroundColor Magenta
 Write-Host "##################################################" -ForegroundColor Magenta
 Write-Host ""
-Write-Host "v8 - WHAT'S NEW:" -ForegroundColor Cyan
+Write-Host "v9 - WHAT'S NEW:" -ForegroundColor Cyan
 Write-Host ""
-Write-Host "  DELIVERABLES SCREEN:" -ForegroundColor Yellow
-Write-Host "    NEW Quick Update button (message icon)" -ForegroundColor White
-Write-Host "    Opens modal with:" -ForegroundColor White
-Write-Host "      - Due Date, Partner Review, Client Review, Testing Date" -ForegroundColor Gray
-Write-Host "      - Status, Risk, Progress %" -ForegroundColor Gray
-Write-Host "      - Comment field" -ForegroundColor Gray
-Write-Host "    Same UX as My Work screen!" -ForegroundColor Green
+Write-Host "  KANBAN SCREEN:" -ForegroundColor Yellow
+Write-Host "    Drag changes now PERSIST TO DATAVERSE!" -ForegroundColor Green
+Write-Host "      - Status drag -> saves to Dataverse" -ForegroundColor White
+Write-Host "      - Workstream drag -> saves to Dataverse" -ForegroundColor White
+Write-Host "      - Owner drag -> saves to Dataverse" -ForegroundColor White
+Write-Host ""
+Write-Host "    NEW FILTER DROPDOWNS:" -ForegroundColor Yellow
+Write-Host "      - Filter by Workstream" -ForegroundColor White
+Write-Host "      - Filter by User" -ForegroundColor White
+Write-Host "      - Filter by Status" -ForegroundColor White
+Write-Host "      - Filter count badge" -ForegroundColor White
+Write-Host "      - Clear Filters button" -ForegroundColor White
+Write-Host "      - Shows 'X of Y items'" -ForegroundColor White
 Write-Host ""

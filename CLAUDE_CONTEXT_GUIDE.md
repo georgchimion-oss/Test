@@ -2,16 +2,17 @@
 
 **Last Updated:** Jan 19, 2026 - 10:50 PM EST
 **Last Successful Push:** Jan 19, 2026 - 10:45 PM EST (fix-dvui-build.ps1 v7)
-**Current Script Version:** v7
+**Current Script Version:** v8
 
-## CURRENT STATUS: NEW FEATURES READY
+## CURRENT STATUS: v8 DEPLOYED
 - 15 fun themes (France, Paris, PSG, Matrix, Barbie, etc.)
 - Theme dropdown in header on ALL screens
 - Staff table: removed Role & Department columns
 - Theme persists in localStorage
+- **Deliverables screen: Add Comment button (message icon) - DONE**
 
-## NEXT TASKS (agreed with Georg)
-1. **Deliverables screen** - Add update modal (like My Work has)
+## NEXT TASKS
+1. ~~**Deliverables screen** - Add comment button~~ ✅ DONE (v8)
 2. **Kanban** - Persist drag changes to Dataverse + add filter dropdowns (workstream, user, status)
 3. **Resource Management screen** - New screen based on Lovable (file: `/tmp/Test/lovable-app-organized/src/pages/Resources.tsx`)
 4. **Skills** - Use existing `role` field for skills (comma-separated text like "React, TypeScript")
