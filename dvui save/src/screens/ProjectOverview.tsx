@@ -75,26 +75,7 @@ const AnimatedCounter = ({ value, duration = 2000 }: { value: number; duration?:
   return <span>{count}</span>;
 };
 
-// Floating orb component
-const FloatingOrb = ({ delay, size, color, position }: { delay: number; size: number; color: string; position: { x: string; y: string } }) => (
-  <motion.div
-    className={`absolute rounded-full blur-3xl opacity-20 ${color}`}
-    style={{ width: size, height: size, left: position.x, top: position.y }}
-    animate={{
-      y: [0, -30, 0],
-      x: [0, 20, 0],
-      scale: [1, 1.1, 1],
-    }}
-    transition={{
-      duration: 8,
-      delay,
-      repeat: Infinity,
-      ease: "easeInOut",
-    }}
-  />
-);
-
-// KPI Card Component
+// KPI Card Component - INLINE STYLES ONLY
 interface KPICardProps {
   icon: any;
   label: string;
@@ -113,46 +94,70 @@ const KPICard = ({ icon: Icon, label, value, color, bgColor, onClick, isActive }
     whileTap={{ scale: 0.98 }}
     transition={{ duration: 0.3 }}
     onClick={onClick}
-    className="group relative cursor-pointer"
+    style={{ cursor: 'pointer' }}
   >
     <div
-      className={`absolute inset-0 rounded-2xl blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-500`}
-      style={{ backgroundColor: color }}
-    />
-    <div
-      className={`relative overflow-hidden rounded-2xl p-6 border-2 transition-all duration-300`}
       style={{
+        position: 'relative',
+        overflow: 'hidden',
+        borderRadius: '16px',
+        padding: '24px',
+        border: `3px solid ${isActive ? color : 'transparent'}`,
         backgroundColor: bgColor,
-        borderColor: isActive ? color : 'transparent',
-        boxShadow: isActive ? `0 0 20px ${color}40` : 'none',
+        boxShadow: isActive ? `0 0 30px ${color}50` : '0 4px 20px rgba(0,0,0,0.1)',
+        transition: 'all 0.3s ease',
       }}
     >
-      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-white/10 to-transparent rounded-bl-full" />
-      <div className="flex items-start justify-between">
+      {/* Decorative corner */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        width: '100px',
+        height: '100px',
+        background: 'linear-gradient(225deg, rgba(255,255,255,0.15) 0%, transparent 50%)',
+        borderBottomLeftRadius: '100%',
+      }} />
+
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
         <div>
-          <p className="text-sm font-medium mb-2 opacity-80">{label}</p>
-          <p className="text-4xl font-bold">
+          <p style={{ fontSize: '14px', fontWeight: 500, marginBottom: '8px', opacity: 0.8, color: '#1a1a2e' }}>
+            {label}
+          </p>
+          <p style={{ fontSize: '48px', fontWeight: 700, color: '#1a1a2e', lineHeight: 1 }}>
             <AnimatedCounter value={value} />
           </p>
         </div>
         <motion.div
-          className="p-3 rounded-xl"
-          style={{ backgroundColor: color }}
+          style={{
+            padding: '14px',
+            borderRadius: '14px',
+            backgroundColor: color,
+            boxShadow: `0 4px 15px ${color}50`,
+          }}
           whileHover={{ rotate: [0, -10, 10, 0] }}
           transition={{ duration: 0.5 }}
         >
-          <Icon className="w-6 h-6 text-white" />
+          <Icon style={{ width: '28px', height: '28px', color: 'white' }} />
         </motion.div>
       </div>
-      <div className="flex items-center gap-1 mt-3 text-sm opacity-70">
-        <ChevronRight className="w-4 h-4" />
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '4px',
+        marginTop: '16px',
+        fontSize: '13px',
+        opacity: 0.7,
+        color: '#1a1a2e',
+      }}>
+        <ChevronRight style={{ width: '16px', height: '16px' }} />
         <span>Click to view details</span>
       </div>
     </div>
   </motion.div>
 );
 
-// Deliverable List Item
+// Deliverable List Item - INLINE STYLES
 interface DeliverableListItemProps {
   deliverable: any;
   workstreams: any[];
@@ -174,70 +179,94 @@ const DeliverableListItem = ({ deliverable, workstreams, staff, onClick }: Deliv
       exit={{ opacity: 0, x: 20 }}
       whileHover={{ scale: 1.01, x: 5 }}
       onClick={onClick}
-      className="p-4 rounded-xl border cursor-pointer transition-all duration-200 hover:shadow-lg"
       style={{
-        backgroundColor: 'var(--card-bg, #ffffff)',
-        borderColor: 'var(--border, #e5e7eb)',
+        padding: '16px',
+        borderRadius: '12px',
+        border: '1px solid #e5e7eb',
+        backgroundColor: '#ffffff',
+        cursor: 'pointer',
+        transition: 'all 0.2s ease',
+        marginBottom: '12px',
       }}
     >
-      <div className="flex items-start justify-between gap-4">
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 mb-1">
-            <h4 className="font-semibold truncate">{deliverable.crda8_title || 'Untitled'}</h4>
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '16px' }}>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+            <h4 style={{ fontWeight: 600, margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              {deliverable.crda8_title || 'Untitled'}
+            </h4>
             {isOverdue && (
-              <span className="px-2 py-0.5 text-xs font-medium rounded-full bg-red-100 text-red-700">
+              <span style={{
+                padding: '2px 8px',
+                fontSize: '11px',
+                fontWeight: 500,
+                borderRadius: '20px',
+                backgroundColor: '#fee2e2',
+                color: '#dc2626',
+              }}>
                 Overdue
               </span>
             )}
           </div>
-          <div className="flex items-center gap-4 text-sm opacity-70">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '13px', opacity: 0.7 }}>
             {workstream && (
-              <span className="flex items-center gap-1">
-                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#3b82f6' }} />
+              <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#3b82f6' }} />
                 {workstream.crda8_title}
               </span>
             )}
-            {owner && (
-              <span>{owner.crda8_title}</span>
-            )}
+            {owner && <span>{owner.crda8_title}</span>}
             {dueDate && (
-              <span className={`flex items-center gap-1 ${isOverdue ? 'text-red-600 font-medium' : ''}`}>
-                <CalendarDays className="w-3 h-3" />
+              <span style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '4px',
+                color: isOverdue ? '#dc2626' : 'inherit',
+                fontWeight: isOverdue ? 500 : 400,
+              }}>
+                <CalendarDays style={{ width: '12px', height: '12px' }} />
                 {format(dueDate, 'MMM d, yyyy')}
               </span>
             )}
           </div>
         </div>
-        <div className="flex items-center gap-3">
-          <div className="text-right">
-            <div className="text-sm font-medium">{progress}%</div>
-            <div className="w-20 h-2 rounded-full bg-gray-200 overflow-hidden">
-              <div
-                className="h-full rounded-full transition-all duration-500"
-                style={{
-                  width: `${progress}%`,
-                  backgroundColor: STATUS_COLORS[deliverable.crda8_status] || '#3b82f6',
-                }}
-              />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{ textAlign: 'right' }}>
+            <div style={{ fontSize: '13px', fontWeight: 500 }}>{progress}%</div>
+            <div style={{
+              width: '80px',
+              height: '8px',
+              borderRadius: '4px',
+              backgroundColor: '#e5e7eb',
+              overflow: 'hidden'
+            }}>
+              <div style={{
+                height: '100%',
+                borderRadius: '4px',
+                width: `${progress}%`,
+                backgroundColor: STATUS_COLORS[deliverable.crda8_status] || '#3b82f6',
+                transition: 'width 0.5s ease',
+              }} />
             </div>
           </div>
-          <span
-            className="px-2 py-1 text-xs font-medium rounded-full"
-            style={{
-              backgroundColor: `${STATUS_COLORS[deliverable.crda8_status]}20`,
-              color: STATUS_COLORS[deliverable.crda8_status],
-            }}
-          >
+          <span style={{
+            padding: '4px 10px',
+            fontSize: '12px',
+            fontWeight: 500,
+            borderRadius: '20px',
+            backgroundColor: `${STATUS_COLORS[deliverable.crda8_status]}20`,
+            color: STATUS_COLORS[deliverable.crda8_status],
+          }}>
             {STATUS_LABELS[deliverable.crda8_status] || 'Unknown'}
           </span>
-          <ChevronRight className="w-5 h-5 opacity-50" />
+          <ChevronRight style={{ width: '20px', height: '20px', opacity: 0.5 }} />
         </div>
       </div>
     </motion.div>
   );
 };
 
-// Deliverable Detail Modal
+// Deliverable Detail Modal - INLINE STYLES
 interface DeliverableDetailProps {
   deliverable: any;
   workstreams: any[];
@@ -251,7 +280,6 @@ const DeliverableDetail = ({ deliverable, workstreams, staff, onClose }: Deliver
   const progress = parseInt(deliverable.crda8_completion_x0020__x0025_ || '0') || 0;
   const dueDate = deliverable.crda8_duedate ? new Date(deliverable.crda8_duedate) : null;
 
-  // Get audit logs for this deliverable
   const auditLogs = useMemo(() => {
     const allLogs = getAuditLogs() as any[];
     return allLogs
@@ -265,97 +293,123 @@ const DeliverableDetail = ({ deliverable, workstreams, staff, onClose }: Deliver
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}
       onClick={onClose}
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 50,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '16px',
+        backgroundColor: 'rgba(0,0,0,0.5)',
+      }}
     >
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
-        className="w-full max-w-2xl max-h-[90vh] overflow-hidden rounded-2xl shadow-2xl"
-        style={{ backgroundColor: 'var(--card-bg, #ffffff)' }}
         onClick={(e) => e.stopPropagation()}
+        style={{
+          width: '100%',
+          maxWidth: '640px',
+          maxHeight: '90vh',
+          overflow: 'hidden',
+          borderRadius: '16px',
+          backgroundColor: '#ffffff',
+          boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)',
+        }}
       >
         {/* Header */}
-        <div className="p-6 border-b" style={{ borderColor: 'var(--border, #e5e7eb)' }}>
-          <div className="flex items-start justify-between">
+        <div style={{ padding: '24px', borderBottom: '1px solid #e5e7eb' }}>
+          <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
             <div>
-              <h2 className="text-xl font-bold mb-2">{deliverable.crda8_title || 'Untitled'}</h2>
-              <div className="flex items-center gap-3">
-                <span
-                  className="px-3 py-1 text-sm font-medium rounded-full"
-                  style={{
-                    backgroundColor: `${STATUS_COLORS[deliverable.crda8_status]}20`,
-                    color: STATUS_COLORS[deliverable.crda8_status],
-                  }}
-                >
+              <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '8px' }}>
+                {deliverable.crda8_title || 'Untitled'}
+              </h2>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <span style={{
+                  padding: '4px 12px',
+                  fontSize: '13px',
+                  fontWeight: 500,
+                  borderRadius: '20px',
+                  backgroundColor: `${STATUS_COLORS[deliverable.crda8_status]}20`,
+                  color: STATUS_COLORS[deliverable.crda8_status],
+                }}>
                   {STATUS_LABELS[deliverable.crda8_status] || 'Unknown'}
                 </span>
-                <span
-                  className="px-3 py-1 text-sm font-medium rounded-full"
-                  style={{
-                    backgroundColor: `${RISK_COLORS[deliverable.crda8_risk]}20`,
-                    color: RISK_COLORS[deliverable.crda8_risk],
-                  }}
-                >
+                <span style={{
+                  padding: '4px 12px',
+                  fontSize: '13px',
+                  fontWeight: 500,
+                  borderRadius: '20px',
+                  backgroundColor: `${RISK_COLORS[deliverable.crda8_risk]}20`,
+                  color: RISK_COLORS[deliverable.crda8_risk],
+                }}>
                   Risk: {RISK_LABELS[deliverable.crda8_risk] || 'Unknown'}
                 </span>
               </div>
             </div>
             <button
               onClick={onClose}
-              className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+              style={{
+                padding: '8px',
+                borderRadius: '8px',
+                border: 'none',
+                backgroundColor: 'transparent',
+                cursor: 'pointer',
+              }}
             >
-              <X className="w-5 h-5" />
+              <X style={{ width: '20px', height: '20px' }} />
             </button>
           </div>
         </div>
 
         {/* Content */}
-        <div className="p-6 overflow-y-auto" style={{ maxHeight: 'calc(90vh - 200px)' }}>
+        <div style={{ padding: '24px', overflowY: 'auto', maxHeight: 'calc(90vh - 200px)' }}>
           {/* Info Grid */}
-          <div className="grid grid-cols-2 gap-4 mb-6">
-            <div className="p-4 rounded-xl" style={{ backgroundColor: 'var(--bg-secondary, #f3f4f6)' }}>
-              <div className="text-sm opacity-70 mb-1">Workstream</div>
-              <div className="font-medium">{workstream?.crda8_title || 'Unassigned'}</div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '24px' }}>
+            <div style={{ padding: '16px', borderRadius: '12px', backgroundColor: '#f3f4f6' }}>
+              <div style={{ fontSize: '13px', opacity: 0.7, marginBottom: '4px' }}>Workstream</div>
+              <div style={{ fontWeight: 500 }}>{workstream?.crda8_title || 'Unassigned'}</div>
             </div>
-            <div className="p-4 rounded-xl" style={{ backgroundColor: 'var(--bg-secondary, #f3f4f6)' }}>
-              <div className="text-sm opacity-70 mb-1">Owner</div>
-              <div className="font-medium">{owner?.crda8_title || 'Unassigned'}</div>
+            <div style={{ padding: '16px', borderRadius: '12px', backgroundColor: '#f3f4f6' }}>
+              <div style={{ fontSize: '13px', opacity: 0.7, marginBottom: '4px' }}>Owner</div>
+              <div style={{ fontWeight: 500 }}>{owner?.crda8_title || 'Unassigned'}</div>
             </div>
-            <div className="p-4 rounded-xl" style={{ backgroundColor: 'var(--bg-secondary, #f3f4f6)' }}>
-              <div className="text-sm opacity-70 mb-1">Due Date</div>
-              <div className="font-medium">
-                {dueDate ? format(dueDate, 'MMM d, yyyy') : 'No due date'}
-              </div>
+            <div style={{ padding: '16px', borderRadius: '12px', backgroundColor: '#f3f4f6' }}>
+              <div style={{ fontSize: '13px', opacity: 0.7, marginBottom: '4px' }}>Due Date</div>
+              <div style={{ fontWeight: 500 }}>{dueDate ? format(dueDate, 'MMM d, yyyy') : 'No due date'}</div>
             </div>
-            <div className="p-4 rounded-xl" style={{ backgroundColor: 'var(--bg-secondary, #f3f4f6)' }}>
-              <div className="text-sm opacity-70 mb-1">Progress</div>
-              <div className="font-medium">{progress}%</div>
-              <div className="w-full h-2 rounded-full bg-gray-200 mt-1 overflow-hidden">
-                <div
-                  className="h-full rounded-full"
-                  style={{
-                    width: `${progress}%`,
-                    backgroundColor: STATUS_COLORS[deliverable.crda8_status] || '#3b82f6',
-                  }}
-                />
+            <div style={{ padding: '16px', borderRadius: '12px', backgroundColor: '#f3f4f6' }}>
+              <div style={{ fontSize: '13px', opacity: 0.7, marginBottom: '4px' }}>Progress</div>
+              <div style={{ fontWeight: 500 }}>{progress}%</div>
+              <div style={{
+                width: '100%',
+                height: '8px',
+                borderRadius: '4px',
+                backgroundColor: '#e5e7eb',
+                marginTop: '4px',
+                overflow: 'hidden',
+              }}>
+                <div style={{
+                  height: '100%',
+                  borderRadius: '4px',
+                  width: `${progress}%`,
+                  backgroundColor: STATUS_COLORS[deliverable.crda8_status] || '#3b82f6',
+                }} />
               </div>
             </div>
           </div>
 
           {/* Comment */}
           {deliverable.crda8_comment && (
-            <div className="mb-6">
-              <div className="flex items-center gap-2 mb-3">
-                <MessageSquare className="w-5 h-5" style={{ color: '#3b82f6' }} />
-                <h3 className="font-semibold">Latest Comment</h3>
+            <div style={{ marginBottom: '24px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+                <MessageSquare style={{ width: '20px', height: '20px', color: '#3b82f6' }} />
+                <h3 style={{ fontWeight: 600, margin: 0 }}>Latest Comment</h3>
               </div>
-              <div
-                className="p-4 rounded-xl"
-                style={{ backgroundColor: 'var(--bg-secondary, #f3f4f6)' }}
-              >
+              <div style={{ padding: '16px', borderRadius: '12px', backgroundColor: '#f3f4f6' }}>
                 {deliverable.crda8_comment}
               </div>
             </div>
@@ -363,41 +417,57 @@ const DeliverableDetail = ({ deliverable, workstreams, staff, onClose }: Deliver
 
           {/* History */}
           <div>
-            <div className="flex items-center gap-2 mb-3">
-              <History className="w-5 h-5" style={{ color: '#8b5cf6' }} />
-              <h3 className="font-semibold">Activity History</h3>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+              <History style={{ width: '20px', height: '20px', color: '#8b5cf6' }} />
+              <h3 style={{ fontWeight: 600, margin: 0 }}>Activity History</h3>
             </div>
             {auditLogs.length === 0 ? (
-              <div className="text-center py-8 opacity-50">
+              <div style={{ textAlign: 'center', padding: '32px', opacity: 0.5 }}>
                 No activity recorded yet
               </div>
             ) : (
-              <div className="space-y-3">
+              <div>
                 {auditLogs.map((log: any, index: number) => (
                   <motion.div
                     key={log.id}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
-                    className="flex items-start gap-3 p-3 rounded-lg"
-                    style={{ backgroundColor: 'var(--bg-secondary, #f3f4f6)' }}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: '12px',
+                      padding: '12px',
+                      borderRadius: '8px',
+                      backgroundColor: '#f3f4f6',
+                      marginBottom: '8px',
+                    }}
                   >
-                    <div
-                      className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium text-white flex-shrink-0"
-                      style={{ backgroundColor: '#3b82f6' }}
-                    >
+                    <div style={{
+                      width: '32px',
+                      height: '32px',
+                      borderRadius: '50%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '12px',
+                      fontWeight: 500,
+                      color: 'white',
+                      backgroundColor: '#3b82f6',
+                      flexShrink: 0,
+                    }}>
                       {(log.userName || 'U').split(' ').map((n: string) => n[0]).join('').toUpperCase().slice(0, 2)}
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2">
-                        <span className="font-medium text-sm">{log.userName || 'Unknown'}</span>
-                        <span className="text-xs opacity-50">
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <span style={{ fontWeight: 500, fontSize: '13px' }}>{log.userName || 'Unknown'}</span>
+                        <span style={{ fontSize: '12px', opacity: 0.5 }}>
                           {format(new Date(log.timestamp), 'MMM d, yyyy h:mm a')}
                         </span>
                       </div>
-                      <div className="text-sm opacity-70">
+                      <div style={{ fontSize: '13px', opacity: 0.7 }}>
                         {log.action}
-                        {log.details && <span className="block text-xs mt-1">{log.details}</span>}
+                        {log.details && <span style={{ display: 'block', fontSize: '12px', marginTop: '4px' }}>{log.details}</span>}
                       </div>
                     </div>
                   </motion.div>
@@ -411,7 +481,7 @@ const DeliverableDetail = ({ deliverable, workstreams, staff, onClose }: Deliver
   );
 };
 
-// Workstream Progress Bar
+// Workstream Progress Bar - INLINE STYLES
 interface WorkstreamBarProps {
   name: string;
   progress: number;
@@ -424,20 +494,50 @@ const WorkstreamBar = ({ name, progress, delay, color }: WorkstreamBarProps) => 
     initial={{ opacity: 0, x: -20 }}
     animate={{ opacity: 1, x: 0 }}
     transition={{ delay, duration: 0.5 }}
-    className="space-y-2"
+    style={{ marginBottom: '16px' }}
   >
-    <div className="flex justify-between items-center">
-      <span className="text-sm font-medium">{name}</span>
-      <span className="text-sm opacity-70">{progress}%</span>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+      <span style={{ fontSize: '14px', fontWeight: 500 }}>{name}</span>
+      <span style={{ fontSize: '14px', opacity: 0.7 }}>{progress}%</span>
     </div>
-    <div className="h-2 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--bg-secondary, #e5e7eb)' }}>
+    <div style={{ height: '10px', borderRadius: '5px', backgroundColor: '#e5e7eb', overflow: 'hidden' }}>
       <motion.div
-        className="h-full rounded-full"
-        style={{ backgroundColor: color }}
+        style={{ height: '100%', borderRadius: '5px', backgroundColor: color }}
         initial={{ width: 0 }}
         animate={{ width: `${progress}%` }}
         transition={{ delay: delay + 0.3, duration: 1, ease: "easeOut" }}
       />
+    </div>
+  </motion.div>
+);
+
+// Stat Card - INLINE STYLES
+interface StatCardProps {
+  icon: any;
+  label: string;
+  value: number | string;
+  color: string;
+  delay: number;
+}
+
+const StatCard = ({ icon: Icon, label, value, color, delay }: StatCardProps) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay }}
+    style={{
+      padding: '24px',
+      borderRadius: '16px',
+      backgroundColor: '#ffffff',
+      boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+    }}
+  >
+    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
+      <Icon style={{ width: '20px', height: '20px', color }} />
+      <span style={{ fontSize: '14px', opacity: 0.7 }}>{label}</span>
+    </div>
+    <div style={{ fontSize: '32px', fontWeight: 700 }}>
+      {typeof value === 'number' ? <AnimatedCounter value={value} /> : value}
     </div>
   </motion.div>
 );
@@ -450,11 +550,9 @@ const ProjectOverview = () => {
 
   const isLoading = isLoadingDeliverables || isLoadingWorkstreams || isLoadingStaff;
 
-  // View state
   const [activeKPI, setActiveKPI] = useState<'month' | 'twoWeeks' | 'late' | null>(null);
   const [selectedDeliverable, setSelectedDeliverable] = useState<any | null>(null);
 
-  // Calculate KPI data
   const today = new Date();
   const twoWeeksFromNow = addDays(today, 14);
   const monthStart = startOfMonth(today);
@@ -462,21 +560,21 @@ const ProjectOverview = () => {
 
   const kpiData = useMemo(() => {
     const dueThisMonth = (deliverables as any[]).filter((d: any) => {
-      if (d.crda8_status === 2) return false; // Exclude completed
+      if (d.crda8_status === 2) return false;
       if (!d.crda8_duedate) return false;
       const dueDate = new Date(d.crda8_duedate);
       return isWithinInterval(dueDate, { start: monthStart, end: monthEnd });
     });
 
     const dueNextTwoWeeks = (deliverables as any[]).filter((d: any) => {
-      if (d.crda8_status === 2) return false; // Exclude completed
+      if (d.crda8_status === 2) return false;
       if (!d.crda8_duedate) return false;
       const dueDate = new Date(d.crda8_duedate);
       return isWithinInterval(dueDate, { start: today, end: twoWeeksFromNow });
     });
 
     const lateDeliverables = (deliverables as any[]).filter((d: any) => {
-      if (d.crda8_status === 2) return false; // Exclude completed
+      if (d.crda8_status === 2) return false;
       if (!d.crda8_duedate) return false;
       const dueDate = new Date(d.crda8_duedate);
       return isBefore(dueDate, today);
@@ -489,7 +587,6 @@ const ProjectOverview = () => {
     };
   }, [deliverables, today, twoWeeksFromNow, monthStart, monthEnd]);
 
-  // Get current list based on active KPI
   const currentList = activeKPI ? kpiData[activeKPI] : [];
   const currentTitle = activeKPI === 'month'
     ? 'Due This Month'
@@ -499,227 +596,189 @@ const ProjectOverview = () => {
     ? 'Overdue Deliverables'
     : '';
 
-  // Overall stats
   const totalDeliverables = deliverables.length;
   const completedDeliverables = (deliverables as any[]).filter((d: any) => d.crda8_status === 2).length;
+  const atRiskCount = (deliverables as any[]).filter((d: any) => d.crda8_risk === 2).length;
   const overallProgress = totalDeliverables > 0
     ? Math.round((deliverables as any[]).reduce((acc: number, d: any) => acc + (parseInt(d.crda8_completion_x0020__x0025_ || '0') || 0), 0) / totalDeliverables)
     : 0;
 
-  const workstreamColors = [
-    "#D04A02",
-    "#3b82f6",
-    "#8b5cf6",
-    "#10b981",
-    "#f59e0b",
-  ];
+  const workstreamColors = ["#D04A02", "#3b82f6", "#8b5cf6", "#10b981", "#f59e0b"];
 
   return (
     <Layout title="Project Overview">
-      <div className="relative min-h-screen overflow-hidden">
-        {/* Background effects */}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, var(--bg-main) 0%, var(--bg-secondary) 100%)' }} />
-        <FloatingOrb delay={0} size={400} color="bg-orange-500" position={{ x: "10%", y: "20%" }} />
-        <FloatingOrb delay={2} size={300} color="bg-blue-500" position={{ x: "70%", y: "60%" }} />
-        <FloatingOrb delay={4} size={250} color="bg-purple-500" position={{ x: "80%", y: "10%" }} />
+      <div style={{
+        minHeight: '100vh',
+        padding: '24px',
+        background: 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)',
+      }}>
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          style={{ marginBottom: '32px' }}
+        >
+          <h1 style={{ fontSize: '28px', fontWeight: 700, marginBottom: '8px', color: '#1a1a2e' }}>
+            Project Overview
+          </h1>
+          <p style={{ fontSize: '16px', opacity: 0.7, color: '#1a1a2e' }}>
+            Track deliverables and project health at a glance
+          </p>
+        </motion.div>
 
-        <div className="relative z-10 p-6">
-          {/* Header */}
-          <motion.div
-            className="mb-8"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <h1 className="text-3xl font-bold mb-2">Project Overview</h1>
-            <p className="opacity-70">Track deliverables and project health at a glance</p>
-          </motion.div>
-
-          {/* KPI Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <KPICard
-              icon={CalendarDays}
-              label="Due This Month"
-              value={kpiData.month.length}
-              color="#3b82f6"
-              bgColor="rgba(59, 130, 246, 0.1)"
-              onClick={() => setActiveKPI(activeKPI === 'month' ? null : 'month')}
-              isActive={activeKPI === 'month'}
-            />
-            <KPICard
-              icon={CalendarClock}
-              label="Due Next 2 Weeks"
-              value={kpiData.twoWeeks.length}
-              color="#f59e0b"
-              bgColor="rgba(245, 158, 11, 0.1)"
-              onClick={() => setActiveKPI(activeKPI === 'twoWeeks' ? null : 'twoWeeks')}
-              isActive={activeKPI === 'twoWeeks'}
-            />
-            <KPICard
-              icon={AlertCircle}
-              label="Overdue"
-              value={kpiData.late.length}
-              color="#ef4444"
-              bgColor="rgba(239, 68, 68, 0.1)"
-              onClick={() => setActiveKPI(activeKPI === 'late' ? null : 'late')}
-              isActive={activeKPI === 'late'}
-            />
-          </div>
-
-          {/* Drill-down List */}
-          <AnimatePresence>
-            {activeKPI && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="mb-8 overflow-hidden"
-              >
-                <div
-                  className="rounded-2xl p-6"
-                  style={{ backgroundColor: 'var(--card-bg, #ffffff)' }}
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-3">
-                      <button
-                        onClick={() => setActiveKPI(null)}
-                        className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
-                      >
-                        <ArrowLeft className="w-5 h-5" />
-                      </button>
-                      <h2 className="text-xl font-semibold">{currentTitle}</h2>
-                      <span
-                        className="px-3 py-1 text-sm font-medium rounded-full"
-                        style={{ backgroundColor: 'var(--bg-secondary, #f3f4f6)' }}
-                      >
-                        {currentList.length} items
-                      </span>
-                    </div>
-                  </div>
-
-                  {currentList.length === 0 ? (
-                    <div className="text-center py-12 opacity-50">
-                      <CheckCircle2 className="w-12 h-12 mx-auto mb-3" />
-                      <p>No deliverables in this category</p>
-                    </div>
-                  ) : (
-                    <div className="space-y-3">
-                      {currentList.map((deliverable: any) => (
-                        <DeliverableListItem
-                          key={deliverable.crda8_deliverablesid}
-                          deliverable={deliverable}
-                          workstreams={workstreams as any[]}
-                          staff={staff as any[]}
-                          onClick={() => setSelectedDeliverable(deliverable)}
-                        />
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          {/* Stats Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="p-6 rounded-2xl"
-              style={{ backgroundColor: 'var(--card-bg, #ffffff)' }}
-            >
-              <div className="flex items-center gap-3 mb-2">
-                <Target className="w-5 h-5" style={{ color: '#D04A02' }} />
-                <span className="text-sm opacity-70">Total Deliverables</span>
-              </div>
-              <div className="text-3xl font-bold">
-                <AnimatedCounter value={totalDeliverables} />
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="p-6 rounded-2xl"
-              style={{ backgroundColor: 'var(--card-bg, #ffffff)' }}
-            >
-              <div className="flex items-center gap-3 mb-2">
-                <CheckCircle2 className="w-5 h-5" style={{ color: '#10b981' }} />
-                <span className="text-sm opacity-70">Completed</span>
-              </div>
-              <div className="text-3xl font-bold">
-                <AnimatedCounter value={completedDeliverables} />
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="p-6 rounded-2xl"
-              style={{ backgroundColor: 'var(--card-bg, #ffffff)' }}
-            >
-              <div className="flex items-center gap-3 mb-2">
-                <AlertTriangle className="w-5 h-5" style={{ color: '#ef4444' }} />
-                <span className="text-sm opacity-70">At Risk</span>
-              </div>
-              <div className="text-3xl font-bold">
-                <AnimatedCounter value={(deliverables as any[]).filter((d: any) => d.crda8_risk === 2).length} />
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="p-6 rounded-2xl"
-              style={{ backgroundColor: 'var(--card-bg, #ffffff)' }}
-            >
-              <div className="flex items-center gap-3 mb-2">
-                <TrendingUp className="w-5 h-5" style={{ color: '#3b82f6' }} />
-                <span className="text-sm opacity-70">Overall Progress</span>
-              </div>
-              <div className="text-3xl font-bold">{overallProgress}%</div>
-            </motion.div>
-          </div>
-
-          {/* Workstream Progress */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="p-6 rounded-2xl"
-            style={{ backgroundColor: 'var(--card-bg, #ffffff)' }}
-          >
-            <div className="flex items-center gap-2 mb-6">
-              <BarChart3 className="w-5 h-5" style={{ color: '#D04A02' }} />
-              <h2 className="text-lg font-semibold">Workstream Progress</h2>
-            </div>
-            <div className="space-y-5">
-              {isLoading ? (
-                <div className="text-center py-4 opacity-50">Loading...</div>
-              ) : (
-                (workstreams as any[]).slice(0, 5).map((ws: any, index: number) => {
-                  const wsDeliverables = (deliverables as any[]).filter((d: any) => d.crda8_workstream === ws.crda8_workstreamsid);
-                  const wsProgress = wsDeliverables.length > 0
-                    ? Math.round(wsDeliverables.reduce((acc: number, d: any) => acc + (parseInt(d.crda8_completion_x0020__x0025_ || '0') || 0), 0) / wsDeliverables.length)
-                    : 0;
-
-                  return (
-                    <WorkstreamBar
-                      key={ws.crda8_workstreamsid}
-                      name={ws.crda8_title || 'Untitled'}
-                      progress={wsProgress}
-                      delay={index * 0.1}
-                      color={workstreamColors[index % workstreamColors.length]}
-                    />
-                  );
-                })
-              )}
-            </div>
-          </motion.div>
+        {/* KPI Cards */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '24px',
+          marginBottom: '32px'
+        }}>
+          <KPICard
+            icon={CalendarDays}
+            label="Due This Month"
+            value={kpiData.month.length}
+            color="#3b82f6"
+            bgColor="rgba(59, 130, 246, 0.15)"
+            onClick={() => setActiveKPI(activeKPI === 'month' ? null : 'month')}
+            isActive={activeKPI === 'month'}
+          />
+          <KPICard
+            icon={CalendarClock}
+            label="Due Next 2 Weeks"
+            value={kpiData.twoWeeks.length}
+            color="#f59e0b"
+            bgColor="rgba(245, 158, 11, 0.15)"
+            onClick={() => setActiveKPI(activeKPI === 'twoWeeks' ? null : 'twoWeeks')}
+            isActive={activeKPI === 'twoWeeks'}
+          />
+          <KPICard
+            icon={AlertCircle}
+            label="Overdue"
+            value={kpiData.late.length}
+            color="#ef4444"
+            bgColor="rgba(239, 68, 68, 0.15)"
+            onClick={() => setActiveKPI(activeKPI === 'late' ? null : 'late')}
+            isActive={activeKPI === 'late'}
+          />
         </div>
+
+        {/* Drill-down List */}
+        <AnimatePresence>
+          {activeKPI && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              style={{ marginBottom: '32px', overflow: 'hidden' }}
+            >
+              <div style={{
+                borderRadius: '16px',
+                padding: '24px',
+                backgroundColor: '#ffffff',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <button
+                      onClick={() => setActiveKPI(null)}
+                      style={{
+                        padding: '8px',
+                        borderRadius: '8px',
+                        border: 'none',
+                        backgroundColor: '#f3f4f6',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      <ArrowLeft style={{ width: '20px', height: '20px' }} />
+                    </button>
+                    <h2 style={{ fontSize: '20px', fontWeight: 600, margin: 0 }}>{currentTitle}</h2>
+                    <span style={{
+                      padding: '4px 12px',
+                      fontSize: '13px',
+                      fontWeight: 500,
+                      borderRadius: '20px',
+                      backgroundColor: '#f3f4f6',
+                    }}>
+                      {currentList.length} items
+                    </span>
+                  </div>
+                </div>
+
+                {currentList.length === 0 ? (
+                  <div style={{ textAlign: 'center', padding: '48px', opacity: 0.5 }}>
+                    <CheckCircle2 style={{ width: '48px', height: '48px', margin: '0 auto 12px' }} />
+                    <p>No deliverables in this category</p>
+                  </div>
+                ) : (
+                  <div>
+                    {currentList.map((deliverable: any) => (
+                      <DeliverableListItem
+                        key={deliverable.crda8_deliverablesid}
+                        deliverable={deliverable}
+                        workstreams={workstreams as any[]}
+                        staff={staff as any[]}
+                        onClick={() => setSelectedDeliverable(deliverable)}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Stats Grid */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gap: '24px',
+          marginBottom: '32px'
+        }}>
+          <StatCard icon={Target} label="Total Deliverables" value={totalDeliverables} color="#D04A02" delay={0.1} />
+          <StatCard icon={CheckCircle2} label="Completed" value={completedDeliverables} color="#10b981" delay={0.2} />
+          <StatCard icon={AlertTriangle} label="At Risk" value={atRiskCount} color="#ef4444" delay={0.3} />
+          <StatCard icon={TrendingUp} label="Overall Progress" value={`${overallProgress}%`} color="#3b82f6" delay={0.4} />
+        </div>
+
+        {/* Workstream Progress */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          style={{
+            padding: '24px',
+            borderRadius: '16px',
+            backgroundColor: '#ffffff',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '24px' }}>
+            <BarChart3 style={{ width: '20px', height: '20px', color: '#D04A02' }} />
+            <h2 style={{ fontSize: '18px', fontWeight: 600, margin: 0 }}>Workstream Progress</h2>
+          </div>
+          <div>
+            {isLoading ? (
+              <div style={{ textAlign: 'center', padding: '16px', opacity: 0.5 }}>Loading...</div>
+            ) : (
+              (workstreams as any[]).slice(0, 5).map((ws: any, index: number) => {
+                const wsDeliverables = (deliverables as any[]).filter((d: any) => d.crda8_workstream === ws.crda8_workstreamsid);
+                const wsProgress = wsDeliverables.length > 0
+                  ? Math.round(wsDeliverables.reduce((acc: number, d: any) => acc + (parseInt(d.crda8_completion_x0020__x0025_ || '0') || 0), 0) / wsDeliverables.length)
+                  : 0;
+
+                return (
+                  <WorkstreamBar
+                    key={ws.crda8_workstreamsid}
+                    name={ws.crda8_title || 'Untitled'}
+                    progress={wsProgress}
+                    delay={index * 0.1}
+                    color={workstreamColors[index % workstreamColors.length]}
+                  />
+                );
+              })
+            )}
+          </div>
+        </motion.div>
 
         {/* Detail Modal */}
         <AnimatePresence>
