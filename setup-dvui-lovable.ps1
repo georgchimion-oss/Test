@@ -16,11 +16,10 @@ Write-Host "[1/10] Verifying directory..." -ForegroundColor Yellow
 if (-not (Test-Path "power.config.json")) {
     Write-Host "ERROR: power.config.json not found!" -ForegroundColor Red
     Write-Host "Please run this script from your project-governance-dvui directory." -ForegroundColor Red
-    Write-Host "Expected path: C:\Users\gchimion001\OneDrive - PwC\Desktop\VSCODE\PowerAppsRepoPWC\VSCODE\project-governance-dvui" -ForegroundColor Yellow
     exit 1
 }
 
-Write-Host "✓ Found power.config.json" -ForegroundColor Green
+Write-Host "  Done: Found power.config.json" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
 # Step 2: Create necessary folders
@@ -56,20 +55,13 @@ Write-Host "`n[3/10] Downloading files from GitHub..." -ForegroundColor Yellow
 $baseUrl = "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/powerapp-sharepoint-deliverables-vbZKv"
 
 $files = @{
-    # Types
     "dvui-integration/types/lovable.ts" = "src\types\lovable.ts"
-
-    # Mappers
     "dvui-integration/mappers/dataverseToLovable.ts" = "src\mappers\dataverseToLovable.ts"
-
-    # Components
     "dvui-components/CommandCenter.tsx" = "src\components\CommandCenter.tsx"
     "dvui-components/KanbanBoard.tsx" = "src\components\KanbanBoard.tsx"
     "dvui-components/GanttChart.tsx" = "src\components\GanttChart.tsx"
     "dvui-components/OrgChart.tsx" = "src\components\OrgChart.tsx"
     "dvui-components/ResourcePlanning.tsx" = "src\components\ResourcePlanning.tsx"
-
-    # Example pages
     "dvui-integration/examples/CommandCenterPage.example.tsx" = "src\pages\CommandCenterPage.tsx"
     "dvui-integration/examples/DeliverablesPage.example.tsx" = "src\pages\DeliverablesPage.tsx"
 }
@@ -81,9 +73,9 @@ foreach ($file in $files.GetEnumerator()) {
     try {
         Write-Host "  Downloading: $($file.Key)..." -NoNewline
         Invoke-WebRequest -Uri $url -OutFile $destination -ErrorAction Stop
-        Write-Host " ✓" -ForegroundColor Green
+        Write-Host " Done" -ForegroundColor Green
     } catch {
-        Write-Host " ✗ FAILED" -ForegroundColor Red
+        Write-Host " FAILED" -ForegroundColor Red
         Write-Host "  Error: $($_.Exception.Message)" -ForegroundColor Red
     }
 }
@@ -95,34 +87,17 @@ foreach ($file in $files.GetEnumerator()) {
 Write-Host "`n[4/10] Installing npm dependencies..." -ForegroundColor Yellow
 Write-Host "  This may take a few minutes..." -ForegroundColor Gray
 
-$dependencies = @(
-    "framer-motion",
-    "date-fns",
-    "lucide-react",
-    "class-variance-authority",
-    "clsx",
-    "tailwind-merge",
-    "@radix-ui/react-avatar",
-    "@radix-ui/react-badge",
-    "@radix-ui/react-progress",
-    "@radix-ui/react-slot",
-    "react-router-dom"
-)
-
-$devDependencies = @(
-    "tailwindcss",
-    "postcss",
-    "autoprefixer",
-    "tailwindcss-animate"
-)
+$dependencies = "framer-motion date-fns lucide-react class-variance-authority clsx tailwind-merge @radix-ui/react-avatar @radix-ui/react-badge @radix-ui/react-progress @radix-ui/react-slot react-router-dom"
 
 Write-Host "  Installing production dependencies..." -ForegroundColor Gray
 npm install $dependencies --save 2>&1 | Out-Null
-Write-Host "  ✓ Production dependencies installed" -ForegroundColor Green
+Write-Host "  Done: Production dependencies installed" -ForegroundColor Green
+
+$devDependencies = "tailwindcss postcss autoprefixer tailwindcss-animate"
 
 Write-Host "  Installing dev dependencies..." -ForegroundColor Gray
 npm install $devDependencies --save-dev 2>&1 | Out-Null
-Write-Host "  ✓ Dev dependencies installed" -ForegroundColor Green
+Write-Host "  Done: Dev dependencies installed" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
 # Step 5: Initialize Tailwind CSS
@@ -132,7 +107,7 @@ Write-Host "`n[5/10] Initializing Tailwind CSS..." -ForegroundColor Yellow
 
 if (-not (Test-Path "tailwind.config.js")) {
     npx tailwindcss init -p 2>&1 | Out-Null
-    Write-Host "  ✓ Created tailwind.config.js and postcss.config.js" -ForegroundColor Green
+    Write-Host "  Done: Created tailwind.config.js and postcss.config.js" -ForegroundColor Green
 } else {
     Write-Host "  Tailwind already initialized" -ForegroundColor Gray
 }
@@ -143,7 +118,7 @@ if (-not (Test-Path "tailwind.config.js")) {
 
 Write-Host "`n[6/10] Updating Tailwind configuration..." -ForegroundColor Yellow
 
-$tailwindConfig = @'
+$tailwindConfig = @"
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
@@ -197,10 +172,10 @@ export default {
   },
   plugins: [require("tailwindcss-animate")],
 }
-'@
+"@
 
 Set-Content -Path "tailwind.config.js" -Value $tailwindConfig
-Write-Host "  ✓ Updated tailwind.config.js" -ForegroundColor Green
+Write-Host "  Done: Updated tailwind.config.js" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
 # Step 7: Update tsconfig.json for path aliases
@@ -208,14 +183,20 @@ Write-Host "  ✓ Updated tailwind.config.js" -ForegroundColor Green
 
 Write-Host "`n[7/10] Updating TypeScript configuration..." -ForegroundColor Yellow
 
-$tsconfig = Get-Content "tsconfig.json" -Raw | ConvertFrom-Json
-$tsconfig.compilerOptions.baseUrl = "."
+$tsconfigContent = Get-Content "tsconfig.json" -Raw
+$tsconfig = $tsconfigContent | ConvertFrom-Json
+
+if (-not $tsconfig.compilerOptions) {
+    $tsconfig | Add-Member -MemberType NoteProperty -Name "compilerOptions" -Value @{} -Force
+}
+
+$tsconfig.compilerOptions | Add-Member -MemberType NoteProperty -Name "baseUrl" -Value "." -Force
 $tsconfig.compilerOptions | Add-Member -MemberType NoteProperty -Name "paths" -Value @{
     "@/*" = @("./src/*")
 } -Force
 
 $tsconfig | ConvertTo-Json -Depth 10 | Set-Content "tsconfig.json"
-Write-Host "  ✓ Added @ path alias to tsconfig.json" -ForegroundColor Green
+Write-Host "  Done: Added @ path alias to tsconfig.json" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
 # Step 8: Update vite.config.ts for path aliases
@@ -223,7 +204,7 @@ Write-Host "  ✓ Added @ path alias to tsconfig.json" -ForegroundColor Green
 
 Write-Host "`n[8/10] Updating Vite configuration..." -ForegroundColor Yellow
 
-$viteConfig = @'
+$viteConfig = @"
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
@@ -236,10 +217,10 @@ export default defineConfig({
     },
   },
 })
-'@
+"@
 
 Set-Content -Path "vite.config.ts" -Value $viteConfig
-Write-Host "  ✓ Updated vite.config.ts" -ForegroundColor Green
+Write-Host "  Done: Updated vite.config.ts" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
 # Step 9: Update src/index.css
@@ -247,7 +228,7 @@ Write-Host "  ✓ Updated vite.config.ts" -ForegroundColor Green
 
 Write-Host "`n[9/10] Updating CSS with Tailwind directives..." -ForegroundColor Yellow
 
-$indexCss = @'
+$indexCss = @"
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -307,10 +288,10 @@ $indexCss = @'
     @apply bg-background text-foreground;
   }
 }
-'@
+"@
 
 Set-Content -Path "src\index.css" -Value $indexCss
-Write-Host "  ✓ Updated src\index.css" -ForegroundColor Green
+Write-Host "  Done: Updated src\index.css" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
 # Step 10: Create utility functions
@@ -318,38 +299,38 @@ Write-Host "  ✓ Updated src\index.css" -ForegroundColor Green
 
 Write-Host "`n[10/10] Creating utility functions..." -ForegroundColor Yellow
 
-$utilsTs = @'
+$utilsTs = @"
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
-'@
+"@
 
 Set-Content -Path "src\lib\utils.ts" -Value $utilsTs
-Write-Host "  ✓ Created src\lib\utils.ts" -ForegroundColor Green
+Write-Host "  Done: Created src\lib\utils.ts" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
 # Done!
 #------------------------------------------------------------------------------
 
 Write-Host "`n========================================" -ForegroundColor Cyan
-Write-Host "✓ Setup Complete!" -ForegroundColor Green
+Write-Host "Setup Complete!" -ForegroundColor Green
 Write-Host "========================================`n" -ForegroundColor Cyan
 
 Write-Host "Next steps:" -ForegroundColor Yellow
-Write-Host "1. Update the mappers in src\mappers\dataverseToLovable.ts with your actual Dataverse field names" -ForegroundColor White
-Write-Host "2. Copy UI components from lovable-app-organized if needed" -ForegroundColor White
+Write-Host "1. Copy UI components from lovable-app-organized (or I can add them to the script)" -ForegroundColor White
+Write-Host "2. Update mappers in src\mappers\dataverseToLovable.ts with your Dataverse field names" -ForegroundColor White
 Write-Host "3. Test locally: pac code run" -ForegroundColor White
 Write-Host "4. Build and deploy: npm run build && pac code push`n" -ForegroundColor White
 
 Write-Host "Components installed:" -ForegroundColor Yellow
-Write-Host "  • CommandCenter - Animated dashboard with KPIs" -ForegroundColor White
-Write-Host "  • KanbanBoard - Drag & drop deliverables" -ForegroundColor White
-Write-Host "  • GanttChart - Timeline view" -ForegroundColor White
-Write-Host "  • OrgChart - Team hierarchy" -ForegroundColor White
-Write-Host "  • ResourcePlanning - Capacity management`n" -ForegroundColor White
+Write-Host "  - CommandCenter (Animated dashboard)" -ForegroundColor White
+Write-Host "  - KanbanBoard (Drag & drop)" -ForegroundColor White
+Write-Host "  - GanttChart (Timeline view)" -ForegroundColor White
+Write-Host "  - OrgChart (Team hierarchy)" -ForegroundColor White
+Write-Host "  - ResourcePlanning (Capacity management)`n" -ForegroundColor White
 
 Write-Host "Press any key to exit..." -ForegroundColor Gray
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
