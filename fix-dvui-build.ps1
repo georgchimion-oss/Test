@@ -1,12 +1,12 @@
 # ============================================================
-# DVUI Build Fix Script v3 - Enable CommandCenter
-# Version: Jan 19, 2026 - 07:50 PM
-# Enables CommandCenter with dataverseService hooks
+# DVUI Build Fix Script v3 - Enable Lovable UI
+# Version: Jan 19, 2026 - 08:15 PM
+# Enables CommandCenter + fancy Kanban/Gantt styling
 # ============================================================
 
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host "DVUI Build Fix Script v3" -ForegroundColor Cyan
-Write-Host "Enable CommandCenter with Lovable UI" -ForegroundColor Cyan
+Write-Host "Enable Lovable UI Components" -ForegroundColor Cyan
 Write-Host "Timestamp: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Yellow
 Write-Host "========================================" -ForegroundColor Cyan
 
@@ -14,7 +14,7 @@ Write-Host "========================================" -ForegroundColor Cyan
 # Step 1: Verify directory
 #------------------------------------------------------------------------------
 
-Write-Host "`n[1/7] Verifying directory..." -ForegroundColor Yellow
+Write-Host "`n[1/6] Verifying directory..." -ForegroundColor Yellow
 
 if (-not (Test-Path "power.config.json")) {
     Write-Host "ERROR: power.config.json not found!" -ForegroundColor Red
@@ -24,79 +24,69 @@ if (-not (Test-Path "power.config.json")) {
 Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 2: Download CommandCenter.tsx from GitHub (uses dataverseService hooks)
+# Step 2: Download CommandCenter.tsx (fancy animated dashboard)
 #------------------------------------------------------------------------------
 
-Write-Host "`n[2/7] Downloading CommandCenter.tsx..." -ForegroundColor Yellow
+Write-Host "`n[2/6] Downloading CommandCenter.tsx..." -ForegroundColor Yellow
 
-$ccUrl = "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/powerapp-sharepoint-deliverables-vbZKv/dvui%20save/src/screens/CommandCenter.tsx"
-$ccPath = "src\screens\CommandCenter.tsx"
+$baseUrl = "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/powerapp-sharepoint-deliverables-vbZKv"
 
 # Remove old .bak if exists
 if (Test-Path "src\screens\CommandCenter.tsx.bak") {
     Remove-Item "src\screens\CommandCenter.tsx.bak" -Force
-    Write-Host "  Removed old .bak file" -ForegroundColor Gray
 }
 
-Invoke-WebRequest -Uri $ccUrl -OutFile $ccPath
-Write-Host "  OK: CommandCenter.tsx downloaded" -ForegroundColor Green
+Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/screens/CommandCenter.tsx" -OutFile "src\screens\CommandCenter.tsx"
+Write-Host "  OK: CommandCenter.tsx (animated dashboard)" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
 # Step 3: Download dataverseService.ts (React Query hooks)
 #------------------------------------------------------------------------------
 
-Write-Host "`n[3/7] Downloading dataverseService.ts..." -ForegroundColor Yellow
+Write-Host "`n[3/6] Downloading dataverseService.ts..." -ForegroundColor Yellow
 
-$dsUrl = "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/powerapp-sharepoint-deliverables-vbZKv/dvui%20save/src/services/dataverseService.ts"
-
-# Create services folder if not exists
 if (-not (Test-Path "src\services")) {
     New-Item -ItemType Directory -Path "src\services" -Force | Out-Null
-    Write-Host "  Created src\services folder" -ForegroundColor Gray
 }
 
-Invoke-WebRequest -Uri $dsUrl -OutFile "src\services\dataverseService.ts"
-Write-Host "  OK: dataverseService.ts downloaded" -ForegroundColor Green
+Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/services/dataverseService.ts" -OutFile "src\services\dataverseService.ts"
+Write-Host "  OK: dataverseService.ts (React Query hooks)" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
 # Step 4: Re-enable CommandCenter route in App.tsx
 #------------------------------------------------------------------------------
 
-Write-Host "`n[4/7] Enabling CommandCenter route in App.tsx..." -ForegroundColor Yellow
+Write-Host "`n[4/6] Enabling CommandCenter route..." -ForegroundColor Yellow
 
 $appPath = "src\App.tsx"
 $content = Get-Content $appPath -Raw
 
-# Check if CommandCenter import is commented out or missing
+# Uncomment or add import
 if ($content -match "//\s*import CommandCenter") {
-    # Uncomment the import
     $content = $content -replace "//\s*import CommandCenter from", "import CommandCenter from"
-    Write-Host "  Uncommented CommandCenter import" -ForegroundColor Gray
+    Write-Host "  Uncommented import" -ForegroundColor Gray
 } elseif ($content -notmatch "import CommandCenter from") {
-    # Add the import after other screen imports
     $content = $content -replace "(import Login from [^;]+;)", "`$1`nimport CommandCenter from './screens/CommandCenter';"
-    Write-Host "  Added CommandCenter import" -ForegroundColor Gray
+    Write-Host "  Added import" -ForegroundColor Gray
 }
 
-# Check if route is disabled/commented
+# Enable route
 if ($content -match "\{/\*.*CommandCenter.*disabled.*\*/\}") {
-    # Replace the disabled comment with actual route
     $content = $content -replace '\{/\*\s*CommandCenter route disabled\s*\*/\}', '<Route path="/command-center" element={<CommandCenter />} />'
-    Write-Host "  Enabled CommandCenter route" -ForegroundColor Gray
+    Write-Host "  Enabled route" -ForegroundColor Gray
 } elseif ($content -notmatch 'path="/command-center"') {
-    # Add the route before the catch-all route
     $content = $content -replace '(<Route path="\*")', '<Route path="/command-center" element={<CommandCenter />} />`n          $1'
-    Write-Host "  Added CommandCenter route" -ForegroundColor Gray
+    Write-Host "  Added route" -ForegroundColor Gray
 }
 
 $content | Set-Content $appPath -NoNewline
 Write-Host "  OK: App.tsx updated" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 5: Ensure tsconfig excludes are set
+# Step 5: Ensure tsconfig excludes
 #------------------------------------------------------------------------------
 
-Write-Host "`n[5/7] Checking tsconfig.json..." -ForegroundColor Yellow
+Write-Host "`n[5/6] Checking tsconfig.json..." -ForegroundColor Yellow
 
 $tsconfigPath = "tsconfig.json"
 $tsconfig = Get-Content $tsconfigPath -Raw | ConvertFrom-Json
@@ -107,34 +97,28 @@ if (-not $tsconfig.exclude) {
 
 $tsconfig.exclude = @("node_modules", "dist", "src/_lovable_backup_*", "**/*.bak")
 $tsconfig | ConvertTo-Json -Depth 10 | Set-Content $tsconfigPath
-Write-Host "  OK: Backup folders excluded" -ForegroundColor Green
+Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 6: Build
+# Step 6: Build and Push
 #------------------------------------------------------------------------------
 
-Write-Host "`n[6/7] Building project..." -ForegroundColor Yellow
+Write-Host "`n[6/6] Building and pushing..." -ForegroundColor Yellow
 
 npm run build
 
 if ($LASTEXITCODE -ne 0) {
     Write-Host "`n  BUILD FAILED!" -ForegroundColor Red
-    Write-Host "  Run 'npm run build' manually to see errors." -ForegroundColor Yellow
+    Write-Host "  Run 'npm run build' to see errors" -ForegroundColor Yellow
     exit 1
 }
 
-Write-Host "  OK: Build successful!" -ForegroundColor Green
-
-#------------------------------------------------------------------------------
-# Step 7: Push to Power Apps
-#------------------------------------------------------------------------------
-
-Write-Host "`n[7/7] Pushing to Power Apps..." -ForegroundColor Yellow
+Write-Host "  Build OK" -ForegroundColor Green
 
 pac code push
 
 if ($LASTEXITCODE -ne 0) {
-    Write-Host "  PUSH FAILED! Run 'pac auth list' to check login." -ForegroundColor Red
+    Write-Host "  PUSH FAILED! Check 'pac auth list'" -ForegroundColor Red
     exit 1
 }
 
@@ -144,8 +128,7 @@ if ($LASTEXITCODE -ne 0) {
 
 Write-Host "`n========================================" -ForegroundColor Green
 Write-Host "SUCCESS!" -ForegroundColor Green
-Write-Host "CommandCenter is now enabled!" -ForegroundColor Green
-Write-Host "Timestamp: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Green
 Write-Host "========================================" -ForegroundColor Green
-Write-Host "`nRefresh your Power Apps browser tab!" -ForegroundColor Cyan
-Write-Host "Navigate to /command-center to see it!" -ForegroundColor Cyan
+Write-Host "`nNew features enabled:" -ForegroundColor Cyan
+Write-Host "  * CommandCenter - Animated dashboard at /command-center" -ForegroundColor White
+Write-Host "`nRefresh your Power Apps browser tab!" -ForegroundColor Yellow
