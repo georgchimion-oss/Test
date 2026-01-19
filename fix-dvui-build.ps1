@@ -1,110 +1,151 @@
 # ============================================================
-# DVUI Build Fix Script v3 - Enable Lovable UI
-# Version: Jan 19, 2026 - 08:15 PM
-# Enables CommandCenter + fancy Kanban/Gantt styling
+# DVUI Build Fix Script v4 - Complete Lovable UI Setup
+# Version: Jan 19, 2026 - 08:30 PM
+# Enables CommandCenter with ALL required dependencies
 # ============================================================
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "DVUI Build Fix Script v3" -ForegroundColor Cyan
-Write-Host "Enable Lovable UI Components" -ForegroundColor Cyan
+Write-Host "DVUI Build Fix Script v4" -ForegroundColor Cyan
+Write-Host "Complete Lovable UI Setup" -ForegroundColor Cyan
 Write-Host "Timestamp: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Yellow
 Write-Host "========================================" -ForegroundColor Cyan
+
+$baseUrl = "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/powerapp-sharepoint-deliverables-vbZKv/dvui%20save"
 
 #------------------------------------------------------------------------------
 # Step 1: Verify directory
 #------------------------------------------------------------------------------
 
-Write-Host "`n[1/6] Verifying directory..." -ForegroundColor Yellow
+Write-Host "`n[1/8] Verifying directory..." -ForegroundColor Yellow
 
 if (-not (Test-Path "power.config.json")) {
     Write-Host "ERROR: power.config.json not found!" -ForegroundColor Red
-    Write-Host "Make sure you're in the project-governance-dvui folder" -ForegroundColor Red
     exit 1
 }
 Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 2: Download CommandCenter.tsx (fancy animated dashboard)
+# Step 2: Install framer-motion (required for CommandCenter animations)
 #------------------------------------------------------------------------------
 
-Write-Host "`n[2/6] Downloading CommandCenter.tsx..." -ForegroundColor Yellow
+Write-Host "`n[2/8] Installing framer-motion..." -ForegroundColor Yellow
 
-$baseUrl = "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/powerapp-sharepoint-deliverables-vbZKv"
-
-# Remove old .bak if exists
-if (Test-Path "src\screens\CommandCenter.tsx.bak") {
-    Remove-Item "src\screens\CommandCenter.tsx.bak" -Force
+$packageJson = Get-Content "package.json" -Raw | ConvertFrom-Json
+if (-not $packageJson.dependencies.'framer-motion') {
+    npm install framer-motion --save 2>&1 | Out-Null
+    Write-Host "  Installed framer-motion" -ForegroundColor Green
+} else {
+    Write-Host "  Already installed" -ForegroundColor Gray
 }
 
-Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/screens/CommandCenter.tsx" -OutFile "src\screens\CommandCenter.tsx"
-Write-Host "  OK: CommandCenter.tsx (animated dashboard)" -ForegroundColor Green
-
 #------------------------------------------------------------------------------
-# Step 3: Download dataverseService.ts (React Query hooks)
+# Step 3: Download layout components (MainLayout, AppSidebar, Header)
 #------------------------------------------------------------------------------
 
-Write-Host "`n[3/6] Downloading dataverseService.ts..." -ForegroundColor Yellow
+Write-Host "`n[3/8] Downloading layout components..." -ForegroundColor Yellow
+
+# Create layout folder if not exists
+if (-not (Test-Path "src\components\layout")) {
+    New-Item -ItemType Directory -Path "src\components\layout" -Force | Out-Null
+}
+
+$layoutFiles = @("MainLayout.tsx", "AppSidebar.tsx", "Header.tsx", "NavLink.tsx")
+foreach ($file in $layoutFiles) {
+    Invoke-WebRequest -Uri "$baseUrl/src/components/layout/$file" -OutFile "src\components\layout\$file"
+    Write-Host "  Downloaded $file" -ForegroundColor Gray
+}
+Write-Host "  OK" -ForegroundColor Green
+
+#------------------------------------------------------------------------------
+# Step 4: Download UI components (Card, Avatar, Button, etc.)
+#------------------------------------------------------------------------------
+
+Write-Host "`n[4/8] Downloading UI components..." -ForegroundColor Yellow
+
+if (-not (Test-Path "src\components\ui")) {
+    New-Item -ItemType Directory -Path "src\components\ui" -Force | Out-Null
+}
+
+$uiFiles = @("card.tsx", "button.tsx", "avatar.tsx", "input.tsx", "dropdown-menu.tsx", "badge.tsx")
+foreach ($file in $uiFiles) {
+    $url = "$baseUrl/src/components/ui/$file"
+    try {
+        Invoke-WebRequest -Uri $url -OutFile "src\components\ui\$file" -ErrorAction Stop
+        Write-Host "  Downloaded $file" -ForegroundColor Gray
+    } catch {
+        Write-Host "  Skipped $file (may already exist or not needed)" -ForegroundColor DarkGray
+    }
+}
+Write-Host "  OK" -ForegroundColor Green
+
+#------------------------------------------------------------------------------
+# Step 5: Download dataverseService.ts
+#------------------------------------------------------------------------------
+
+Write-Host "`n[5/8] Downloading dataverseService.ts..." -ForegroundColor Yellow
 
 if (-not (Test-Path "src\services")) {
     New-Item -ItemType Directory -Path "src\services" -Force | Out-Null
 }
 
-Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/services/dataverseService.ts" -OutFile "src\services\dataverseService.ts"
-Write-Host "  OK: dataverseService.ts (React Query hooks)" -ForegroundColor Green
+Invoke-WebRequest -Uri "$baseUrl/src/services/dataverseService.ts" -OutFile "src\services\dataverseService.ts"
+Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 4: Re-enable CommandCenter route in App.tsx
+# Step 6: Download CommandCenter.tsx
 #------------------------------------------------------------------------------
 
-Write-Host "`n[4/6] Enabling CommandCenter route..." -ForegroundColor Yellow
+Write-Host "`n[6/8] Downloading CommandCenter.tsx..." -ForegroundColor Yellow
+
+# Remove old .bak
+if (Test-Path "src\screens\CommandCenter.tsx.bak") {
+    Remove-Item "src\screens\CommandCenter.tsx.bak" -Force
+}
+
+Invoke-WebRequest -Uri "$baseUrl/src/screens/CommandCenter.tsx" -OutFile "src\screens\CommandCenter.tsx"
+Write-Host "  OK" -ForegroundColor Green
+
+#------------------------------------------------------------------------------
+# Step 7: Enable CommandCenter route in App.tsx
+#------------------------------------------------------------------------------
+
+Write-Host "`n[7/8] Enabling CommandCenter route..." -ForegroundColor Yellow
 
 $appPath = "src\App.tsx"
 $content = Get-Content $appPath -Raw
 
-# Uncomment or add import
+# Handle import
 if ($content -match "//\s*import CommandCenter") {
     $content = $content -replace "//\s*import CommandCenter from", "import CommandCenter from"
-    Write-Host "  Uncommented import" -ForegroundColor Gray
 } elseif ($content -notmatch "import CommandCenter from") {
     $content = $content -replace "(import Login from [^;]+;)", "`$1`nimport CommandCenter from './screens/CommandCenter';"
-    Write-Host "  Added import" -ForegroundColor Gray
 }
 
-# Enable route
+# Handle route
 if ($content -match "\{/\*.*CommandCenter.*disabled.*\*/\}") {
     $content = $content -replace '\{/\*\s*CommandCenter route disabled\s*\*/\}', '<Route path="/command-center" element={<CommandCenter />} />'
-    Write-Host "  Enabled route" -ForegroundColor Gray
 } elseif ($content -notmatch 'path="/command-center"') {
     $content = $content -replace '(<Route path="\*")', '<Route path="/command-center" element={<CommandCenter />} />`n          $1'
-    Write-Host "  Added route" -ForegroundColor Gray
 }
 
 $content | Set-Content $appPath -NoNewline
-Write-Host "  OK: App.tsx updated" -ForegroundColor Green
-
-#------------------------------------------------------------------------------
-# Step 5: Ensure tsconfig excludes
-#------------------------------------------------------------------------------
-
-Write-Host "`n[5/6] Checking tsconfig.json..." -ForegroundColor Yellow
-
-$tsconfigPath = "tsconfig.json"
-$tsconfig = Get-Content $tsconfigPath -Raw | ConvertFrom-Json
-
-if (-not $tsconfig.exclude) {
-    $tsconfig | Add-Member -Name "exclude" -Value @() -MemberType NoteProperty -Force
-}
-
-$tsconfig.exclude = @("node_modules", "dist", "src/_lovable_backup_*", "**/*.bak")
-$tsconfig | ConvertTo-Json -Depth 10 | Set-Content $tsconfigPath
 Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 6: Build and Push
+# Step 8: Fix tsconfig, Build, and Push
 #------------------------------------------------------------------------------
 
-Write-Host "`n[6/6] Building and pushing..." -ForegroundColor Yellow
+Write-Host "`n[8/8] Building and pushing..." -ForegroundColor Yellow
 
+# Fix tsconfig excludes
+$tsconfig = Get-Content "tsconfig.json" -Raw | ConvertFrom-Json
+if (-not $tsconfig.exclude) {
+    $tsconfig | Add-Member -Name "exclude" -Value @() -MemberType NoteProperty -Force
+}
+$tsconfig.exclude = @("node_modules", "dist", "src/_lovable_backup_*", "**/*.bak")
+$tsconfig | ConvertTo-Json -Depth 10 | Set-Content "tsconfig.json"
+
+# Build
 npm run build
 
 if ($LASTEXITCODE -ne 0) {
@@ -115,6 +156,7 @@ if ($LASTEXITCODE -ne 0) {
 
 Write-Host "  Build OK" -ForegroundColor Green
 
+# Push
 pac code push
 
 if ($LASTEXITCODE -ne 0) {
@@ -129,6 +171,14 @@ if ($LASTEXITCODE -ne 0) {
 Write-Host "`n========================================" -ForegroundColor Green
 Write-Host "SUCCESS!" -ForegroundColor Green
 Write-Host "========================================" -ForegroundColor Green
-Write-Host "`nNew features enabled:" -ForegroundColor Cyan
-Write-Host "  * CommandCenter - Animated dashboard at /command-center" -ForegroundColor White
-Write-Host "`nRefresh your Power Apps browser tab!" -ForegroundColor Yellow
+Write-Host "`nCommandCenter enabled at /command-center" -ForegroundColor Cyan
+Write-Host "Features:" -ForegroundColor Yellow
+Write-Host "  * Animated floating orbs background" -ForegroundColor White
+Write-Host "  * Glowing stat cards with hover effects" -ForegroundColor White
+Write-Host "  * Animated counters" -ForegroundColor White
+Write-Host "  * Circular progress indicators" -ForegroundColor White
+Write-Host "  * Workstream progress bars" -ForegroundColor White
+Write-Host "  * Team avatar stack" -ForegroundColor White
+Write-Host "  * Particle effects" -ForegroundColor White
+Write-Host "  * ALL using REAL Dataverse data!" -ForegroundColor Green
+Write-Host "`nRefresh your Power Apps browser!" -ForegroundColor Yellow

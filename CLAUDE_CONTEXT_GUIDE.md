@@ -1,7 +1,25 @@
 # Claude Context Guide for Project Governance DVUI
 
-**Last Updated:** Jan 19, 2026 - 03:20 PM EST
+**Last Updated:** Jan 19, 2026 - 08:35 PM EST
 **Last Successful Push:** Jan 19, 2026 - 03:15 PM EST (fix-dvui-build.ps1 v2)
+**Current Script Version:** v4
+
+---
+
+## CRITICAL: Read This First!
+
+If you're a new Claude session, READ THIS ENTIRE FILE before doing anything. Georg has lost context multiple times and is frustrated with having to re-explain things.
+
+**DO NOT:**
+- Clone repos unnecessarily (the repo is already at `/tmp/Test/`)
+- Mention Google OAuth (that was days ago, not relevant now)
+- Use mockData (it doesn't exist!)
+- Suggest git pull on PwC laptop (it connects to PwC GitHub, not personal GitHub)
+
+**DO:**
+- Update `fix-dvui-build.ps1` in `/tmp/Test/`
+- Push to Georg's personal GitHub
+- Give Georg the Invoke-WebRequest command to run
 
 ---
 
@@ -14,7 +32,7 @@ There are **TWO separate apps**:
 | App | Status | Purpose |
 |-----|--------|---------|
 | **Project Governance DV** | ✅ Working | The original app, fully functional |
-| **Project Governance DVUI** | ✅ Now Working | Enhanced UI version with Lovable components |
+| **Project Governance DVUI** | ✅ Working | Enhanced UI version - NOW ADDING LOVABLE COMPONENTS |
 
 ---
 
@@ -26,6 +44,7 @@ There are **TWO separate apps**:
 - **Auth:** Microsoft SSO (MSAL) configured in `AuthContext.tsx`
 - **State:** React Query + localStorage caching
 - **Deployment:** `pac code push` to Power Apps
+- **Animations:** `framer-motion` (for CommandCenter)
 
 ---
 
@@ -54,25 +73,30 @@ https://github.com/georgchimion-oss/Test
 Branch: claude/powerapp-sharepoint-deliverables-vbZKv
 ```
 
+### Local Clone for Claude (MacBook)
+```
+/tmp/Test/
+```
+
 ### Key Files in the Repo
-- `fix-dvui-build.ps1` - **THE SCRIPT** Claude updates for Georg to execute
-- `CODEX_PROJECT_CONTEXT.md` - High-level project context
-- `CODEX_COMPLETE_GUIDE.md` - Dataverse integration guide
-- `CODEX_INSTRUCTIONS.md` - Detailed instructions
-- `dvui save/` - Backup of working DVUI state
-- `lovable-app-organized/` - Fancy Lovable UI components to integrate
+| File | Purpose |
+|------|---------|
+| `fix-dvui-build.ps1` | **THE SCRIPT** - Claude updates this, Georg executes it |
+| `CLAUDE_CONTEXT_GUIDE.md` | **THIS FILE** - Read it to understand context |
+| `dvui save/` | Backup of working DVUI with CommandCenter already converted |
+| `lovable-app-organized/` | Fancy Lovable UI components (uses mockData - needs conversion) |
 
 ---
 
-## Current App State (as of Jan 19, 2026)
+## Current App State (as of Jan 19, 2026 - 8:35 PM)
 
-### Working Screens (14 total)
-1. DashboardEnhanced.tsx - Main dashboard with cards/table/kanban views
+### Working Screens (13 screens, CommandCenter pending)
+1. DashboardEnhanced.tsx - Main dashboard
 2. Deliverables.tsx - Deliverable management
 3. Staff.tsx - Staff management
 4. Workstreams.tsx - Workstream management
-5. Kanban.tsx - Kanban board view
-6. Gantt.tsx - Gantt chart view
+5. Kanban.tsx - Kanban board (basic styling, uses dataLayer)
+6. Gantt.tsx - Gantt chart (basic styling, uses dataLayer)
 7. PTORequests.tsx - PTO request management
 8. HoursTracking.tsx - Hours logging
 9. OrgChartHierarchy.tsx - Org chart by hierarchy
@@ -81,107 +105,150 @@ Branch: claude/powerapp-sharepoint-deliverables-vbZKv
 12. Login.tsx - Login screen
 13. Dashboard.tsx - Old dashboard (route: /dashboard-old)
 
-### Disabled/Backed Up
-- **CommandCenter.tsx** - Renamed to `.bak`, needs mockData→dataLayer conversion
-- **src/components/dashboard/** - Backed up, uses mockData
-- **src/components/layout/Header.tsx** - Backed up, uses mockData
-- **src/components/layout/AppSidebar.tsx** - Backed up, uses mockData
-- **src/components/layout/MainLayout.tsx** - Backed up, imports removed files
-- **calendar.tsx, chart.tsx, resizable.tsx** - Deleted due to type errors
+### About to Enable (v4 script)
+- **CommandCenter.tsx** - Animated dashboard with:
+  - Floating orbs background
+  - Glowing stat cards
+  - Animated counters
+  - Circular progress indicators
+  - Workstream progress bars
+  - Team avatar stack
+  - Particle effects
+  - **ALL USING REAL DATAVERSE DATA** (no mockData!)
 
-### Backup Location
-```
-src\_lovable_backup_20260119_142119\
-```
+### Disabled/Backed Up (in DVUI app on PwC laptop)
+- `src/components/layout/` - Layout files were backed up
+- `src/components/dashboard/` - Dashboard widgets backed up
+- `calendar.tsx, chart.tsx, resizable.tsx` - Deleted due to type errors
 
 ---
 
-## How Claude Delivers Code to Georg
+## The Workflow: How Claude Delivers Code to Georg
 
-**IMPORTANT:** Georg's PwC laptop connects to PwC GitHub, NOT his personal GitHub. Claude cannot push directly to PwC GitHub.
+**IMPORTANT:** Georg's PwC laptop connects to PwC GitHub, NOT his personal GitHub.
 
-### The Workflow:
-1. Claude updates `fix-dvui-build.ps1` (or other scripts) in `/tmp/Test/`
+### Step-by-Step:
+1. Claude edits files in `/tmp/Test/` on Georg's MacBook
 2. Claude commits and pushes to Georg's personal GitHub
-3. Georg runs this command on PwC laptop:
+3. Claude gives Georg this command:
    ```powershell
+   cd "C:\Users\gchimion001\OneDrive - PwC\Desktop\VSCODE\PowerAppsRepoPWC\VSCODE\project-governance-dvui"
+
    Invoke-WebRequest -Uri "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/powerapp-sharepoint-deliverables-vbZKv/fix-dvui-build.ps1" -OutFile "fix-dvui-build.ps1"; .\fix-dvui-build.ps1
    ```
-4. Script executes, builds, and pushes to Power Apps
+4. Script downloads files from GitHub, builds, and pushes to Power Apps
 
 ### Script Naming Convention
-- `fix-dvui-build.ps1` - Main fix/build script
-- Any new scripts should follow pattern: `action-description.ps1`
+- `fix-dvui-build.ps1` - Main deployment script (keep updating this one)
 
 ---
 
 ## Data Layer Architecture
 
-### Current (Working)
-- `src/data/dataLayer.ts` - Main data functions (getStaff, getDeliverables, etc.)
-- `src/data/auditLayer.ts` - Audit logging
-- Uses localStorage for caching
-- Syncs with Dataverse via `syncDataverseData()`
+### Two Data Access Patterns
+
+**Pattern 1: dataLayer.ts (synchronous, localStorage)**
+```typescript
+import { getDeliverables, getStaff, getWorkstreams } from '../data/dataLayer'
+const deliverables = getDeliverables()  // returns array from localStorage
+```
+- Used by: Kanban.tsx, Gantt.tsx, most existing screens
+
+**Pattern 2: dataverseService.ts (React Query hooks)**
+```typescript
+import { useGetDeliverables, useGetStaff, useGetWorkstreams } from '@/services/dataverseService'
+const { data: deliverables = [], isLoading } = useGetDeliverables()
+```
+- Used by: CommandCenter.tsx (the Lovable version in `dvui save/`)
+- Returns `{ data, isLoading, error }` pattern
 
 ### DO NOT USE
-- `@/data/mockData` - This file doesn't exist! Lovable components reference it but it's not compatible.
+- `@/data/mockData` - **THIS FILE DOES NOT EXIST!**
+- Lovable components reference it but we must convert to dataLayer or dataverseService
 
 ---
 
-## What Needs to Be Done Next (Lovable Integration)
+## CommandCenter Dependencies (v4 script installs these)
 
-Georg wants to integrate the fancy UI from `lovable-app-organized/` into DVUI:
+### NPM Packages Required
+- `framer-motion` - For animations
 
-### Lovable Components to Integrate
-1. **Gantt chart** - Better than current
-2. **Kanban view** - Better styling
-3. **Resource planning** - New feature
-4. **CommandCenter** - Animated dashboard with metrics
+### Files Required from `dvui save/`
+| File | Purpose |
+|------|---------|
+| `src/screens/CommandCenter.tsx` | The main screen (uses dataverseService hooks) |
+| `src/services/dataverseService.ts` | React Query hooks for Dataverse |
+| `src/components/layout/MainLayout.tsx` | Layout wrapper |
+| `src/components/layout/AppSidebar.tsx` | Sidebar navigation |
+| `src/components/layout/Header.tsx` | Top header |
+| `src/components/layout/NavLink.tsx` | Navigation link component |
+| `src/components/ui/card.tsx` | Card component |
+| `src/components/ui/button.tsx` | Button component |
+| `src/components/ui/avatar.tsx` | Avatar component |
+| `src/components/ui/input.tsx` | Input component |
+| `src/components/ui/dropdown-menu.tsx` | Dropdown menu |
+| `src/components/ui/badge.tsx` | Badge component |
 
-### The Challenge
-Lovable components use `@/data/mockData` which doesn't exist. They need to be converted to use `dataLayer.ts` functions instead:
-- `mockData.deliverables` → `getDeliverables()`
-- `mockData.workstreams` → `getWorkstreams()`
-- `mockData.teamMembers` → `getStaff()`
-- `mockData.currentUser` → `useAuth().currentUser`
+### What CommandCenter.tsx imports:
+```typescript
+import { motion } from "framer-motion";  // Animations
+import { MainLayout } from "@/components/layout/MainLayout";  // Layout
+import { Card } from "@/components/ui/card";  // UI component
+import { useGetDeliverables, useGetWorkstreams, useGetStaff } from "@/services/dataverseService";  // DATA!
+```
 
-### Integration Strategy
-1. One component at a time
-2. Update imports from mockData to dataLayer
-3. Adjust type definitions to match existing types
-4. Test locally with `npm run dev`
-5. Build and push via script
+**NO mockData references!** ✅
 
 ---
 
-## Common Commands
+## Converting Lovable Components to Dataverse
 
-### On PwC Laptop (PowerShell)
-```powershell
-# Navigate to project
-cd "C:\Users\gchimion001\OneDrive - PwC\Desktop\VSCODE\PowerAppsRepoPWC\VSCODE\project-governance-dvui"
+When converting components from `lovable-app-organized/`:
 
-# Download and run latest script
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/powerapp-sharepoint-deliverables-vbZKv/fix-dvui-build.ps1" -OutFile "fix-dvui-build.ps1"; .\fix-dvui-build.ps1
+### Replace These Imports:
+```typescript
+// FROM (Lovable - WRONG)
+import { deliverables, teamMembers, workstreams, currentUser } from '@/data/mockData';
 
-# Manual build
-npm run build
+// TO (dataLayer - synchronous)
+import { getDeliverables, getStaff, getWorkstreams } from '../data/dataLayer';
+import { useAuth } from '../context/AuthContext';
+const deliverables = getDeliverables();
+const staff = getStaff();
+const workstreams = getWorkstreams();
+const { currentUser } = useAuth();
 
-# Manual push
-pac code push
-
-# Check Power Apps auth
-pac auth list
+// OR TO (dataverseService - React Query)
+import { useGetDeliverables, useGetStaff, useGetWorkstreams } from '@/services/dataverseService';
+const { data: deliverables = [] } = useGetDeliverables();
+const { data: staff = [] } = useGetStaff();
+const { data: workstreams = [] } = useGetWorkstreams();
 ```
 
-### For Claude (on Georg's MacBook via Claude Code)
-```bash
-# Clone/update repo
-cd /tmp && rm -rf Test && git clone --branch claude/powerapp-sharepoint-deliverables-vbZKv https://github.com/georgchimion-oss/Test.git
+---
 
-# After editing files
-cd /tmp/Test && git add . && git commit -m "message" && git push origin claude/powerapp-sharepoint-deliverables-vbZKv
-```
+## Key Learnings / Gotchas
+
+1. **SharePoint NOT supported** for Code Apps - only Dataverse works
+2. **Backup folders get compiled** - Add to tsconfig.json exclude: `"src/_lovable_backup_*"`
+3. **`.bak` files get compiled** - Add `"**/*.bak"` to exclude
+4. **PowerShell regex is tricky** - Complex JSX patterns often fail
+5. **npm install can be slow** on PwC network
+6. **pac code push** requires auth - check with `pac auth list`
+7. **Don't clone unnecessarily** - repo already exists at `/tmp/Test/`
+8. **Don't suggest git pull** - PwC laptop uses different GitHub
+9. **CommandCenter uses dataverseService** NOT dataLayer (both work, different patterns)
+10. **framer-motion** required for CommandCenter animations
+
+---
+
+## Version History
+
+| Date | Version | Changes |
+|------|---------|---------|
+| Jan 19, 2026 20:35 | v4 | Enable CommandCenter with ALL dependencies (layout, UI, framer-motion) |
+| Jan 19, 2026 15:15 | v2 | Fixed build - excluded backup folders, disabled CommandCenter |
+| Jan 19, 2026 14:30 | v1 | Initial script - installed deps, backed up mockData components |
 
 ---
 
@@ -193,30 +260,28 @@ cd /tmp/Test && git add . && git commit -m "message" && git push origin claude/p
 
 ---
 
-## Key Learnings / Gotchas
+## Quick Reference Commands
 
-1. **SharePoint NOT supported** for Code Apps - only Dataverse works
-2. **Backup folders get compiled** - Must add to tsconfig.json exclude
-3. **`.bak` files get compiled** - Must add `**/*.bak` to exclude
-4. **PowerShell regex is tricky** - Complex JSX patterns often fail, manual fix is faster
-5. **npm install can be slow** on PwC network - individual installs work better
-6. **pac code push** requires auth - check with `pac auth list`
+### For Claude (on MacBook):
+```bash
+# Edit files in /tmp/Test/
+# Then push:
+cd /tmp/Test && git add . && git commit -m "description" && git push origin claude/powerapp-sharepoint-deliverables-vbZKv
+```
 
----
+### For Georg (on PwC Laptop):
+```powershell
+cd "C:\Users\gchimion001\OneDrive - PwC\Desktop\VSCODE\PowerAppsRepoPWC\VSCODE\project-governance-dvui"
 
-## Version History
-
-| Date | Version | Changes |
-|------|---------|---------|
-| Jan 19, 2026 15:15 | v2 | Fixed build - excluded backup folders, removed broken UI components, disabled CommandCenter |
-| Jan 19, 2026 14:30 | v1 | Initial script - installed deps, backed up mockData components |
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/powerapp-sharepoint-deliverables-vbZKv/fix-dvui-build.ps1" -OutFile "fix-dvui-build.ps1"; .\fix-dvui-build.ps1
+```
 
 ---
 
 ## Contact / Sessions
 
-- **Georg's MacBook:** Claude Code in VS Code (this session)
-- **Georg's PwC Laptop:** VS Code with Codex (ran out of credits)
-- **Georg's Personal PC:** Claude Code in browser (had connection issues)
+- **Georg's MacBook:** Claude Code in VS Code
+- **Georg's PwC Laptop:** Where the actual code lives and builds happen
+- **Georg's Personal PC:** Backup option
 
-**Remember:** Sessions are isolated. If context is lost, read this file first!
+**Sessions are isolated. If context is lost, read this file FIRST!**
