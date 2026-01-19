@@ -1,11 +1,11 @@
 # ============================================================
 # DVUI + Lovable UI + CommandCenter Setup Script
-# Version: Jan 19, 2026 - 02:28 AM
+# Version: Jan 19, 2026 - 02:29 AM
 # ============================================================
 
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host "DVUI Enhanced Setup Script" -ForegroundColor Cyan
-Write-Host "Version: Jan 19, 2026 - 02:28 AM" -ForegroundColor Yellow
+Write-Host "Version: Jan 19, 2026 - 02:29 AM" -ForegroundColor Yellow
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 
@@ -374,24 +374,24 @@ $baseUrl = "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/power
 
 try {
     Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/App.tsx" -OutFile "src\App.tsx" -ErrorAction Stop
-    Write-Host "  ✓ Downloaded App.tsx" -ForegroundColor Green
+    Write-Host "  [OK] Downloaded App.tsx" -ForegroundColor Green
 } catch {
-    Write-Host "  ✗ Failed to download App.tsx: $_" -ForegroundColor Red
+    Write-Host "  [X] Failed to download App.tsx: $_" -ForegroundColor Red
 }
 
 try {
     Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/components/Layout.tsx" -OutFile "src\components\Layout.tsx" -ErrorAction Stop
-    Write-Host "  ✓ Downloaded Layout.tsx" -ForegroundColor Green
+    Write-Host "  [OK] Downloaded Layout.tsx" -ForegroundColor Green
 } catch {
-    Write-Host "  ✗ Failed to download Layout.tsx: $_" -ForegroundColor Red
+    Write-Host "  [X] Failed to download Layout.tsx: $_" -ForegroundColor Red
 }
 
 # Download CommandCenter
 try {
     Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/screens/CommandCenter.tsx" -OutFile "src\screens\CommandCenter.tsx" -ErrorAction Stop
-    Write-Host "  ✓ Downloaded CommandCenter.tsx" -ForegroundColor Green
+    Write-Host "  [OK] Downloaded CommandCenter.tsx" -ForegroundColor Green
 } catch {
-    Write-Host "  ✗ Failed to download CommandCenter.tsx: $_" -ForegroundColor Red
+    Write-Host "  [X] Failed to download CommandCenter.tsx: $_" -ForegroundColor Red
 }
 
 # Download all Lovable UI components
@@ -416,7 +416,7 @@ foreach ($component in $uiComponents) {
         # Skip if not found
     }
 }
-Write-Host "  ✓ Downloaded $downloadedCount UI components" -ForegroundColor Green
+Write-Host "  [OK] Downloaded $downloadedCount UI components" -ForegroundColor Green
 
 # Download dashboard components
 $dashboardComponents = @("DeliverableRow", "KPICard", "ProjectProgress", "RecentActivity", "RiskOverview", "UpcomingDeadlines")
@@ -427,7 +427,7 @@ foreach ($component in $dashboardComponents) {
         # Skip if not found
     }
 }
-Write-Host "  ✓ Downloaded dashboard components" -ForegroundColor Green
+Write-Host "  [OK] Downloaded dashboard components" -ForegroundColor Green
 
 # Download layout components
 $layoutComponents = @("AppSidebar", "Header", "MainLayout", "NavLink")
@@ -438,13 +438,13 @@ foreach ($component in $layoutComponents) {
         # Skip if not found
     }
 }
-Write-Host "  ✓ Downloaded layout components" -ForegroundColor Green
+Write-Host "  [OK] Downloaded layout components" -ForegroundColor Green
 
 # Download lib files
 try {
     Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/lib/utils.ts" -OutFile "src\lib\utils.ts" -ErrorAction SilentlyContinue
     Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/data-lovable/mockData.ts" -OutFile "src\data-lovable\mockData.ts" -ErrorAction SilentlyContinue
-    Write-Host "  ✓ Downloaded utilities and data" -ForegroundColor Green
+    Write-Host "  [OK] Downloaded utilities and data" -ForegroundColor Green
 } catch {
     # Skip if not found
 }
@@ -460,13 +460,13 @@ Write-Host "Setup Complete!" -ForegroundColor Green
 Write-Host "========================================`n" -ForegroundColor Cyan
 
 Write-Host "What was done:" -ForegroundColor Yellow
-Write-Host "  ✓ Cleaned up conflicting files" -ForegroundColor White
-Write-Host "  ✓ Installed all dependencies (Radix UI, Framer Motion, etc.)" -ForegroundColor White
-Write-Host "  ✓ Configured Tailwind CSS with PWC design system" -ForegroundColor White
-Write-Host "  ✓ Configured TypeScript & Vite with @ path aliases" -ForegroundColor White
-Write-Host "  ✓ Downloaded 50+ Lovable UI components from GitHub" -ForegroundColor White
-Write-Host "  ✓ Downloaded CommandCenter, dashboard, and layout components" -ForegroundColor White
-Write-Host "  ✓ Downloaded enhanced App.tsx and Layout.tsx with all routes`n" -ForegroundColor White
+Write-Host "  [OK] Cleaned up conflicting files" -ForegroundColor White
+Write-Host "  [OK] Installed all dependencies (Radix UI, Framer Motion, etc.)" -ForegroundColor White
+Write-Host "  [OK] Configured Tailwind CSS with PWC design system" -ForegroundColor White
+Write-Host "  [OK] Configured TypeScript & Vite with @ path aliases" -ForegroundColor White
+Write-Host "  [OK] Downloaded 50+ Lovable UI components from GitHub" -ForegroundColor White
+Write-Host "  [OK] Downloaded CommandCenter, dashboard, and layout components" -ForegroundColor White
+Write-Host "  [OK] Downloaded enhanced App.tsx and Layout.tsx with all routes`n" -ForegroundColor White
 
 Write-Host "Next commands:" -ForegroundColor Yellow
 Write-Host "  npm install" -ForegroundColor White
@@ -474,9 +474,9 @@ Write-Host "  npm run build" -ForegroundColor White
 Write-Host "  pac code push`n" -ForegroundColor White
 
 Write-Host "Your app now has:" -ForegroundColor Yellow
-Write-Host "  • All original screens (Dashboard, Kanban, Gantt, etc.)" -ForegroundColor White
-Write-Host "  • CommandCenter with animations (⚡ in sidebar)" -ForegroundColor White
-Write-Host "  • 50+ Lovable UI components ready to use" -ForegroundColor White
-Write-Host "  • Enhanced navigation and layouts`n" -ForegroundColor White
+Write-Host "  * All original screens (Dashboard, Kanban, Gantt, etc.)" -ForegroundColor White
+Write-Host "  * CommandCenter with animations (⚡ in sidebar)" -ForegroundColor White
+Write-Host "  * 50+ Lovable UI components ready to use" -ForegroundColor White
+Write-Host "  * Enhanced navigation and layouts`n" -ForegroundColor White
 
 Write-Host "To update later, just run this script again!`n" -ForegroundColor Cyan
