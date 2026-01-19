@@ -1,11 +1,11 @@
 # ============================================================
 # DVUI + Lovable UI + CommandCenter Setup Script
-# Version: Jan 19, 2026 - 02:29 AM
+# Version: Jan 18, 2026 - 09:31 PM EST
 # ============================================================
 
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host "DVUI Enhanced Setup Script" -ForegroundColor Cyan
-Write-Host "Version: Jan 19, 2026 - 02:29 AM" -ForegroundColor Yellow
+Write-Host "Version: Jan 18, 2026 - 09:31 PM EST" -ForegroundColor Yellow
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 

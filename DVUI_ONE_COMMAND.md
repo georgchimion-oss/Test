@@ -37,7 +37,7 @@ pac code push
 Open your app in Power Apps. You should see a **big blue/purple banner** at the top that says:
 
 ```
-VERSION: Jan 19, 2026 - 02:29 AM
+VERSION: Jan 18, 2026 - 09:31 PM EST
 ```
 
 **If you see that exact timestamp, it worked!**
