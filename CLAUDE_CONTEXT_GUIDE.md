@@ -1,24 +1,25 @@
 # Claude Context Guide for Project Governance DVUI
 
-**Last Updated:** Jan 20, 2026 - 1:15 AM EST
-**Last Successful Push:** Jan 20, 2026 - 1:10 AM EST (fix-dvui-build.ps1 v9)
-**Current Script Version:** v9
+**Last Updated:** Jan 20, 2026 - 2:15 AM EST
+**Last Successful Push:** Jan 20, 2026 - 2:10 AM EST (fix-dvui-build.ps1 v10)
+**Current Script Version:** v10
 
-## CURRENT STATUS: v9 DEPLOYED
+## CURRENT STATUS: v10 DEPLOYED
 - 15 fun themes (France, Paris, PSG, Matrix, Barbie, etc.)
 - Theme dropdown in header on ALL screens
 - Staff table: removed Role & Department columns
 - Theme persists in localStorage
 - **Deliverables screen: Add Comment button (message icon) - DONE**
 - **Kanban: Dataverse persistence + filter dropdowns - DONE**
+- **Project Overview: NEW LANDING PAGE with KPI drill-down - DONE**
 
 ## NEXT TASKS
 1. ~~**Deliverables screen** - Add comment button~~ ✅ DONE (v8)
 2. ~~**Kanban** - Persist drag changes to Dataverse + add filter dropdowns~~ ✅ DONE (v9)
-3. **CommandCenter → Project Overview** - Rename screen + make it LANDING PAGE (top of sidebar, above My Work):
-   - Remove "Active Team" section
-   - Add KPI cards: Deliverables due this month, Due next 2 weeks, Late deliverables
-   - Click on KPI → drill down to list → click item → see comments & history
+3. ~~**CommandCenter → Project Overview** - Rename screen + make it LANDING PAGE~~ ✅ DONE (v10)
+   - ~~Remove "Active Team" section~~ ✅
+   - ~~Add KPI cards: Deliverables due this month, Due next 2 weeks, Late deliverables~~ ✅
+   - ~~Click on KPI → drill down to list → click item → see comments & history~~ ✅
 4. **Resource Management screen** - New screen based on Lovable (file: `/tmp/Test/lovable-app-organized/src/pages/Resources.tsx`)
 5. **Skills** - Use existing `role` field for skills (comma-separated text like "React, TypeScript")
 
