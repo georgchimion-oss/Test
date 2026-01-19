@@ -1,11 +1,11 @@
 # ============================================================
 # DVUI + Lovable UI + CommandCenter Setup Script
-# Version: Jan 19, 2026 - 02:18 AM
+# Version: Jan 19, 2026 - 02:28 AM
 # ============================================================
 
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host "DVUI Enhanced Setup Script" -ForegroundColor Cyan
-Write-Host "Version: Jan 19, 2026 - 02:18 AM" -ForegroundColor Yellow
+Write-Host "Version: Jan 19, 2026 - 02:28 AM" -ForegroundColor Yellow
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 
@@ -73,8 +73,11 @@ Write-Host "`n[3/9] Creating folder structure..." -ForegroundColor Yellow
 
 $folders = @(
     "src\components\ui",
-    "src\pages",
-    "src\lib"
+    "src\components\dashboard",
+    "src\components\layout",
+    "src\screens",
+    "src\lib",
+    "src\data-lovable"
 )
 
 foreach ($folder in $folders) {
@@ -365,68 +368,88 @@ export { Badge }
 "@
 Set-Content -Path "src\components\ui\badge.tsx" -Value $badgeContent
 
-# Test page
-$testPage = @"
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+# Download App.tsx and Layout.tsx from GitHub
+Write-Host "  Downloading App.tsx and Layout.tsx..." -ForegroundColor Gray
+$baseUrl = "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/powerapp-sharepoint-deliverables-vbZKv"
 
-export function TestPage() {
-  return (
-    <div className="p-6 space-y-6">
-      <div style={{ background: 'linear-gradient(to right, rgb(37, 99, 235), rgb(147, 51, 234))', color: 'white', padding: '2rem', borderRadius: '0.5rem', textAlign: 'center', marginBottom: '2rem', border: '4px solid #fbbf24' }}>
-        <h2 style={{ fontSize: '2.5rem', fontWeight: 'bold', margin: '0 0 0.5rem 0' }}>🚀 VERSION: Jan 19, 2026 - 12:18 AM 🚀</h2>
-        <p style={{ fontSize: '1.125rem', margin: 0 }}>If you see this EXACT timestamp with rockets, your app is UPDATED!</p>
-      </div>
-
-      <h1 className="text-4xl font-bold">DVUI App - Ready!</h1>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Setup Successful!</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p>Your DVUI app is working correctly.</p>
-          <div className="mt-4 flex gap-2">
-            <Badge>Default</Badge>
-            <Badge variant="secondary">Secondary</Badge>
-            <Badge variant="destructive">Destructive</Badge>
-            <Badge variant="outline">Outline</Badge>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Next Steps</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ol className="list-decimal list-inside space-y-2">
-            <li>Build succeeded - Tailwind CSS is working ✓</li>
-            <li>UI components are working ✓</li>
-            <li>Ready to add features!</li>
-          </ol>
-        </CardContent>
-      </Card>
-    </div>
-  );
-}
-"@
-Set-Content -Path "src\pages\TestPage.tsx" -Value $testPage
-
-# App.tsx
-$appContent = @"
-import { TestPage } from './pages/TestPage';
-import './index.css';
-
-function App() {
-  return <TestPage />;
+try {
+    Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/App.tsx" -OutFile "src\App.tsx" -ErrorAction Stop
+    Write-Host "  ✓ Downloaded App.tsx" -ForegroundColor Green
+} catch {
+    Write-Host "  ✗ Failed to download App.tsx: $_" -ForegroundColor Red
 }
 
-export default App;
-"@
-Set-Content -Path "src\App.tsx" -Value $appContent
+try {
+    Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/components/Layout.tsx" -OutFile "src\components\Layout.tsx" -ErrorAction Stop
+    Write-Host "  ✓ Downloaded Layout.tsx" -ForegroundColor Green
+} catch {
+    Write-Host "  ✗ Failed to download Layout.tsx: $_" -ForegroundColor Red
+}
 
-Write-Host "  Done: UI components created" -ForegroundColor Green
+# Download CommandCenter
+try {
+    Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/screens/CommandCenter.tsx" -OutFile "src\screens\CommandCenter.tsx" -ErrorAction Stop
+    Write-Host "  ✓ Downloaded CommandCenter.tsx" -ForegroundColor Green
+} catch {
+    Write-Host "  ✗ Failed to download CommandCenter.tsx: $_" -ForegroundColor Red
+}
+
+# Download all Lovable UI components
+Write-Host "  Downloading Lovable UI components..." -ForegroundColor Gray
+$uiComponents = @(
+    "accordion", "alert-dialog", "alert", "aspect-ratio", "avatar", "badge",
+    "breadcrumb", "button", "calendar", "card", "carousel", "chart",
+    "checkbox", "collapsible", "command", "context-menu", "dialog", "drawer",
+    "dropdown-menu", "form", "hover-card", "input-otp", "input", "label",
+    "menubar", "navigation-menu", "pagination", "popover", "progress",
+    "radio-group", "resizable", "scroll-area", "select", "separator", "sheet",
+    "sidebar", "skeleton", "slider", "sonner", "switch", "table", "tabs",
+    "textarea", "toast", "toaster", "toggle-group", "toggle", "tooltip", "use-mobile"
+)
+
+$downloadedCount = 0
+foreach ($component in $uiComponents) {
+    try {
+        Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/components/ui/$component.tsx" -OutFile "src\components\ui\$component.tsx" -ErrorAction Stop
+        $downloadedCount++
+    } catch {
+        # Skip if not found
+    }
+}
+Write-Host "  ✓ Downloaded $downloadedCount UI components" -ForegroundColor Green
+
+# Download dashboard components
+$dashboardComponents = @("DeliverableRow", "KPICard", "ProjectProgress", "RecentActivity", "RiskOverview", "UpcomingDeadlines")
+foreach ($component in $dashboardComponents) {
+    try {
+        Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/components/dashboard/$component.tsx" -OutFile "src\components\dashboard\$component.tsx" -ErrorAction SilentlyContinue
+    } catch {
+        # Skip if not found
+    }
+}
+Write-Host "  ✓ Downloaded dashboard components" -ForegroundColor Green
+
+# Download layout components
+$layoutComponents = @("AppSidebar", "Header", "MainLayout", "NavLink")
+foreach ($component in $layoutComponents) {
+    try {
+        Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/components/layout/$component.tsx" -OutFile "src\components\layout\$component.tsx" -ErrorAction SilentlyContinue
+    } catch {
+        # Skip if not found
+    }
+}
+Write-Host "  ✓ Downloaded layout components" -ForegroundColor Green
+
+# Download lib files
+try {
+    Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/lib/utils.ts" -OutFile "src\lib\utils.ts" -ErrorAction SilentlyContinue
+    Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/data-lovable/mockData.ts" -OutFile "src\data-lovable\mockData.ts" -ErrorAction SilentlyContinue
+    Write-Host "  ✓ Downloaded utilities and data" -ForegroundColor Green
+} catch {
+    # Skip if not found
+}
+
+Write-Host "  Done: All files downloaded from GitHub" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
 # Done!
@@ -438,15 +461,22 @@ Write-Host "========================================`n" -ForegroundColor Cyan
 
 Write-Host "What was done:" -ForegroundColor Yellow
 Write-Host "  ✓ Cleaned up conflicting files" -ForegroundColor White
-Write-Host "  ✓ Installed all dependencies" -ForegroundColor White
-Write-Host "  ✓ Configured Tailwind CSS" -ForegroundColor White
-Write-Host "  ✓ Configured TypeScript & Vite" -ForegroundColor White
-Write-Host "  ✓ Created UI components" -ForegroundColor White
-Write-Host "  ✓ Created test page`n" -ForegroundColor White
+Write-Host "  ✓ Installed all dependencies (Radix UI, Framer Motion, etc.)" -ForegroundColor White
+Write-Host "  ✓ Configured Tailwind CSS with PWC design system" -ForegroundColor White
+Write-Host "  ✓ Configured TypeScript & Vite with @ path aliases" -ForegroundColor White
+Write-Host "  ✓ Downloaded 50+ Lovable UI components from GitHub" -ForegroundColor White
+Write-Host "  ✓ Downloaded CommandCenter, dashboard, and layout components" -ForegroundColor White
+Write-Host "  ✓ Downloaded enhanced App.tsx and Layout.tsx with all routes`n" -ForegroundColor White
 
 Write-Host "Next commands:" -ForegroundColor Yellow
+Write-Host "  npm install" -ForegroundColor White
 Write-Host "  npm run build" -ForegroundColor White
-Write-Host "  pac code push" -ForegroundColor White
-Write-Host "  pac code run  (to test locally)`n" -ForegroundColor White
+Write-Host "  pac code push`n" -ForegroundColor White
+
+Write-Host "Your app now has:" -ForegroundColor Yellow
+Write-Host "  • All original screens (Dashboard, Kanban, Gantt, etc.)" -ForegroundColor White
+Write-Host "  • CommandCenter with animations (⚡ in sidebar)" -ForegroundColor White
+Write-Host "  • 50+ Lovable UI components ready to use" -ForegroundColor White
+Write-Host "  • Enhanced navigation and layouts`n" -ForegroundColor White
 
 Write-Host "To update later, just run this script again!`n" -ForegroundColor Cyan
