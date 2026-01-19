@@ -24,7 +24,7 @@ import HoursTracking from './screens/HoursTracking'
 import OrgChartHierarchy from './screens/OrgChartHierarchy'
 import OrgChartWorkstream from './screens/OrgChartWorkstream'
 import AdminAnalytics from './screens/AdminAnalytics'
-import CommandCenter from './screens/CommandCenter'
+import ProjectOverview from './screens/ProjectOverview'
 import './App.css'
 
 const queryClient = new QueryClient({
@@ -61,6 +61,12 @@ function AppRoutes() {
     <Routes>
       <Route
         path="/"
+        element={
+          <ProjectOverview />
+        }
+      />
+      <Route
+        path="/my-work"
         element={
           <Layout title="My Work">
             <DashboardEnhanced />
@@ -152,14 +158,6 @@ function AppRoutes() {
         element={
           <Layout title="Admin Analytics">
             <AdminAnalytics />
-          </Layout>
-        }
-      />
-      <Route
-        path="/command-center"
-        element={
-          <Layout title="Command Center">
-            <CommandCenter />
           </Layout>
         }
       />

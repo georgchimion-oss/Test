@@ -1,14 +1,15 @@
 # ============================================================
-# DVUI Build Fix Script v9 - Kanban Dataverse Persistence + Filters
-# Version: Jan 20, 2026 - 12:45 AM
-# - Kanban drag now persists to Dataverse (status, workstream, owner)
-# - Added filter dropdowns: Workstream, User, Status
-# - Filter count badge, Clear Filters button
+# DVUI Build Fix Script v10 - Project Overview Landing Page
+# Version: Jan 20, 2026 - 2:00 AM
+# - NEW: Project Overview as landing page (top of sidebar)
+# - KPI cards: Due this month, Due next 2 weeks, Late deliverables
+# - Click KPI -> drill down to list -> click item -> see history
+# - Removed "Active Team" section from old CommandCenter
 # ============================================================
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "DVUI Build Fix Script v9" -ForegroundColor Cyan
-Write-Host "Kanban Dataverse Persistence + Filters" -ForegroundColor Cyan
+Write-Host "DVUI Build Fix Script v10" -ForegroundColor Cyan
+Write-Host "Project Overview Landing Page" -ForegroundColor Cyan
 Write-Host "Timestamp: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Yellow
 Write-Host "========================================" -ForegroundColor Cyan
 
@@ -27,17 +28,24 @@ if (-not (Test-Path "power.config.json")) {
 Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 2: Install framer-motion
+# Step 2: Install framer-motion + date-fns
 #------------------------------------------------------------------------------
 
-Write-Host "`n[2/8] Installing framer-motion..." -ForegroundColor Yellow
+Write-Host "`n[2/8] Installing dependencies..." -ForegroundColor Yellow
 
 $packageJson = Get-Content "package.json" -Raw | ConvertFrom-Json
 if (-not $packageJson.dependencies.'framer-motion') {
     npm install framer-motion --save 2>&1 | Out-Null
     Write-Host "  Installed framer-motion" -ForegroundColor Gray
 } else {
-    Write-Host "  Already installed" -ForegroundColor Gray
+    Write-Host "  framer-motion already installed" -ForegroundColor Gray
+}
+
+if (-not $packageJson.dependencies.'date-fns') {
+    npm install date-fns --save 2>&1 | Out-Null
+    Write-Host "  Installed date-fns" -ForegroundColor Gray
+} else {
+    Write-Host "  date-fns already installed" -ForegroundColor Gray
 }
 Write-Host "  OK" -ForegroundColor Green
 
@@ -72,12 +80,9 @@ Write-Host "  OK" -ForegroundColor Green
 
 Write-Host "`n[5/8] Downloading updated screens..." -ForegroundColor Yellow
 
-# CommandCenter
-if (Test-Path "src\screens\CommandCenter.tsx.bak") {
-    Remove-Item "src\screens\CommandCenter.tsx.bak" -Force
-}
-Invoke-WebRequest -Uri "$baseUrl/src/screens/CommandCenterInline.tsx" -OutFile "src\screens\CommandCenter.tsx"
-Write-Host "  CommandCenter.tsx (animated dashboard)" -ForegroundColor Gray
+# Project Overview (NEW - Landing page with KPI drill-down!)
+Invoke-WebRequest -Uri "$baseUrl/src/screens/ProjectOverview.tsx" -OutFile "src\screens\ProjectOverview.tsx"
+Write-Host "  ProjectOverview.tsx (NEW - KPI landing page)" -ForegroundColor Green
 
 # Staff (removed Role & Department columns)
 Invoke-WebRequest -Uri "$baseUrl/src/screens/Staff.tsx" -OutFile "src\screens\Staff.tsx"
@@ -91,23 +96,23 @@ Write-Host "  DashboardEnhanced.tsx (uses ThemeContext)" -ForegroundColor Gray
 Invoke-WebRequest -Uri "$baseUrl/src/screens/Deliverables.tsx" -OutFile "src\screens\Deliverables.tsx"
 Write-Host "  Deliverables.tsx (comment button)" -ForegroundColor Gray
 
-# Kanban (NEW - Dataverse persistence + filters!)
+# Kanban (Dataverse persistence + filters)
 Invoke-WebRequest -Uri "$baseUrl/src/screens/Kanban.tsx" -OutFile "src\screens\Kanban.tsx"
-Write-Host "  Kanban.tsx (Dataverse persist + filters)" -ForegroundColor Green
+Write-Host "  Kanban.tsx (Dataverse persist + filters)" -ForegroundColor Gray
 
 Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 6: Download Layout & App (theme dropdown in header!)
+# Step 6: Download Layout & App (Project Overview as landing page!)
 #------------------------------------------------------------------------------
 
 Write-Host "`n[6/8] Downloading Layout & App..." -ForegroundColor Yellow
 
 Invoke-WebRequest -Uri "$baseUrl/src/components/Layout.tsx" -OutFile "src\components\Layout.tsx"
-Write-Host "  Layout.tsx (theme dropdown in header)" -ForegroundColor Gray
+Write-Host "  Layout.tsx (Project Overview at top of sidebar)" -ForegroundColor Gray
 
 Invoke-WebRequest -Uri "$baseUrl/src/App.tsx" -OutFile "src\App.tsx"
-Write-Host "  App.tsx (ThemeProvider wrapper)" -ForegroundColor Gray
+Write-Host "  App.tsx (Project Overview as landing page)" -ForegroundColor Gray
 
 Write-Host "  OK" -ForegroundColor Green
 
@@ -178,19 +183,21 @@ Write-Host "#     $buildStamp                      #" -ForegroundColor White
 Write-Host "#                                                #" -ForegroundColor Magenta
 Write-Host "##################################################" -ForegroundColor Magenta
 Write-Host ""
-Write-Host "v9 - WHAT'S NEW:" -ForegroundColor Cyan
+Write-Host "v10 - WHAT'S NEW:" -ForegroundColor Cyan
 Write-Host ""
-Write-Host "  KANBAN SCREEN:" -ForegroundColor Yellow
-Write-Host "    Drag changes now PERSIST TO DATAVERSE!" -ForegroundColor Green
-Write-Host "      - Status drag -> saves to Dataverse" -ForegroundColor White
-Write-Host "      - Workstream drag -> saves to Dataverse" -ForegroundColor White
-Write-Host "      - Owner drag -> saves to Dataverse" -ForegroundColor White
+Write-Host "  PROJECT OVERVIEW (NEW LANDING PAGE!):" -ForegroundColor Yellow
+Write-Host "    - Now the FIRST item in sidebar" -ForegroundColor Green
+Write-Host "    - KPI Cards:" -ForegroundColor White
+Write-Host "      * Due This Month" -ForegroundColor White
+Write-Host "      * Due Next 2 Weeks" -ForegroundColor White
+Write-Host "      * Overdue (Late)" -ForegroundColor White
+Write-Host "    - Click KPI -> See deliverable list" -ForegroundColor White
+Write-Host "    - Click deliverable -> See comments & history" -ForegroundColor White
+Write-Host "    - Animated workstream progress bars" -ForegroundColor White
+Write-Host "    - Overall stats cards" -ForegroundColor White
 Write-Host ""
-Write-Host "    NEW FILTER DROPDOWNS:" -ForegroundColor Yellow
-Write-Host "      - Filter by Workstream" -ForegroundColor White
-Write-Host "      - Filter by User" -ForegroundColor White
-Write-Host "      - Filter by Status" -ForegroundColor White
-Write-Host "      - Filter count badge" -ForegroundColor White
-Write-Host "      - Clear Filters button" -ForegroundColor White
-Write-Host "      - Shows 'X of Y items'" -ForegroundColor White
+Write-Host "  SIDEBAR CHANGES:" -ForegroundColor Yellow
+Write-Host "    - Project Overview moved to TOP" -ForegroundColor White
+Write-Host "    - My Work now second" -ForegroundColor White
+Write-Host "    - Removed Command Center (replaced by Project Overview)" -ForegroundColor White
 Write-Host ""

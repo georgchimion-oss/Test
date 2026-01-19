@@ -48,6 +48,12 @@ export default function Layout({ children, title }: LayoutProps) {
           <ul className="nav-list">
             <li className="nav-item">
               <NavLink to="/" className="nav-link">
+                <Zap className="nav-icon" />
+                <span className="nav-text">Project Overview</span>
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/my-work" className="nav-link">
                 <LayoutDashboard className="nav-icon" />
                 <span className="nav-text">My Work</span>
               </NavLink>
@@ -108,12 +114,6 @@ export default function Layout({ children, title }: LayoutProps) {
                 </NavLink>
               </li>
             )}
-            <li className="nav-item">
-              <NavLink to="/command-center" className="nav-link">
-                <Zap className="nav-icon" />
-                <span className="nav-text">Command Center</span>
-              </NavLink>
-            </li>
           </ul>
         </nav>
 
