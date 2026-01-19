@@ -371,9 +371,9 @@ import { Badge } from '@/components/ui/badge';
 export function TestPage() {
   return (
     <div className="p-6 space-y-6">
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 rounded-lg text-center shadow-lg">
-        <h2 className="text-3xl font-bold">VERSION: Jan 19, 2026 - 12:05 AM</h2>
-        <p className="text-sm mt-2">If you see this exact timestamp, your app updated successfully!</p>
+      <div style={{ background: 'linear-gradient(to right, rgb(37, 99, 235), rgb(147, 51, 234))', color: 'white', padding: '2rem', borderRadius: '0.5rem', textAlign: 'center', marginBottom: '2rem', border: '4px solid #fbbf24' }}>
+        <h2 style={{ fontSize: '2.5rem', fontWeight: 'bold', margin: '0 0 0.5rem 0' }}>🚀 VERSION: Jan 19, 2026 - 12:18 AM 🚀</h2>
+        <p style={{ fontSize: '1.125rem', margin: 0 }}>If you see this EXACT timestamp with rockets, your app is UPDATED!</p>
       </div>
 
       <h1 className="text-4xl font-bold">DVUI App - Ready!</h1>
