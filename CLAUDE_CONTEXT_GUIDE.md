@@ -1,25 +1,40 @@
 # Claude Context Guide for Project Governance DVUI
 
-**Last Updated:** Jan 20, 2026 - 2:15 AM EST
-**Last Successful Push:** Jan 20, 2026 - 2:10 AM EST (fix-dvui-build.ps1 v10)
-**Current Script Version:** v10
+**Last Updated:** Jan 20, 2026 - 2:45 AM EST
+**Last Successful Push:** Jan 20, 2026 - 1:10 AM EST (fix-dvui-build.ps1 v9)
+**Current Script Version:** v10 (HAS BUILD ERRORS - needs fix)
 
-## CURRENT STATUS: v10 DEPLOYED
-- 15 fun themes (France, Paris, PSG, Matrix, Barbie, etc.)
-- Theme dropdown in header on ALL screens
-- Staff table: removed Role & Department columns
-- Theme persists in localStorage
-- **Deliverables screen: Add Comment button (message icon) - DONE**
-- **Kanban: Dataverse persistence + filter dropdowns - DONE**
-- **Project Overview: NEW LANDING PAGE with KPI drill-down - DONE**
+## CURRENT STATUS: v10 BUILD FAILING - TypeScript errors in ProjectOverview.tsx
+
+**CRITICAL - RESUME HERE:**
+ProjectOverview.tsx has TypeScript errors. The Dataverse types (`Crda8_deliverableses`) have optional properties that don't match our code. We tried using `any` types but there are still errors.
+
+**Georg will paste the error when resuming. Look for:**
+- Type mismatches between `Crda8_deliverableses` and our `any` casts
+- Possibly the `crda8_completion_x0020__x0025_` field name (might be different in actual Dataverse schema)
+
+**Files that need attention:**
+- `/tmp/Test/dvui save/src/screens/ProjectOverview.tsx` - New landing page with KPI cards, needs TypeScript fixes
+
+## WHAT WAS DONE (v10 attempt):
+- Created ProjectOverview.tsx with:
+  - KPI cards: Due This Month, Due Next 2 Weeks, Overdue
+  - Click KPI → drill down to deliverable list
+  - Click deliverable → see comments & activity history
+  - Workstream progress bars
+  - Overall stats cards
+- Updated Layout.tsx - Project Overview at top of sidebar, My Work second
+- Updated App.tsx - ProjectOverview as landing page (`/`), My Work moved to `/my-work`
+- Removed CommandCenter from sidebar
 
 ## NEXT TASKS
 1. ~~**Deliverables screen** - Add comment button~~ ✅ DONE (v8)
 2. ~~**Kanban** - Persist drag changes to Dataverse + add filter dropdowns~~ ✅ DONE (v9)
-3. ~~**CommandCenter → Project Overview** - Rename screen + make it LANDING PAGE~~ ✅ DONE (v10)
+3. **CommandCenter → Project Overview** - IN PROGRESS (v10 - build failing)
    - ~~Remove "Active Team" section~~ ✅
-   - ~~Add KPI cards: Deliverables due this month, Due next 2 weeks, Late deliverables~~ ✅
-   - ~~Click on KPI → drill down to list → click item → see comments & history~~ ✅
+   - ~~Add KPI cards: Deliverables due this month, Due next 2 weeks, Late deliverables~~ ✅ (code written)
+   - ~~Click on KPI → drill down to list → click item → see comments & history~~ ✅ (code written)
+   - **FIX TypeScript errors in ProjectOverview.tsx**
 4. **Resource Management screen** - New screen based on Lovable (file: `/tmp/Test/lovable-app-organized/src/pages/Resources.tsx`)
 5. **Skills** - Use existing `role` field for skills (comma-separated text like "React, TypeScript")
 
