@@ -1,0 +1,60 @@
+{
+  "appId": "c6cc16c7-c9dc-4bbd-9034-7a9b0656f328",
+  "appDisplayName": "Project Governance DV",
+  "description": null,
+  "environmentId": "deccb389-10c5-4d5c-8716-1093a04538e1",
+  "buildPath": "./dist",
+  "buildEntryPoint": "index.html",
+  "logoPath": "Default",
+  "localAppUrl": "http://localhost:3000/",
+  "region": "prod",
+  "connectionReferences": {},
+  "databaseReferences": {
+    "default.cds": {
+      "databaseDetails": null,
+      "dataSources": {
+        "georgtowns": {
+          "entitySetName": "crda8_georgtowns",
+          "logicalName": "crda8_georgtown",
+          "isHidden": false
+        },
+        "workstreamss": {
+          "entitySetName": "crda8_workstreamses",
+          "logicalName": "crda8_workstreams",
+          "isHidden": false
+        },
+        "staffs": {
+          "entitySetName": "crda8_staff4s",
+          "logicalName": "crda8_staff4",
+          "isHidden": false
+        },
+        "deliverabless": {
+          "entitySetName": "crda8_deliverableses",
+          "logicalName": "crda8_deliverables",
+          "isHidden": false
+        },
+        "timeoffrequestss": {
+          "entitySetName": "crda8_timeoffrequestses",
+          "logicalName": "crda8_timeoffrequests",
+          "isHidden": false
+        },
+        "weeklyhours": {
+          "entitySetName": "crda8_weeklyhourses",
+          "logicalName": "crda8_weeklyhours",
+          "isHidden": false
+        },
+        "appusagelogs": {
+          "entitySetName": "crda8_appusagelogs",
+          "logicalName": "crda8_appusagelog",
+          "isHidden": false
+        },
+        "audittrails": {
+          "entitySetName": "crda8_audittrail2s",
+          "logicalName": "crda8_audittrail2",
+          "isHidden": false
+        }
+      },
+      "actions": null
+    }
+  }
+}

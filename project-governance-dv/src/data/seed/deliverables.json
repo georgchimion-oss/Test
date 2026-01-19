@@ -1,0 +1,4182 @@
+﻿[
+    {
+        "id":  "del-1",
+        "title":  "Draft design of the organizational structure across ITM and the 1LOD to support the Insider Risk program",
+        "description":  "First Line of Defense (1LOD) Insider Risk Organizational Structure and Design",
+        "workstreamId":  "WS1",
+        "ownerId":  "anna.diehl@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "10/31/2025",
+        "dueDate":  "10/31/2025",
+        "completedDate":  "10/31/2025",
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-2",
+        "title":  "Draft updated roles and responsibilities across ITM and the 1LOD",
+        "description":  "First Line of Defense (1LOD) Insider Risk Organizational Structure and Design",
+        "workstreamId":  "WS1",
+        "ownerId":  "anna.diehl@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "10/31/2025",
+        "dueDate":  "10/31/2025",
+        "completedDate":  "10/31/2025",
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-3",
+        "title":  "Draft Customer Remediation Program Design to outline how to identify, document, assess and address up to ten (10) customer harm areas",
+        "description":  "Customer Remediation Program",
+        "workstreamId":  "WS1",
+        "ownerId":  "evan.lustig@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "6/30/2026",
+        "dueDate":  "6/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-4",
+        "title":  "Draft updated Insider Risk reporting (MS PowerPoint) for the Insider Threat Management Council",
+        "description":  "Reporting for Insider Threat Management",
+        "workstreamId":  "WS1",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "3/6/2026",
+        "dueDate":  "3/6/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-5",
+        "title":  "Draft interim QC Program Procedures and Guidelines, including quality standards and metrics ​",
+        "description":  "Quality Control (QC) Program - Interim Draft ",
+        "workstreamId":  "WS1",
+        "ownerId":  "evan.lustig@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "10/24/2025",
+        "dueDate":  "11/14/2025",
+        "completedDate":  "10/24/2025",
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-6",
+        "title":  "Draft one (1) interim QC Program process flow, interaction model and Service Level Agreement (SLA)​",
+        "description":  "Quality Control (QC) Program - Interim Draft ",
+        "workstreamId":  "WS1",
+        "ownerId":  "evan.lustig@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "10/24/2025",
+        "dueDate":  "11/14/2025",
+        "completedDate":  "10/24/2025",
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-7",
+        "title":  "Draft interim roadmap for implementation of the QC Program​",
+        "description":  "Quality Control (QC) Program - Interim Draft ",
+        "workstreamId":  "WS1",
+        "ownerId":  "evan.lustig@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "11/3/2025",
+        "dueDate":  "11/14/2025",
+        "completedDate":  "10/31/2025",
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-8",
+        "title":  "Draft interim business requirements for TD’s QC technology solution​",
+        "description":  "Quality Control (QC) Program - Interim Draft ",
+        "workstreamId":  "WS1",
+        "ownerId":  "evan.lustig@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "9/8/2025",
+        "dueDate":  "11/14/2025",
+        "completedDate":  "9/15/2025",
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-9",
+        "title":  "Draft interim Quality Program QA/QC Functional Test Scripts",
+        "description":  "Quality Control (QC) Program - Interim Draft ",
+        "workstreamId":  "WS1",
+        "ownerId":  "evan.lustig@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "11/14/2025",
+        "dueDate":  "11/14/2025",
+        "completedDate":  "11/14/2025",
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-10",
+        "title":  "Draft final QC Program Procedures and Guidelines, including quality standards and metrics",
+        "description":  "Quality Control (QC) Program - Final Draft",
+        "workstreamId":  "WS1",
+        "ownerId":  "evan.lustig@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/6/2026",
+        "dueDate":  "1/31/2026",
+        "completedDate":  "1/6/2026",
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-11",
+        "title":  "Draft one (1) final QC Program process flow, interaction model and Service Level Agreement (SLA)​",
+        "description":  "Quality Control (QC) Program - Final Draft",
+        "workstreamId":  "WS1",
+        "ownerId":  "evan.lustig@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2026",
+        "dueDate":  "1/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-12",
+        "title":  "Draft final roadmap for implementation of the QC Program",
+        "description":  "Quality Control (QC) Program - Final Draft",
+        "workstreamId":  "WS1",
+        "ownerId":  "evan.lustig@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2026",
+        "dueDate":  "1/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-13",
+        "title":  "Draft final business requirements for TD’s QC technology solution",
+        "description":  "Quality Control (QC) Program - Final Draft",
+        "workstreamId":  "WS1",
+        "ownerId":  "evan.lustig@pwc.com",
+        "status":  "In Progress",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/13/2026",
+        "dueDate":  "1/31/2026",
+        "completedDate":  "1/14/2026",
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-14",
+        "title":  "Draft final Quality Program QA/QC Functional Test Scripts",
+        "description":  "Quality Control (QC) Program - Final Draft",
+        "workstreamId":  "WS1",
+        "ownerId":  "evan.lustig@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2026",
+        "dueDate":  "1/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-15",
+        "title":  "Draft interim QA Program Procedures and Guidelines, including the testing strategy and QA scorecards/metrics ​",
+        "description":  "Quality Assurance (QA) Program - Interim Draft",
+        "workstreamId":  "WS1",
+        "ownerId":  "evan.lustig@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "10/24/2025",
+        "dueDate":  "11/14/2025",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-16",
+        "title":  "Draft interim QA Program process flows, interaction models and SLAs​",
+        "description":  "Quality Assurance (QA) Program - Interim Draft",
+        "workstreamId":  "WS1",
+        "ownerId":  "evan.lustig@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "10/24/2025",
+        "dueDate":  "11/14/2025",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-17",
+        "title":  "Draft interim roadmap for implementation of the QA Program​",
+        "description":  "Quality Assurance (QA) Program - Interim Draft",
+        "workstreamId":  "WS1",
+        "ownerId":  "evan.lustig@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "11/3/2025",
+        "dueDate":  "11/14/2025",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-18",
+        "title":  "Draft interim business and functional requirements for TD’s QA technology solution",
+        "description":  "Quality Assurance (QA) Program - Interim Draft",
+        "workstreamId":  "WS1",
+        "ownerId":  "evan.lustig@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "9/8/2025",
+        "dueDate":  "11/14/2025",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-19",
+        "title":  "Draft interim Quality Program QA/QC Functional Test Scripts",
+        "description":  "Quality Assurance (QA) Program - Interim Draft",
+        "workstreamId":  "WS1",
+        "ownerId":  "evan.lustig@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "11/14/2025",
+        "dueDate":  "11/14/2025",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-20",
+        "title":  "Draft final QA Program Procedures and Guidelines, including the testing strategy and QA scorecards/metrics ​",
+        "description":  "Quality Assurance (QA) Program - Final Draft",
+        "workstreamId":  "WS1",
+        "ownerId":  "evan.lustig@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "12/23/2025",
+        "dueDate":  "1/31/2026",
+        "completedDate":  "12/23/2025",
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-21",
+        "title":  "Draft final QA Program process flows, interaction models and SLAs​",
+        "description":  "Quality Assurance (QA) Program - Final Draft",
+        "workstreamId":  "WS1",
+        "ownerId":  "evan.lustig@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2026",
+        "dueDate":  "1/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-22",
+        "title":  "Draft final roadmap for implementation of the QA Program",
+        "description":  "Quality Assurance (QA) Program - Final Draft",
+        "workstreamId":  "WS1",
+        "ownerId":  "evan.lustig@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2026",
+        "dueDate":  "1/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-23",
+        "title":  "Draft final business and functional requirements for TD’s QA technology solution",
+        "description":  "Quality Assurance (QA) Program - Final Draft",
+        "workstreamId":  "WS1",
+        "ownerId":  "evan.lustig@pwc.com",
+        "status":  "In Progress",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/13/2026",
+        "dueDate":  "1/14/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-24",
+        "title":  "Draft final Quality Program QA/QC Functional Test Scripts",
+        "description":  "Quality Assurance (QA) Program - Final Draft",
+        "workstreamId":  "WS1",
+        "ownerId":  "evan.lustig@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "12/31/2025",
+        "dueDate":  "1/31/2026",
+        "completedDate":  "12/31/2025",
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-25",
+        "title":  "Draft updated governance process for establishing controls designed to mitigate insider risk across LOBs",
+        "description":  "Controls and Issue Governance",
+        "workstreamId":  "WS1",
+        "ownerId":  "vinod.ramakrishnan@pwc.com",
+        "status":  "In Progress",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "6/30/2026",
+        "dueDate":  "6/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-26",
+        "title":  "Draft updated approach for incorporating relevant LOB controls into risk program governance and reporting routines",
+        "description":  "Controls and Issue Governance",
+        "workstreamId":  "WS1",
+        "ownerId":  "vinod.ramakrishnan@pwc.com",
+        "status":  "In Progress",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "6/30/2026",
+        "dueDate":  "6/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-27",
+        "title":  "Draft process to oversee issue management within ITM, inclusive of the process to stand up a systemic important indicator (SII)​",
+        "description":  "Controls and Issue Governance",
+        "workstreamId":  "WS1",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "6/30/2026",
+        "dueDate":  "6/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-28",
+        "title":  "Draft updated approach for incorporating relevant non-ITM-owned issues with insider risk impact into risk program governance and reporting routine​",
+        "description":  "Controls and Issue Governance",
+        "workstreamId":  "WS1",
+        "ownerId":  "vinod.ramakrishnan@pwc.com",
+        "status":  "In Progress",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "6/30/2026",
+        "dueDate":  "6/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-29",
+        "title":  "Draft ITM change management process ​",
+        "description":  "Controls and Issue Governance",
+        "workstreamId":  "WS1",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "6/30/2026",
+        "dueDate":  "6/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-30",
+        "title":  "​Draft updates to existing TPRM risk methodologies for insider applicability​",
+        "description":  "Third Party Risk Management (TPRM)",
+        "workstreamId":  "WS1",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/28/2026",
+        "dueDate":  "2/28/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-31",
+        "title":  "Draft insider risk questionnaire for third parties ​",
+        "description":  "Third Party Risk Management (TPRM)",
+        "workstreamId":  "WS1",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/28/2026",
+        "dueDate":  "2/28/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-32",
+        "title":  "Draft updates to the current process of identifying high risk vendors",
+        "description":  "Third Party Risk Management (TPRM)",
+        "workstreamId":  "WS1",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/28/2026",
+        "dueDate":  "2/28/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-33",
+        "title":  "Phase 3 - Draft updated Insider Risk and Control Self-Assessment of high-risk AUs (for up to 77 AUs, as determined by TD) including applicable risks, control scores, inherent and residual risk scores, potential control gaps and high-level control recommendations for remediating potential gaps",
+        "description":  "Phase 3 - Draft updated Insider Risk and Control Self-Assessment of high-risk AUs (for up to 77 AUs, as determined by TD) including applicable risks, control scores, inherent and residual risk scores, potential control gaps and high-level control recommendations for remediating potential gaps",
+        "workstreamId":  "WS2",
+        "ownerId":  "kajal.pandya@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "10/31/2025",
+        "dueDate":  "10/31/2025",
+        "completedDate":  "10/31/2025",
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-34",
+        "title":  "Phase 4 - Draft updated Insider Risk and Control Self-Assessment of high-risk AUs (for up to 77 AUs, as determined by TD) including applicable risks, control scores, inherent and residual risk scores, potential control gaps and high-level control recommendations for remediating potential gaps",
+        "description":  "Phase 4 - Draft updated Insider Risk and Control Self-Assessment of high-risk AUs (for up to 77 AUs, as determined by TD) including applicable risks, control scores, inherent and residual risk scores, potential control gaps and high-level control recommendations for remediating potential gaps",
+        "workstreamId":  "WS2",
+        "ownerId":  "kajal.pandya@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "12/31/2025",
+        "dueDate":  "12/31/2025",
+        "completedDate":  "12/19/2025",
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-35",
+        "title":  "Draft mapping of access management roadmap initiatives to Insider Risk Assessment (IRA) thematic groupings",
+        "description":  "Draft thematic groupings",
+        "workstreamId":  "WS2",
+        "ownerId":  "kajal.pandya@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "12/19/2025",
+        "dueDate":  "12/19/2025",
+        "completedDate":  "12/19/2025",
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-36",
+        "title":  "Draft insider risk technology strategy document for insider risk program ",
+        "description":  "Assist TD to develop a draft insider risk technology strategy",
+        "workstreamId":  "WS3",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "3/31/2026",
+        "dueDate":  "3/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-37",
+        "title":  "Draft interim system and physical access during leave of absence framework",
+        "description":  "Leave of Absence Framework​ - Interim Draft",
+        "workstreamId":  "WS4",
+        "ownerId":  "ryan.t.anderson@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "12/31/2025",
+        "dueDate":  "12/31/2025",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-38",
+        "title":  "Draft final system and physical access during leave of absence framework",
+        "description":  "Leave of Absence Framework​ - Final Draft",
+        "workstreamId":  "WS4",
+        "ownerId":  "ryan.t.anderson@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "6/30/2026",
+        "dueDate":  "6/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-39",
+        "title":  "Draft document describing up to four (4) test scenarios for TD Business UAT​",
+        "description":  "User Acceptance Testing (UAT)/Business Outcome Testing (BOT): Test Scenarios and Test Data Requirements for EPIC Minimum Viable Product (MVP) releases​",
+        "workstreamId":  "WS6",
+        "ownerId":  "sierra.hicks@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "11/17/2025",
+        "dueDate":  "10/31/2026",
+        "completedDate":  "11/18/2025",
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-40",
+        "title":  "Draft document describing up to four (4) UAT testing results​",
+        "description":  "User Acceptance Testing (UAT)/Business Outcome Testing (BOT): Test Scenarios and Test Data Requirements for EPIC Minimum Viable Product (MVP) releases​",
+        "workstreamId":  "WS6",
+        "ownerId":  "sierra.hicks@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "11/17/2025",
+        "dueDate":  "10/31/2026",
+        "completedDate":  "11/18/2025",
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-41",
+        "title":  "Draft up to four (4) updated EPIC MVP User Guides ​",
+        "description":  "User Acceptance Testing (UAT)/Business Outcome Testing (BOT): Test Scenarios and Test Data Requirements for EPIC Minimum Viable Product (MVP) releases​",
+        "workstreamId":  "WS6",
+        "ownerId":  "sierra.hicks@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "10/31/2026",
+        "dueDate":  "10/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-42",
+        "title":  "Draft up to three (3) updated training decks to facilitate EPIC MVP training materials",
+        "description":  "User Acceptance Testing (UAT)/Business Outcome Testing (BOT): Test Scenarios and Test Data Requirements for EPIC Minimum Viable Product (MVP) releases​",
+        "workstreamId":  "WS6",
+        "ownerId":  "sierra.hicks@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "11/20/2025",
+        "dueDate":  "10/31/2026",
+        "completedDate":  "11/20/2025",
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-43",
+        "title":  "Draft enhanced Future State Insider Risk Triage Procedure​s ",
+        "description":  "Future State Insider Risk Triage procedures and guidelines​",
+        "workstreamId":  "WS6",
+        "ownerId":  "paige.t.brown@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "12/5/2025",
+        "dueDate":  "7/16/2026",
+        "completedDate":  "12/9/2025",
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-44",
+        "title":  "Draft Insider Risk Triage Future State Training Materials ",
+        "description":  "Future State Insider Risk Triage procedures and guidelines​",
+        "workstreamId":  "WS6",
+        "ownerId":  "paige.t.brown@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "7/16/2026",
+        "dueDate":  "7/16/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-45",
+        "title":  "Draft updated business requirements for Root Cause Analysis integration into EPIC",
+        "description":  "Root Cause Analysis",
+        "workstreamId":  "WS6",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "7/16/2026",
+        "dueDate":  "7/16/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-46",
+        "title":  "Draft updated current state containment procedure",
+        "description":  "Containment",
+        "workstreamId":  "WS6",
+        "ownerId":  "catherine.manyoma@pwc.com",
+        "status":  "In Progress",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2026",
+        "dueDate":  "1/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-47",
+        "title":  "Draft updates to future state enterprise containment procedure",
+        "description":  "Containment",
+        "workstreamId":  "WS6",
+        "ownerId":  "catherine.manyoma@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "5/31/2026",
+        "dueDate":  "5/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-48",
+        "title":  "Draft updated containment controls documentation",
+        "description":  "Containment",
+        "workstreamId":  "WS6",
+        "ownerId":  "catherine.manyoma@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2026",
+        "dueDate":  "1/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-49",
+        "title":  "Draft Investigations Analyst role description, including the job responsibilities, skillsets and capabilities​",
+        "description":  "Investigations Analyst Funciton",
+        "workstreamId":  "WS6",
+        "ownerId":  "catherine.manyoma@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "7/31/2026",
+        "dueDate":  "7/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-50",
+        "title":  "Draft a Quick Reference Guide (QRG) for Investigation analysts ",
+        "description":  "Investigations Analyst Funciton",
+        "workstreamId":  "WS6",
+        "ownerId":  "catherine.manyoma@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "7/31/2026",
+        "dueDate":  "7/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-51",
+        "title":  "Draft updated future state investigations procedure​",
+        "description":  "Investigations Process​",
+        "workstreamId":  "WS6",
+        "ownerId":  "catherine.manyoma@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "7/31/2026",
+        "dueDate":  "7/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-52",
+        "title":  "Draft change management tracker template for the investigations procedure",
+        "description":  "Investigations Process​",
+        "workstreamId":  "WS6",
+        "ownerId":  "catherine.manyoma@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "7/31/2026",
+        "dueDate":  "7/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-53",
+        "title":  "Add-on: Draft mapping of Investigations Standard for demonstration of adherence to Investigations Practices Policy",
+        "description":  "Investigations Process​",
+        "workstreamId":  "WS6",
+        "ownerId":  "catherine.manyoma@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "7/31/2026",
+        "dueDate":  "7/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-54",
+        "title":  "Draft up to five (5) working agreements and interdepartmental protocols between ITM Investigations (ITM-I) and related business functions (e.g., Human Resources, Performance Integrity, Privacy, Financial Crimes Risk Management (“FCRM”), Cyber Security Operations Center/Cyber Security Incident Response (“CSOC/CSIRT”) ",
+        "description":  "Draft up to four (4) Partner Agreements​",
+        "workstreamId":  "WS6",
+        "ownerId":  "catherine.manyoma@pwc.com",
+        "status":  "In Progress",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "7/31/2026",
+        "dueDate":  "7/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-55",
+        "title":  "Draft interview process training content ",
+        "description":  "Draft up to four (4) Partner Agreements​",
+        "workstreamId":  "WS6",
+        "ownerId":  "catherine.manyoma@pwc.com",
+        "status":  "In Progress",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "7/16/2026",
+        "dueDate":  "7/16/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-56",
+        "title":  "Draft the Investigation Units (IU) requirements",
+        "description":  "Investigation Practices Policy",
+        "workstreamId":  "WS6",
+        "ownerId":  "",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/28/2026",
+        "dueDate":  "2/28/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-57",
+        "title":  "Draft Mapping of the U requirements to the Investigation Standard including potential gaps and draft impacts to the Insider Threat Management (ITM) Investigations Procedure ",
+        "description":  "Investigation Practices Policy",
+        "workstreamId":  "WS6",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/28/2026",
+        "dueDate":  "2/28/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-58",
+        "title":  "Draft enhanced Future State Insider Risk Triage Procedure ",
+        "description":  "Future State Insider Risk Triage procedure and Quick Reference Guide (QRG)",
+        "workstreamId":  "WS6",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/28/2026",
+        "dueDate":  "2/28/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-59",
+        "title":  "Draft Conduct \u0026 Ethics QRG",
+        "description":  "Future State Insider Risk Triage procedure and Quick Reference Guide (QRG)",
+        "workstreamId":  "WS6",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/28/2026",
+        "dueDate":  "2/28/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-60",
+        "title":  "Draft updated phase 1 communication templates for up to 13 communications​",
+        "description":  "Draft Updated Communication Plan and Materials​ - Phase 1",
+        "workstreamId":  "WS7",
+        "ownerId":  "nicole.zlotnikova@pwc.com",
+        "status":  "In Progress",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2026",
+        "dueDate":  "1/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-61",
+        "title":  "Draft updated communication plan​ for phase 1 ",
+        "description":  "Draft Updated Communication Plan and Materials​ - Phase 2",
+        "workstreamId":  "WS7",
+        "ownerId":  "nicole.zlotnikova@pwc.com",
+        "status":  "In Progress",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2026",
+        "dueDate":  "1/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-62",
+        "title":  "Draft updated phase 2 communication templates for up to 13 communications​",
+        "description":  "Draft Updated Communication Plan and Materials​ - Phase 2",
+        "workstreamId":  "WS7",
+        "ownerId":  "nicole.zlotnikova@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "10/30/2026",
+        "dueDate":  "10/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-63",
+        "title":  "Draft updated communication plan​ for phase 2",
+        "description":  "Draft Updated Communication Plan and Materials​ - Phase 3",
+        "workstreamId":  "WS7",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "10/30/2026",
+        "dueDate":  "10/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-64",
+        "title":  "Draft communication knowledge transfer document",
+        "description":  "Draft Updated Communication Plan and Materials​ - Phase 4",
+        "workstreamId":  "WS7",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "10/30/2026",
+        "dueDate":  "10/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-65",
+        "title":  "Draft updated training strategy and plan​ for phase 1",
+        "description":  "Draft Updated Training Strategy, Plan Materials​ - Phase 1",
+        "workstreamId":  "WS7",
+        "ownerId":  "nicole.zlotnikova@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/16/2026",
+        "dueDate":  "1/16/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-66",
+        "title":  "Draft updated Insider Risk Training Materials​ for phase 1 (up to 12 assets)",
+        "description":  "Draft Updated Training Strategy, Plan Materials​ - Phase 2",
+        "workstreamId":  "WS7",
+        "ownerId":  "nicole.zlotnikova@pwc.com",
+        "status":  "In Progress",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/16/2026",
+        "dueDate":  "1/16/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-67",
+        "title":  "Draft updated train-the-trainer facilitation guides and related training materials",
+        "description":  "Draft Updated Training Strategy, Plan Materials​ - Phase 3",
+        "workstreamId":  "WS7",
+        "ownerId":  "nicole.zlotnikova@pwc.com",
+        "status":  "In Progress",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/16/2026",
+        "dueDate":  "1/16/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-68",
+        "title":  "Draft updated training strategy and plan​ for phase 2",
+        "description":  "Draft Updated Training Strategy, Plan Materials​ - Phase 2A",
+        "workstreamId":  "WS7",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "7/31/2026",
+        "dueDate":  "7/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-69",
+        "title":  "Draft updated Insider Risk Training Materials​ for phase 2A (up to 9 assets)",
+        "description":  "Draft Updated Training Strategy, Plan Materials​ - Phase 2A",
+        "workstreamId":  "WS7",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "7/31/2026",
+        "dueDate":  "7/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-70",
+        "title":  "Draft updated train-the-trainer facilitation guides and related training materials",
+        "description":  "Draft Updated Training Strategy, Plan Materials​ - Phase 2A",
+        "workstreamId":  "WS7",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "7/31/2026",
+        "dueDate":  "7/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-71",
+        "title":  "Draft updated training strategy and plan​ for phase 2",
+        "description":  "Draft Updated Training Strategy, Plan Materials​ - Phase 2B",
+        "workstreamId":  "WS7",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/28/2026",
+        "dueDate":  "2/28/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-72",
+        "title":  "Draft updated Insider Risk Training Materials​ for phase 2B (up to 9 assets)",
+        "description":  "Draft Updated Training Strategy, Plan Materials​ - Phase 2B",
+        "workstreamId":  "WS7",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/28/2026",
+        "dueDate":  "2/28/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-73",
+        "title":  "Draft updated train-the-trainer facilitation guides and related training materials",
+        "description":  "Draft Updated Training Strategy, Plan Materials​ - Phase 2B",
+        "workstreamId":  "WS7",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/28/2026",
+        "dueDate":  "2/28/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-74",
+        "title":  "Draft ITM skill assessment analysis​",
+        "description":  "Draft Insider Threat Management (ITM) Skills Assessment​",
+        "workstreamId":  "WS7",
+        "ownerId":  "maria.fotsch@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/28/2026",
+        "dueDate":  "2/28/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-75",
+        "title":  "Draft skills assessment results including a draft list of potential skill gaps and set of high-level recommendations to address potential gaps",
+        "description":  "Draft Insider Threat Management (ITM) Skills Assessment​",
+        "workstreamId":  "WS7",
+        "ownerId":  "maria.fotsch@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/28/2026",
+        "dueDate":  "2/28/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-76",
+        "title":  "Draft Insider Threat capacity assessment playbook and go forward process​",
+        "description":  "Draft 1LOD Capacity Assessment​",
+        "workstreamId":  "WS7",
+        "ownerId":  "alexandra.hom@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/28/2026",
+        "dueDate":  "2/28/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-77",
+        "title":  "Draft ITM capacity assessment analysis​",
+        "description":  "Draft 1LOD Capacity Assessment​",
+        "workstreamId":  "WS7",
+        "ownerId":  "alexandra.hom@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/28/2026",
+        "dueDate":  "2/28/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-78",
+        "title":  "Draft capacity assessment results including draft high-level recommendations to address potential gaps",
+        "description":  "Draft 1LOD Capacity Assessment​",
+        "workstreamId":  "WS7",
+        "ownerId":  "alexandra.hom@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/28/2026",
+        "dueDate":  "2/28/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-79",
+        "title":  "Draft enhancement opportunities to Insider Threat Performance scorecard​",
+        "description":  "Draft Insider Threat Performance Scorecard​",
+        "workstreamId":  "WS7",
+        "ownerId":  "alexandra.hom@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "10/30/2026",
+        "dueDate":  "10/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-80",
+        "title":  "Draft updates to existing or new Insider Threat performance scorecards​",
+        "description":  "Draft Insider Threat Performance Scorecard​",
+        "workstreamId":  "WS7",
+        "ownerId":  "alexandra.hom@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "10/30/2026",
+        "dueDate":  "10/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-81",
+        "title":  "Draft key messaging (up to five (5)) and communications about performance scorecard enhancements",
+        "description":  "Draft Insider Threat Performance Scorecard​",
+        "workstreamId":  "WS7",
+        "ownerId":  "alexandra.hom@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "10/30/2026",
+        "dueDate":  "10/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-82",
+        "title":  "Draft market intelligence research on current industry consequence management practices on Insider Risk​",
+        "description":  "Draft Revised Insider Risk Consequence Management Process​",
+        "workstreamId":  "WS7",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/19/2027",
+        "dueDate":  "2/19/2027",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-83",
+        "title":  "Draft enhancement opportunities for TD’s Insider Risk Consequence Management Model and application​",
+        "description":  "Draft Revised Insider Risk Consequence Management Process​",
+        "workstreamId":  "WS7",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/19/2027",
+        "dueDate":  "2/19/2027",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-84",
+        "title":  "Draft updates to existing policies and/or procedures (up to two (2)) related to the Insider Risk Consequence Model and application (detailing applicable disciplinary actions and accountability criteria)​",
+        "description":  "Draft Revised Insider Risk Consequence Management Process​",
+        "workstreamId":  "WS7",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/19/2027",
+        "dueDate":  "2/19/2027",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-85",
+        "title":  "Draft key messaging and comms (up to ten (10)) about enhancements to Insider Risk Consequence Model ",
+        "description":  "Draft Revised Insider Risk Consequence Management Process​",
+        "workstreamId":  "WS7",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/19/2027",
+        "dueDate":  "2/19/2027",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-86",
+        "title":  "Phase 1 -Draft executive-level reporting materials for updates to governance forums and applicable regulators (e.g., Monitor, OCC)",
+        "description":  "Governance Reporting  - Phase 1",
+        "workstreamId":  "WS8",
+        "ownerId":  "jill.st.arnaud@pwc.com",
+        "status":  "In Progress",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/28/2026",
+        "dueDate":  "2/28/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-87",
+        "title":  "Phase 2 -Draft executive-level reporting materials for updates to governance forums and applicable regulators (e.g., Monitor, OCC)",
+        "description":  "Governance Reporting  - Phase 2",
+        "workstreamId":  "WS8",
+        "ownerId":  "jill.st.arnaud@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "4/30/2026",
+        "dueDate":  "4/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-88",
+        "title":  "Phase 1 - Draft hand-off communications (emails) for Audit Early Deliverable Review (AEDR) submissions​",
+        "description":  "Audit Collaboration - Phase 1",
+        "workstreamId":  "WS8",
+        "ownerId":  "jill.st.arnaud@pwc.com",
+        "status":  "In Progress",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2026",
+        "dueDate":  "1/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-89",
+        "title":  "Phase 1 - Draft agendas for initial Audit hand-off review session (if requested by Audit)​",
+        "description":  "Audit Collaboration - Phase 1",
+        "workstreamId":  "WS8",
+        "ownerId":  "jill.st.arnaud@pwc.com",
+        "status":  "In Progress",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2026",
+        "dueDate":  "1/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-90",
+        "title":  "Phase 1 - Draft responses to AEDR Requests for Information (RFIs)​",
+        "description":  "Audit Collaboration - Phase 1",
+        "workstreamId":  "WS8",
+        "ownerId":  "jill.st.arnaud@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2026",
+        "dueDate":  "1/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-91",
+        "title":  "Phase 1 - Draft observations/written response packages if Audit observations are received (including gathering supplemental documentation)",
+        "description":  "Audit Collaboration - Phase 1",
+        "workstreamId":  "WS8",
+        "ownerId":  "jill.st.arnaud@pwc.com",
+        "status":  "In Progress",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2026",
+        "dueDate":  "1/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-92",
+        "title":  "Phase 2 - Draft hand-off communications (emails) for Audit Early Deliverable Review (AEDR) submissions​",
+        "description":  "Audit Collaboration - Phase 2",
+        "workstreamId":  "WS8",
+        "ownerId":  "jill.st.arnaud@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/28/2026",
+        "dueDate":  "2/28/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-93",
+        "title":  "Phase 2 - Draft agendas for initial Audit hand-off review session (if requested by Audit)​",
+        "description":  "Audit Collaboration - Phase 3",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/28/2026",
+        "dueDate":  "2/28/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-94",
+        "title":  "Phase 2 - Draft responses to AEDR Requests for Information (RFIs)​",
+        "description":  "Audit Collaboration - Phase 4",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/28/2026",
+        "dueDate":  "2/28/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-95",
+        "title":  "Phase 2 - Draft observations/written response packages if Audit observations are received (including gathering supplemental documentation)",
+        "description":  "Audit Collaboration - Phase 5",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/28/2026",
+        "dueDate":  "2/28/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-96",
+        "title":  "Phase 3 - Draft hand-off communications (emails) for Audit Early Deliverable Review (AEDR) submissions​",
+        "description":  "Audit Collaboration - Phase 3",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "4/30/2026",
+        "dueDate":  "4/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-97",
+        "title":  "Phase 3 - Draft agendas for initial Audit hand-off review session (if requested by Audit)​",
+        "description":  "Audit Collaboration - Phase 4",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "4/30/2026",
+        "dueDate":  "4/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-98",
+        "title":  "Phase 3 - Draft responses to AEDR Requests for Information (RFIs)​",
+        "description":  "Audit Collaboration - Phase 5",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "4/30/2026",
+        "dueDate":  "4/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-99",
+        "title":  "Phase 3 - Draft observations/written response packages if Audit observations are received (including gathering supplemental documentation)",
+        "description":  "Audit Collaboration - Phase 6",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "4/30/2026",
+        "dueDate":  "4/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-100",
+        "title":  "Phase 1 - Draft updates to deliverable evidence memos.​",
+        "description":  "Tollgate Readiness - Phase 1",
+        "workstreamId":  "WS8",
+        "ownerId":  "jill.st.arnaud@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "11/28/2025",
+        "dueDate":  "11/28/2025",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-101",
+        "title":  "Phase 1 - Draft Gate 1 and Gate 2 memos.​",
+        "description":  "Tollgate Readiness - Phase 2",
+        "workstreamId":  "WS8",
+        "ownerId":  "jill.st.arnaud@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "11/28/2025",
+        "dueDate":  "11/28/2025",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-102",
+        "title":  "Phase 1 - Draft Gate 1 and Gate 2 presentation materials.​",
+        "description":  "Tollgate Readiness - Phase 3",
+        "workstreamId":  "WS8",
+        "ownerId":  "jill.st.arnaud@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "11/28/2025",
+        "dueDate":  "11/28/2025",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-103",
+        "title":  "Phase 1 - Draft gate notes summarizing decisions and conditions of deliverables (pass/fail/conditional pass).​",
+        "description":  "Tollgate Readiness - Phase 4",
+        "workstreamId":  "WS8",
+        "ownerId":  "jill.st.arnaud@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "11/28/2025",
+        "dueDate":  "11/28/2025",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-104",
+        "title":  "Phase 1 - Draft tollgate tracker",
+        "description":  "Tollgate Readiness - Phase 5",
+        "workstreamId":  "WS8",
+        "ownerId":  "jill.st.arnaud@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "11/28/2025",
+        "dueDate":  "11/28/2025",
+        "completedDate":  "11/28/2025",
+        "progress":  100,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-105",
+        "title":  "Phase 2 - Draft updates to deliverable evidence memos.​",
+        "description":  "Tollgate Readiness - Phase 2",
+        "workstreamId":  "WS8",
+        "ownerId":  "jill.st.arnaud@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2026",
+        "dueDate":  "1/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-106",
+        "title":  "Phase 2 - Draft Gate 1 and Gate 2 memos.​",
+        "description":  "Tollgate Readiness - Phase 3",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2026",
+        "dueDate":  "1/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-107",
+        "title":  "Phase 2 - Draft Gate 1 and Gate 2 presentation materials.​",
+        "description":  "Tollgate Readiness - Phase 4",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2026",
+        "dueDate":  "1/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-108",
+        "title":  "Phase 2 - Draft gate notes summarizing decisions and conditions of deliverables (pass/fail/conditional pass).​",
+        "description":  "Tollgate Readiness - Phase 5",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2026",
+        "dueDate":  "1/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-109",
+        "title":  "Phase 2 - Draft tollgate tracker",
+        "description":  "Tollgate Readiness - Phase 6",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2026",
+        "dueDate":  "1/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-110",
+        "title":  "Phase 3 - Draft updates to deliverable evidence memos.​",
+        "description":  "Tollgate Readiness - Phase 3",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "4/30/2026",
+        "dueDate":  "4/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-111",
+        "title":  "Phase 3 - Draft Gate 1 and Gate 2 memos.​",
+        "description":  "Tollgate Readiness - Phase 3",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "4/30/2026",
+        "dueDate":  "4/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-112",
+        "title":  "Phase 3 - Draft Gate 1 and Gate 2 presentation materials.​",
+        "description":  "Tollgate Readiness - Phase 3",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "4/30/2026",
+        "dueDate":  "4/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-113",
+        "title":  "Phase 3 - Draft gate notes summarizing decisions and conditions of deliverables (pass/fail/conditional pass).​",
+        "description":  "Tollgate Readiness - Phase 3",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "4/30/2026",
+        "dueDate":  "4/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-114",
+        "title":  "Phase 3 - Draft tollgate tracker",
+        "description":  "Tollgate Readiness - Phase 3",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "4/30/2026",
+        "dueDate":  "4/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-115",
+        "title":  "Phase 1 - Draft updated applicable criteria for Evidence / Closure review ​",
+        "description":  "Regulatory Closure Readiness - Phase 1",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2026",
+        "dueDate":  "1/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-116",
+        "title":  "Phase 1 - Draft up to three (3) updated Evidence Packages and/or Draft Closure Packages including draft summary memos and closure materials, draft relevant information and supporting artifacts​",
+        "description":  "Regulatory Closure Readiness - Phase 2",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2026",
+        "dueDate":  "1/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-117",
+        "title":  "Phase 1 - Draft observations and enhancement opportunities on TD’s artifacts and draft deliverables to be included in Evidence / Closure packages​",
+        "description":  "Regulatory Closure Readiness - Phase 3",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2026",
+        "dueDate":  "1/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-118",
+        "title":  "Phase 1 - Draft updated communications to Evidence /Closure packages reviewers",
+        "description":  "Regulatory Closure Readiness - Phase 4",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2026",
+        "dueDate":  "1/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-119",
+        "title":  "Phase 2 - Draft updated applicable criteria for Evidence / Closure review ​",
+        "description":  "Regulatory Closure Readiness - Phase 2",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "4/30/2026",
+        "dueDate":  "4/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-120",
+        "title":  "Phase 2 - Draft up to three (3) updated Evidence Packages and/or Draft Closure Packages including draft summary memos and closure materials, draft relevant information and supporting artifacts​",
+        "description":  "Regulatory Closure Readiness - Phase 3",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "4/30/2026",
+        "dueDate":  "4/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-121",
+        "title":  "Phase 2 - Draft observations and enhancement opportunities on TD’s artifacts and draft deliverables to be included in Evidence / Closure packages​",
+        "description":  "Regulatory Closure Readiness - Phase 4",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "4/30/2026",
+        "dueDate":  "4/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-122",
+        "title":  "Phase 2 - Draft updated communications to Evidence /Closure packages reviewers",
+        "description":  "Insider Assessments Action Planning Support - Phase 2",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "3/31/2026",
+        "dueDate":  "3/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-123",
+        "title":  "Phase 1 - Draft action plan assessment criteria​",
+        "description":  "Insider Assessments Action Planning Support - Phase 1",
+        "workstreamId":  "WS8",
+        "ownerId":  "ryan.t.anderson@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2026",
+        "dueDate":  "1/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-124",
+        "title":  "Phase 1 - Draft feedback on action plans ​",
+        "description":  "Insider Assessments Action Planning Support - Phase 2",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/28/2026",
+        "dueDate":  "2/28/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-125",
+        "title":  "Phase 1 - Draft structured reporting package based on TD-approved templates, that documents structured reporting to track action plan development progress, milestones and identifies potential gaps or delays​",
+        "description":  "Insider Assessments Action Planning Support - Phase 3",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/28/2026",
+        "dueDate":  "2/28/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-126",
+        "title":  "Phase 1 - Draft updated coordination package, based on TD approved templates, including action item tracker, documented risks and issues, and office hours schedule with escalation to designated forums for visibility and timely resolution",
+        "description":  "Insider Assessments Action Planning Support - Phase 4",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/28/2026",
+        "dueDate":  "2/28/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-127",
+        "title":  "Phase 2 - Draft feedback on action plans ​",
+        "description":  "Insider Assessments Action Planning Support - Phase 2",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "3/31/2026",
+        "dueDate":  "3/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-128",
+        "title":  "Phase 2 - Draft structured reporting package based on TD-approved templates, that documents structured reporting to track action plan development progress, milestones and identifies potential gaps or delays​",
+        "description":  "Insider Assessments Action Planning Support - Phase 2",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "3/31/2026",
+        "dueDate":  "3/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-129",
+        "title":  "Phase 2 - Draft updated coordination package, based on TD approved templates, including action item tracker, documented risks and issues, and office hours schedule with escalation to designated forums for visibility and timely resolution",
+        "description":  "Insider Assessments Action Planning Support - Phase 2",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "3/31/2026",
+        "dueDate":  "3/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-130",
+        "title":  "Draft high-level feedback on action plans for Assessment Units (AUs) with “High” residual risk ratings from phase 2 and phase 4 (up to 17 AUs)",
+        "description":  "Insider Assessments Action Planning Support - Phase 5",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "3/31/2026",
+        "dueDate":  "3/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-131",
+        "title":  "Draft updates to deliverable evidence memos",
+        "description":  "Detection Tollgate \u0026 AEDR Readiness ",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "7/26/2027",
+        "dueDate":  "7/26/2027",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-132",
+        "title":  "Draft updates to Gate 1 and Gate 2 memos",
+        "description":  "Detection Tollgate \u0026 AEDR Readiness ",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "7/26/2027",
+        "dueDate":  "7/26/2027",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-133",
+        "title":  "Draft Gate 1 and Gate 2 presentation materials",
+        "description":  "Detection Tollgate \u0026 AEDR Readiness ",
+        "workstreamId":  "WS8",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "7/26/2027",
+        "dueDate":  "7/26/2027",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-134",
+        "title":  "Draft interim updated insider risk detection strategy document ",
+        "description":  "Assist TD to develop a draft insider detection program strategy​ - Interim Draft",
+        "workstreamId":  "WS5",
+        "ownerId":  "lisa.meepummarin@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "12/31/2025",
+        "dueDate":  "12/31/2025",
+        "completedDate":  "12/31/2025",
+        "progress":  100,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-135",
+        "title":  "Draft final updated insider risk detection strategy document ",
+        "description":  "Assist TD to develop a draft insider detection program strategy​ - Final Draft",
+        "workstreamId":  "WS5",
+        "ownerId":  "lisa.meepummarin@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "12/31/2025",
+        "dueDate":  "12/31/2025",
+        "completedDate":  "12/31/2025",
+        "progress":  100,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-136",
+        "title":  "Draft interim approach to evaluate the effectiveness and completeness of insider risk detection rules​ for the insider risk detection teams of Data Loss Prevention (DLP) and Performance Integrity (PI)",
+        "description":  "Assist TD to evaluate existing insider risk detection rules and enhance or replace​ - Interim Draft",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "In Progress",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/16/2026",
+        "dueDate":  "1/16/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-137",
+        "title":  "Draft interim documentation of insider risk detection rules and models​",
+        "description":  "Assist TD to evaluate existing insider risk detection rules and enhance or replace​ - Interim Draft",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "9/30/2026",
+        "dueDate":  "9/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-138",
+        "title":  "Draft interim documentation of the updates to insider risk detection rules and models documentation",
+        "description":  "Assist TD to evaluate existing insider risk detection rules and enhance or replace​ - Interim Draft",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "4/30/2027",
+        "dueDate":  "4/30/2027",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-139",
+        "title":  "Draft rule candidates (up to five (5) rules) for Insider Risk Detection Rules",
+        "description":  "Assist TD to evaluate existing insider risk detection rules and enhance or replace​ - Interim Draft",
+        "workstreamId":  "WS5",
+        "ownerId":  "",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "9/30/2026",
+        "dueDate":  "9/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-140",
+        "title":  "Draft final approach to evaluate the effectiveness and completeness of insider risk detection rules​ for the insider risk detection teams of Data Loss Prevention (DLP) and Performance Integrity (PI)",
+        "description":  "Assist TD to evaluate existing insider risk detection rules and enhance or replace​ - Final Draft",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "6/30/2026",
+        "dueDate":  "6/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-141",
+        "title":  "Draft final documentation of insider risk detection rules and models​",
+        "description":  "Assist TD to evaluate existing insider risk detection rules and enhance or replace​ - Final Draft",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2027",
+        "dueDate":  "1/31/2027",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-142",
+        "title":  "Draft final documentation of the updates to insider risk detection rules and models documentation",
+        "description":  "Assist TD to evaluate existing insider risk detection rules and enhance or replace​ - Final Draft",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "7/26/2027",
+        "dueDate":  "7/26/2027",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-143",
+        "title":  "Draft documentation of attributes used for insider risk detection analytics, draft list of transformed features that feed into the feature engineering process, draft document of feature importance determination approach, and draft model effectiveness evaluation criteria​",
+        "description":  "Assist TD to evaluate existing insider risk detection rules and enhance or replace​",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "6/30/2026",
+        "dueDate":  "6/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-144",
+        "title":  "Draft observations and high-level recommendations to the prioritized insider risk detection rules and models for five (5) insider detection rules​",
+        "description":  "Assist TD to evaluate existing insider risk detection rules and enhance or replace​",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2027",
+        "dueDate":  "1/31/2027",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-145",
+        "title":  "Draft interim analytical monitoring metrics for KPI dashboards ",
+        "description":  "Assist TD with Detection Operations Controls \u0026 Analytics​ - Interim ",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Completed",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "12/31/2025",
+        "dueDate":  "12/31/2025",
+        "completedDate":  "12/31/2025",
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-146",
+        "title":  "Draft interim illustrative dashboards visualizing the draft KPIs for monitoring insider risk detection program",
+        "description":  "Assist TD with Detection Operations Controls \u0026 Analytics​ - Interim ",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "In Progress",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "3/31/2026",
+        "dueDate":  "3/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-147",
+        "title":  "Draft interim updated alert review playbooks and procedures with notification and escalation criteria for the three insider risk detection teams as listed above ",
+        "description":  "Assist TD with Detection Operations Controls \u0026 Analytics​ - Interim ",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "6/30/2026",
+        "dueDate":  "6/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-148",
+        "title":  "Draft interim updated alert review playbooks and procedures with notification and escalation criteria for the three insider risk detection teams as listed above ",
+        "description":  "Assist TD with Detection Operations Controls \u0026 Analytics​ - Interim ",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "9/30/2026",
+        "dueDate":  "9/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-149",
+        "title":  "Draft interim updated alert review playbooks and procedures with notification and escalation criteria for the three insider risk detection teams as listed above ",
+        "description":  "Assist TD with Detection Operations Controls \u0026 Analytics​ - Interim ",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "12/31/2026",
+        "dueDate":  "12/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-150",
+        "title":  "Draft interim updated alert review playbooks and procedures for metrics related to rule performance, data quality and operations and capacity planning for monitoring insider risk detection program",
+        "description":  "Assist TD with Detection Operations Controls \u0026 Analytics​ - Interim ",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "3/31/2026",
+        "dueDate":  "3/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-151",
+        "title":  "Draft interim updated alert review playbooks and procedures for metrics related to rule performance, data quality and operations and capacity planning for monitoring insider risk detection program",
+        "description":  "Assist TD with Detection Operations Controls \u0026 Analytics​ - Interim ",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "6/30/2026",
+        "dueDate":  "6/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-152",
+        "title":  "Draft final analytical monitoring metrics for KPI dashboards ",
+        "description":  "Assist TD with Detection Operations Controls \u0026 Analytics​ - Final",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/28/2026",
+        "dueDate":  "2/28/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-153",
+        "title":  "Draft final illustrative dashboards visualizing the draft KPIs for monitoring insider risk detection program",
+        "description":  "Assist TD with Detection Operations Controls \u0026 Analytics​ - Final",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "6/30/2026",
+        "dueDate":  "6/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-154",
+        "title":  "Draft final updated alert review playbooks and procedures with notification and escalation criteria for the three insider risk detection teams as listed above ",
+        "description":  "Assist TD with Detection Operations Controls \u0026 Analytics​ - Final",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "7/26/2027",
+        "dueDate":  "7/26/2027",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-155",
+        "title":  "Draft final updated alert review playbooks and procedures for metrics related to rule performance, data quality and operations and capacity planning for monitoring insider risk detection program",
+        "description":  "Assist TD with Detection Operations Controls \u0026 Analytics​ - Final",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "7/26/2027",
+        "dueDate":  "7/26/2027",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-156",
+        "title":  "Draft changes to be made to the insider risk detection controls and analytics to support feedback loop for insider risk detection rule/model performance tuning​",
+        "description":  "Assist TD with Detection Operations Controls \u0026 Analytics​",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "3/31/2026",
+        "dueDate":  "3/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-157",
+        "title":  "Draft documentation of the interaction model between the three (3) insider risk detection teams: Insider Threat Management – Detection Engineering (ITM-DE), Data Loss Prevention (DLP), and Performance Integrity (PI)​ and the downstream investigations team",
+        "description":  "Assist TD with Detection Operations Controls \u0026 Analytics​",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "6/30/2026",
+        "dueDate":  "6/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-158",
+        "title":  "Draft change management procedures associated with insider risk related rules and models for the three (3) insider risk detection teams listed above",
+        "description":  "Assist TD with Detection Operations Controls \u0026 Analytics​",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "9/30/2026",
+        "dueDate":  "9/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-159",
+        "title":  "Draft documentation of notification escalation criteria and associated procedures​",
+        "description":  "Assist TD with Detection Operations Controls \u0026 Analytics​",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "In Progress",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "3/31/2026",
+        "dueDate":  "3/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-160",
+        "title":  "Draft interim transition plan to migrate from current state to target state insider risk detection setup with TD-selected vendor integrated into TD\u0027s insider risk detection infrastructure",
+        "description":  "Assist TD to analyze (a) building an insider risk detection engine vs. (b) leveraging one (1) or more off-the-shelf vendor software solutions, or a hybrid approach​ - Interim",
+        "workstreamId":  "WS5",
+        "ownerId":  "bhaskara.bommireddipalli@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "9/30/2026",
+        "dueDate":  "9/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-161",
+        "title":  "Draft final transition plan to migrate from current state to target state insider risk detection setup with TD-selected vendor integrated into TD\u0027s insider risk detection infrastructure",
+        "description":  "Assist TD to analyze (a) building an insider risk detection engine vs. (b) leveraging one (1) or more off-the-shelf vendor software solutions, or a hybrid approach​ - Final",
+        "workstreamId":  "WS5",
+        "ownerId":  "bhaskara.bommireddipalli@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "7/26/2027",
+        "dueDate":  "7/26/2027",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-162",
+        "title":  "Draft insider risk detection vendor implementation roadmap​",
+        "description":  "Assist TD to analyze (a) building an insider risk detection engine vs. (b) leveraging one (1) or more off-the-shelf vendor software solutions, or a hybrid approach​",
+        "workstreamId":  "WS5",
+        "ownerId":  "bhaskara.bommireddipalli@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "2/25/2027",
+        "dueDate":  "2/25/2027",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-163",
+        "title":  "Draft Request for Information (RFI) questionnaire for vendor evaluation and RFI evaluation approach for User and Entity Behavioral Analytics (UEBA)  and alert management capabilities ",
+        "description":  "Assist TD to analyze (a) building an insider risk detection engine vs. (b) leveraging one (1) or more off-the-shelf vendor software solutions, or a hybrid approach​",
+        "workstreamId":  "WS5",
+        "ownerId":  "bhaskara.bommireddipalli@pwc.com",
+        "status":  "In Progress",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "12/31/2025",
+        "dueDate":  "12/31/2025",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-164",
+        "title":  "Draft buy vs. build / hybrid assessment and high-level recommendations for UEBA and alert management capabilities",
+        "description":  "Assist TD to analyze (a) building an insider risk detection engine vs. (b) leveraging one (1) or more off-the-shelf vendor software solutions, or a hybrid approach​",
+        "workstreamId":  "WS5",
+        "ownerId":  "bhaskara.bommireddipalli@pwc.com",
+        "status":  "In Progress",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "12/31/2025",
+        "dueDate":  "12/31/2025",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-165",
+        "title":  "Draft key integration points between TD-selected vendor solution and TD\u0027s inside risk detection infrastructure​",
+        "description":  "Assist TD to analyze (a) building an insider risk detection engine vs. (b) leveraging one (1) or more off-the-shelf vendor software solutions, or a hybrid approach​",
+        "workstreamId":  "WS5",
+        "ownerId":  "bhaskara.bommireddipalli@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "3/31/2027",
+        "dueDate":  "3/31/2027",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-166",
+        "title":  "Draft insider risk detection current state staffing details and organization structure across business, technology and operations teams​",
+        "description":  "Assist TD to analyze staffing requirements for implementing and operating the detection program ​",
+        "workstreamId":  "WS5",
+        "ownerId":  "sumanth.sudheer@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2027",
+        "dueDate":  "1/31/2027",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-167",
+        "title":  "Draft future state staffing requirements for implementing and operating the insider detection program strategy",
+        "description":  "Assist TD to analyze staffing requirements for implementing and operating the detection program ​",
+        "workstreamId":  "WS5",
+        "ownerId":  "sumanth.sudheer@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2027",
+        "dueDate":  "1/31/2027",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-168",
+        "title":  "Draft interim training requirements, training audience and training curriculum and materials to train TD-identified team members on the revised insider risk detection program strategy",
+        "description":  "Assist TD with the implementation of its insider risk detection program strategy​ - Interim",
+        "workstreamId":  "WS5",
+        "ownerId":  "sumanth.sudheer@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2027",
+        "dueDate":  "1/31/2027",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-169",
+        "title":  "Draft final training requirements, training audience and training curriculum and materials to train TD-identified team members on the revised insider risk detection program strategy",
+        "description":  "Assist TD with the implementation of its insider risk detection program strategy​ - Final",
+        "workstreamId":  "WS5",
+        "ownerId":  "sumanth.sudheer@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "7/26/2027",
+        "dueDate":  "7/26/2027",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-170",
+        "title":  "Draft updated insider risk detection program strategy document based on implementation details​",
+        "description":  "Assist TD with the implementation of its insider risk detection program strategy​",
+        "workstreamId":  "WS5",
+        "ownerId":  "sumanth.sudheer@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "1/31/2027",
+        "dueDate":  "1/31/2027",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-171",
+        "title":  "Draft changes to the end-to-end insider risk detection life cycle.​",
+        "description":  "Assist TD to enhance procedures for new insider risk detection alerts review process​",
+        "workstreamId":  "WS5",
+        "ownerId":  "sumanth.sudheer@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "10/31/2026",
+        "dueDate":  "10/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-172",
+        "title":  "Draft list of insider risk detection related procedures and processes to be updated based on the changes to the end-to-end insider risk detection life cycle ​",
+        "description":  "Assist TD to enhance procedures for new insider risk detection alerts review process​",
+        "workstreamId":  "WS5",
+        "ownerId":  "sumanth.sudheer@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "10/31/2026",
+        "dueDate":  "10/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-173",
+        "title":  "Draft updated insider risk detection procedure documents",
+        "description":  "Assist TD to enhance procedures for new insider risk detection alerts review process​",
+        "workstreamId":  "WS5",
+        "ownerId":  "sumanth.sudheer@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "10/31/2026",
+        "dueDate":  "10/31/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-174",
+        "title":  "Draft high-level feedback on action plans for Assessment Units (AUs) with “High” residual risk ratings from phase 2 and phase 4 (up to 17 AUs)",
+        "description":  "Insider Assessments Action Planning Support",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "9/30/2026",
+        "dueDate":  "9/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-175",
+        "title":  "Draft SQL Queries for five (5) Insider Risk Detection Rules",
+        "description":  "Insider Assessments Action Planning Support",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "9/30/2026",
+        "dueDate":  "9/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-176",
+        "title":  "Draft Updated Performance Report for five (5) Insider Risk Detection Rules including draft results, true-hit flag, false positive, and false negative rates including draft performance metrics",
+        "description":  "Insider Assessments Action Planning Support",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "9/30/2026",
+        "dueDate":  "9/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-177",
+        "title":  "Draft high-level recommendations to enhance the ITM-DE rule library documentation",
+        "description":  "Insider Assessments Action Planning Support",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "9/30/2026",
+        "dueDate":  "9/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-178",
+        "title":  "Draft updates to ITM-DE rule library documentation",
+        "description":  "Insider Assessments Action Planning Support",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "9/30/2026",
+        "dueDate":  "9/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-179",
+        "title":  "Draft updates to ITM-DE rule library documentation",
+        "description":  "Insider Assessments Action Planning Support",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "9/30/2026",
+        "dueDate":  "9/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-180",
+        "title":  "Draft requirements for an automated rule versioning capabilities ",
+        "description":  "Insider Assessments Action Planning Support",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "9/30/2026",
+        "dueDate":  "9/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-181",
+        "title":  "Draft automated rule versioning capabilities in Microsoft PowerApps",
+        "description":  "Insider Assessments Action Planning Support",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "9/30/2026",
+        "dueDate":  "9/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-182",
+        "title":  "Draft approach to evaluate the effectiveness and completeness of insider risk detection rules for the insider risk detection teams of Data Loss Prevention (DLP), and Performance Integrity (PI)",
+        "description":  "Insider Assessments Action Planning Support",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "9/30/2026",
+        "dueDate":  "9/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-183",
+        "title":  "Draft list of attributes used for insider risk detection analytics",
+        "description":  "Insider Assessments Action Planning Support",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "9/30/2026",
+        "dueDate":  "9/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-184",
+        "title":  "Draft list of transformed features that feed into the feature engineering process",
+        "description":  "Insider Assessments Action Planning Support",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "9/30/2026",
+        "dueDate":  "9/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-185",
+        "title":  "Draft document of feature importance determination approach",
+        "description":  "Insider Assessments Action Planning Support",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "9/30/2026",
+        "dueDate":  "9/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-186",
+        "title":  "Draft model effectiveness evaluation criteria",
+        "description":  "Insider Assessments Action Planning Support",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "9/30/2026",
+        "dueDate":  "9/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-187",
+        "title":  "Draft documentation of insider risk detection rules and models",
+        "description":  "Insider Assessments Action Planning Support",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "9/30/2026",
+        "dueDate":  "9/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-188",
+        "title":  "Draft observations and high-level recommendations to the TD-prioritized insider risk detection rules and models for in-scope rules and up-to five (5) insider detection models",
+        "description":  "Insider Assessments Action Planning Support",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "9/30/2026",
+        "dueDate":  "9/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-189",
+        "title":  "Draft documentation of the updates to insider risk detection rules and models",
+        "description":  "Insider Assessments Action Planning Support",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "9/30/2026",
+        "dueDate":  "9/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "del-190",
+        "title":  "Draft evaluation report including draft observations and high-level recommendations for insider detection rule effectiveness",
+        "description":  "Insider Assessments Action Planning Support",
+        "workstreamId":  "WS5",
+        "ownerId":  "arora.jyoti@pwc.com",
+        "status":  "Not Started",
+        "priority":  "Medium",
+        "risk":  "Low",
+        "startDate":  "6/30/2026",
+        "dueDate":  "6/30/2026",
+        "completedDate":  null,
+        "progress":  0,
+        "dependencies":  {
+
+                         },
+        "tags":  {
+
+                 },
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00",
+        "updatedAt":  "2026-01-14T06:06:27.6933689-05:00"
+    }
+]

@@ -1,0 +1,62 @@
+﻿[
+    {
+        "id":  "pto-1",
+        "staffId":  "ryan.t.anderson@pwc.com",
+        "startDate":  "12/24/2025",
+        "endDate":  "12/24/2025",
+        "type":  "Vacation",
+        "status":  "Approved",
+        "notes":  "",
+        "approvedBy":  null,
+        "approvedAt":  "12/16/2025 9:55 AM",
+        "createdAt":  "12/16/2025 9:52 AM"
+    },
+    {
+        "id":  "pto-2",
+        "staffId":  "ryan.t.anderson@pwc.com",
+        "startDate":  "1/17/2026",
+        "endDate":  "1/25/2026",
+        "type":  "Vacation",
+        "status":  "Pending",
+        "notes":  "",
+        "approvedBy":  null,
+        "approvedAt":  null,
+        "createdAt":  "12/16/2025 10:01 AM"
+    },
+    {
+        "id":  "pto-3",
+        "staffId":  "georg.chimion@pwc.com",
+        "startDate":  "12/31/2025",
+        "endDate":  "1/4/2026",
+        "type":  "Vacation",
+        "status":  "Rejected",
+        "notes":  "just because",
+        "approvedBy":  null,
+        "approvedAt":  "12/31/2025 10:59 AM",
+        "createdAt":  "12/31/2025 10:58 AM"
+    },
+    {
+        "id":  "pto-4",
+        "staffId":  "georg.chimion@pwc.com",
+        "startDate":  "1/15/2026",
+        "endDate":  "1/23/2026",
+        "type":  "Vacation",
+        "status":  "Pending",
+        "notes":  "",
+        "approvedBy":  null,
+        "approvedAt":  null,
+        "createdAt":  "1/7/2026 4:46 PM"
+    },
+    {
+        "id":  "pto-5",
+        "staffId":  "ryan.t.anderson@pwc.com",
+        "startDate":  "1/20/2026",
+        "endDate":  "1/24/2026",
+        "type":  "Vacation",
+        "status":  "Pending",
+        "notes":  "",
+        "approvedBy":  null,
+        "approvedAt":  null,
+        "createdAt":  "1/8/2026 1:16 PM"
+    }
+]

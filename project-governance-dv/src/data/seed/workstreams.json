@@ -1,0 +1,66 @@
+﻿[
+    {
+        "id":  "WS5",
+        "name":  "Detection",
+        "description":  "",
+        "lead":  "",
+        "color":  "#D04A02",
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "WS6",
+        "name":  "Investigation",
+        "description":  "",
+        "lead":  "",
+        "color":  "#D04A02",
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "WS1",
+        "name":  "Governance and Oversight",
+        "description":  "",
+        "lead":  "",
+        "color":  "#D04A02",
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "WS2",
+        "name":  "Risk Assessment",
+        "description":  "",
+        "lead":  "",
+        "color":  "#D04A02",
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "WS3",
+        "name":  "Governance \u0026 Oversight – Technology",
+        "description":  "",
+        "lead":  "",
+        "color":  "#D04A02",
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "WS4",
+        "name":  "Prevention - Leave of Absence",
+        "description":  "",
+        "lead":  "",
+        "color":  "#D04A02",
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "WS7",
+        "name":  "Operational Readiness",
+        "description":  "",
+        "lead":  "",
+        "color":  "#D04A02",
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00"
+    },
+    {
+        "id":  "WS8",
+        "name":  "Reg Audit and Program Support",
+        "description":  "",
+        "lead":  "",
+        "color":  "#D04A02",
+        "createdAt":  "2026-01-14T06:06:27.6933689-05:00"
+    }
+]
