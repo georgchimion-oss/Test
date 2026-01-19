@@ -14,11 +14,11 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/georgchimion-oss/Test/
 
 **This script does EVERYTHING:**
 - ✅ Downloads 50+ Lovable UI components (shadcn/ui)
-- ✅ Downloads CommandCenter with animations
-- ✅ Downloads dashboard and layout components
-- ✅ Updates package.json with all dependencies (Radix UI, Framer Motion, etc.)
-- ✅ Configures Tailwind CSS, TypeScript, Vite
-- ✅ Updates App.tsx and Layout.tsx with new routes
+- ✅ Installs ALL dependencies (Radix UI, Framer Motion, recharts, etc.)
+- ✅ Configures Tailwind CSS with PWC design system
+- ✅ Configures TypeScript and Vite with path aliases
+- ✅ Downloads hooks (use-toast, use-mobile)
+- ✅ Keeps your existing App/Layout (they work with Dataverse!)
 
 ---
 
@@ -37,7 +37,7 @@ pac code push
 Open your app in Power Apps. You should see a **big blue/purple banner** at the top that says:
 
 ```
-VERSION: Jan 18, 2026 - 09:40 PM EST
+VERSION: Jan 18, 2026 - 09:47 PM EST
 ```
 
 **If you see that exact timestamp, it worked!**

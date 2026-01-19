@@ -1,11 +1,11 @@
 # ============================================================
-# DVUI + Lovable UI + CommandCenter Setup Script
-# Version: Jan 18, 2026 - 09:40 PM EST
+# DVUI + Lovable UI Components Setup Script
+# Version: Jan 18, 2026 - 09:47 PM EST
 # ============================================================
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "DVUI Enhanced Setup Script" -ForegroundColor Cyan
-Write-Host "Version: Jan 18, 2026 - 09:40 PM EST" -ForegroundColor Yellow
+Write-Host "DVUI + Lovable UI Setup Script" -ForegroundColor Cyan
+Write-Host "Version: Jan 18, 2026 - 09:47 PM EST" -ForegroundColor Yellow
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 
@@ -73,12 +73,8 @@ Write-Host "`n[3/9] Creating folder structure..." -ForegroundColor Yellow
 
 $folders = @(
     "src\components\ui",
-    "src\components\dashboard",
-    "src\components\layout",
-    "src\screens",
     "src\lib",
-    "src\hooks",
-    "src\data-lovable"
+    "src\hooks"
 )
 
 foreach ($folder in $folders) {
@@ -387,31 +383,10 @@ export { Badge }
 "@
 Set-Content -Path "src\components\ui\badge.tsx" -Value $badgeContent
 
-# Download App.tsx and Layout.tsx from GitHub
-Write-Host "  Downloading App.tsx and Layout.tsx..." -ForegroundColor Gray
-$baseUrl = "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/powerapp-sharepoint-deliverables-vbZKv"
-
-try {
-    Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/App.tsx" -OutFile "src\App.tsx" -ErrorAction Stop
-    Write-Host "  [OK] Downloaded App.tsx" -ForegroundColor Green
-} catch {
-    Write-Host "  [X] Failed to download App.tsx: $_" -ForegroundColor Red
-}
-
-try {
-    Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/components/Layout.tsx" -OutFile "src\components\Layout.tsx" -ErrorAction Stop
-    Write-Host "  [OK] Downloaded Layout.tsx" -ForegroundColor Green
-} catch {
-    Write-Host "  [X] Failed to download Layout.tsx: $_" -ForegroundColor Red
-}
-
-# Download CommandCenter
-try {
-    Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/screens/CommandCenter.tsx" -OutFile "src\screens\CommandCenter.tsx" -ErrorAction Stop
-    Write-Host "  [OK] Downloaded CommandCenter.tsx" -ForegroundColor Green
-} catch {
-    Write-Host "  [X] Failed to download CommandCenter.tsx: $_" -ForegroundColor Red
-}
+# Note: Keeping your existing App.tsx and Layout.tsx
+# Your files already work with Dataverse - no need to replace them!
+# Just use the new UI components in your existing screens
+Write-Host "  [OK] Keeping your existing App.tsx and Layout.tsx" -ForegroundColor Green
 
 # Download all Lovable UI components
 Write-Host "  Downloading Lovable UI components..." -ForegroundColor Gray
@@ -437,33 +412,10 @@ foreach ($component in $uiComponents) {
 }
 Write-Host "  [OK] Downloaded $downloadedCount UI components" -ForegroundColor Green
 
-# Download dashboard components
-$dashboardComponents = @("DeliverableRow", "KPICard", "ProjectProgress", "RecentActivity", "RiskOverview", "UpcomingDeadlines")
-foreach ($component in $dashboardComponents) {
-    try {
-        Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/components/dashboard/$component.tsx" -OutFile "src\components\dashboard\$component.tsx" -ErrorAction SilentlyContinue
-    } catch {
-        # Skip if not found
-    }
-}
-Write-Host "  [OK] Downloaded dashboard components" -ForegroundColor Green
-
-# Download layout components
-$layoutComponents = @("AppSidebar", "Header", "MainLayout", "NavLink")
-foreach ($component in $layoutComponents) {
-    try {
-        Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/components/layout/$component.tsx" -OutFile "src\components\layout\$component.tsx" -ErrorAction SilentlyContinue
-    } catch {
-        # Skip if not found
-    }
-}
-Write-Host "  [OK] Downloaded layout components" -ForegroundColor Green
-
-# Download lib files
+# Download lib utilities ONLY (no mockData - you have real Dataverse data!)
 try {
     Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/lib/utils.ts" -OutFile "src\lib\utils.ts" -ErrorAction SilentlyContinue
-    Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/data-lovable/mockData.ts" -OutFile "src\data-lovable\mockData.ts" -ErrorAction SilentlyContinue
-    Write-Host "  [OK] Downloaded utilities and data" -ForegroundColor Green
+    Write-Host "  [OK] Downloaded utilities" -ForegroundColor Green
 } catch {
     # Skip if not found
 }
@@ -495,9 +447,9 @@ Write-Host "  [OK] Cleaned up conflicting files" -ForegroundColor White
 Write-Host "  [OK] Installed all dependencies (Radix UI, Framer Motion, etc.)" -ForegroundColor White
 Write-Host "  [OK] Configured Tailwind CSS with PWC design system" -ForegroundColor White
 Write-Host "  [OK] Configured TypeScript and Vite with path aliases" -ForegroundColor White
-Write-Host "  [OK] Downloaded 50+ Lovable UI components from GitHub" -ForegroundColor White
-Write-Host "  [OK] Downloaded CommandCenter, dashboard, and layout components" -ForegroundColor White
-Write-Host "  [OK] Downloaded enhanced App.tsx and Layout.tsx with all routes`n" -ForegroundColor White
+Write-Host "  [OK] Downloaded 50+ Lovable UI components (shadcn/ui)" -ForegroundColor White
+Write-Host "  [OK] Downloaded hooks (use-toast, use-mobile)" -ForegroundColor White
+Write-Host "  [OK] Kept your existing app files (they work with Dataverse!)`n" -ForegroundColor White
 
 Write-Host "Next commands:" -ForegroundColor Yellow
 Write-Host "  npm install" -ForegroundColor White
@@ -505,9 +457,9 @@ Write-Host "  npm run build" -ForegroundColor White
 Write-Host "  pac code push`n" -ForegroundColor White
 
 Write-Host "Your app now has:" -ForegroundColor Yellow
-Write-Host "  * All original screens (Dashboard, Kanban, Gantt, etc.)" -ForegroundColor White
-Write-Host "  * CommandCenter with animations (Zap icon in sidebar)" -ForegroundColor White
-Write-Host "  * 50+ Lovable UI components ready to use" -ForegroundColor White
-Write-Host "  * Enhanced navigation and layouts`n" -ForegroundColor White
+Write-Host "  * All original screens using REAL Dataverse data" -ForegroundColor White
+Write-Host "  * 50+ Lovable UI components (shadcn/ui) ready to use" -ForegroundColor White
+Write-Host "  * Modern design system with Tailwind CSS" -ForegroundColor White
+Write-Host "  * Use UI components in your existing screens!`n" -ForegroundColor White
 
 Write-Host "To update later, just run this script again!`n" -ForegroundColor Cyan
