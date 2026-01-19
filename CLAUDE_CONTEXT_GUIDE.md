@@ -1,14 +1,14 @@
 # Claude Context Guide for Project Governance DVUI
 
-**Last Updated:** Jan 19, 2026 - 10:25 PM EST
-**Last Successful Push:** Jan 19, 2026 - 10:20 PM EST (fix-dvui-build.ps1 v6.2)
-**Current Script Version:** v6.2
+**Last Updated:** Jan 19, 2026 - 10:50 PM EST
+**Last Successful Push:** Jan 19, 2026 - 10:45 PM EST (fix-dvui-build.ps1 v7)
+**Current Script Version:** v7
 
-## CURRENT TASK (PENDING)
-**Testing v6.2 sidebar fix.** The root cause was found:
-- The v6.1 script used regex to modify App.tsx but the regex didn't handle the case where the route already existed without Layout
-- v6.2 now downloads the corrected `dvui save/src/App.tsx` directly from GitHub
-- The corrected App.tsx has CommandCenter wrapped in `<Layout title="Command Center">`
+## CURRENT STATUS: NEW FEATURES READY
+- 15 fun themes (France, Paris, PSG, Matrix, Barbie, etc.)
+- Theme dropdown in header on ALL screens
+- Staff table: removed Role & Department columns
+- Theme persists in localStorage
 
 ---
 
@@ -253,6 +253,7 @@ const { data: workstreams = [] } = useGetWorkstreams();
 
 | Date | Version | Changes |
 |------|---------|---------|
+| Jan 19, 2026 22:50 | v7 | **15 FUN THEMES** - France, Paris, PSG, Matrix, Barbie + theme dropdown in header on all screens + Staff cleanup |
 | Jan 19, 2026 22:25 | v6.2 | **SIDEBAR FIX** - Downloads App.tsx directly instead of regex (regex was broken) |
 | Jan 19, 2026 22:15 | v6.1 | Added Layout wrapper to route - sidebar STILL NOT WORKING |
 | Jan 19, 2026 21:45 | v6 | **INLINE STYLED CommandCenter** - light theme, no Tailwind CSS vars, hardcoded PWC colors, all animations work |

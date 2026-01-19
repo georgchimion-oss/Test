@@ -4,6 +4,7 @@ import { getDeliverables, getWorkstreams, getStaff, onDataRefresh, updateDeliver
 import { AlertCircle, TrendingUp, CheckCircle2, Clock, MessageSquare, AlertTriangle, Edit2, History } from 'lucide-react'
 import type { DashboardStats } from '../types'
 import { useAuth } from '../context/AuthContext'
+import { useTheme } from '../context/ThemeContext'
 import ViewSwitcher, { type ViewType } from '../components/ViewSwitcher'
 import TableView from '../components/TableView'
 import KanbanView from '../components/KanbanView'
@@ -11,96 +12,11 @@ import { getAuditLogsByEntity, logAudit } from '../data/auditLayer'
 
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement)
 
-type ThemeType = 'pwc' | 'nineties' | 'miami' | 'bulls'
-
-interface ThemeConfig {
-  name: string
-  bgMain: string
-  cardBg: string
-  cardBorder: string
-  textPrimary: string
-  textSecondary: string
-  primary: string
-  accent1?: string
-  accent2?: string
-  accent3?: string
-  accent4?: string
-  statusColors?: {
-    completed: string
-    inProgress: string
-    atRisk: string
-    blocked: string
-    notStarted: string
-  }
-}
-
-const THEMES: Record<ThemeType, ThemeConfig> = {
-  pwc: {
-    name: 'PwC Light',
-    bgMain: 'linear-gradient(180deg, #f5f7fb 0%, #ffffff 60%)',
-    cardBg: '#ffffff',
-    cardBorder: '#e2e8f0',
-    textPrimary: '#0f172a',
-    textSecondary: '#475569',
-    primary: '#D04A02',
-    accent1: '#E88D14',
-    accent2: '#DB4E18',
-    accent3: '#0f172a',
-    accent4: '#b91c1c',
-    statusColors: {
-      completed: '#059669',
-      inProgress: '#f59e0b',
-      atRisk: '#b91c1c',
-      blocked: '#64748b',
-      notStarted: '#94a3b8',
-    }
-  },
-  nineties: {
-    name: '90s Neon',
-    bgMain: 'linear-gradient(135deg, #fde68a 0%, #bae6fd 45%, #f5d0fe 100%)',
-    cardBg: '#ffffff',
-    cardBorder: '#f9a8d4',
-    textPrimary: '#1f2937',
-    textSecondary: '#4b5563',
-    primary: '#ec4899',
-    accent1: '#22d3ee',
-    accent2: '#a855f7',
-    accent3: '#f97316',
-    accent4: '#0ea5e9',
-  },
-  miami: {
-    name: 'Miami Vice',
-    bgMain: 'linear-gradient(135deg, #ffe4e6 0%, #cffafe 50%, #fde68a 100%)',
-    cardBg: '#ffffff',
-    cardBorder: '#fbcfe8',
-    textPrimary: '#0f172a',
-    textSecondary: '#475569',
-    primary: '#06b6d4',
-    accent1: '#f97316',
-    accent2: '#ec4899',
-    accent3: '#0ea5e9',
-    accent4: '#facc15',
-  },
-  bulls: {
-    name: 'Chicago Bulls',
-    bgMain: 'linear-gradient(180deg, #fff1f2 0%, #ffffff 65%)',
-    cardBg: '#ffffff',
-    cardBorder: '#fee2e2',
-    textPrimary: '#111827',
-    textSecondary: '#4b5563',
-    primary: '#b91c1c',
-    accent1: '#111827',
-    accent2: '#ef4444',
-    accent3: '#f97316',
-    accent4: '#b91c1c',
-  },
-}
-
 const BUILD_STAMP = 'Push 2026-01-18 06:05 ET'
 
 export default function DashboardEnhanced() {
   const { currentUser } = useAuth()
-  const [theme, setTheme] = useState<ThemeType>('pwc')
+  const { theme, currentTheme } = useTheme()
   const [currentView, setCurrentView] = useState<ViewType>('cards')
   const [commentingOn, setCommentingOn] = useState<string | null>(null)
   const [commentText, setCommentText] = useState('')
@@ -133,8 +49,6 @@ export default function DashboardEnhanced() {
       setStaff(getStaff())
     })
   }, [])
-
-  const currentTheme = THEMES[theme]
 
   // Helper function to get status colors based on theme
   const getStatusColor = (status: string) => {
@@ -291,50 +205,15 @@ export default function DashboardEnhanced() {
   }, [historyDeliverableId, auditVersion])
 
   return (
-    <div style={{
-      background: currentTheme.bgMain,
-      minHeight: '100vh',
-      position: 'fixed',
-      top: 0,
-      left: 260,
-      right: 0,
-      bottom: 0,
-      overflow: 'auto',
-      padding: '2rem',
-    }}>
-      {/* Theme Switcher */}
-      <div style={{ marginBottom: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div>
-          <h1 style={{ fontSize: '2rem', fontWeight: '700', color: currentTheme.textPrimary, marginBottom: '0.5rem' }}>
-            My Work
-          </h1>
-          <p style={{ color: currentTheme.textSecondary, fontSize: '0.875rem' }}>
-            Showing {visibleDeliverables.length} deliverables assigned to you or your supervisor
-          </p>
-          <p style={{ color: currentTheme.textSecondary, fontSize: '0.75rem', marginTop: '0.25rem' }}>
-            {BUILD_STAMP}
-          </p>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <label style={{ fontSize: '0.875rem', color: currentTheme.textSecondary }}>Theme:</label>
-          <select
-            value={theme}
-            onChange={(e) => setTheme(e.target.value as ThemeType)}
-            style={{
-              padding: '0.5rem 1rem',
-              borderRadius: '8px',
-              border: `1px solid ${currentTheme.cardBorder}`,
-              background: currentTheme.cardBg,
-              color: currentTheme.textPrimary,
-              fontSize: '0.875rem',
-              cursor: 'pointer',
-            }}
-          >
-            {Object.entries(THEMES).map(([key, value]) => (
-              <option key={key} value={key}>{value.name}</option>
-            ))}
-          </select>
-        </div>
+    <div style={{ padding: '1rem' }}>
+      {/* Header */}
+      <div style={{ marginBottom: '1.5rem' }}>
+        <p style={{ color: currentTheme.textSecondary, fontSize: '0.875rem' }}>
+          Showing {visibleDeliverables.length} deliverables assigned to you or your supervisor
+        </p>
+        <p style={{ color: currentTheme.textSecondary, fontSize: '0.75rem', marginTop: '0.25rem' }}>
+          {BUILD_STAMP}
+        </p>
       </div>
 
       {/* View Switcher */}

@@ -1,6 +1,7 @@
 import { useState, ReactNode } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import { useTheme, THEMES, ThemeType } from '../context/ThemeContext'
 import {
   LayoutDashboard,
   Trello,
@@ -17,6 +18,7 @@ import {
   Network,
   BarChart3,
   Zap,
+  Palette,
 } from 'lucide-react'
 
 interface LayoutProps {
@@ -27,6 +29,7 @@ interface LayoutProps {
 export default function Layout({ children, title }: LayoutProps) {
   const [collapsed, setCollapsed] = useState(false)
   const { currentUser, logout } = useAuth()
+  const { theme, setTheme, currentTheme } = useTheme()
 
   return (
     <div className="app">
@@ -145,11 +148,37 @@ export default function Layout({ children, title }: LayoutProps) {
           </button>
         </div>
       </aside>
-      <main className="main-content">
-        <div className="topbar">
-          <h1 className="page-title">{title}</h1>
+      <main className="main-content" style={{ background: currentTheme.bgMain }}>
+        <div className="topbar" style={{
+          background: currentTheme.cardBg,
+          borderBottom: `1px solid ${currentTheme.cardBorder}`,
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}>
+          <h1 className="page-title" style={{ color: currentTheme.textPrimary }}>{title}</h1>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Palette size={16} style={{ color: currentTheme.textSecondary }} />
+            <select
+              value={theme}
+              onChange={(e) => setTheme(e.target.value as ThemeType)}
+              style={{
+                padding: '0.5rem 1rem',
+                borderRadius: '8px',
+                border: `1px solid ${currentTheme.cardBorder}`,
+                background: currentTheme.cardBg,
+                color: currentTheme.textPrimary,
+                fontSize: '0.875rem',
+                cursor: 'pointer',
+              }}
+            >
+              {Object.entries(THEMES).map(([key, value]) => (
+                <option key={key} value={key}>{value.emoji} {value.name}</option>
+              ))}
+            </select>
+          </div>
         </div>
-        <div className="content-area">
+        <div className="content-area" style={{ background: 'transparent' }}>
           {children}
         </div>
       </main>

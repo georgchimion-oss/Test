@@ -1,12 +1,14 @@
 # ============================================================
-# DVUI Build Fix Script v6.2 - Sidebar Fix
-# Version: Jan 19, 2026 - 10:20 PM
-# Downloads App.tsx directly to ensure Layout wrapper is applied
+# DVUI Build Fix Script v7 - Fun Themes & Staff Cleanup
+# Version: Jan 19, 2026 - 10:45 PM
+# Adds 15 themes (France, Paris, PSG, Matrix, Barbie, etc.)
+# Theme dropdown now in header on ALL screens
+# Staff table: removed Role & Department columns
 # ============================================================
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "DVUI Build Fix Script v6.2" -ForegroundColor Cyan
-Write-Host "Sidebar Fix - Downloads correct App.tsx" -ForegroundColor Cyan
+Write-Host "DVUI Build Fix Script v7" -ForegroundColor Cyan
+Write-Host "Fun Themes & Staff Cleanup" -ForegroundColor Cyan
 Write-Host "Timestamp: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Yellow
 Write-Host "========================================" -ForegroundColor Cyan
 
@@ -16,7 +18,7 @@ $baseUrl = "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/power
 # Step 1: Verify directory
 #------------------------------------------------------------------------------
 
-Write-Host "`n[1/7] Verifying directory..." -ForegroundColor Yellow
+Write-Host "`n[1/8] Verifying directory..." -ForegroundColor Yellow
 
 if (-not (Test-Path "power.config.json")) {
     Write-Host "ERROR: power.config.json not found!" -ForegroundColor Red
@@ -25,10 +27,10 @@ if (-not (Test-Path "power.config.json")) {
 Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 2: Install framer-motion (only dep needed for animations)
+# Step 2: Install framer-motion
 #------------------------------------------------------------------------------
 
-Write-Host "`n[2/7] Installing framer-motion..." -ForegroundColor Yellow
+Write-Host "`n[2/8] Installing framer-motion..." -ForegroundColor Yellow
 
 $packageJson = Get-Content "package.json" -Raw | ConvertFrom-Json
 if (-not $packageJson.dependencies.'framer-motion') {
@@ -40,10 +42,10 @@ if (-not $packageJson.dependencies.'framer-motion') {
 Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 3: Download dataverseService.ts (for data hooks)
+# Step 3: Download services
 #------------------------------------------------------------------------------
 
-Write-Host "`n[3/7] Downloading dataverseService.ts..." -ForegroundColor Yellow
+Write-Host "`n[3/8] Downloading services..." -ForegroundColor Yellow
 
 if (-not (Test-Path "src\services")) {
     New-Item -ItemType Directory -Path "src\services" -Force | Out-Null
@@ -53,33 +55,59 @@ Invoke-WebRequest -Uri "$baseUrl/src/services/dataverseService.ts" -OutFile "src
 Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 4: Download CommandCenterInline.tsx as CommandCenter.tsx
+# Step 4: Download ThemeContext (NEW - 15 fun themes!)
 #------------------------------------------------------------------------------
 
-Write-Host "`n[4/7] Downloading CommandCenter (inline styled)..." -ForegroundColor Yellow
+Write-Host "`n[4/8] Downloading ThemeContext (15 themes!)..." -ForegroundColor Yellow
 
-# Remove old files
-if (Test-Path "src\screens\CommandCenter.tsx.bak") {
-    Remove-Item "src\screens\CommandCenter.tsx.bak" -Force
-}
-
-Invoke-WebRequest -Uri "$baseUrl/src/screens/CommandCenterInline.tsx" -OutFile "src\screens\CommandCenter.tsx"
+Invoke-WebRequest -Uri "$baseUrl/src/context/ThemeContext.tsx" -OutFile "src\context\ThemeContext.tsx"
+Write-Host "  Themes: PwC, 90s Neon, Miami Vice, Chicago Bulls" -ForegroundColor Gray
+Write-Host "          France, Paris, PSG, Matrix, Barbie" -ForegroundColor Gray
+Write-Host "          Ocean, Sunset, Forest, Lakers, Cyberpunk, Retro" -ForegroundColor Gray
 Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 5: Download App.tsx (has CommandCenter route WITH Layout wrapper)
+# Step 5: Download updated screens
 #------------------------------------------------------------------------------
 
-Write-Host "`n[5/7] Downloading App.tsx (with sidebar for CommandCenter)..." -ForegroundColor Yellow
+Write-Host "`n[5/8] Downloading updated screens..." -ForegroundColor Yellow
+
+# CommandCenter
+if (Test-Path "src\screens\CommandCenter.tsx.bak") {
+    Remove-Item "src\screens\CommandCenter.tsx.bak" -Force
+}
+Invoke-WebRequest -Uri "$baseUrl/src/screens/CommandCenterInline.tsx" -OutFile "src\screens\CommandCenter.tsx"
+Write-Host "  CommandCenter.tsx (animated dashboard)" -ForegroundColor Gray
+
+# Staff (removed Role & Department columns)
+Invoke-WebRequest -Uri "$baseUrl/src/screens/Staff.tsx" -OutFile "src\screens\Staff.tsx"
+Write-Host "  Staff.tsx (removed Role & Department)" -ForegroundColor Gray
+
+# DashboardEnhanced (uses ThemeContext)
+Invoke-WebRequest -Uri "$baseUrl/src/screens/DashboardEnhanced.tsx" -OutFile "src\screens\DashboardEnhanced.tsx"
+Write-Host "  DashboardEnhanced.tsx (uses ThemeContext)" -ForegroundColor Gray
+
+Write-Host "  OK" -ForegroundColor Green
+
+#------------------------------------------------------------------------------
+# Step 6: Download Layout & App (theme dropdown in header!)
+#------------------------------------------------------------------------------
+
+Write-Host "`n[6/8] Downloading Layout & App..." -ForegroundColor Yellow
+
+Invoke-WebRequest -Uri "$baseUrl/src/components/Layout.tsx" -OutFile "src\components\Layout.tsx"
+Write-Host "  Layout.tsx (theme dropdown in header)" -ForegroundColor Gray
 
 Invoke-WebRequest -Uri "$baseUrl/src/App.tsx" -OutFile "src\App.tsx"
-Write-Host "  OK - CommandCenter now wrapped in Layout!" -ForegroundColor Green
+Write-Host "  App.tsx (ThemeProvider wrapper)" -ForegroundColor Gray
+
+Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 6: Update BUILD_STAMP
+# Step 7: Update BUILD_STAMP
 #------------------------------------------------------------------------------
 
-Write-Host "`n[6/7] Updating BUILD_STAMP..." -ForegroundColor Yellow
+Write-Host "`n[7/8] Updating BUILD_STAMP..." -ForegroundColor Yellow
 
 $pushTime = Get-Date -Format "yyyy-MM-dd HH:mm"
 $buildStamp = "Push $pushTime EST"
@@ -94,10 +122,10 @@ if (Test-Path $dashPath) {
 Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 7: Build and Push
+# Step 8: Build and Push
 #------------------------------------------------------------------------------
 
-Write-Host "`n[7/7] Building and pushing..." -ForegroundColor Yellow
+Write-Host "`n[8/8] Building and pushing..." -ForegroundColor Yellow
 
 # Fix tsconfig excludes
 $tsconfig = Get-Content "tsconfig.json" -Raw | ConvertFrom-Json
@@ -142,14 +170,27 @@ Write-Host "#     $buildStamp                      #" -ForegroundColor White
 Write-Host "#                                                #" -ForegroundColor Magenta
 Write-Host "##################################################" -ForegroundColor Magenta
 Write-Host ""
-Write-Host "v6.2 - SIDEBAR FIX:" -ForegroundColor Cyan
-Write-Host "  * Downloads App.tsx directly (no regex)" -ForegroundColor Green
-Write-Host "  * CommandCenter now wrapped in <Layout>" -ForegroundColor Green
-Write-Host "  * Sidebar should appear!" -ForegroundColor Green
+Write-Host "v7 - WHAT'S NEW:" -ForegroundColor Cyan
 Write-Host ""
-Write-Host "  * Light background (#f8f9fa)" -ForegroundColor White
-Write-Host "  * PWC Orange (#D04A02) accents" -ForegroundColor White
-Write-Host "  * Animated floating orbs" -ForegroundColor White
-Write-Host "  * Glowing stat cards" -ForegroundColor White
-Write-Host "  * All animations working" -ForegroundColor White
-Write-Host "`nGo to /command-center to see it WITH SIDEBAR!" -ForegroundColor Yellow
+Write-Host "  15 FUN THEMES (dropdown in header on ALL screens!):" -ForegroundColor Yellow
+Write-Host "    PwC Light       - Professional corporate" -ForegroundColor White
+Write-Host "    90s Neon        - Bright vibrant pastels" -ForegroundColor White
+Write-Host "    Miami Vice      - Tropical vibes" -ForegroundColor White
+Write-Host "    Chicago Bulls   - Red & black" -ForegroundColor White
+Write-Host "    Vive la France! - Blue white red tricolor" -ForegroundColor Blue
+Write-Host "    Paris Mon Amour - Romantic pink & gold" -ForegroundColor Magenta
+Write-Host "    Paris SG        - PSG blue & red" -ForegroundColor Blue
+Write-Host "    The Matrix      - Green on black" -ForegroundColor Green
+Write-Host "    Barbie World    - Hot pink everywhere" -ForegroundColor Magenta
+Write-Host "    Deep Ocean      - Ocean blues" -ForegroundColor Cyan
+Write-Host "    California Sunset - Orange gradients" -ForegroundColor DarkYellow
+Write-Host "    Enchanted Forest - Greens" -ForegroundColor Green
+Write-Host "    LA Lakers       - Purple & gold" -ForegroundColor Magenta
+Write-Host "    Cyberpunk 2077  - Neon cyan & magenta" -ForegroundColor Cyan
+Write-Host "    Retro Arcade    - Classic game colors" -ForegroundColor Yellow
+Write-Host ""
+Write-Host "  STAFF SCREEN:" -ForegroundColor Yellow
+Write-Host "    Removed Role & Department columns" -ForegroundColor White
+Write-Host ""
+Write-Host "  Theme persists in localStorage!" -ForegroundColor Green
+Write-Host ""

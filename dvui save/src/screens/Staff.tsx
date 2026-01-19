@@ -122,9 +122,7 @@ export default function StaffScreen() {
             <tr>
               <th>Name</th>
               <th>Title</th>
-              <th>Role</th>
               <th>Email</th>
-              <th>Department</th>
               <th>Status</th>
               <th>Actions</th>
             </tr>
@@ -134,9 +132,7 @@ export default function StaffScreen() {
               <tr key={s.id}>
                 <td style={{ fontWeight: '500' }}>{s.name}</td>
                 <td>{s.title}</td>
-                <td>{s.role}</td>
                 <td style={{ color: 'var(--text-secondary)' }}>{s.email}</td>
-                <td>{s.department}</td>
                 <td>
                   {s.isActive ? (
                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--secondary)' }}>
@@ -213,28 +209,6 @@ export default function StaffScreen() {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   />
-                </div>
-
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                  <div className="form-group">
-                    <label className="form-label">Role *</label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.role}
-                      onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                    />
-                  </div>
-
-                  <div className="form-group">
-                    <label className="form-label">Department *</label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.department}
-                      onChange={(e) => setFormData({ ...formData, department: e.target.value })}
-                    />
-                  </div>
                 </div>
 
                 <div className="form-group">
