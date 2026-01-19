@@ -15,10 +15,9 @@
 ## NEXT TASKS
 1. ~~**Deliverables screen** - Add comment button~~ ✅ DONE (v8)
 2. ~~**Kanban** - Persist drag changes to Dataverse + add filter dropdowns~~ ✅ DONE (v9)
-3. **CommandCenter → Project Overview** - Rename screen + add KPI cards:
-   - Deliverables due this month
-   - Deliverables due next 2 weeks
-   - Late deliverables
+3. **CommandCenter → Project Overview** - Rename screen + make it LANDING PAGE (top of sidebar, above My Work):
+   - Remove "Active Team" section
+   - Add KPI cards: Deliverables due this month, Due next 2 weeks, Late deliverables
    - Click on KPI → drill down to list → click item → see comments & history
 4. **Resource Management screen** - New screen based on Lovable (file: `/tmp/Test/lovable-app-organized/src/pages/Resources.tsx`)
 5. **Skills** - Use existing `role` field for skills (comma-separated text like "React, TypeScript")
