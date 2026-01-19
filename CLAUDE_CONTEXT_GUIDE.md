@@ -239,6 +239,7 @@ const { data: workstreams = [] } = useGetWorkstreams();
 8. **Don't suggest git pull** - PwC laptop uses different GitHub
 9. **CommandCenter uses dataverseService** NOT dataLayer (both work, different patterns)
 10. **framer-motion** required for CommandCenter animations
+11. **BUILD_STAMP verification** - `DashboardEnhanced.tsx` has a `BUILD_STAMP` constant that displays on the My Work page. The script MUST update this with current timestamp (EST) so Georg can verify the push deployed. Script shows the expected value at the end.
 
 ---
 

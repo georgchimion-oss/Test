@@ -173,9 +173,7 @@ Write-Host "  OK" -ForegroundColor Green
 Write-Host "`n[9/11] Updating BUILD_STAMP..." -ForegroundColor Yellow
 
 $pushTime = Get-Date -Format "yyyy-MM-dd HH:mm"
-$timezone = [System.TimeZoneInfo]::Local.StandardName -replace '.*\s(\w+)\s.*','$1'
-if ($timezone -match "Eastern") { $timezone = "ET" }
-$buildStamp = "Push $pushTime $timezone"
+$buildStamp = "Push $pushTime EST"
 
 $dashPath = "src\screens\DashboardEnhanced.tsx"
 if (Test-Path $dashPath) {
