@@ -197,6 +197,7 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 
 export default defineConfig({
+  base: './',
   plugins: [react()],
   resolve: {
     alias: {
@@ -370,6 +371,11 @@ import { Badge } from '@/components/ui/badge';
 export function TestPage() {
   return (
     <div className="p-6 space-y-6">
+      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 rounded-lg text-center shadow-lg">
+        <h2 className="text-3xl font-bold">VERSION: Jan 19, 2026 - 12:05 AM</h2>
+        <p className="text-sm mt-2">If you see this exact timestamp, your app updated successfully!</p>
+      </div>
+
       <h1 className="text-4xl font-bold">DVUI App - Ready!</h1>
 
       <Card>
