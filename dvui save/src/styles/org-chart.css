@@ -1,0 +1,134 @@
+.org-chart .p-organizationchart {
+  padding: 0.5rem 0.5rem 2rem;
+}
+
+.org-chart .p-organizationchart-table {
+  border-spacing: 0 1.5rem;
+  margin: 0 auto;
+}
+
+.org-chart .p-organizationchart-node-content {
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+.org-chart .p-organizationchart-line-down,
+.org-chart .p-organizationchart-line-left,
+.org-chart .p-organizationchart-line-right,
+.org-chart .p-organizationchart-line-top {
+  background: #cbd5f5;
+}
+
+.org-chart .p-organizationchart-line-down {
+  width: 2px;
+}
+
+.org-chart .p-organizationchart-line-left,
+.org-chart .p-organizationchart-line-right,
+.org-chart .p-organizationchart-line-top {
+  height: 2px;
+}
+
+.org-node {
+  min-width: 220px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 0.85rem 1rem;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+}
+
+.org-node--workstream {
+  min-width: 260px;
+  border-top: 6px solid #d04a02;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.org-workstream-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.35rem;
+}
+
+.org-workstream-desc {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-bottom: 0.8rem;
+}
+
+.org-node-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+}
+
+.org-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, #f97316 0%, #d04a02 100%);
+}
+
+.org-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.org-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.org-title {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.org-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.65rem;
+}
+
+.org-pill {
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #b45309;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+}
+
+.org-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: #475569;
+}
+
+.org-badge {
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.org-muted {
+  color: #94a3b8;
+}

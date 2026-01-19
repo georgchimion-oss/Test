@@ -1,0 +1,45 @@
+{
+  "appId": "a951bd8f-2c6d-4250-85d9-23fd25297bab",
+  "appDisplayName": "Project Governance DVUI",
+  "description": null,
+  "environmentId": "deccb389-10c5-4d5c-8716-1093a04538e1",
+  "buildPath": "./dist",
+  "buildEntryPoint": "index.html",
+  "logoPath": "Default",
+  "localAppUrl": "http://localhost:3000/",
+  "region": "prod",
+  "connectionReferences": {},
+  "databaseReferences": {
+    "default.cds": {
+      "databaseDetails": null,
+      "dataSources": {
+        "deliverabless": {
+          "entitySetName": "crda8_deliverableses",
+          "logicalName": "crda8_deliverables",
+          "isHidden": false
+        },
+        "staffs": {
+          "entitySetName": "crda8_staff4s",
+          "logicalName": "crda8_staff4",
+          "isHidden": false
+        },
+        "workstreamss": {
+          "entitySetName": "crda8_workstreamses",
+          "logicalName": "crda8_workstreams",
+          "isHidden": false
+        },
+        "timeoffrequestss": {
+          "entitySetName": "crda8_timeoffrequestses",
+          "logicalName": "crda8_timeoffrequests",
+          "isHidden": false
+        },
+        "weeklyhours": {
+          "entitySetName": "crda8_weeklyhourses",
+          "logicalName": "crda8_weeklyhours",
+          "isHidden": false
+        }
+      },
+      "actions": null
+    }
+  }
+}
