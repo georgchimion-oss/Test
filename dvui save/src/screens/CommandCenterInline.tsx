@@ -16,14 +16,15 @@ import {
 } from "lucide-react";
 import { useGetDeliverables, useGetWorkstreams, useGetStaff } from "@/services/dataverseService";
 
-// PWC Colors - hardcoded for reliability
+// PWC Colors - LIGHT THEME to match app
 const COLORS = {
   primary: "#D04A02",      // PWC Orange
   primaryLight: "#E85A12",
-  background: "#0a0a0a",   // Dark background
-  cardBg: "rgba(30, 30, 30, 0.8)",
-  text: "#ffffff",
-  textMuted: "#a0a0a0",
+  background: "#f8f9fa",   // Light background
+  cardBg: "#ffffff",       // White cards
+  cardBorder: "#e5e7eb",   // Light gray border
+  text: "#1f2937",         // Dark text
+  textMuted: "#6b7280",    // Gray text
   green: "#22c55e",
   red: "#ef4444",
   blue: "#3b82f6",
@@ -142,10 +143,10 @@ const GlowCard = ({
       position: "relative",
       overflow: "hidden",
       background: COLORS.cardBg,
-      backdropFilter: "blur(20px)",
-      border: "1px solid rgba(255,255,255,0.1)",
+      border: `1px solid ${COLORS.cardBorder}`,
       padding: "24px",
       borderRadius: "16px",
+      boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
     }}>
       <div style={{
         position: "absolute",
@@ -371,29 +372,29 @@ const TeamAvatarStack = ({ teamMembers }: { teamMembers: any[] }) => {
   );
 };
 
-// Particle effect
+// Particle effect - subtle for light theme
 const Particles = () => (
   <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
-    {[...Array(20)].map((_, i) => (
+    {[...Array(15)].map((_, i) => (
       <motion.div
         key={i}
         style={{
           position: "absolute",
-          width: 4,
-          height: 4,
-          background: `${COLORS.primary}50`,
+          width: 3,
+          height: 3,
+          background: `${COLORS.primary}30`,
           borderRadius: "50%",
           left: `${Math.random() * 100}%`,
           top: `${Math.random() * 100}%`,
         }}
         animate={{
-          y: [0, -100],
-          opacity: [0, 1, 0],
+          y: [0, -80],
+          opacity: [0, 0.6, 0],
         }}
         transition={{
-          duration: Math.random() * 3 + 2,
+          duration: Math.random() * 4 + 3,
           repeat: Infinity,
-          delay: Math.random() * 2,
+          delay: Math.random() * 3,
         }}
       />
     ))}
@@ -404,9 +405,9 @@ const Particles = () => (
 const Card = ({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) => (
   <div style={{
     background: COLORS.cardBg,
-    backdropFilter: "blur(20px)",
-    border: "1px solid rgba(255,255,255,0.1)",
+    border: `1px solid ${COLORS.cardBorder}`,
     borderRadius: "16px",
+    boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
     ...style,
   }}>
     {children}
@@ -437,20 +438,20 @@ const CommandCenter = () => {
   return (
     <div style={{
       position: "relative",
-      minHeight: "100vh",
+      minHeight: "calc(100vh - 60px)", // Account for app header
       overflow: "hidden",
       background: COLORS.background,
       color: COLORS.text,
     }}>
-      {/* Background effects */}
+      {/* Background effects - subtle for light theme */}
       <div style={{
         position: "absolute",
         inset: 0,
-        background: `linear-gradient(to bottom right, ${COLORS.background}, ${COLORS.background}, ${COLORS.primary}10)`,
+        background: `linear-gradient(135deg, ${COLORS.background} 0%, #ffffff 50%, ${COLORS.primary}08 100%)`,
       }} />
-      <FloatingOrb delay={0} size={400} color={COLORS.primary} position={{ x: "10%", y: "20%" }} />
-      <FloatingOrb delay={2} size={300} color={COLORS.blue} position={{ x: "70%", y: "60%" }} />
-      <FloatingOrb delay={4} size={250} color={COLORS.purple} position={{ x: "80%", y: "10%" }} />
+      <FloatingOrb delay={0} size={400} color={`${COLORS.primary}20`} position={{ x: "10%", y: "20%" }} />
+      <FloatingOrb delay={2} size={300} color={`${COLORS.blue}15`} position={{ x: "70%", y: "60%" }} />
+      <FloatingOrb delay={4} size={250} color={`${COLORS.purple}15`} position={{ x: "80%", y: "10%" }} />
       <Particles />
 
       {/* Add CSS for ping animation */}
@@ -712,8 +713,8 @@ const CommandCenter = () => {
             position: "relative",
             overflow: "hidden",
             padding: "32px",
-            background: `linear-gradient(90deg, ${COLORS.primary}30, ${COLORS.primary}15, transparent)`,
-            border: `1px solid ${COLORS.primary}30`,
+            background: `linear-gradient(90deg, ${COLORS.primary}15, ${COLORS.primary}08, ${COLORS.cardBg})`,
+            border: `1px solid ${COLORS.primary}20`,
           }}>
             <div style={{ position: "absolute", top: 0, right: 0, width: 256, height: 256 }}>
               <div style={{ position: "relative", width: "100%", height: "100%" }}>
