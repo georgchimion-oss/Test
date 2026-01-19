@@ -167,10 +167,30 @@ Write-Host "  Downloaded CommandCenter.tsx" -ForegroundColor Gray
 Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 9: Enable CommandCenter route in App.tsx
+# Step 9: Update BUILD_STAMP in DashboardEnhanced.tsx
 #------------------------------------------------------------------------------
 
-Write-Host "`n[9/10] Enabling CommandCenter route..." -ForegroundColor Yellow
+Write-Host "`n[9/11] Updating BUILD_STAMP..." -ForegroundColor Yellow
+
+$pushTime = Get-Date -Format "yyyy-MM-dd HH:mm"
+$timezone = [System.TimeZoneInfo]::Local.StandardName -replace '.*\s(\w+)\s.*','$1'
+if ($timezone -match "Eastern") { $timezone = "ET" }
+$buildStamp = "Push $pushTime $timezone"
+
+$dashPath = "src\screens\DashboardEnhanced.tsx"
+if (Test-Path $dashPath) {
+    $dashContent = Get-Content $dashPath -Raw
+    $dashContent = $dashContent -replace "const BUILD_STAMP = 'Push [^']*'", "const BUILD_STAMP = '$buildStamp'"
+    $dashContent | Set-Content $dashPath -NoNewline
+    Write-Host "  BUILD_STAMP = '$buildStamp'" -ForegroundColor Gray
+}
+Write-Host "  OK" -ForegroundColor Green
+
+#------------------------------------------------------------------------------
+# Step 10: Enable CommandCenter route in App.tsx
+#------------------------------------------------------------------------------
+
+Write-Host "`n[10/11] Enabling CommandCenter route..." -ForegroundColor Yellow
 
 $appPath = "src\App.tsx"
 $content = Get-Content $appPath -Raw
@@ -193,10 +213,10 @@ $content | Set-Content $appPath -NoNewline
 Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 10: Fix tsconfig, Build, and Push
+# Step 11: Fix tsconfig, Build, and Push
 #------------------------------------------------------------------------------
 
-Write-Host "`n[10/10] Building and pushing..." -ForegroundColor Yellow
+Write-Host "`n[11/11] Building and pushing..." -ForegroundColor Yellow
 
 # Fix tsconfig excludes
 $tsconfig = Get-Content "tsconfig.json" -Raw | ConvertFrom-Json
@@ -229,16 +249,15 @@ if ($LASTEXITCODE -ne 0) {
 # Success!
 #------------------------------------------------------------------------------
 
-$pushTime = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-
 Write-Host "`n========================================" -ForegroundColor Green
 Write-Host "SUCCESS!" -ForegroundColor Green
 Write-Host "========================================" -ForegroundColor Green
 Write-Host ""
 Write-Host "##################################################" -ForegroundColor Magenta
-Write-Host "#  LOOK FOR THIS PUSH TIME IN YOUR APP:          #" -ForegroundColor Magenta
 Write-Host "#                                                #" -ForegroundColor Magenta
-Write-Host "#  $pushTime                        #" -ForegroundColor White
+Write-Host "#  LOOK FOR THIS ON MY WORK PAGE:                #" -ForegroundColor Magenta
+Write-Host "#                                                #" -ForegroundColor Magenta
+Write-Host "#     $buildStamp                      #" -ForegroundColor White
 Write-Host "#                                                #" -ForegroundColor Magenta
 Write-Host "##################################################" -ForegroundColor Magenta
 Write-Host ""
