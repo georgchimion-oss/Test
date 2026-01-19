@@ -156,7 +156,11 @@ function AppRoutes() {
       />
       <Route
         path="/command-center"
-        element={<CommandCenter />}
+        element={
+          <Layout title="Command Center">
+            <CommandCenter />
+          </Layout>
+        }
       />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

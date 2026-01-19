@@ -1,14 +1,14 @@
 # Claude Context Guide for Project Governance DVUI
 
-**Last Updated:** Jan 19, 2026 - 10:15 PM EST
-**Last Successful Push:** Jan 19, 2026 - 10:00 PM EST (fix-dvui-build.ps1 v6.1)
-**Current Script Version:** v6.1
+**Last Updated:** Jan 19, 2026 - 10:25 PM EST
+**Last Successful Push:** Jan 19, 2026 - 10:20 PM EST (fix-dvui-build.ps1 v6.2)
+**Current Script Version:** v6.2
 
 ## CURRENT TASK (PENDING)
-**CommandCenter is missing the sidebar.** The v6.1 script tried to add `<Layout>` wrapper but sidebar still doesn't appear.
-- All other screens wrap content in `<Layout title="...">` in App.tsx
-- Need to investigate why CommandCenter doesn't get sidebar
-- The `Layout` component is at `src/components/Layout.tsx`
+**Testing v6.2 sidebar fix.** The root cause was found:
+- The v6.1 script used regex to modify App.tsx but the regex didn't handle the case where the route already existed without Layout
+- v6.2 now downloads the corrected `dvui save/src/App.tsx` directly from GitHub
+- The corrected App.tsx has CommandCenter wrapped in `<Layout title="Command Center">`
 
 ---
 
@@ -253,6 +253,7 @@ const { data: workstreams = [] } = useGetWorkstreams();
 
 | Date | Version | Changes |
 |------|---------|---------|
+| Jan 19, 2026 22:25 | v6.2 | **SIDEBAR FIX** - Downloads App.tsx directly instead of regex (regex was broken) |
 | Jan 19, 2026 22:15 | v6.1 | Added Layout wrapper to route - sidebar STILL NOT WORKING |
 | Jan 19, 2026 21:45 | v6 | **INLINE STYLED CommandCenter** - light theme, no Tailwind CSS vars, hardcoded PWC colors, all animations work |
 | Jan 19, 2026 21:00 | v5 | Full styling setup - index.css with CSS vars (didn't work) |

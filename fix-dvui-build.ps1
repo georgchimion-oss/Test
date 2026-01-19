@@ -1,12 +1,12 @@
 # ============================================================
-# DVUI Build Fix Script v6 - Inline Styled CommandCenter
-# Version: Jan 19, 2026 - 09:30 PM
-# Uses hardcoded colors - no Tailwind CSS vars needed!
+# DVUI Build Fix Script v6.2 - Sidebar Fix
+# Version: Jan 19, 2026 - 10:20 PM
+# Downloads App.tsx directly to ensure Layout wrapper is applied
 # ============================================================
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "DVUI Build Fix Script v6" -ForegroundColor Cyan
-Write-Host "Inline Styled CommandCenter" -ForegroundColor Cyan
+Write-Host "DVUI Build Fix Script v6.2" -ForegroundColor Cyan
+Write-Host "Sidebar Fix - Downloads correct App.tsx" -ForegroundColor Cyan
 Write-Host "Timestamp: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Yellow
 Write-Host "========================================" -ForegroundColor Cyan
 
@@ -16,7 +16,7 @@ $baseUrl = "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/power
 # Step 1: Verify directory
 #------------------------------------------------------------------------------
 
-Write-Host "`n[1/6] Verifying directory..." -ForegroundColor Yellow
+Write-Host "`n[1/7] Verifying directory..." -ForegroundColor Yellow
 
 if (-not (Test-Path "power.config.json")) {
     Write-Host "ERROR: power.config.json not found!" -ForegroundColor Red
@@ -28,7 +28,7 @@ Write-Host "  OK" -ForegroundColor Green
 # Step 2: Install framer-motion (only dep needed for animations)
 #------------------------------------------------------------------------------
 
-Write-Host "`n[2/6] Installing framer-motion..." -ForegroundColor Yellow
+Write-Host "`n[2/7] Installing framer-motion..." -ForegroundColor Yellow
 
 $packageJson = Get-Content "package.json" -Raw | ConvertFrom-Json
 if (-not $packageJson.dependencies.'framer-motion') {
@@ -43,7 +43,7 @@ Write-Host "  OK" -ForegroundColor Green
 # Step 3: Download dataverseService.ts (for data hooks)
 #------------------------------------------------------------------------------
 
-Write-Host "`n[3/6] Downloading dataverseService.ts..." -ForegroundColor Yellow
+Write-Host "`n[3/7] Downloading dataverseService.ts..." -ForegroundColor Yellow
 
 if (-not (Test-Path "src\services")) {
     New-Item -ItemType Directory -Path "src\services" -Force | Out-Null
@@ -56,7 +56,7 @@ Write-Host "  OK" -ForegroundColor Green
 # Step 4: Download CommandCenterInline.tsx as CommandCenter.tsx
 #------------------------------------------------------------------------------
 
-Write-Host "`n[4/6] Downloading CommandCenter (inline styled)..." -ForegroundColor Yellow
+Write-Host "`n[4/7] Downloading CommandCenter (inline styled)..." -ForegroundColor Yellow
 
 # Remove old files
 if (Test-Path "src\screens\CommandCenter.tsx.bak") {
@@ -67,15 +67,23 @@ Invoke-WebRequest -Uri "$baseUrl/src/screens/CommandCenterInline.tsx" -OutFile "
 Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 5: Update BUILD_STAMP and Enable Route
+# Step 5: Download App.tsx (has CommandCenter route WITH Layout wrapper)
 #------------------------------------------------------------------------------
 
-Write-Host "`n[5/6] Updating BUILD_STAMP and route..." -ForegroundColor Yellow
+Write-Host "`n[5/7] Downloading App.tsx (with sidebar for CommandCenter)..." -ForegroundColor Yellow
+
+Invoke-WebRequest -Uri "$baseUrl/src/App.tsx" -OutFile "src\App.tsx"
+Write-Host "  OK - CommandCenter now wrapped in Layout!" -ForegroundColor Green
+
+#------------------------------------------------------------------------------
+# Step 6: Update BUILD_STAMP
+#------------------------------------------------------------------------------
+
+Write-Host "`n[6/7] Updating BUILD_STAMP..." -ForegroundColor Yellow
 
 $pushTime = Get-Date -Format "yyyy-MM-dd HH:mm"
 $buildStamp = "Push $pushTime EST"
 
-# Update BUILD_STAMP
 $dashPath = "src\screens\DashboardEnhanced.tsx"
 if (Test-Path $dashPath) {
     $dashContent = Get-Content $dashPath -Raw
@@ -83,43 +91,13 @@ if (Test-Path $dashPath) {
     $dashContent | Set-Content $dashPath -NoNewline
     Write-Host "  BUILD_STAMP = '$buildStamp'" -ForegroundColor Gray
 }
-
-# Enable CommandCenter route in App.tsx WITH Layout wrapper
-$appPath = "src\App.tsx"
-$content = Get-Content $appPath -Raw
-
-if ($content -match "//\s*import CommandCenter") {
-    $content = $content -replace "//\s*import CommandCenter from", "import CommandCenter from"
-} elseif ($content -notmatch "import CommandCenter from") {
-    $content = $content -replace "(import Login from [^;]+;)", "`$1`nimport CommandCenter from './screens/CommandCenter';"
-}
-
-# Add route WITH Layout wrapper (like other screens)
-$routeCode = @'
-<Route
-        path="/command-center"
-        element={
-          <Layout title="Command Center">
-            <CommandCenter />
-          </Layout>
-        }
-      />
-'@
-
-if ($content -match "\{/\*.*CommandCenter.*disabled.*\*/\}") {
-    $content = $content -replace '\{/\*\s*CommandCenter route disabled\s*\*/\}', $routeCode
-} elseif ($content -notmatch 'path="/command-center"') {
-    $content = $content -replace '(<Route path="\*")', "$routeCode`n      `$1"
-}
-
-$content | Set-Content $appPath -NoNewline
 Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 6: Build and Push
+# Step 7: Build and Push
 #------------------------------------------------------------------------------
 
-Write-Host "`n[6/6] Building and pushing..." -ForegroundColor Yellow
+Write-Host "`n[7/7] Building and pushing..." -ForegroundColor Yellow
 
 # Fix tsconfig excludes
 $tsconfig = Get-Content "tsconfig.json" -Raw | ConvertFrom-Json
@@ -164,14 +142,14 @@ Write-Host "#     $buildStamp                      #" -ForegroundColor White
 Write-Host "#                                                #" -ForegroundColor Magenta
 Write-Host "##################################################" -ForegroundColor Magenta
 Write-Host ""
-Write-Host "v6 - Inline Styled CommandCenter:" -ForegroundColor Cyan
-Write-Host "  * Dark background (#0a0a0a)" -ForegroundColor White
+Write-Host "v6.2 - SIDEBAR FIX:" -ForegroundColor Cyan
+Write-Host "  * Downloads App.tsx directly (no regex)" -ForegroundColor Green
+Write-Host "  * CommandCenter now wrapped in <Layout>" -ForegroundColor Green
+Write-Host "  * Sidebar should appear!" -ForegroundColor Green
+Write-Host ""
+Write-Host "  * Light background (#f8f9fa)" -ForegroundColor White
 Write-Host "  * PWC Orange (#D04A02) accents" -ForegroundColor White
 Write-Host "  * Animated floating orbs" -ForegroundColor White
 Write-Host "  * Glowing stat cards" -ForegroundColor White
-Write-Host "  * Circular progress rings" -ForegroundColor White
-Write-Host "  * Activity bar chart" -ForegroundColor White
-Write-Host "  * Team avatar stack" -ForegroundColor White
-Write-Host "  * Particle effects" -ForegroundColor White
-Write-Host "  * NO Tailwind CSS vars needed!" -ForegroundColor Green
-Write-Host "`nGo to /command-center to see it!" -ForegroundColor Yellow
+Write-Host "  * All animations working" -ForegroundColor White
+Write-Host "`nGo to /command-center to see it WITH SIDEBAR!" -ForegroundColor Yellow
