@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { 
   TrendingUp, 
   Users, 
@@ -16,8 +16,7 @@ import {
 } from "lucide-react";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { Card } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import { workstreams, deliverables, teamMembers } from "@/data/mockData";
+import { useGetDeliverables, useGetWorkstreams, useGetStaff } from "@/services/dataverseService";
 
 // Animated counter component
 const AnimatedCounter = ({ value, duration = 2000, suffix = "" }: { value: number; duration?: number; suffix?: string }) => {
@@ -197,7 +196,14 @@ const LiveIndicator = () => (
 );
 
 // Workstream progress bar with animation
-const WorkstreamBar = ({ name, progress, delay, color }: { name: string; progress: number; delay: number; color: string }) => (
+interface WorkstreamBarProps {
+  name: string;
+  progress: number;
+  delay: number;
+  color: string;
+}
+
+const WorkstreamBar = ({ name, progress, delay, color }: WorkstreamBarProps) => (
   <motion.div
     initial={{ opacity: 0, x: -20 }}
     animate={{ opacity: 1, x: 0 }}
@@ -264,42 +270,48 @@ const ActivityPulse = () => {
 };
 
 // Team avatar stack with animation
-const TeamAvatarStack = () => {
+const TeamAvatarStack = ({ teamMembers }: { teamMembers: any[] }) => {
   const displayMembers = teamMembers.slice(0, 5);
-  
+
   return (
     <div className="flex items-center">
       <div className="flex -space-x-3">
-        {displayMembers.map((member, index) => (
-          <motion.div
-            key={member.id}
-            initial={{ opacity: 0, scale: 0, x: -20 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ delay: index * 0.1, type: "spring", stiffness: 200 }}
-            whileHover={{ scale: 1.2, zIndex: 10 }}
-            className="relative"
-          >
-            <img
-              src={member.avatar}
-              alt={member.name}
-              className="w-10 h-10 rounded-full border-2 border-background object-cover"
-            />
+        {displayMembers.map((member, index) => {
+          const initials = (member.crda8_title || 'U')
+            .split(' ')
+            .map((n: string) => n[0])
+            .join('')
+            .toUpperCase();
+
+          return (
             <motion.div
-              className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-background"
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: index * 0.1 + 0.3 }}
-            />
-          </motion.div>
-        ))}
+              key={member.crda8_staff4id}
+              initial={{ opacity: 0, scale: 0, x: -20 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              transition={{ delay: index * 0.1, type: "spring", stiffness: 200 }}
+              whileHover={{ scale: 1.2, zIndex: 10 }}
+              className="relative"
+            >
+              <div className="w-10 h-10 rounded-full border-2 border-background bg-primary/10 flex items-center justify-center">
+                <span className="text-xs font-medium text-primary">{initials}</span>
+              </div>
+              <motion.div
+                className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-background"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: index * 0.1 + 0.3 }}
+              />
+            </motion.div>
+          );
+        })}
       </div>
-      <motion.span 
+      <motion.span
         className="ml-4 text-sm text-muted-foreground"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8 }}
       >
-        +{teamMembers.length - 5} more online
+        +{Math.max(0, teamMembers.length - 5)} more online
       </motion.span>
     </div>
   );
@@ -331,10 +343,19 @@ const Particles = () => (
 );
 
 const CommandCenter = () => {
-  const [selectedMetric, setSelectedMetric] = useState<string | null>(null);
-  const completedDeliverables = deliverables.filter(d => d.status === "Completed").length;
-  const atRiskDeliverables = deliverables.filter(d => d.risk === "High").length;
-  const overallProgress = Math.round(deliverables.reduce((acc, d) => acc + d.progress, 0) / deliverables.length);
+  const { data: deliverables = [], isLoading: isLoadingDeliverables } = useGetDeliverables();
+  const { data: workstreams = [], isLoading: isLoadingWorkstreams } = useGetWorkstreams();
+  const { data: teamMembers = [], isLoading: isLoadingStaff } = useGetStaff();
+
+  const isLoading = isLoadingDeliverables || isLoadingWorkstreams || isLoadingStaff;
+
+  // Map status: 0=NotStarted, 1=InProgress, 2=Completed
+  const completedDeliverables = deliverables.filter(d => d.crda8_status === 2).length;
+  // Map risk: 0=Green, 1=Amber, 2=Red
+  const atRiskDeliverables = deliverables.filter(d => d.crda8_risk === 2).length;
+  const overallProgress = deliverables.length > 0
+    ? Math.round(deliverables.reduce((acc, d) => acc + (parseInt(d.crda8_completion_x0020__x0025_ || '0') || 0), 0) / deliverables.length)
+    : 0;
 
   const workstreamColors = [
     "bg-gradient-to-r from-primary to-orange-400",
@@ -485,21 +506,32 @@ const CommandCenter = () => {
                   <h2 className="text-lg font-semibold">Workstream Progress</h2>
                 </div>
                 <div className="space-y-5">
-                  {workstreams.slice(0, 5).map((ws, index) => {
-                    const wsDeliverables = deliverables.filter(d => d.workstreamId === ws.id);
-                    const wsProgress = wsDeliverables.length > 0 
-                      ? Math.round(wsDeliverables.reduce((acc, d) => acc + d.progress, 0) / wsDeliverables.length)
-                      : 0;
-                    return (
-                      <WorkstreamBar
-                        key={ws.id}
-                        name={ws.name}
-                        progress={wsProgress}
-                        delay={index * 0.1}
-                        color={workstreamColors[index % workstreamColors.length]}
-                      />
-                    );
-                  })}
+                  {isLoading ? (
+                    <div className="text-center text-muted-foreground py-4">Loading...</div>
+                  ) : (
+                    <>
+                      {workstreams.slice(0, 5).map((ws: any, index: number) => {
+                        const wsDeliverables = deliverables.filter(d => d.crda8_workstream === ws.crda8_workstreamsid);
+                        const wsProgress = wsDeliverables.length > 0
+                          ? Math.round(wsDeliverables.reduce((acc, d) => acc + (parseInt(d.crda8_completion_x0020__x0025_ || '0') || 0), 0) / wsDeliverables.length)
+                          : 0;
+                        const workstreamName = String(ws.crda8_title || 'Untitled Workstream');
+                        const workstreamColor = workstreamColors[index % workstreamColors.length];
+                        const workstreamDelay = index * 0.1;
+                        const workstreamBarProps: WorkstreamBarProps = {
+                          name: workstreamName,
+                          progress: wsProgress,
+                          delay: workstreamDelay,
+                          color: workstreamColor,
+                        };
+                        return (
+                          <div key={ws.crda8_workstreamsid}>
+                            <WorkstreamBar {...workstreamBarProps} />
+                          </div>
+                        );
+                      })}
+                    </>
+                  )}
                 </div>
               </Card>
             </motion.div>
@@ -515,7 +547,11 @@ const CommandCenter = () => {
                   <Users className="w-5 h-5 text-primary" />
                   <h2 className="text-lg font-semibold">Active Team</h2>
                 </div>
-                <TeamAvatarStack />
+                {isLoading ? (
+                  <div className="text-center text-muted-foreground py-4">Loading...</div>
+                ) : (
+                  <TeamAvatarStack teamMembers={teamMembers} />
+                )}
                 
                 {/* Quick Stats */}
                 <div className="grid grid-cols-3 gap-4 mt-8">

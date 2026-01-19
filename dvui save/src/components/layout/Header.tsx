@@ -10,13 +10,21 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { currentUser } from '@/data/mockData';
-import { Badge } from '@/components/ui/badge';
+import { useGetStaff } from '@/services/dataverseService';
 
 export function Header() {
-  const initials = currentUser.name
+  const { data: staff = [] } = useGetStaff();
+
+  // Get current user - for now, using the first admin user or first user
+  // In a real app, this would come from authentication context
+  const currentUser = staff.find((s) => s.crda8_role === 0) || staff[0];
+
+  const userName = currentUser?.crda8_title || 'User';
+  const jobTitle = currentUser?.crda8_jobtitlename || 'Member';
+
+  const initials = userName
     .split(' ')
-    .map((n) => n[0])
+    .map((n: string) => n[0])
     .join('');
 
   return (
@@ -52,8 +60,8 @@ export function Header() {
                 </AvatarFallback>
               </Avatar>
               <div className="hidden md:flex flex-col items-start">
-                <span className="text-sm font-medium">{currentUser.name}</span>
-                <span className="text-xs text-muted-foreground">{currentUser.jobTitle}</span>
+                <span className="text-sm font-medium">{userName}</span>
+                <span className="text-xs text-muted-foreground">{jobTitle}</span>
               </div>
               <ChevronDown className="h-4 w-4 text-muted-foreground" />
             </Button>

@@ -18,6 +18,8 @@ export interface Staff {
   createdAt: string
 }
 
+export type TeamMember = Staff
+
 export interface Workstream {
   id: string
   name: string
@@ -47,6 +49,8 @@ export interface Deliverable {
   dependencies: string[]
   tags: string[]
   comment?: string
+  partnerName?: string
+  tdStakeholder?: string
   createdAt: string
   updatedAt: string
 }

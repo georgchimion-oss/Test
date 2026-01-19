@@ -5,7 +5,6 @@ import {
   ListChecks,
   Users,
   Network,
-  Calendar,
   Clock,
   Kanban,
   BarChart3,
