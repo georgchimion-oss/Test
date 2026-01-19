@@ -7,17 +7,18 @@
 ## Step 1: Run the Setup Script
 
 ```powershell
-Remove-Item setup-dvui-lovable.ps1 -ErrorAction SilentlyContinue
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/powerapp-sharepoint-deliverables-vbZKv/setup-dvui-lovable.ps1" -OutFile "setup-dvui-lovable.ps1"
-.\setup-dvui-lovable.ps1
+Remove-Item setup-enhanced-dvui.ps1 -ErrorAction SilentlyContinue
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/powerapp-sharepoint-deliverables-vbZKv/setup-enhanced-dvui.ps1" -OutFile "setup-enhanced-dvui.ps1"
+.\setup-enhanced-dvui.ps1
 ```
 
 **This script does EVERYTHING:**
-- ✅ Cleans up old files
-- ✅ Installs all dependencies
-- ✅ Configures Tailwind, TypeScript, Vite (with correct `base: './'` for Power Apps)
-- ✅ Creates working UI components
-- ✅ Creates test page with version timestamp
+- ✅ Downloads 50+ Lovable UI components (shadcn/ui)
+- ✅ Downloads CommandCenter with animations
+- ✅ Downloads dashboard and layout components
+- ✅ Updates package.json with all dependencies (Radix UI, Framer Motion, etc.)
+- ✅ Configures Tailwind CSS, TypeScript, Vite
+- ✅ Updates App.tsx and Layout.tsx with new routes
 
 ---
 
@@ -35,7 +36,7 @@ pac code push
 Open your app in Power Apps. You should see a **big blue/purple banner** at the top that says:
 
 ```
-VERSION: Jan 19, 2026 - 12:05 AM
+VERSION: Jan 19, 2026 - 02:18 AM
 ```
 
 **If you see that exact timestamp, it worked!**
@@ -59,7 +60,7 @@ No file editing. No troubleshooting. Just works. 🚀
 Just run the setup script again:
 
 ```powershell
-.\setup-dvui-lovable.ps1
+.\setup-enhanced-dvui.ps1
 ```
 
 It's idempotent - you can run it as many times as you want and it won't break anything.
