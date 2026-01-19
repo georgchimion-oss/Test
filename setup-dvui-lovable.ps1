@@ -1,11 +1,11 @@
 # ============================================================
 # DVUI + Lovable UI + CommandCenter Setup Script
-# Version: Jan 18, 2026 - 09:33 PM EST
+# Version: Jan 18, 2026 - 09:40 PM EST
 # ============================================================
 
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host "DVUI Enhanced Setup Script" -ForegroundColor Cyan
-Write-Host "Version: Jan 18, 2026 - 09:33 PM EST" -ForegroundColor Yellow
+Write-Host "Version: Jan 18, 2026 - 09:40 PM EST" -ForegroundColor Yellow
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 
@@ -77,6 +77,7 @@ $folders = @(
     "src\components\layout",
     "src\screens",
     "src\lib",
+    "src\hooks",
     "src\data-lovable"
 )
 
@@ -93,13 +94,31 @@ foreach ($folder in $folders) {
 
 Write-Host "`n[4/9] Installing npm dependencies..." -ForegroundColor Yellow
 
-$dependencies = "framer-motion date-fns lucide-react class-variance-authority clsx tailwind-merge react-router-dom"
-$devDependencies = "tailwindcss postcss autoprefixer tailwindcss-animate"
+# Core dependencies
+$coreDeps = "framer-motion date-fns lucide-react class-variance-authority clsx tailwind-merge react-router-dom"
 
-Write-Host "  Installing dependencies (this may take a minute)..." -ForegroundColor Gray
-npm install $dependencies --save 2>&1 | Out-Null
+# All Radix UI packages
+$radixDeps = "@radix-ui/react-accordion @radix-ui/react-alert-dialog @radix-ui/react-aspect-ratio @radix-ui/react-avatar @radix-ui/react-checkbox @radix-ui/react-collapsible @radix-ui/react-context-menu @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-hover-card @radix-ui/react-label @radix-ui/react-menubar @radix-ui/react-navigation-menu @radix-ui/react-popover @radix-ui/react-progress @radix-ui/react-radio-group @radix-ui/react-scroll-area @radix-ui/react-select @radix-ui/react-separator @radix-ui/react-slider @radix-ui/react-slot @radix-ui/react-switch @radix-ui/react-tabs @radix-ui/react-toast @radix-ui/react-toggle @radix-ui/react-toggle-group @radix-ui/react-tooltip"
+
+# Other component libraries
+$otherDeps = "recharts sonner vaul react-day-picker embla-carousel-react react-hook-form input-otp next-themes cmdk react-resizable-panels"
+
+# Dev dependencies
+$devDependencies = "tailwindcss postcss autoprefixer tailwindcss-animate @types/node"
+
+Write-Host "  Installing core dependencies..." -ForegroundColor Gray
+npm install $coreDeps --save 2>&1 | Out-Null
+
+Write-Host "  Installing Radix UI components..." -ForegroundColor Gray
+npm install $radixDeps --save 2>&1 | Out-Null
+
+Write-Host "  Installing other libraries..." -ForegroundColor Gray
+npm install $otherDeps --save 2>&1 | Out-Null
+
+Write-Host "  Installing dev dependencies..." -ForegroundColor Gray
 npm install $devDependencies --save-dev 2>&1 | Out-Null
-Write-Host "  Done: Dependencies installed" -ForegroundColor Green
+
+Write-Host "  Done: All dependencies installed" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
 # Step 5: Initialize Tailwind CSS
@@ -445,6 +464,18 @@ try {
     Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/lib/utils.ts" -OutFile "src\lib\utils.ts" -ErrorAction SilentlyContinue
     Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/data-lovable/mockData.ts" -OutFile "src\data-lovable\mockData.ts" -ErrorAction SilentlyContinue
     Write-Host "  [OK] Downloaded utilities and data" -ForegroundColor Green
+} catch {
+    # Skip if not found
+}
+
+# Download hooks
+try {
+    if (-not (Test-Path "src\hooks")) {
+        New-Item -Path "src\hooks" -ItemType Directory -Force | Out-Null
+    }
+    Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/hooks/use-toast.ts" -OutFile "src\hooks\use-toast.ts" -ErrorAction SilentlyContinue
+    Invoke-WebRequest -Uri "$baseUrl/dvui%20save/src/hooks/use-mobile.tsx" -OutFile "src\hooks\use-mobile.tsx" -ErrorAction SilentlyContinue
+    Write-Host "  [OK] Downloaded hooks" -ForegroundColor Green
 } catch {
     # Skip if not found
 }
