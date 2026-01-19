@@ -1,14 +1,13 @@
 # ============================================================
-# DVUI Build Fix Script v7 - Fun Themes & Staff Cleanup
-# Version: Jan 19, 2026 - 10:45 PM
-# Adds 15 themes (France, Paris, PSG, Matrix, Barbie, etc.)
-# Theme dropdown now in header on ALL screens
-# Staff table: removed Role & Department columns
+# DVUI Build Fix Script v8 - Deliverables Quick Update Modal
+# Version: Jan 20, 2026 - 12:15 AM
+# Adds Quick Update modal to Deliverables screen
+# (like My Work has - dates, status, risk, progress, comment)
 # ============================================================
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "DVUI Build Fix Script v7" -ForegroundColor Cyan
-Write-Host "Fun Themes & Staff Cleanup" -ForegroundColor Cyan
+Write-Host "DVUI Build Fix Script v8" -ForegroundColor Cyan
+Write-Host "Deliverables Quick Update Modal" -ForegroundColor Cyan
 Write-Host "Timestamp: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Yellow
 Write-Host "========================================" -ForegroundColor Cyan
 
@@ -86,6 +85,10 @@ Write-Host "  Staff.tsx (removed Role & Department)" -ForegroundColor Gray
 # DashboardEnhanced (uses ThemeContext)
 Invoke-WebRequest -Uri "$baseUrl/src/screens/DashboardEnhanced.tsx" -OutFile "src\screens\DashboardEnhanced.tsx"
 Write-Host "  DashboardEnhanced.tsx (uses ThemeContext)" -ForegroundColor Gray
+
+# Deliverables (Quick Update modal added!)
+Invoke-WebRequest -Uri "$baseUrl/src/screens/Deliverables.tsx" -OutFile "src\screens\Deliverables.tsx"
+Write-Host "  Deliverables.tsx (Quick Update modal)" -ForegroundColor Gray
 
 Write-Host "  OK" -ForegroundColor Green
 
@@ -170,27 +173,13 @@ Write-Host "#     $buildStamp                      #" -ForegroundColor White
 Write-Host "#                                                #" -ForegroundColor Magenta
 Write-Host "##################################################" -ForegroundColor Magenta
 Write-Host ""
-Write-Host "v7 - WHAT'S NEW:" -ForegroundColor Cyan
+Write-Host "v8 - WHAT'S NEW:" -ForegroundColor Cyan
 Write-Host ""
-Write-Host "  15 FUN THEMES (dropdown in header on ALL screens!):" -ForegroundColor Yellow
-Write-Host "    PwC Light       - Professional corporate" -ForegroundColor White
-Write-Host "    90s Neon        - Bright vibrant pastels" -ForegroundColor White
-Write-Host "    Miami Vice      - Tropical vibes" -ForegroundColor White
-Write-Host "    Chicago Bulls   - Red & black" -ForegroundColor White
-Write-Host "    Vive la France! - Blue white red tricolor" -ForegroundColor Blue
-Write-Host "    Paris Mon Amour - Romantic pink & gold" -ForegroundColor Magenta
-Write-Host "    Paris SG        - PSG blue & red" -ForegroundColor Blue
-Write-Host "    The Matrix      - Green on black" -ForegroundColor Green
-Write-Host "    Barbie World    - Hot pink everywhere" -ForegroundColor Magenta
-Write-Host "    Deep Ocean      - Ocean blues" -ForegroundColor Cyan
-Write-Host "    California Sunset - Orange gradients" -ForegroundColor DarkYellow
-Write-Host "    Enchanted Forest - Greens" -ForegroundColor Green
-Write-Host "    LA Lakers       - Purple & gold" -ForegroundColor Magenta
-Write-Host "    Cyberpunk 2077  - Neon cyan & magenta" -ForegroundColor Cyan
-Write-Host "    Retro Arcade    - Classic game colors" -ForegroundColor Yellow
-Write-Host ""
-Write-Host "  STAFF SCREEN:" -ForegroundColor Yellow
-Write-Host "    Removed Role & Department columns" -ForegroundColor White
-Write-Host ""
-Write-Host "  Theme persists in localStorage!" -ForegroundColor Green
+Write-Host "  DELIVERABLES SCREEN:" -ForegroundColor Yellow
+Write-Host "    NEW Quick Update button (message icon)" -ForegroundColor White
+Write-Host "    Opens modal with:" -ForegroundColor White
+Write-Host "      - Due Date, Partner Review, Client Review, Testing Date" -ForegroundColor Gray
+Write-Host "      - Status, Risk, Progress %" -ForegroundColor Gray
+Write-Host "      - Comment field" -ForegroundColor Gray
+Write-Host "    Same UX as My Work screen!" -ForegroundColor Green
 Write-Host ""

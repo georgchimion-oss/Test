@@ -8,7 +8,7 @@ import {
   useUpdateDeliverable,
 } from '../services/dataverseService'
 import type { Deliverable, DeliverableStatus, Priority, RiskLevel, Staff, Workstream } from '../types'
-import { Plus, Edit2, Trash2, X } from 'lucide-react'
+import { Plus, Edit2, Trash2, X, MessageSquare } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import { logAudit } from '../data/auditLayer'
 
@@ -468,6 +468,18 @@ export default function Deliverables() {
   const [bulkMessage, setBulkMessage] = useState('')
   const [isBulkUpdating, setIsBulkUpdating] = useState(false)
   const [showBulkModal, setShowBulkModal] = useState(false)
+  const [showUpdateModal, setShowUpdateModal] = useState(false)
+  const [updatingDeliverable, setUpdatingDeliverable] = useState<Deliverable | null>(null)
+  const [updateForm, setUpdateForm] = useState({
+    dueDate: '',
+    partnerReviewDate: '',
+    clientReviewDate: '',
+    testingDate: '',
+    status: '',
+    risk: '',
+    progress: 0,
+    comment: '',
+  })
   const staff = useMemo<Staff[]>(() => {
     const records = (staffQuery.data ?? []) as Record<string, any>[]
     return records.map((item: Record<string, any>) => mapStaffRecord(item))
@@ -898,6 +910,70 @@ export default function Deliverables() {
     }
   }
 
+  const handleOpenUpdate = (deliverable: Deliverable) => {
+    setUpdatingDeliverable(deliverable)
+    setUpdateForm({
+      dueDate: deliverable.dueDate?.split('T')[0] || '',
+      partnerReviewDate: deliverable.partnerReviewDate?.split('T')[0] || '',
+      clientReviewDate: deliverable.clientReviewDate?.split('T')[0] || '',
+      testingDate: deliverable.testingDate?.split('T')[0] || '',
+      status: deliverable.status,
+      risk: deliverable.risk,
+      progress: deliverable.progress,
+      comment: deliverable.comment || '',
+    })
+    setShowUpdateModal(true)
+  }
+
+  const handleSaveUpdate = () => {
+    if (!updatingDeliverable) return
+
+    const updates: Record<string, any> = {
+      crda8_targetdate: updateForm.dueDate || null,
+      crda8_partnerreviewdate: updateForm.partnerReviewDate || null,
+      crda8_clientreviewdate: updateForm.clientReviewDate || null,
+      crda8_testingdate: updateForm.testingDate || null,
+      crda8_status: mapStatusToDataverse(updateForm.status as DeliverableStatus),
+      crda8_risk: mapRiskToDataverse(updateForm.risk as RiskLevel),
+      crda8_completion_x0020__x0025_: Number(updateForm.progress) || 0,
+      crda8_comment: updateForm.comment || null,
+    }
+
+    updateMutation.mutate(
+      { id: updatingDeliverable.id, updates },
+      {
+        onSuccess: () => {
+          if (currentUser) {
+            const changes: string[] = []
+            if (updatingDeliverable.dueDate !== updateForm.dueDate) changes.push(`Due Date -> ${updateForm.dueDate}`)
+            if (updatingDeliverable.partnerReviewDate !== updateForm.partnerReviewDate) changes.push(`Partner Review -> ${updateForm.partnerReviewDate}`)
+            if (updatingDeliverable.clientReviewDate !== updateForm.clientReviewDate) changes.push(`Client Review -> ${updateForm.clientReviewDate}`)
+            if (updatingDeliverable.testingDate !== updateForm.testingDate) changes.push(`Testing Date -> ${updateForm.testingDate}`)
+            if (updatingDeliverable.status !== updateForm.status) changes.push(`Status -> ${updateForm.status}`)
+            if (updatingDeliverable.risk !== updateForm.risk) changes.push(`Risk -> ${updateForm.risk}`)
+            if (updatingDeliverable.progress !== updateForm.progress) changes.push(`Progress -> ${updateForm.progress}%`)
+            if (updateForm.comment && updatingDeliverable.comment !== updateForm.comment) changes.push('Comment updated')
+
+            logAudit(
+              currentUser.id,
+              currentUser.name,
+              'Quick Update',
+              'Deliverable',
+              updatingDeliverable.id,
+              changes.length > 0 ? changes.join('; ') : 'Updated deliverable'
+            )
+          }
+          setShowUpdateModal(false)
+          setUpdatingDeliverable(null)
+        },
+        onError: (error) => {
+          console.error('Update failed:', error)
+          alert('Update failed: ' + formatSaveError(error))
+        },
+      }
+    )
+  }
+
   return (
     <>
       <div className="card">
@@ -1084,9 +1160,18 @@ export default function Deliverables() {
                   <td>
                     <div style={{ display: 'flex', gap: '0.5rem' }}>
                       <button
+                        className="btn btn-primary btn-sm"
+                        onClick={() => handleOpenUpdate(d)}
+                        style={{ padding: '0.375rem' }}
+                        title="Quick Update"
+                      >
+                        <MessageSquare size={14} />
+                      </button>
+                      <button
                         className="btn btn-secondary btn-sm"
                         onClick={() => handleOpenModal(d)}
                         style={{ padding: '0.375rem' }}
+                        title="Edit All Fields"
                       >
                         <Edit2 size={14} />
                       </button>
@@ -1094,6 +1179,7 @@ export default function Deliverables() {
                         className="btn btn-danger btn-sm"
                         onClick={() => handleDelete(d.id)}
                         style={{ padding: '0.375rem' }}
+                        title="Delete"
                       >
                         <Trash2 size={14} />
                       </button>
@@ -1345,6 +1431,120 @@ export default function Deliverables() {
               </button>
               <button type="button" className="btn btn-primary" onClick={handleBulkUpdate} disabled={isBulkUpdating}>
                 {isBulkUpdating ? 'Updating...' : 'Apply Bulk Update'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showUpdateModal && updatingDeliverable && (
+        <div className="modal-overlay" onClick={() => setShowUpdateModal(false)}>
+          <div className="modal" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '560px' }}>
+            <div className="modal-header">
+              <h3 className="modal-title">Quick Update: {updatingDeliverable.title}</h3>
+              <button
+                onClick={() => setShowUpdateModal(false)}
+                className="btn btn-secondary btn-sm"
+                style={{ padding: '0.5rem', minWidth: 'auto' }}
+              >
+                <X size={16} />
+              </button>
+            </div>
+
+            <div className="modal-body">
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                <div className="form-group">
+                  <label className="form-label">Due Date</label>
+                  <input
+                    type="date"
+                    value={updateForm.dueDate}
+                    onChange={(e) => setUpdateForm({ ...updateForm, dueDate: e.target.value })}
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Partner Review</label>
+                  <input
+                    type="date"
+                    value={updateForm.partnerReviewDate}
+                    onChange={(e) => setUpdateForm({ ...updateForm, partnerReviewDate: e.target.value })}
+                  />
+                </div>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                <div className="form-group">
+                  <label className="form-label">Client Review</label>
+                  <input
+                    type="date"
+                    value={updateForm.clientReviewDate}
+                    onChange={(e) => setUpdateForm({ ...updateForm, clientReviewDate: e.target.value })}
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Testing Date</label>
+                  <input
+                    type="date"
+                    value={updateForm.testingDate}
+                    onChange={(e) => setUpdateForm({ ...updateForm, testingDate: e.target.value })}
+                  />
+                </div>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem' }}>
+                <div className="form-group">
+                  <label className="form-label">Status</label>
+                  <select
+                    value={updateForm.status}
+                    onChange={(e) => setUpdateForm({ ...updateForm, status: e.target.value })}
+                  >
+                    <option value="Not Started">Not Started</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="At Risk">At Risk</option>
+                    <option value="Blocked">Blocked</option>
+                    <option value="Completed">Completed</option>
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Risk</label>
+                  <select
+                    value={updateForm.risk}
+                    onChange={(e) => setUpdateForm({ ...updateForm, risk: e.target.value })}
+                  >
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                    <option value="Critical">Critical</option>
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Progress %</label>
+                  <input
+                    type="number"
+                    min="0"
+                    max="100"
+                    value={updateForm.progress}
+                    onChange={(e) => setUpdateForm({ ...updateForm, progress: parseInt(e.target.value) || 0 })}
+                  />
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label className="form-label">Comment / Update</label>
+                <textarea
+                  rows={3}
+                  value={updateForm.comment}
+                  onChange={(e) => setUpdateForm({ ...updateForm, comment: e.target.value })}
+                  placeholder="Add a comment or status update..."
+                />
+              </div>
+            </div>
+
+            <div className="modal-footer">
+              <button type="button" className="btn btn-secondary" onClick={() => setShowUpdateModal(false)}>
+                Cancel
+              </button>
+              <button type="button" className="btn btn-primary" onClick={handleSaveUpdate}>
+                Save Update
               </button>
             </div>
           </div>
