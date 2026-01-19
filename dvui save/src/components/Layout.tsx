@@ -16,6 +16,7 @@ import {
   Clock,
   Network,
   BarChart3,
+  Zap,
 } from 'lucide-react'
 
 interface LayoutProps {
@@ -104,6 +105,12 @@ export default function Layout({ children, title }: LayoutProps) {
                 </NavLink>
               </li>
             )}
+            <li className="nav-item">
+              <NavLink to="/command-center" className="nav-link">
+                <Zap className="nav-icon" />
+                <span className="nav-text">Command Center</span>
+              </NavLink>
+            </li>
           </ul>
         </nav>
 

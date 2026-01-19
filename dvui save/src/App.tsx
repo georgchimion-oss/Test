@@ -4,6 +4,9 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import Layout from './components/Layout'
 import { PowerProvider } from './PowerProvider'
+import { Toaster } from "@/components/ui/toaster"
+import { Toaster as Sonner } from "@/components/ui/sonner"
+import { TooltipProvider } from "@/components/ui/tooltip"
 import {
   syncDataverseData,
 } from './data/dataLayer'
@@ -20,6 +23,7 @@ import HoursTracking from './screens/HoursTracking'
 import OrgChartHierarchy from './screens/OrgChartHierarchy'
 import OrgChartWorkstream from './screens/OrgChartWorkstream'
 import AdminAnalytics from './screens/AdminAnalytics'
+import CommandCenter from './screens/CommandCenter'
 import './App.css'
 
 const queryClient = new QueryClient({
@@ -150,6 +154,10 @@ function AppRoutes() {
           </Layout>
         }
       />
+      <Route
+        path="/command-center"
+        element={<CommandCenter />}
+      />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )
@@ -158,13 +166,17 @@ function AppRoutes() {
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <PowerProvider>
-        <BrowserRouter>
-          <AuthProvider>
-            <AppRoutes />
-          </AuthProvider>
-        </BrowserRouter>
-      </PowerProvider>
+      <TooltipProvider>
+        <PowerProvider>
+          <BrowserRouter>
+            <AuthProvider>
+              <AppRoutes />
+              <Toaster />
+              <Sonner />
+            </AuthProvider>
+          </BrowserRouter>
+        </PowerProvider>
+      </TooltipProvider>
     </QueryClientProvider>
   )
 }
