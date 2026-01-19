@@ -1,20 +1,17 @@
 # Claude Context Guide for Project Governance DVUI
 
-**Last Updated:** Jan 20, 2026 - 2:45 AM EST
+**Last Updated:** Jan 20, 2026 - 3:00 AM EST
 **Last Successful Push:** Jan 20, 2026 - 1:10 AM EST (fix-dvui-build.ps1 v9)
-**Current Script Version:** v10 (HAS BUILD ERRORS - needs fix)
+**Current Script Version:** v10 (TypeScript errors FIXED - ready to test)
 
-## CURRENT STATUS: v10 BUILD FAILING - TypeScript errors in ProjectOverview.tsx
+## CURRENT STATUS: v10 READY - TypeScript errors fixed
 
-**CRITICAL - RESUME HERE:**
-ProjectOverview.tsx has TypeScript errors. The Dataverse types (`Crda8_deliverableses`) have optional properties that don't match our code. We tried using `any` types but there are still errors.
+**FIXED:** ProjectOverview.tsx TypeScript errors have been resolved:
+- Removed unused imports (Clock, isAfter)
+- Using `any` types throughout for Dataverse data
+- Field name correct: `crda8_completion_x0020__x0025_` (double underscore)
 
-**Georg will paste the error when resuming. Look for:**
-- Type mismatches between `Crda8_deliverableses` and our `any` casts
-- Possibly the `crda8_completion_x0020__x0025_` field name (might be different in actual Dataverse schema)
-
-**Files that need attention:**
-- `/tmp/Test/dvui save/src/screens/ProjectOverview.tsx` - New landing page with KPI cards, needs TypeScript fixes
+**If GitHub is serving cached files, use the cache-busting command below.**
 
 ## WHAT WAS DONE (v10 attempt):
 - Created ProjectOverview.tsx with:
