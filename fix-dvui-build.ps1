@@ -84,7 +84,7 @@ if (Test-Path $dashPath) {
     Write-Host "  BUILD_STAMP = '$buildStamp'" -ForegroundColor Gray
 }
 
-# Enable CommandCenter route in App.tsx
+# Enable CommandCenter route in App.tsx WITH Layout wrapper
 $appPath = "src\App.tsx"
 $content = Get-Content $appPath -Raw
 
@@ -94,10 +94,22 @@ if ($content -match "//\s*import CommandCenter") {
     $content = $content -replace "(import Login from [^;]+;)", "`$1`nimport CommandCenter from './screens/CommandCenter';"
 }
 
+# Add route WITH Layout wrapper (like other screens)
+$routeCode = @'
+<Route
+        path="/command-center"
+        element={
+          <Layout title="Command Center">
+            <CommandCenter />
+          </Layout>
+        }
+      />
+'@
+
 if ($content -match "\{/\*.*CommandCenter.*disabled.*\*/\}") {
-    $content = $content -replace '\{/\*\s*CommandCenter route disabled\s*\*/\}', '<Route path="/command-center" element={<CommandCenter />} />'
+    $content = $content -replace '\{/\*\s*CommandCenter route disabled\s*\*/\}', $routeCode
 } elseif ($content -notmatch 'path="/command-center"') {
-    $content = $content -replace '(<Route path="\*")', '<Route path="/command-center" element={<CommandCenter />} />`n          $1'
+    $content = $content -replace '(<Route path="\*")', "$routeCode`n      `$1"
 }
 
 $content | Set-Content $appPath -NoNewline
