@@ -1,11 +1,13 @@
-#==============================================================================
-# DVUI Setup Script - One script for everything
-# Run this script anytime you need to setup or fix your DVUI app
-#==============================================================================
+# ============================================================
+# DVUI + Lovable UI + CommandCenter Setup Script
+# Version: Jan 19, 2026 - 02:18 AM
+# ============================================================
 
-Write-Host "`n========================================" -ForegroundColor Cyan
-Write-Host "DVUI Setup & Fix Script" -ForegroundColor Cyan
-Write-Host "========================================`n" -ForegroundColor Cyan
+Write-Host "========================================" -ForegroundColor Cyan
+Write-Host "DVUI Enhanced Setup Script" -ForegroundColor Cyan
+Write-Host "Version: Jan 19, 2026 - 02:18 AM" -ForegroundColor Yellow
+Write-Host "========================================" -ForegroundColor Cyan
+Write-Host ""
 
 #------------------------------------------------------------------------------
 # Step 1: Verify we're in the correct directory
