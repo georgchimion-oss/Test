@@ -322,9 +322,8 @@ function mapStaffRecord(item: Record<string, any>): Staff {
   }
 }
 
-// Color palette for workstreams - 20 distinct colors (no repeats for up to 20 workstreams)
+// Color palette for workstreams - TEST v11b: RED COLORS REMOVED FOR TESTING
 const WORKSTREAM_COLORS = [
-  '#D04A02', // PwC Orange
   '#2563eb', // Blue
   '#059669', // Green
   '#f59e0b', // Amber
@@ -332,7 +331,6 @@ const WORKSTREAM_COLORS = [
   '#ec4899', // Pink
   '#06b6d4', // Cyan
   '#84cc16', // Lime
-  '#ef4444', // Red
   '#14b8a6', // Teal
   '#f97316', // Orange
   '#8b5cf6', // Violet
@@ -342,7 +340,6 @@ const WORKSTREAM_COLORS = [
   '#a855f7', // Fuchsia
   '#0ea5e9', // Sky
   '#10b981', // Green-600
-  '#f43f5e', // Rose
   '#64748b', // Slate
 ]
 
