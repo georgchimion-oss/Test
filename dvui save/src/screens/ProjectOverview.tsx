@@ -649,16 +649,13 @@ const ProjectOverview = () => {
         padding: '24px',
         background: 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)',
       }}>
-        {/* Header */}
+        {/* Subtitle */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          style={{ marginBottom: '32px' }}
+          style={{ marginBottom: '24px' }}
         >
-          <h1 style={{ fontSize: '28px', fontWeight: 700, marginBottom: '8px', color: '#1a1a2e' }}>
-            Project Overview
-          </h1>
-          <p style={{ fontSize: '16px', opacity: 0.7, color: '#1a1a2e' }}>
+          <p style={{ fontSize: '15px', opacity: 0.7, color: '#1a1a2e', margin: 0 }}>
             Track deliverables and project health at a glance
           </p>
         </motion.div>
