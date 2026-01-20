@@ -1,84 +1,78 @@
 # Claude Context Guide for Project Governance DVUI
 
-**Last Updated:** Jan 20, 2026 - 4:00 AM EST
-**Last Successful Push:** Jan 20, 2026 - 3:45 AM EST (fix-dvui-build.ps1 v10)
-**Current Script Version:** v10 (WORKING!)
+**Last Updated:** Jan 20, 2026 - 8:50 PM EST
+**Last Successful Push:** Jan 20, 2026 - 8:45 PM EST (fix-dvui-build.ps1 v11)
+**Current Script Version:** v11 (IN PROGRESS - Org Chart)
 
-## CURRENT STATUS: v10 DEPLOYED - Project Overview working!
+## CURRENT STATUS: v11 IN PROGRESS - Org Chart Enhancement
 
-**COMPLETED:** ProjectOverview.tsx is now working:
-- KPI cards styled with inline styles (Tailwind doesn't work in Power Apps)
-- Due date field corrected: `crda8_targetdate` (not `crda8_duedate`)
-- Click KPI → drill down list → click item → see comments & history
-- All 3 KPIs working: Due This Month, Due Next 2 Weeks, Overdue
+**ISSUE:** Workstream colors are all the same. Need to assign unique colors.
 
-## WHAT WAS DONE (v10 attempt):
-- Created ProjectOverview.tsx with:
-  - KPI cards: Due This Month, Due Next 2 Weeks, Overdue
-  - Click KPI → drill down to deliverable list
-  - Click deliverable → see comments & activity history
-  - Workstream progress bars
-  - Overall stats cards
-- Updated Layout.tsx - Project Overview at top of sidebar, My Work second
-- Updated App.tsx - ProjectOverview as landing page (`/`), My Work moved to `/my-work`
-- Removed CommandCenter from sidebar
+**WHAT'S BEEN DONE for v11:**
+- Created new unified OrgChart.tsx (replaces OrgChartHierarchy.tsx and OrgChartWorkstream.tsx)
+- Beautiful modern card design with gradients, shadows, hover animations
+- Toggle between Workstreams and Hierarchy views
+- Expand/Collapse all buttons
+- Stats bar showing team composition by title
+- Updated App.tsx - single `/org-chart` route
+- Updated Layout.tsx - single Org Chart nav link
+- Removed color picker from Workstreams.tsx (colors weren't persisting to Dataverse anyway)
+- Added `getWorkstreamColor(name)` function in dataLayer.ts to assign colors based on name hash
 
-## NEXT TASKS
-1. ~~**Deliverables screen** - Add comment button~~ ✅ DONE (v8)
-2. ~~**Kanban** - Persist drag changes to Dataverse + add filter dropdowns~~ ✅ DONE (v9)
-3. ~~**CommandCenter → Project Overview**~~ ✅ DONE (v10)
-   - KPI cards with inline styles (Tailwind doesn't work)
-   - Due date field: `crda8_targetdate` (NOT `crda8_duedate`)
-   - Click KPI → drill down → click item → see history
-4. **Org Chart enhancements** - NEXT
-5. **Resource Management screen** - New screen based on Lovable (file: `/tmp/Test/lovable-app-organized/src/pages/Resources.tsx`)
-6. **Skills** - Use existing `role` field for skills (comma-separated text like "React, TypeScript")
+**PROBLEM TO FIX:**
+The hash function is giving same colors to multiple workstreams. Need a better approach - maybe just cycle through colors in alphabetical order of workstream names.
+
+## NEXT STEPS
+1. Fix workstream color assignment - use alphabetical index instead of hash
+2. Test the build
+3. Push and deploy
 
 ---
 
 ## CRITICAL: Read This First!
 
-If you're a new Claude session, READ THIS ENTIRE FILE before doing anything. Georg has lost context multiple times and is frustrated with having to re-explain things.
+If you're a new Claude session, READ THIS ENTIRE FILE before doing anything.
 
 **DO NOT:**
 - Clone repos unnecessarily (the repo is already at `/tmp/Test/`)
-- Mention Google OAuth (that was days ago, not relevant now)
 - Use mockData (it doesn't exist!)
 - Suggest git pull on PwC laptop (it connects to PwC GitHub, not personal GitHub)
+- Use jsdelivr CDN (caching issues) - use raw.githubusercontent.com instead
 
 **DO:**
 - Update `fix-dvui-build.ps1` in `/tmp/Test/`
 - Push to Georg's personal GitHub
-- Give Georg the Invoke-WebRequest command to run
+- Give Georg this command with cache-busting:
+```powershell
+$ts = Get-Date -Format 'yyyyMMddHHmmss'
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/powerapp-sharepoint-deliverables-vbZKv/fix-dvui-build.ps1?t=$ts" -OutFile "fix-dvui-build.ps1" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}; .\fix-dvui-build.ps1
+```
 
 ---
 
 ## Project Overview
 
-Georg is building a **Project Governance Dashboard** as a **Power Apps Code App** connected to **Dataverse** (NOT SharePoint - SharePoint is not supported for Code Apps).
-
-There are **TWO separate apps**:
+Georg is building a **Project Governance Dashboard** as a **Power Apps Code App** connected to **Dataverse**.
 
 | App | Status | Purpose |
 |-----|--------|---------|
-| **Project Governance DV** | ✅ Working | The original app, fully functional |
-| **Project Governance DVUI** | ✅ Working | Enhanced UI version - NOW ADDING LOVABLE COMPONENTS |
+| **Project Governance DV** | Working | The original app |
+| **Project Governance DVUI** | Working | Enhanced UI version |
 
 ---
 
 ## Technical Stack
 
 - **Frontend:** React + TypeScript + Vite
-- **Styling:** Tailwind CSS + PwC custom CSS (`pwc_compat.css`, `pwc_light_mode.css`)
+- **Styling:** Inline styles (Tailwind doesn't work in Power Apps)
 - **Data:** Dataverse tables with `crda8_` prefix
-- **Auth:** Microsoft SSO (MSAL) configured in `AuthContext.tsx`
+- **Auth:** Microsoft SSO (MSAL) in `AuthContext.tsx`
 - **State:** React Query + localStorage caching
 - **Deployment:** `pac code push` to Power Apps
-- **Animations:** `framer-motion` (for CommandCenter)
 
 ---
 
-## Dataverse Tables (5 tables)
+## Dataverse Tables
 
 | Table | Logical Name |
 |-------|--------------|
@@ -87,6 +81,8 @@ There are **TWO separate apps**:
 | Workstreams | `crda8_workstreams` |
 | Time Off Requests | `crda8_timeoffrequests` |
 | Weekly Hours | `crda8_weeklyhours` |
+
+**NOTE:** Workstreams table does NOT have a color field. Colors are assigned client-side.
 
 ---
 
@@ -108,168 +104,58 @@ Branch: claude/powerapp-sharepoint-deliverables-vbZKv
 /tmp/Test/
 ```
 
-### Key Files in the Repo
+### Key Files
 | File | Purpose |
 |------|---------|
-| `fix-dvui-build.ps1` | **THE SCRIPT** - Claude updates this, Georg executes it |
-| `CLAUDE_CONTEXT_GUIDE.md` | **THIS FILE** - Read it to understand context |
-| `dvui save/` | Backup of working DVUI with CommandCenter already converted |
-| `lovable-app-organized/` | Fancy Lovable UI components (uses mockData - needs conversion) |
+| `fix-dvui-build.ps1` | THE SCRIPT - Claude updates, Georg executes |
+| `CLAUDE_CONTEXT_GUIDE.md` | THIS FILE - context for new sessions |
+| `dvui save/` | The actual source code |
 
 ---
 
-## Current App State (as of Jan 19, 2026 - 8:35 PM)
+## Current Screens
 
-### Working Screens (13 screens, CommandCenter pending)
-1. DashboardEnhanced.tsx - Main dashboard
-2. Deliverables.tsx - Deliverable management
-3. Staff.tsx - Staff management
-4. Workstreams.tsx - Workstream management
-5. Kanban.tsx - Kanban board (basic styling, uses dataLayer)
-6. Gantt.tsx - Gantt chart (basic styling, uses dataLayer)
-7. PTORequests.tsx - PTO request management
-8. HoursTracking.tsx - Hours logging
-9. OrgChartHierarchy.tsx - Org chart by hierarchy
-10. OrgChartWorkstream.tsx - Org chart by workstream
+1. ProjectOverview.tsx - Landing page with KPI cards (route: `/`)
+2. DashboardEnhanced.tsx - My Work (route: `/my-work`)
+3. Deliverables.tsx - Deliverable management
+4. Staff.tsx - Staff management
+5. Workstreams.tsx - Workstream management (color picker removed)
+6. Kanban.tsx - Kanban board with Dataverse persistence
+7. Gantt.tsx - Gantt chart
+8. PTORequests.tsx - PTO request management
+9. HoursTracking.tsx - Hours logging
+10. **OrgChart.tsx** - NEW unified org chart (route: `/org-chart`)
 11. AdminAnalytics.tsx - Admin analytics & CSV import
 12. Login.tsx - Login screen
-13. Dashboard.tsx - Old dashboard (route: /dashboard-old)
-
-### About to Enable (v4 script)
-- **CommandCenter.tsx** - Animated dashboard with:
-  - Floating orbs background
-  - Glowing stat cards
-  - Animated counters
-  - Circular progress indicators
-  - Workstream progress bars
-  - Team avatar stack
-  - Particle effects
-  - **ALL USING REAL DATAVERSE DATA** (no mockData!)
-
-### Disabled/Backed Up (in DVUI app on PwC laptop)
-- `src/components/layout/` - Layout files were backed up
-- `src/components/dashboard/` - Dashboard widgets backed up
-- `calendar.tsx, chart.tsx, resizable.tsx` - Deleted due to type errors
 
 ---
 
-## The Workflow: How Claude Delivers Code to Georg
+## Data Layer
 
-**IMPORTANT:** Georg's PwC laptop connects to PwC GitHub, NOT his personal GitHub.
-
-### Step-by-Step:
-1. Claude edits files in `/tmp/Test/` on Georg's MacBook
-2. Claude commits and pushes to Georg's personal GitHub
-3. Claude gives Georg this command:
-   ```powershell
-   cd "C:\Users\gchimion001\OneDrive - PwC\Desktop\VSCODE\PowerAppsRepoPWC\VSCODE\project-governance-dvui"
-
-   Invoke-WebRequest -Uri "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/powerapp-sharepoint-deliverables-vbZKv/fix-dvui-build.ps1" -OutFile "fix-dvui-build.ps1"; .\fix-dvui-build.ps1
-   ```
-4. Script downloads files from GitHub, builds, and pushes to Power Apps
-
-### Script Naming Convention
-- `fix-dvui-build.ps1` - Main deployment script (keep updating this one)
-
----
-
-## Data Layer Architecture
-
-### Two Data Access Patterns
-
-**Pattern 1: dataLayer.ts (synchronous, localStorage)**
+**Use dataLayer.ts (synchronous, localStorage):**
 ```typescript
 import { getDeliverables, getStaff, getWorkstreams } from '../data/dataLayer'
-const deliverables = getDeliverables()  // returns array from localStorage
-```
-- Used by: Kanban.tsx, Gantt.tsx, most existing screens
-
-**Pattern 2: dataverseService.ts (React Query hooks)**
-```typescript
-import { useGetDeliverables, useGetStaff, useGetWorkstreams } from '@/services/dataverseService'
-const { data: deliverables = [], isLoading } = useGetDeliverables()
-```
-- Used by: CommandCenter.tsx (the Lovable version in `dvui save/`)
-- Returns `{ data, isLoading, error }` pattern
-
-### DO NOT USE
-- `@/data/mockData` - **THIS FILE DOES NOT EXIST!**
-- Lovable components reference it but we must convert to dataLayer or dataverseService
-
----
-
-## CommandCenter Dependencies (v4 script installs these)
-
-### NPM Packages Required
-- `framer-motion` - For animations
-
-### Files Required from `dvui save/`
-| File | Purpose |
-|------|---------|
-| `src/screens/CommandCenter.tsx` | The main screen (uses dataverseService hooks) |
-| `src/services/dataverseService.ts` | React Query hooks for Dataverse |
-| `src/components/layout/MainLayout.tsx` | Layout wrapper |
-| `src/components/layout/AppSidebar.tsx` | Sidebar navigation |
-| `src/components/layout/Header.tsx` | Top header |
-| `src/components/layout/NavLink.tsx` | Navigation link component |
-| `src/components/ui/card.tsx` | Card component |
-| `src/components/ui/button.tsx` | Button component |
-| `src/components/ui/avatar.tsx` | Avatar component |
-| `src/components/ui/input.tsx` | Input component |
-| `src/components/ui/dropdown-menu.tsx` | Dropdown menu |
-| `src/components/ui/badge.tsx` | Badge component |
-
-### What CommandCenter.tsx imports:
-```typescript
-import { motion } from "framer-motion";  // Animations
-import { MainLayout } from "@/components/layout/MainLayout";  // Layout
-import { Card } from "@/components/ui/card";  // UI component
-import { useGetDeliverables, useGetWorkstreams, useGetStaff } from "@/services/dataverseService";  // DATA!
+const deliverables = getDeliverables()
 ```
 
-**NO mockData references!** ✅
-
----
-
-## Converting Lovable Components to Dataverse
-
-When converting components from `lovable-app-organized/`:
-
-### Replace These Imports:
+**Workstream color function (in dataLayer.ts):**
 ```typescript
-// FROM (Lovable - WRONG)
-import { deliverables, teamMembers, workstreams, currentUser } from '@/data/mockData';
-
-// TO (dataLayer - synchronous)
-import { getDeliverables, getStaff, getWorkstreams } from '../data/dataLayer';
-import { useAuth } from '../context/AuthContext';
-const deliverables = getDeliverables();
-const staff = getStaff();
-const workstreams = getWorkstreams();
-const { currentUser } = useAuth();
-
-// OR TO (dataverseService - React Query)
-import { useGetDeliverables, useGetStaff, useGetWorkstreams } from '@/services/dataverseService';
-const { data: deliverables = [] } = useGetDeliverables();
-const { data: staff = [] } = useGetStaff();
-const { data: workstreams = [] } = useGetWorkstreams();
+function getWorkstreamColor(name: string): string {
+  const colors = ['#D04A02', '#2563eb', '#059669', '#f59e0b', '#7c3aed', '#ec4899', '#06b6d4', '#84cc16']
+  // Currently uses hash - needs to be changed to alphabetical index
+  ...
+}
 ```
 
 ---
 
 ## Key Learnings / Gotchas
 
-1. **SharePoint NOT supported** for Code Apps - only Dataverse works
-2. **Backup folders get compiled** - Add to tsconfig.json exclude: `"src/_lovable_backup_*"`
-3. **`.bak` files get compiled** - Add `"**/*.bak"` to exclude
-4. **PowerShell regex is tricky** - Complex JSX patterns often fail
-5. **npm install can be slow** on PwC network
-6. **pac code push** requires auth - check with `pac auth list`
-7. **Don't clone unnecessarily** - repo already exists at `/tmp/Test/`
-8. **Don't suggest git pull** - PwC laptop uses different GitHub
-9. **CommandCenter uses dataverseService** NOT dataLayer (both work, different patterns)
-10. **framer-motion** required for CommandCenter animations
-11. **BUILD_STAMP verification** - `DashboardEnhanced.tsx` has a `BUILD_STAMP` constant that displays on the My Work page. The script MUST update this with current timestamp (EST) so Georg can verify the push deployed. Script shows the expected value at the end.
+1. **Tailwind doesn't work** in Power Apps - use inline styles
+2. **Backup folders get compiled** - Add to tsconfig.json exclude
+3. **CDN caching is aggressive** - use raw.githubusercontent.com with cache-busting params
+4. **BUILD_STAMP verification** - DashboardEnhanced.tsx has BUILD_STAMP constant
+5. **Workstream colors not in Dataverse** - assigned client-side based on name
 
 ---
 
@@ -277,22 +163,9 @@ const { data: workstreams = [] } = useGetWorkstreams();
 
 | Date | Version | Changes |
 |------|---------|---------|
-| Jan 19, 2026 22:50 | v7 | **15 FUN THEMES** - France, Paris, PSG, Matrix, Barbie + theme dropdown in header on all screens + Staff cleanup |
-| Jan 19, 2026 22:25 | v6.2 | **SIDEBAR FIX** - Downloads App.tsx directly instead of regex (regex was broken) |
-| Jan 19, 2026 22:15 | v6.1 | Added Layout wrapper to route - sidebar STILL NOT WORKING |
-| Jan 19, 2026 21:45 | v6 | **INLINE STYLED CommandCenter** - light theme, no Tailwind CSS vars, hardcoded PWC colors, all animations work |
-| Jan 19, 2026 21:00 | v5 | Full styling setup - index.css with CSS vars (didn't work) |
-| Jan 19, 2026 20:35 | v4 | Enable CommandCenter with ALL dependencies (layout, UI, framer-motion) |
-| Jan 19, 2026 15:15 | v2 | Fixed build - excluded backup folders, disabled CommandCenter |
-| Jan 19, 2026 14:30 | v1 | Initial script - installed deps, backed up mockData components |
-
----
-
-## Power Apps URLs
-
-- **DVUI App:** `https://apps.powerapps.com/play/e/deccb389-10c5-4d5c-8716-1093a04538e1/app/a951bd8f-2c6d-4250-85d9-23fd25297bab`
-- **Environment ID:** `deccb389-10c5-4d5c-8716-1093a04538e1`
-- **App ID:** `a951bd8f-2c6d-4250-85d9-23fd25297bab`
+| Jan 20, 2026 20:50 | v11 | **ORG CHART** - New unified OrgChart.tsx, workstream colors (IN PROGRESS) |
+| Jan 20, 2026 03:45 | v10 | **PROJECT OVERVIEW** - KPI landing page working |
+| Jan 19, 2026 22:50 | v7 | **15 FUN THEMES** |
 
 ---
 
@@ -300,24 +173,15 @@ const { data: workstreams = [] } = useGetWorkstreams();
 
 ### For Claude (on MacBook):
 ```bash
-# Edit files in /tmp/Test/
-# Then push:
 cd /tmp/Test && git add . && git commit -m "description" && git push origin claude/powerapp-sharepoint-deliverables-vbZKv
 ```
 
 ### For Georg (on PwC Laptop):
 ```powershell
-cd "C:\Users\gchimion001\OneDrive - PwC\Desktop\VSCODE\PowerAppsRepoPWC\VSCODE\project-governance-dvui"
-
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/powerapp-sharepoint-deliverables-vbZKv/fix-dvui-build.ps1" -OutFile "fix-dvui-build.ps1"; .\fix-dvui-build.ps1
+$ts = Get-Date -Format 'yyyyMMddHHmmss'
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/powerapp-sharepoint-deliverables-vbZKv/fix-dvui-build.ps1?t=$ts" -OutFile "fix-dvui-build.ps1" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}; .\fix-dvui-build.ps1
 ```
 
 ---
 
-## Contact / Sessions
-
-- **Georg's MacBook:** Claude Code in VS Code
-- **Georg's PwC Laptop:** Where the actual code lives and builds happen
-- **Georg's Personal PC:** Backup option
-
-**Sessions are isolated. If context is lost, read this file FIRST!**
+## Sessions are isolated. If context is lost, read this file FIRST!

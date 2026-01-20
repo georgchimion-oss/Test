@@ -322,24 +322,15 @@ function mapStaffRecord(item: Record<string, any>): Staff {
   }
 }
 
-// Deterministic color based on workstream name (alphabetical hash)
-function getWorkstreamColor(name: string): string {
-  const colors = ['#D04A02', '#2563eb', '#059669', '#f59e0b', '#7c3aed', '#ec4899', '#06b6d4', '#84cc16']
-  // Simple hash based on name to get consistent color
-  let hash = 0
-  for (let i = 0; i < name.length; i++) {
-    hash = ((hash << 5) - hash) + name.charCodeAt(i)
-    hash = hash & hash // Convert to 32bit integer
-  }
-  return colors[Math.abs(hash) % colors.length]
-}
+// Color palette for workstreams - 8 distinct colors
+const WORKSTREAM_COLORS = ['#D04A02', '#2563eb', '#059669', '#f59e0b', '#7c3aed', '#ec4899', '#06b6d4', '#84cc16']
 
 function mapWorkstreamRecord(
   item: Record<string, any>,
   staffByEmail: Map<string, Staff>,
   staffByName: Map<string, Staff>,
   staffById: Map<string, Staff>,
-  _colorIndex: number
+  colorIndex: number
 ): Workstream {
   const leader = pickField(item, ['crda8_leader', 'Leader', 'Lead', 'WorkstreamLead'])
   const leadId = resolveStaffId(leader, staffByEmail, staffByName, staffById)
@@ -353,7 +344,7 @@ function mapWorkstreamRecord(
     name,
     description: pickField<string>(item, ['crda8_description', 'Description', 'Summary']) || '',
     lead: leadId,
-    color: getWorkstreamColor(name),
+    color: WORKSTREAM_COLORS[colorIndex % WORKSTREAM_COLORS.length],
     createdAt: pickField<string>(item, ['createdon', 'Created', 'CreatedDateTime']) || new Date().toISOString(),
   }
 }
@@ -582,7 +573,13 @@ export async function syncDataverseData(): Promise<void> {
     const staffById = new Map(staffItems.map((s) => [s.id, s]))
 
     const workstreamResult = await client.retrieveMultipleRecordsAsync(DATAVERSE_TABLES.workstreams, { top: 5000 })
-    const workstreamItems = normalizeDataverseRecords(workstreamResult).map((item: any, index: number) =>
+    // Sort by name alphabetically before assigning colors, so colors are consistent
+    const sortedWorkstreamRecords = normalizeDataverseRecords(workstreamResult).sort((a: any, b: any) => {
+      const nameA = (pickField<string>(a, ['crda8_title', 'crda8_workstreamname', 'WorkstreamName', 'Title', 'Name']) || '').toLowerCase()
+      const nameB = (pickField<string>(b, ['crda8_title', 'crda8_workstreamname', 'WorkstreamName', 'Title', 'Name']) || '').toLowerCase()
+      return nameA.localeCompare(nameB)
+    })
+    const workstreamItems = sortedWorkstreamRecords.map((item: any, index: number) =>
       mapWorkstreamRecord(item, staffByEmail, staffByName, staffById, index)
     )
     const workstreamByName = new Map(workstreamItems.map((w) => [normalizeKey(w.name), w.id]))
