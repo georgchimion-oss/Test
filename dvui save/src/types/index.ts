@@ -13,6 +13,7 @@ export interface Staff {
   department: string
   supervisorId?: string
   workstreamIds: string[]
+  skills?: string[]
   userRole: UserRole
   isActive: boolean
   createdAt: string

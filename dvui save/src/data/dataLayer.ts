@@ -307,6 +307,12 @@ function mapStaffRecord(item: Record<string, any>): Staff {
   )
   const supervisorLookup = pickField(item, ['crda8_supervisor', 'SupervisorId', 'Supervisor', 'ManagerId'])
 
+  // Parse skills from comma-separated string or array
+  const skillsRaw = pickField(item, ['crda8_skills', 'Skills'])
+  const skills = skillsRaw
+    ? (typeof skillsRaw === 'string' ? skillsRaw.split(',').map(s => s.trim()).filter(Boolean) : skillsRaw)
+    : []
+
   return {
     id: getRecordId(item, DATAVERSE_TABLES.staff),
     name,
@@ -316,6 +322,7 @@ function mapStaffRecord(item: Record<string, any>): Staff {
     department: pickField<string>(item, ['crda8_department', 'Department']) || 'General',
     supervisorId: getLookupId(supervisorLookup),
     workstreamIds,
+    skills,
     userRole: normalizeUserRole(roleValue),
     isActive: parseBoolean(pickField(item, ['crda8_active', 'Active', 'IsActive'])),
     createdAt: pickField<string>(item, ['createdon', 'Created', 'CreatedDateTime']) || new Date().toISOString(),

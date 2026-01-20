@@ -629,7 +629,18 @@ const ProjectOverview = () => {
       }, 0) / totalDeliverables)
     : 0;
 
-  const workstreamColors = ["#D04A02", "#3b82f6", "#8b5cf6", "#10b981", "#f59e0b"];
+  // Same 20 colors as dataLayer.ts for consistency
+  const workstreamColors = [
+    '#D04A02', '#2563eb', '#059669', '#7c3aed', '#dc2626',
+    '#0891b2', '#ca8a04', '#be185d', '#4f46e5', '#65a30d',
+    '#0d9488', '#9333ea', '#ea580c', '#2dd4bf', '#c026d3',
+    '#16a34a', '#0284c7', '#d97706', '#7c3aed', '#64748b'
+  ];
+
+  // Sort workstreams alphabetically to match dataLayer color assignment
+  const sortedWorkstreams = [...(workstreams as any[])].sort((a, b) =>
+    (a.crda8_title || '').localeCompare(b.crda8_title || '')
+  );
 
   return (
     <Layout title="Project Overview">
@@ -786,7 +797,7 @@ const ProjectOverview = () => {
             {isLoading ? (
               <div style={{ textAlign: 'center', padding: '16px', opacity: 0.5 }}>Loading...</div>
             ) : (
-              (workstreams as any[]).map((ws: any, index: number) => {
+              sortedWorkstreams.map((ws: any, index: number) => {
                 // Match by workstream NAME (crda8_workstream contains name string, not ID)
                 const wsName = ws.crda8_title || '';
                 const wsDeliverables = (deliverables as any[]).filter((d: any) => {

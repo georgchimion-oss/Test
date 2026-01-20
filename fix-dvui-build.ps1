@@ -1,13 +1,14 @@
 # ============================================================
-# DVUI Build Fix Script v14 - WORKSTREAM PROGRESS FIX
-# Version: Jan 20, 2026 - 10:00 AM EST
-# - Fixed workstream matching (by NAME not ID)
-# - Show ALL workstreams in Project Overview (not just 5)
+# DVUI Build Fix Script v15 - STAFF SKILLS & WORKSTREAMS
+# Version: Jan 20, 2026 - 10:30 AM EST
+# - Staff screen: Added Workstream and Skills columns
+# - Staff screen: Added search (name, email, skills, workstream)
+# - Fixed workstream colors consistency in Project Overview
 # ============================================================
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "DVUI Build Fix Script v14" -ForegroundColor Cyan
-Write-Host "WORKSTREAM PROGRESS FIX" -ForegroundColor Green
+Write-Host "DVUI Build Fix Script v15" -ForegroundColor Cyan
+Write-Host "STAFF SKILLS & WORKSTREAMS" -ForegroundColor Green
 Write-Host "Timestamp: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Yellow
 Write-Host "========================================" -ForegroundColor Cyan
 
@@ -209,16 +210,17 @@ Write-Host "#     $buildStamp                      #" -ForegroundColor White
 Write-Host "#                                                #" -ForegroundColor Magenta
 Write-Host "##################################################" -ForegroundColor Magenta
 Write-Host ""
-Write-Host "v14 - WHAT'S NEW:" -ForegroundColor Cyan
+Write-Host "v15 - WHAT'S NEW:" -ForegroundColor Cyan
 Write-Host ""
-Write-Host "  WORKSTREAM PROGRESS FIX:" -ForegroundColor Yellow
-Write-Host "    - Fixed: Now matches by workstream NAME (not ID)" -ForegroundColor White
-Write-Host "    - Shows ALL workstreams (not just 5)" -ForegroundColor White
-Write-Host "    - Progress bars should now show actual percentages" -ForegroundColor White
+Write-Host "  STAFF MANAGEMENT UPGRADES:" -ForegroundColor Yellow
+Write-Host "    - NEW: Workstreams column (with colored badges)" -ForegroundColor White
+Write-Host "    - NEW: Skills column" -ForegroundColor White
+Write-Host "    - NEW: Search by name, email, title, workstream, skill" -ForegroundColor White
+Write-Host "    - NEW: Skills input in edit form (comma-separated)" -ForegroundColor White
 Write-Host ""
-Write-Host "  BIDIRECTIONAL STATUS/PROGRESS (from v13):" -ForegroundColor Yellow
-Write-Host "    - Status Completed -> Progress 100%" -ForegroundColor White
-Write-Host "    - Progress 100% -> Status Completed" -ForegroundColor White
+Write-Host "  WORKSTREAM COLOR CONSISTENCY:" -ForegroundColor Yellow
+Write-Host "    - Project Overview now uses same colors as Workstreams screen" -ForegroundColor White
+Write-Host "    - Colors sorted alphabetically to match" -ForegroundColor White
 Write-Host ""
-Write-Host "  Test: Go to Project Overview, check Workstream Progress" -ForegroundColor Green
+Write-Host "  Test: Go to Staff Management, try the search!" -ForegroundColor Green
 Write-Host ""

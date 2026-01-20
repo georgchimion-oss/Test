@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { getStaff, createStaffRemote, updateStaffRemote, deleteStaffRemote, getWorkstreams, onDataRefresh } from '../data/dataLayer'
 import type { Staff } from '../types'
-import { Plus, Edit2, Trash2, X, UserCheck, UserX } from 'lucide-react'
+import { Plus, Edit2, Trash2, X, UserCheck, UserX, Search } from 'lucide-react'
 
 export default function StaffScreen() {
   const [staff, setStaff] = useState(getStaff())
@@ -10,6 +10,7 @@ export default function StaffScreen() {
   const [editingStaff, setEditingStaff] = useState<Staff | null>(null)
   const [saveError, setSaveError] = useState<string | null>(null)
   const [isSaving, setIsSaving] = useState(false)
+  const [searchTerm, setSearchTerm] = useState('')
 
   const [formData, setFormData] = useState<Partial<Staff>>({
     name: '',
@@ -19,9 +20,29 @@ export default function StaffScreen() {
     title: 'Associate',
     supervisorId: undefined,
     workstreamIds: [],
+    skills: [],
     userRole: 'User',
     isActive: true,
   })
+
+  // Filter staff by search term (name, email, title, skills, workstreams)
+  const filteredStaff = useMemo(() => {
+    if (!searchTerm.trim()) return staff
+    const term = searchTerm.toLowerCase()
+    return staff.filter(s => {
+      const staffWorkstreams = (s.workstreamIds || [])
+        .map(id => workstreams.find(w => w.id === id)?.name || '')
+        .join(' ')
+      const staffSkills = (s.skills || []).join(' ')
+      return (
+        s.name.toLowerCase().includes(term) ||
+        s.email.toLowerCase().includes(term) ||
+        s.title.toLowerCase().includes(term) ||
+        staffWorkstreams.toLowerCase().includes(term) ||
+        staffSkills.toLowerCase().includes(term)
+      )
+    })
+  }, [staff, workstreams, searchTerm])
 
   useEffect(() => {
     return onDataRefresh(() => setStaff(getStaff()))
@@ -117,55 +138,118 @@ export default function StaffScreen() {
           </button>
         </div>
 
+        {/* Search */}
+        <div style={{ padding: '0 1.5rem 1rem' }}>
+          <div style={{ position: 'relative', maxWidth: '400px' }}>
+            <Search size={18} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-secondary)' }} />
+            <input
+              type="text"
+              placeholder="Search by name, email, title, workstream, or skill..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              style={{ paddingLeft: '40px' }}
+            />
+          </div>
+        </div>
+
         <table className="table">
           <thead>
             <tr>
               <th>Name</th>
               <th>Title</th>
               <th>Email</th>
+              <th>Workstreams</th>
+              <th>Skills</th>
               <th>Status</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {staff.map((s) => (
-              <tr key={s.id}>
-                <td style={{ fontWeight: '500' }}>{s.name}</td>
-                <td>{s.title}</td>
-                <td style={{ color: 'var(--text-secondary)' }}>{s.email}</td>
-                <td>
-                  {s.isActive ? (
-                    <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--secondary)' }}>
-                      <UserCheck size={16} />
-                      Active
-                    </span>
-                  ) : (
-                    <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)' }}>
-                      <UserX size={16} />
-                      Inactive
-                    </span>
-                  )}
-                </td>
-                <td>
-                  <div style={{ display: 'flex', gap: '0.5rem' }}>
-                    <button
-                      className="btn btn-secondary btn-sm"
-                      onClick={() => handleOpenModal(s)}
-                      style={{ padding: '0.375rem' }}
-                    >
-                      <Edit2 size={14} />
-                    </button>
-                    <button
-                      className="btn btn-danger btn-sm"
-                      onClick={() => handleDelete(s.id)}
-                      style={{ padding: '0.375rem' }}
-                    >
-                      <Trash2 size={14} />
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
+            {filteredStaff.map((s) => {
+              const staffWorkstreams = (s.workstreamIds || [])
+                .map(id => workstreams.find(w => w.id === id))
+                .filter(Boolean)
+              return (
+                <tr key={s.id}>
+                  <td style={{ fontWeight: '500' }}>{s.name}</td>
+                  <td>{s.title}</td>
+                  <td style={{ color: 'var(--text-secondary)' }}>{s.email}</td>
+                  <td>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.25rem' }}>
+                      {staffWorkstreams.length > 0 ? staffWorkstreams.map(ws => (
+                        <span
+                          key={ws!.id}
+                          style={{
+                            display: 'inline-block',
+                            padding: '0.125rem 0.5rem',
+                            borderRadius: '4px',
+                            fontSize: '0.75rem',
+                            background: `${ws!.color}20`,
+                            color: ws!.color,
+                          }}
+                        >
+                          {ws!.name}
+                        </span>
+                      )) : (
+                        <span style={{ color: 'var(--text-secondary)', fontSize: '0.75rem' }}>—</span>
+                      )}
+                    </div>
+                  </td>
+                  <td>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.25rem' }}>
+                      {(s.skills || []).length > 0 ? (s.skills || []).map((skill, idx) => (
+                        <span
+                          key={idx}
+                          style={{
+                            display: 'inline-block',
+                            padding: '0.125rem 0.5rem',
+                            borderRadius: '4px',
+                            fontSize: '0.75rem',
+                            background: 'var(--bg-hover)',
+                            color: 'var(--text-primary)',
+                          }}
+                        >
+                          {skill}
+                        </span>
+                      )) : (
+                        <span style={{ color: 'var(--text-secondary)', fontSize: '0.75rem' }}>—</span>
+                      )}
+                    </div>
+                  </td>
+                  <td>
+                    {s.isActive ? (
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--secondary)' }}>
+                        <UserCheck size={16} />
+                        Active
+                      </span>
+                    ) : (
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)' }}>
+                        <UserX size={16} />
+                        Inactive
+                      </span>
+                    )}
+                  </td>
+                  <td>
+                    <div style={{ display: 'flex', gap: '0.5rem' }}>
+                      <button
+                        className="btn btn-secondary btn-sm"
+                        onClick={() => handleOpenModal(s)}
+                        style={{ padding: '0.375rem' }}
+                      >
+                        <Edit2 size={14} />
+                      </button>
+                      <button
+                        className="btn btn-danger btn-sm"
+                        onClick={() => handleDelete(s.id)}
+                        style={{ padding: '0.375rem' }}
+                      >
+                        <Trash2 size={14} />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       </div>
@@ -274,6 +358,58 @@ export default function StaffScreen() {
                         />
                         <span style={{ fontSize: '0.875rem' }}>{ws.name}</span>
                       </label>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label">Skills</label>
+                  <input
+                    type="text"
+                    placeholder="Enter skills separated by commas (e.g., Python, SQL, Excel)"
+                    value={(formData.skills || []).join(', ')}
+                    onChange={(e) => {
+                      const skills = e.target.value
+                        .split(',')
+                        .map(s => s.trim())
+                        .filter(s => s.length > 0)
+                      setFormData({ ...formData, skills })
+                    }}
+                  />
+                  <div style={{ marginTop: '0.5rem', display: 'flex', flexWrap: 'wrap', gap: '0.25rem' }}>
+                    {(formData.skills || []).map((skill, idx) => (
+                      <span
+                        key={idx}
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '0.25rem',
+                          padding: '0.125rem 0.5rem',
+                          borderRadius: '4px',
+                          fontSize: '0.75rem',
+                          background: 'var(--bg-hover)',
+                          color: 'var(--text-primary)',
+                        }}
+                      >
+                        {skill}
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const skills = (formData.skills || []).filter((_, i) => i !== idx)
+                            setFormData({ ...formData, skills })
+                          }}
+                          style={{
+                            background: 'none',
+                            border: 'none',
+                            cursor: 'pointer',
+                            padding: 0,
+                            fontSize: '0.875rem',
+                            color: 'var(--text-secondary)',
+                          }}
+                        >
+                          ×
+                        </button>
+                      </span>
                     ))}
                   </div>
                 </div>
