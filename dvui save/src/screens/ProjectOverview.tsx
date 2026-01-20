@@ -168,7 +168,8 @@ interface DeliverableListItemProps {
 const DeliverableListItem = ({ deliverable, workstreams, staff, onClick }: DeliverableListItemProps) => {
   const workstream = workstreams.find((w: any) => w.crda8_workstreamsid === deliverable.crda8_workstream);
   const owner = staff.find((s: any) => s.crda8_staff4id === deliverable.crda8_owner);
-  const progress = parseInt(deliverable.crda8_completion_x0020__x0025_ || '0') || 0;
+  const rawProgress = parseFloat(deliverable.crda8_completion_x0020__x0025_ || '0') || 0;
+  const progress = rawProgress <= 1 ? Math.round(rawProgress * 100) : Math.round(rawProgress);
   // Due date field is crda8_targetdate in Dataverse, NOT crda8_duedate
   const dueDate = deliverable.crda8_targetdate ? new Date(deliverable.crda8_targetdate) : null;
   const isOverdue = dueDate && isBefore(dueDate, new Date()) && deliverable.crda8_status !== 2;
@@ -278,7 +279,8 @@ interface DeliverableDetailProps {
 const DeliverableDetail = ({ deliverable, workstreams, staff, onClose }: DeliverableDetailProps) => {
   const workstream = workstreams.find((w: any) => w.crda8_workstreamsid === deliverable.crda8_workstream);
   const owner = staff.find((s: any) => s.crda8_staff4id === deliverable.crda8_owner);
-  const progress = parseInt(deliverable.crda8_completion_x0020__x0025_ || '0') || 0;
+  const rawProgress = parseFloat(deliverable.crda8_completion_x0020__x0025_ || '0') || 0;
+  const progress = rawProgress <= 1 ? Math.round(rawProgress * 100) : Math.round(rawProgress);
   // Due date field is crda8_targetdate in Dataverse, NOT crda8_duedate
   const dueDate = deliverable.crda8_targetdate ? new Date(deliverable.crda8_targetdate) : null;
 
@@ -603,7 +605,10 @@ const ProjectOverview = () => {
   const completedDeliverables = (deliverables as any[]).filter((d: any) => d.crda8_status === 2).length;
   const atRiskCount = (deliverables as any[]).filter((d: any) => d.crda8_risk === 2).length;
   const overallProgress = totalDeliverables > 0
-    ? Math.round((deliverables as any[]).reduce((acc: number, d: any) => acc + (parseInt(d.crda8_completion_x0020__x0025_ || '0') || 0), 0) / totalDeliverables)
+    ? Math.round((deliverables as any[]).reduce((acc: number, d: any) => {
+        const raw = parseFloat(d.crda8_completion_x0020__x0025_ || '0') || 0;
+        return acc + (raw <= 1 ? raw * 100 : raw);
+      }, 0) / totalDeliverables)
     : 0;
 
   const workstreamColors = ["#D04A02", "#3b82f6", "#8b5cf6", "#10b981", "#f59e0b"];
@@ -766,7 +771,10 @@ const ProjectOverview = () => {
               (workstreams as any[]).slice(0, 5).map((ws: any, index: number) => {
                 const wsDeliverables = (deliverables as any[]).filter((d: any) => d.crda8_workstream === ws.crda8_workstreamsid);
                 const wsProgress = wsDeliverables.length > 0
-                  ? Math.round(wsDeliverables.reduce((acc: number, d: any) => acc + (parseInt(d.crda8_completion_x0020__x0025_ || '0') || 0), 0) / wsDeliverables.length)
+                  ? Math.round(wsDeliverables.reduce((acc: number, d: any) => {
+                      const raw = parseFloat(d.crda8_completion_x0020__x0025_ || '0') || 0;
+                      return acc + (raw <= 1 ? raw * 100 : raw);
+                    }, 0) / wsDeliverables.length)
                   : 0;
 
                 return (
