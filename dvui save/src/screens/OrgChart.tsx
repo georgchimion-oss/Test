@@ -268,8 +268,13 @@ function HierarchyNode({ person, staff, level, expanded, toggleExpand }: Hierarc
   )
 }
 
+interface ExtendedWorkstream extends Omit<Workstream, 'lead'> {
+  lead?: Staff
+  members: Staff[]
+}
+
 interface WorkstreamCardProps {
-  workstream: Workstream
+  workstream: ExtendedWorkstream
   lead?: Staff
   members: Staff[]
   expanded: boolean
@@ -787,19 +792,16 @@ export default function OrgChart() {
       {/* Content */}
       {viewMode === 'workstream' ? (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-          {workstreamTeams.length > 0 ? workstreamTeams.map((ws) => {
-              const { lead, members, ...baseWorkstream } = ws
-              return (
+          {workstreamTeams.length > 0 ? workstreamTeams.map((ws) => (
                 <WorkstreamCard
                   key={ws.id}
-                  workstream={baseWorkstream}
-                  lead={lead}
-                  members={members}
+                  workstream={ws}
+                  lead={ws.lead}
+                  members={ws.members}
                   expanded={expandedWorkstreams.has(ws.id)}
                   onToggle={() => toggleWorkstreamExpand(ws.id)}
                 />
-              )
-            }) : (
+            )) : (
             <div style={{
               background: 'white',
               borderRadius: '20px',
