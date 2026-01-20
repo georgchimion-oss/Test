@@ -523,6 +523,7 @@ function toDataverseStaffFields(staff: Staff): Record<string, any> {
     crda8_role: mapUserRoleToDataverseValue(staff.userRole),
     crda8_supervisor: staff.supervisorId || null,
     crda8_workstreams: workstreamNames.join('; '),
+    crda8_skills: (staff.skills || []).join(', '),
     crda8_active: staff.isActive,
   }
 }
