@@ -1,17 +1,16 @@
 # Claude Context Guide for Project Governance DVUI
 
-**Last Updated:** Jan 20, 2026 - 3:00 AM EST
-**Last Successful Push:** Jan 20, 2026 - 1:10 AM EST (fix-dvui-build.ps1 v9)
-**Current Script Version:** v10 (TypeScript errors FIXED - ready to test)
+**Last Updated:** Jan 20, 2026 - 4:00 AM EST
+**Last Successful Push:** Jan 20, 2026 - 3:45 AM EST (fix-dvui-build.ps1 v10)
+**Current Script Version:** v10 (WORKING!)
 
-## CURRENT STATUS: v10 READY - TypeScript errors fixed
+## CURRENT STATUS: v10 DEPLOYED - Project Overview working!
 
-**FIXED:** ProjectOverview.tsx TypeScript errors have been resolved:
-- Removed unused imports (Clock, isAfter)
-- Using `any` types throughout for Dataverse data
-- Field name correct: `crda8_completion_x0020__x0025_` (double underscore)
-
-**If GitHub is serving cached files, use the cache-busting command below.**
+**COMPLETED:** ProjectOverview.tsx is now working:
+- KPI cards styled with inline styles (Tailwind doesn't work in Power Apps)
+- Due date field corrected: `crda8_targetdate` (not `crda8_duedate`)
+- Click KPI → drill down list → click item → see comments & history
+- All 3 KPIs working: Due This Month, Due Next 2 Weeks, Overdue
 
 ## WHAT WAS DONE (v10 attempt):
 - Created ProjectOverview.tsx with:
@@ -27,13 +26,13 @@
 ## NEXT TASKS
 1. ~~**Deliverables screen** - Add comment button~~ ✅ DONE (v8)
 2. ~~**Kanban** - Persist drag changes to Dataverse + add filter dropdowns~~ ✅ DONE (v9)
-3. **CommandCenter → Project Overview** - IN PROGRESS (v10 - build failing)
-   - ~~Remove "Active Team" section~~ ✅
-   - ~~Add KPI cards: Deliverables due this month, Due next 2 weeks, Late deliverables~~ ✅ (code written)
-   - ~~Click on KPI → drill down to list → click item → see comments & history~~ ✅ (code written)
-   - **FIX TypeScript errors in ProjectOverview.tsx**
-4. **Resource Management screen** - New screen based on Lovable (file: `/tmp/Test/lovable-app-organized/src/pages/Resources.tsx`)
-5. **Skills** - Use existing `role` field for skills (comma-separated text like "React, TypeScript")
+3. ~~**CommandCenter → Project Overview**~~ ✅ DONE (v10)
+   - KPI cards with inline styles (Tailwind doesn't work)
+   - Due date field: `crda8_targetdate` (NOT `crda8_duedate`)
+   - Click KPI → drill down → click item → see history
+4. **Org Chart enhancements** - NEXT
+5. **Resource Management screen** - New screen based on Lovable (file: `/tmp/Test/lovable-app-organized/src/pages/Resources.tsx`)
+6. **Skills** - Use existing `role` field for skills (comma-separated text like "React, TypeScript")
 
 ---
 
