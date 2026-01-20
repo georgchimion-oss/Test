@@ -169,7 +169,8 @@ const DeliverableListItem = ({ deliverable, workstreams, staff, onClick }: Deliv
   const workstream = workstreams.find((w: any) => w.crda8_workstreamsid === deliverable.crda8_workstream);
   const owner = staff.find((s: any) => s.crda8_staff4id === deliverable.crda8_owner);
   const progress = parseInt(deliverable.crda8_completion_x0020__x0025_ || '0') || 0;
-  const dueDate = deliverable.crda8_duedate ? new Date(deliverable.crda8_duedate) : null;
+  // Due date field is crda8_targetdate in Dataverse, NOT crda8_duedate
+  const dueDate = deliverable.crda8_targetdate ? new Date(deliverable.crda8_targetdate) : null;
   const isOverdue = dueDate && isBefore(dueDate, new Date()) && deliverable.crda8_status !== 2;
 
   return (
@@ -278,7 +279,8 @@ const DeliverableDetail = ({ deliverable, workstreams, staff, onClose }: Deliver
   const workstream = workstreams.find((w: any) => w.crda8_workstreamsid === deliverable.crda8_workstream);
   const owner = staff.find((s: any) => s.crda8_staff4id === deliverable.crda8_owner);
   const progress = parseInt(deliverable.crda8_completion_x0020__x0025_ || '0') || 0;
-  const dueDate = deliverable.crda8_duedate ? new Date(deliverable.crda8_duedate) : null;
+  // Due date field is crda8_targetdate in Dataverse, NOT crda8_duedate
+  const dueDate = deliverable.crda8_targetdate ? new Date(deliverable.crda8_targetdate) : null;
 
   const auditLogs = useMemo(() => {
     const allLogs = getAuditLogs() as any[];
@@ -559,24 +561,25 @@ const ProjectOverview = () => {
   const monthEnd = endOfMonth(today);
 
   const kpiData = useMemo(() => {
+    // Due date field is crda8_targetdate in Dataverse, NOT crda8_duedate
     const dueThisMonth = (deliverables as any[]).filter((d: any) => {
-      if (d.crda8_status === 2) return false;
-      if (!d.crda8_duedate) return false;
-      const dueDate = new Date(d.crda8_duedate);
+      if (d.crda8_status === 2) return false; // Exclude completed
+      if (!d.crda8_targetdate) return false;
+      const dueDate = new Date(d.crda8_targetdate);
       return isWithinInterval(dueDate, { start: monthStart, end: monthEnd });
     });
 
     const dueNextTwoWeeks = (deliverables as any[]).filter((d: any) => {
-      if (d.crda8_status === 2) return false;
-      if (!d.crda8_duedate) return false;
-      const dueDate = new Date(d.crda8_duedate);
+      if (d.crda8_status === 2) return false; // Exclude completed
+      if (!d.crda8_targetdate) return false;
+      const dueDate = new Date(d.crda8_targetdate);
       return isWithinInterval(dueDate, { start: today, end: twoWeeksFromNow });
     });
 
     const lateDeliverables = (deliverables as any[]).filter((d: any) => {
-      if (d.crda8_status === 2) return false;
-      if (!d.crda8_duedate) return false;
-      const dueDate = new Date(d.crda8_duedate);
+      if (d.crda8_status === 2) return false; // Exclude completed
+      if (!d.crda8_targetdate) return false;
+      const dueDate = new Date(d.crda8_targetdate);
       return isBefore(dueDate, today);
     });
 
