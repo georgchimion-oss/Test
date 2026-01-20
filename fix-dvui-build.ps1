@@ -1,14 +1,15 @@
 # ============================================================
-# DVUI Build Fix Script v15 - STAFF SKILLS & WORKSTREAMS
-# Version: Jan 20, 2026 - 10:30 AM EST
-# - Staff screen: Added Workstream and Skills columns
-# - Staff screen: Added search (name, email, skills, workstream)
+# DVUI Build Fix Script v16 - TYPES FIX
+# Version: Jan 20, 2026 - 11:00 AM EST
+# - FIX: Added types/index.ts download (Staff with skills)
+# - Staff screen: Workstream and Skills columns
+# - Staff screen: Search (name, email, skills, workstream)
 # - Fixed workstream colors consistency in Project Overview
 # ============================================================
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "DVUI Build Fix Script v15" -ForegroundColor Cyan
-Write-Host "STAFF SKILLS & WORKSTREAMS" -ForegroundColor Green
+Write-Host "DVUI Build Fix Script v16" -ForegroundColor Cyan
+Write-Host "TYPES FIX" -ForegroundColor Green
 Write-Host "Timestamp: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Yellow
 Write-Host "========================================" -ForegroundColor Cyan
 
@@ -51,17 +52,24 @@ if (-not $packageJson.dependencies.'date-fns') {
 Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 3: Download data layer and services
+# Step 3: Download types, data layer and services
 #------------------------------------------------------------------------------
 
-Write-Host "`n[3/8] Downloading data layer and services..." -ForegroundColor Yellow
+Write-Host "`n[3/8] Downloading types, data layer and services..." -ForegroundColor Yellow
 
+if (-not (Test-Path "src\types")) {
+    New-Item -ItemType Directory -Path "src\types" -Force | Out-Null
+}
 if (-not (Test-Path "src\data")) {
     New-Item -ItemType Directory -Path "src\data" -Force | Out-Null
 }
 if (-not (Test-Path "src\services")) {
     New-Item -ItemType Directory -Path "src\services" -Force | Out-Null
 }
+
+# CRITICAL: Download types/index.ts (Staff interface with skills property)
+Invoke-WebRequest -Uri "$baseUrl/src/types/index.ts?t=$cacheBust" -OutFile "src\types\index.ts" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
+Write-Host "  types/index.ts (Staff with skills)" -ForegroundColor Green
 
 # IMPORTANT: Download dataLayer.ts (contains workstream color logic)
 Invoke-WebRequest -Uri "$baseUrl/src/data/dataLayer.ts?t=$cacheBust" -OutFile "src\data\dataLayer.ts" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
@@ -210,17 +218,16 @@ Write-Host "#     $buildStamp                      #" -ForegroundColor White
 Write-Host "#                                                #" -ForegroundColor Magenta
 Write-Host "##################################################" -ForegroundColor Magenta
 Write-Host ""
-Write-Host "v15 - WHAT'S NEW:" -ForegroundColor Cyan
+Write-Host "v16 - WHAT'S NEW:" -ForegroundColor Cyan
 Write-Host ""
-Write-Host "  STAFF MANAGEMENT UPGRADES:" -ForegroundColor Yellow
-Write-Host "    - NEW: Workstreams column (with colored badges)" -ForegroundColor White
-Write-Host "    - NEW: Skills column" -ForegroundColor White
-Write-Host "    - NEW: Search by name, email, title, workstream, skill" -ForegroundColor White
-Write-Host "    - NEW: Skills input in edit form (comma-separated)" -ForegroundColor White
+Write-Host "  BUILD FIX:" -ForegroundColor Yellow
+Write-Host "    - FIX: Now downloads types/index.ts" -ForegroundColor White
+Write-Host "    - Staff interface includes skills property" -ForegroundColor White
 Write-Host ""
-Write-Host "  WORKSTREAM COLOR CONSISTENCY:" -ForegroundColor Yellow
-Write-Host "    - Project Overview now uses same colors as Workstreams screen" -ForegroundColor White
-Write-Host "    - Colors sorted alphabetically to match" -ForegroundColor White
+Write-Host "  STAFF MANAGEMENT:" -ForegroundColor Yellow
+Write-Host "    - Workstreams column (with colored badges)" -ForegroundColor White
+Write-Host "    - Skills column" -ForegroundColor White
+Write-Host "    - Search by name, email, title, workstream, skill" -ForegroundColor White
 Write-Host ""
-Write-Host "  Test: Go to Staff Management, try the search!" -ForegroundColor Green
+Write-Host "  NOTE: Create crda8_skills column in Dataverse Staff table!" -ForegroundColor Magenta
 Write-Host ""
