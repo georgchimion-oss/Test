@@ -396,7 +396,11 @@ function mapDeliverableRecord(
   ])
   const ownerId = resolveStaffId(ownerValue, staffByEmail, staffByName, staffById)
   const progressRaw = pickField(item, ['crda8_completion_x0020__x0025_', 'Completion_x0025_', 'Completion%', 'CompletionPct', 'Progress'])
-  const progress = typeof progressRaw === 'number' ? progressRaw : Number(progressRaw || 0)
+  const statusValue = normalizeDeliverableStatus(pickField(item, ['crda8_status', 'Status']))
+  // If status is Completed, show 100%. Otherwise calculate from completion field.
+  // Dataverse stores progress as 0-1 (e.g., 0.75 = 75%), so scale to 0-100 if <= 1
+  const rawNum = typeof progressRaw === 'number' ? progressRaw : Number(progressRaw || 0)
+  const progress = statusValue === 'Completed' ? 100 : (rawNum <= 1 && rawNum > 0 ? Math.round(rawNum * 100) : Math.round(rawNum))
   const workstreamValue = pickField(item, [
     'crda8_workstream',
     'crda8_workstreamname',

@@ -1,18 +1,25 @@
 # Claude Context Guide for Project Governance DVUI
 
-**Last Updated:** Jan 20, 2026 - 11:00 PM EST
-**Last Successful Push:** Jan 20, 2026 - 11:00 PM EST (fix-dvui-build.ps1 v16)
-**Current Script Version:** v16 (STABLE)
+**Last Updated:** Jan 21, 2026 - 12:15 AM EST
+**Last Successful Push:** Jan 21, 2026 - 12:15 AM EST (fix-dvui-build.ps1 v17)
+**Current Script Version:** v17 (STABLE)
 
-## CURRENT STATUS: v16 STABLE - All Features Working
+## CURRENT STATUS: v17 STABLE - Gantt Chart Fixed
+
+**COMPLETED IN v17:**
+- Gantt: Expand/collapse workstreams (click row to toggle)
+- Gantt: Workstream completion % on header row (NOW WORKING!)
+- Gantt: Time range navigation (prev/next month buttons)
+- Gantt: Zoom in/out (1-12 months view)
+- Gantt: Workstream filter dropdown
+- Fixed duplicate page titles across all screens
+- **FIXED**: dataLayer.ts progress calculation now matches Project Overview
+  - Dataverse stores progress as 0-1 (0.75 = 75%), now properly scaled to 0-100
+  - If status is Completed, progress shows 100%
 
 **COMPLETED IN v16:**
-- Staff screen: Workstreams column (colored badges)
-- Staff screen: Skills column (colored badges)
-- Staff screen: Search by name, email, title, workstream, or skill
-- Skills input uses onBlur (allows typing commas)
+- Staff screen: Workstreams column, Skills column, Search
 - Skills save to Dataverse (`crda8_skills` column)
-- types/index.ts downloaded by script (Staff interface with skills property)
 - 20 distinct workstream colors (consistent across app)
 - Unified Org Chart with toggle views
 
@@ -172,6 +179,7 @@ crda8_skills: (staff.skills || []).join(', ')
 
 | Date | Version | Changes |
 |------|---------|---------|
+| Jan 21, 2026 00:15 | v17 | **GANTT CHART** - expand/collapse, time range, filters, fixed duplicate titles, **FIXED progress calculation** |
 | Jan 20, 2026 23:00 | v16 | **TYPES FIX** - types/index.ts download, skills working |
 | Jan 20, 2026 22:00 | v15 | Staff skills column, search, onBlur fix |
 | Jan 20, 2026 21:00 | v14 | Workstream colors (20 distinct), progress bars fixed |
