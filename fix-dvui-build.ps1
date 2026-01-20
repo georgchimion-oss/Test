@@ -1,16 +1,13 @@
 # ============================================================
-# DVUI Build Fix Script v11 - Beautiful Org Chart
-# Version: Jan 20, 2026 - 4:30 AM EST
-# - NEW: Unified modern Org Chart with stunning visuals
-# - Toggle between Workstream and Hierarchy views
-# - Beautiful cards with gradients, hover animations, shadows
-# - Expand/collapse sections with smooth transitions
-# - Stats bar showing team composition
+# DVUI Build Fix Script v11b - COLOR FIX TEST
+# Version: Jan 20, 2026 - 5:15 AM EST
+# - NOW DOWNLOADS dataLayer.ts (was missing before!)
+# - RED COLORS REMOVED FOR TESTING
 # ============================================================
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "DVUI Build Fix Script v11" -ForegroundColor Cyan
-Write-Host "Beautiful Org Chart" -ForegroundColor Cyan
+Write-Host "DVUI Build Fix Script v11b" -ForegroundColor Cyan
+Write-Host "COLOR FIX TEST - RED REMOVED" -ForegroundColor Yellow
 Write-Host "Timestamp: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Yellow
 Write-Host "========================================" -ForegroundColor Cyan
 
@@ -52,16 +49,24 @@ if (-not $packageJson.dependencies.'date-fns') {
 Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 3: Download services
+# Step 3: Download data layer and services
 #------------------------------------------------------------------------------
 
-Write-Host "`n[3/8] Downloading services..." -ForegroundColor Yellow
+Write-Host "`n[3/8] Downloading data layer and services..." -ForegroundColor Yellow
 
+if (-not (Test-Path "src\data")) {
+    New-Item -ItemType Directory -Path "src\data" -Force | Out-Null
+}
 if (-not (Test-Path "src\services")) {
     New-Item -ItemType Directory -Path "src\services" -Force | Out-Null
 }
 
+# IMPORTANT: Download dataLayer.ts (contains workstream color logic)
+Invoke-WebRequest -Uri "$baseUrl/src/data/dataLayer.ts" -OutFile "src\data\dataLayer.ts"
+Write-Host "  dataLayer.ts (workstream colors - NO RED)" -ForegroundColor Green
+
 Invoke-WebRequest -Uri "$baseUrl/src/services/dataverseService.ts" -OutFile "src\services\dataverseService.ts"
+Write-Host "  dataverseService.ts" -ForegroundColor Gray
 Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
