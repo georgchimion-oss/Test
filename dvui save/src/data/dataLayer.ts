@@ -322,26 +322,38 @@ function mapStaffRecord(item: Record<string, any>): Staff {
   }
 }
 
+// Deterministic color based on workstream name (alphabetical hash)
+function getWorkstreamColor(name: string): string {
+  const colors = ['#D04A02', '#2563eb', '#059669', '#f59e0b', '#7c3aed', '#ec4899', '#06b6d4', '#84cc16']
+  // Simple hash based on name to get consistent color
+  let hash = 0
+  for (let i = 0; i < name.length; i++) {
+    hash = ((hash << 5) - hash) + name.charCodeAt(i)
+    hash = hash & hash // Convert to 32bit integer
+  }
+  return colors[Math.abs(hash) % colors.length]
+}
+
 function mapWorkstreamRecord(
   item: Record<string, any>,
   staffByEmail: Map<string, Staff>,
   staffByName: Map<string, Staff>,
   staffById: Map<string, Staff>,
-  colorIndex: number
+  _colorIndex: number
 ): Workstream {
   const leader = pickField(item, ['crda8_leader', 'Leader', 'Lead', 'WorkstreamLead'])
   const leadId = resolveStaffId(leader, staffByEmail, staffByName, staffById)
-  const colors = ['#D04A02', '#2563eb', '#059669', '#f59e0b', '#7c3aed']
+  const name = pickField<string>(
+    item,
+    ['crda8_title', 'crda8_workstreamname', 'WorkstreamName', 'Title', 'Name']
+  ) || 'Workstream'
 
   return {
     id: getRecordId(item, DATAVERSE_TABLES.workstreams),
-    name: pickField<string>(
-      item,
-      ['crda8_title', 'crda8_workstreamname', 'WorkstreamName', 'Title', 'Name']
-    ) || 'Workstream',
+    name,
     description: pickField<string>(item, ['crda8_description', 'Description', 'Summary']) || '',
     lead: leadId,
-    color: colors[colorIndex % colors.length],
+    color: getWorkstreamColor(name),
     createdAt: pickField<string>(item, ['createdon', 'Created', 'CreatedDateTime']) || new Date().toISOString(),
   }
 }

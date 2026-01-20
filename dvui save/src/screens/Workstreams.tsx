@@ -3,16 +3,6 @@ import { getWorkstreams, createWorkstreamRemote, updateWorkstreamRemote, deleteW
 import type { Workstream } from '../types'
 import { Plus, Edit2, Trash2, X } from 'lucide-react'
 
-const PRESET_COLORS = [
-  '#3b82f6',
-  '#10b981',
-  '#f59e0b',
-  '#ef4444',
-  '#8b5cf6',
-  '#ec4899',
-  '#06b6d4',
-  '#84cc16',
-]
 
 export default function Workstreams() {
   const [workstreams, setWorkstreams] = useState(getWorkstreams())
@@ -26,7 +16,6 @@ export default function Workstreams() {
     name: '',
     description: '',
     lead: '',
-    color: '#3b82f6',
   })
 
   useEffect(() => {
@@ -44,7 +33,6 @@ export default function Workstreams() {
         name: '',
         description: '',
         lead: staff[0]?.id || '',
-        color: '#3b82f6',
       })
     }
     setShowModal(true)
@@ -70,7 +58,7 @@ export default function Workstreams() {
           name: formData.name!,
           description: formData.description!,
           lead: formData.lead!,
-          color: formData.color!,
+          color: '#3b82f6', // Color is auto-assigned based on name
           createdAt: new Date().toISOString(),
         }
         await createWorkstreamRemote(newWorkstream)
@@ -225,29 +213,6 @@ export default function Workstreams() {
                   </select>
                 </div>
 
-                <div className="form-group">
-                  <label className="form-label">Color</label>
-                  <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-                    {PRESET_COLORS.map((color) => (
-                      <button
-                        key={color}
-                        type="button"
-                        onClick={() => setFormData({ ...formData, color })}
-                        style={{
-                          width: '40px',
-                          height: '40px',
-                          borderRadius: '8px',
-                          background: color,
-                          border: formData.color === color ? '3px solid white' : '1px solid var(--border)',
-                          cursor: 'pointer',
-                          transition: 'transform 0.2s ease',
-                        }}
-                        onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-                        onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                      />
-                    ))}
-                  </div>
-                </div>
               </div>
 
               <div className="modal-footer">
