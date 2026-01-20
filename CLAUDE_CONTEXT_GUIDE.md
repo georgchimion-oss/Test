@@ -20,8 +20,14 @@ Georg created a new Dataverse table `crda8_subtask2` with these columns:
 | Notes | `crda8_notes` | Multiline Text | |
 
 **BEFORE IMPLEMENTING:**
-1. Georg needs to add the datasource: `pac datasource add --name crda8_subtask2`
-2. Then run `pac code push` to register it
+1. Georg needs to add the datasource:
+   ```powershell
+   pac code add-data-source -a dataverse -t crda8_subtask2
+   ```
+   - `-a dataverse` is the API ID (required)
+   - `-t crda8_subtask2` is the table logical name
+2. This will auto-update `power.config.json` with the new table
+3. Then run `pac code push` to register it
 
 **IMPLEMENTATION PLAN:**
 1. Add `subtasks` to DATAVERSE_TABLES in dataverseConfig.ts
