@@ -14,8 +14,8 @@ Write-Host "Beautiful Org Chart" -ForegroundColor Cyan
 Write-Host "Timestamp: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Yellow
 Write-Host "========================================" -ForegroundColor Cyan
 
-# Using jsdelivr CDN with commit hash to bypass cache
-$baseUrl = "https://cdn.jsdelivr.net/gh/georgchimion-oss/Test@37fa0ab/dvui%20save"
+# Using raw GitHub with cache busting
+$baseUrl = "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/powerapp-sharepoint-deliverables-vbZKv/dvui%20save"
 
 #------------------------------------------------------------------------------
 # Step 1: Verify directory
