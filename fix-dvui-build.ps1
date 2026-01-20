@@ -1,15 +1,16 @@
 # ============================================================
-# DVUI Build Fix Script v16 - TYPES FIX
-# Version: Jan 20, 2026 - 11:00 AM EST
-# - FIX: Added types/index.ts download (Staff with skills)
-# - Staff screen: Workstream and Skills columns
-# - Staff screen: Search (name, email, skills, workstream)
-# - Fixed workstream colors consistency in Project Overview
+# DVUI Build Fix Script v17 - GANTT CHART IMPROVEMENTS
+# Version: Jan 20, 2026 - 11:30 PM EST
+# - Gantt: Expand/Collapse workstreams
+# - Gantt: Workstream completion % on header row
+# - Gantt: Time range navigation (prev/next month, zoom in/out)
+# - Gantt: Workstream filter dropdown
+# - Fixed duplicate page titles across screens
 # ============================================================
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "DVUI Build Fix Script v16" -ForegroundColor Cyan
-Write-Host "TYPES FIX" -ForegroundColor Green
+Write-Host "DVUI Build Fix Script v17" -ForegroundColor Cyan
+Write-Host "GANTT CHART IMPROVEMENTS" -ForegroundColor Green
 Write-Host "Timestamp: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Yellow
 Write-Host "========================================" -ForegroundColor Cyan
 
@@ -125,6 +126,18 @@ Write-Host "  Kanban.tsx" -ForegroundColor Gray
 Invoke-WebRequest -Uri "$baseUrl/src/screens/Workstreams.tsx?t=$cacheBust" -OutFile "src\screens\Workstreams.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
 Write-Host "  Workstreams.tsx" -ForegroundColor Gray
 
+# Gantt Chart (expand/collapse, time range, filters)
+Invoke-WebRequest -Uri "$baseUrl/src/screens/Gantt.tsx?t=$cacheBust" -OutFile "src\screens\Gantt.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
+Write-Host "  Gantt.tsx (expand/collapse, time range, filters)" -ForegroundColor Green
+
+# PTO Requests
+Invoke-WebRequest -Uri "$baseUrl/src/screens/PTORequests.tsx?t=$cacheBust" -OutFile "src\screens\PTORequests.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
+Write-Host "  PTORequests.tsx" -ForegroundColor Gray
+
+# Hours Tracking
+Invoke-WebRequest -Uri "$baseUrl/src/screens/HoursTracking.tsx?t=$cacheBust" -OutFile "src\screens\HoursTracking.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
+Write-Host "  HoursTracking.tsx" -ForegroundColor Gray
+
 Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
@@ -218,16 +231,16 @@ Write-Host "#     $buildStamp                      #" -ForegroundColor White
 Write-Host "#                                                #" -ForegroundColor Magenta
 Write-Host "##################################################" -ForegroundColor Magenta
 Write-Host ""
-Write-Host "v16 - WHAT'S NEW:" -ForegroundColor Cyan
+Write-Host "v17 - WHAT'S NEW:" -ForegroundColor Cyan
 Write-Host ""
-Write-Host "  BUILD FIX:" -ForegroundColor Yellow
-Write-Host "    - FIX: Now downloads types/index.ts" -ForegroundColor White
-Write-Host "    - Staff interface includes skills property" -ForegroundColor White
+Write-Host "  GANTT CHART:" -ForegroundColor Yellow
+Write-Host "    - Expand/Collapse workstreams" -ForegroundColor White
+Write-Host "    - Workstream completion % on header row" -ForegroundColor White
+Write-Host "    - Time range navigation (prev/next month)" -ForegroundColor White
+Write-Host "    - Zoom in/out (1-12 months view)" -ForegroundColor White
+Write-Host "    - Workstream filter dropdown" -ForegroundColor White
 Write-Host ""
-Write-Host "  STAFF MANAGEMENT:" -ForegroundColor Yellow
-Write-Host "    - Workstreams column (with colored badges)" -ForegroundColor White
-Write-Host "    - Skills column" -ForegroundColor White
-Write-Host "    - Search by name, email, title, workstream, skill" -ForegroundColor White
-Write-Host ""
-Write-Host "  NOTE: Create crda8_skills column in Dataverse Staff table!" -ForegroundColor Magenta
+Write-Host "  UI CLEANUP:" -ForegroundColor Yellow
+Write-Host "    - Fixed duplicate page titles" -ForegroundColor White
+Write-Host "    - Cleaner headers on all screens" -ForegroundColor White
 Write-Host ""

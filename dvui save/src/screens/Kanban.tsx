@@ -205,15 +205,10 @@ export default function Kanban() {
 
   return (
     <div>
-      <div style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem' }}>
-        <div>
-          <h2 style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '0.5rem' }}>
-            Project Kanban Board
-          </h2>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>
-            Drag and drop deliverables between columns to update {groupBy === 'status' ? 'status' : groupBy === 'workstream' ? 'workstream' : 'owner'}
-          </p>
-        </div>
+      <div style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+        <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', margin: 0 }}>
+          Drag and drop deliverables between columns to update {groupBy === 'status' ? 'status' : groupBy === 'workstream' ? 'workstream' : 'owner'}
+        </p>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           <label style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>Group by:</label>
           <select

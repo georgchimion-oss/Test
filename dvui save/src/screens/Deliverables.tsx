@@ -961,7 +961,7 @@ export default function Deliverables() {
     <>
       <div className="card">
         <div className="card-header">
-          <h3 className="card-title">All Deliverables</h3>
+          <div />
           <button className="btn btn-primary" onClick={() => handleOpenModal()}>
             <Plus size={16} />
             Add Deliverable

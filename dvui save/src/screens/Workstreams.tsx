@@ -94,7 +94,7 @@ export default function Workstreams() {
     <>
       <div className="card">
         <div className="card-header">
-          <h3 className="card-title">Workstream Management</h3>
+          <div />
           <button className="btn btn-primary" onClick={() => handleOpenModal()}>
             <Plus size={16} />
             Add Workstream

@@ -122,8 +122,7 @@ export default function HoursTracking() {
   return (
     <>
       <div style={{ marginBottom: '2rem' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-          <h2 style={{ fontSize: '1.25rem', fontWeight: '600' }}>Hours Tracking</h2>
+        <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginBottom: '1rem' }}>
           <button className="btn btn-primary" onClick={() => handleOpenModal()}>
             <Plus size={16} />
             Log Hours

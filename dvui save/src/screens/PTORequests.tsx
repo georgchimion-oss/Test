@@ -153,8 +153,7 @@ export default function PTORequests() {
   return (
     <>
       <div style={{ marginBottom: '2rem' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-          <h2 style={{ fontSize: '1.25rem', fontWeight: '600' }}>My PTO Requests</h2>
+        <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginBottom: '1rem' }}>
           <button className="btn btn-primary" onClick={() => handleOpenModal()}>
             <Plus size={16} />
             New Request

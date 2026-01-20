@@ -133,7 +133,7 @@ export default function StaffScreen() {
     <>
       <div className="card">
         <div className="card-header">
-          <h3 className="card-title">Staff Management</h3>
+          <div />
           <button className="btn btn-primary" onClick={() => handleOpenModal()}>
             <Plus size={16} />
             Add Staff Member
