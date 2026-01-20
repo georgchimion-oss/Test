@@ -168,8 +168,10 @@ interface DeliverableListItemProps {
 const DeliverableListItem = ({ deliverable, workstreams, staff, onClick }: DeliverableListItemProps) => {
   const workstream = workstreams.find((w: any) => w.crda8_workstreamsid === deliverable.crda8_workstream);
   const owner = staff.find((s: any) => s.crda8_staff4id === deliverable.crda8_owner);
+  // If status is Completed (2), show 100%. Otherwise calculate from completion field.
+  const isCompleted = deliverable.crda8_status === 2;
   const rawProgress = parseFloat(deliverable.crda8_completion_x0020__x0025_ || '0') || 0;
-  const progress = rawProgress <= 1 ? Math.round(rawProgress * 100) : Math.round(rawProgress);
+  const progress = isCompleted ? 100 : (rawProgress <= 1 ? Math.round(rawProgress * 100) : Math.round(rawProgress));
   // Due date field is crda8_targetdate in Dataverse, NOT crda8_duedate
   const dueDate = deliverable.crda8_targetdate ? new Date(deliverable.crda8_targetdate) : null;
   const isOverdue = dueDate && isBefore(dueDate, new Date()) && deliverable.crda8_status !== 2;
@@ -279,8 +281,10 @@ interface DeliverableDetailProps {
 const DeliverableDetail = ({ deliverable, workstreams, staff, onClose }: DeliverableDetailProps) => {
   const workstream = workstreams.find((w: any) => w.crda8_workstreamsid === deliverable.crda8_workstream);
   const owner = staff.find((s: any) => s.crda8_staff4id === deliverable.crda8_owner);
+  // If status is Completed (2), show 100%. Otherwise calculate from completion field.
+  const isCompleted = deliverable.crda8_status === 2;
   const rawProgress = parseFloat(deliverable.crda8_completion_x0020__x0025_ || '0') || 0;
-  const progress = rawProgress <= 1 ? Math.round(rawProgress * 100) : Math.round(rawProgress);
+  const progress = isCompleted ? 100 : (rawProgress <= 1 ? Math.round(rawProgress * 100) : Math.round(rawProgress));
   // Due date field is crda8_targetdate in Dataverse, NOT crda8_duedate
   const dueDate = deliverable.crda8_targetdate ? new Date(deliverable.crda8_targetdate) : null;
 
@@ -606,6 +610,8 @@ const ProjectOverview = () => {
   const atRiskCount = (deliverables as any[]).filter((d: any) => d.crda8_risk === 2).length;
   const overallProgress = totalDeliverables > 0
     ? Math.round((deliverables as any[]).reduce((acc: number, d: any) => {
+        // If completed, count as 100%
+        if (d.crda8_status === 2) return acc + 100;
         const raw = parseFloat(d.crda8_completion_x0020__x0025_ || '0') || 0;
         return acc + (raw <= 1 ? raw * 100 : raw);
       }, 0) / totalDeliverables)
@@ -772,6 +778,8 @@ const ProjectOverview = () => {
                 const wsDeliverables = (deliverables as any[]).filter((d: any) => d.crda8_workstream === ws.crda8_workstreamsid);
                 const wsProgress = wsDeliverables.length > 0
                   ? Math.round(wsDeliverables.reduce((acc: number, d: any) => {
+                      // If completed, count as 100%
+                      if (d.crda8_status === 2) return acc + 100;
                       const raw = parseFloat(d.crda8_completion_x0020__x0025_ || '0') || 0;
                       return acc + (raw <= 1 ? raw * 100 : raw);
                     }, 0) / wsDeliverables.length)
