@@ -775,6 +775,15 @@ const ProjectOverview = () => {
               <div style={{ textAlign: 'center', padding: '16px', opacity: 0.5 }}>Loading...</div>
             ) : (
               (workstreams as any[]).slice(0, 5).map((ws: any, index: number) => {
+                // Debug: log workstream and deliverable data to understand the matching
+                if (index === 0 && deliverables.length > 0) {
+                  console.log('DEBUG v13 - Workstream Progress:', {
+                    wsId: ws.crda8_workstreamsid,
+                    wsTitle: ws.crda8_title,
+                    firstDeliverable: deliverables[0],
+                    deliverableWorkstreamField: (deliverables[0] as any)?.crda8_workstream,
+                  });
+                }
                 const wsDeliverables = (deliverables as any[]).filter((d: any) => d.crda8_workstream === ws.crda8_workstreamsid);
                 const wsProgress = wsDeliverables.length > 0
                   ? Math.round(wsDeliverables.reduce((acc: number, d: any) => {

@@ -1,13 +1,13 @@
 # ============================================================
-# DVUI Build Fix Script v12 - DISTINCT WORKSTREAM COLORS
-# Version: Jan 20, 2026 - 5:45 AM EST
-# - 20 maximally distinct colors for workstreams
-# - Colors assigned by alphabetical order of workstream name
+# DVUI Build Fix Script v13 - BIDIRECTIONAL STATUS/PROGRESS
+# Version: Jan 20, 2026 - 9:30 AM EST
+# - Status Completed <-> Progress 100% bidirectional sync
+# - Fixed progress percentage calculation in Project Overview
 # ============================================================
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "DVUI Build Fix Script v12" -ForegroundColor Cyan
-Write-Host "DISTINCT WORKSTREAM COLORS" -ForegroundColor Green
+Write-Host "DVUI Build Fix Script v13" -ForegroundColor Cyan
+Write-Host "BIDIRECTIONAL STATUS/PROGRESS SYNC" -ForegroundColor Green
 Write-Host "Timestamp: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Yellow
 Write-Host "========================================" -ForegroundColor Cyan
 
@@ -209,26 +209,15 @@ Write-Host "#     $buildStamp                      #" -ForegroundColor White
 Write-Host "#                                                #" -ForegroundColor Magenta
 Write-Host "##################################################" -ForegroundColor Magenta
 Write-Host ""
-Write-Host "v11 - WHAT'S NEW:" -ForegroundColor Cyan
+Write-Host "v13 - WHAT'S NEW:" -ForegroundColor Cyan
 Write-Host ""
-Write-Host "  BEAUTIFUL ORG CHART:" -ForegroundColor Yellow
-Write-Host "    - Unified single screen (replaces 2 old screens)" -ForegroundColor White
-Write-Host "    - Toggle: Workstreams vs Hierarchy view" -ForegroundColor White
-Write-Host "    - Modern card design with gradients & shadows" -ForegroundColor White
-Write-Host "    - Hover animations (cards lift up)" -ForegroundColor White
-Write-Host "    - Expand/Collapse all buttons" -ForegroundColor White
-Write-Host "    - Workstream cards with colored headers" -ForegroundColor White
-Write-Host "    - Lead badges with star icons" -ForegroundColor White
-Write-Host "    - Title-based color coding:" -ForegroundColor White
-Write-Host "      * Partner     = Orange" -ForegroundColor DarkYellow
-Write-Host "      * Director    = Blue" -ForegroundColor Blue
-Write-Host "      * Sr Manager  = Purple" -ForegroundColor Magenta
-Write-Host "      * Manager     = Green" -ForegroundColor Green
-Write-Host "      * Sr Associate = Cyan" -ForegroundColor Cyan
-Write-Host "      * Associate   = Gray" -ForegroundColor Gray
-Write-Host "    - Stats bar showing team composition" -ForegroundColor White
-Write-Host "    - Hierarchy view with tree lines" -ForegroundColor White
-Write-Host "    - Direct reports count badges" -ForegroundColor White
+Write-Host "  BIDIRECTIONAL STATUS/PROGRESS SYNC:" -ForegroundColor Yellow
+Write-Host "    - Set Status to Completed -> Progress auto-sets to 100%" -ForegroundColor White
+Write-Host "    - Set Progress to 100% -> Status auto-sets to Completed" -ForegroundColor White
 Write-Host ""
-Write-Host "  Go to: Org Chart (in sidebar)" -ForegroundColor Green
+Write-Host "  PROJECT OVERVIEW PROGRESS FIX:" -ForegroundColor Yellow
+Write-Host "    - Completed deliverables now correctly show 100%" -ForegroundColor White
+Write-Host "    - Decimal progress values (0.5 = 50%) now handled" -ForegroundColor White
+Write-Host ""
+Write-Host "  Test: Edit a deliverable, set Status to Completed" -ForegroundColor Green
 Write-Host ""
