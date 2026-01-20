@@ -1,15 +1,16 @@
 # ============================================================
-# DVUI Build Fix Script v10 - Project Overview Landing Page
-# Version: Jan 20, 2026 - 2:00 AM
-# - NEW: Project Overview as landing page (top of sidebar)
-# - KPI cards: Due this month, Due next 2 weeks, Late deliverables
-# - Click KPI -> drill down to list -> click item -> see history
-# - Removed "Active Team" section from old CommandCenter
+# DVUI Build Fix Script v11 - Beautiful Org Chart
+# Version: Jan 20, 2026 - 4:30 AM EST
+# - NEW: Unified modern Org Chart with stunning visuals
+# - Toggle between Workstream and Hierarchy views
+# - Beautiful cards with gradients, hover animations, shadows
+# - Expand/collapse sections with smooth transitions
+# - Stats bar showing team composition
 # ============================================================
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "DVUI Build Fix Script v10" -ForegroundColor Cyan
-Write-Host "Project Overview Landing Page" -ForegroundColor Cyan
+Write-Host "DVUI Build Fix Script v11" -ForegroundColor Cyan
+Write-Host "Beautiful Org Chart" -ForegroundColor Cyan
 Write-Host "Timestamp: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Yellow
 Write-Host "========================================" -ForegroundColor Cyan
 
@@ -28,7 +29,7 @@ if (-not (Test-Path "power.config.json")) {
 Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 2: Install framer-motion + date-fns
+# Step 2: Install dependencies
 #------------------------------------------------------------------------------
 
 Write-Host "`n[2/8] Installing dependencies..." -ForegroundColor Yellow
@@ -80,39 +81,43 @@ Write-Host "  OK" -ForegroundColor Green
 
 Write-Host "`n[5/8] Downloading updated screens..." -ForegroundColor Yellow
 
-# Project Overview (NEW - Landing page with KPI drill-down!)
+# Project Overview (Landing page with KPI drill-down)
 Invoke-WebRequest -Uri "$baseUrl/src/screens/ProjectOverview.tsx" -OutFile "src\screens\ProjectOverview.tsx"
-Write-Host "  ProjectOverview.tsx (NEW - KPI landing page)" -ForegroundColor Green
+Write-Host "  ProjectOverview.tsx (KPI landing page)" -ForegroundColor Gray
+
+# NEW: Beautiful Org Chart!
+Invoke-WebRequest -Uri "$baseUrl/src/screens/OrgChart.tsx" -OutFile "src\screens\OrgChart.tsx"
+Write-Host "  OrgChart.tsx (NEW - Beautiful unified org chart!)" -ForegroundColor Green
 
 # Staff (removed Role & Department columns)
 Invoke-WebRequest -Uri "$baseUrl/src/screens/Staff.tsx" -OutFile "src\screens\Staff.tsx"
-Write-Host "  Staff.tsx (removed Role & Department)" -ForegroundColor Gray
+Write-Host "  Staff.tsx" -ForegroundColor Gray
 
 # DashboardEnhanced (uses ThemeContext)
 Invoke-WebRequest -Uri "$baseUrl/src/screens/DashboardEnhanced.tsx" -OutFile "src\screens\DashboardEnhanced.tsx"
-Write-Host "  DashboardEnhanced.tsx (uses ThemeContext)" -ForegroundColor Gray
+Write-Host "  DashboardEnhanced.tsx" -ForegroundColor Gray
 
 # Deliverables (Quick Update modal)
 Invoke-WebRequest -Uri "$baseUrl/src/screens/Deliverables.tsx" -OutFile "src\screens\Deliverables.tsx"
-Write-Host "  Deliverables.tsx (comment button)" -ForegroundColor Gray
+Write-Host "  Deliverables.tsx" -ForegroundColor Gray
 
 # Kanban (Dataverse persistence + filters)
 Invoke-WebRequest -Uri "$baseUrl/src/screens/Kanban.tsx" -OutFile "src\screens\Kanban.tsx"
-Write-Host "  Kanban.tsx (Dataverse persist + filters)" -ForegroundColor Gray
+Write-Host "  Kanban.tsx" -ForegroundColor Gray
 
 Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 6: Download Layout & App (Project Overview as landing page!)
+# Step 6: Download Layout & App (unified Org Chart route)
 #------------------------------------------------------------------------------
 
 Write-Host "`n[6/8] Downloading Layout & App..." -ForegroundColor Yellow
 
 Invoke-WebRequest -Uri "$baseUrl/src/components/Layout.tsx" -OutFile "src\components\Layout.tsx"
-Write-Host "  Layout.tsx (Project Overview at top of sidebar)" -ForegroundColor Gray
+Write-Host "  Layout.tsx (single Org Chart nav link)" -ForegroundColor Gray
 
 Invoke-WebRequest -Uri "$baseUrl/src/App.tsx" -OutFile "src\App.tsx"
-Write-Host "  App.tsx (Project Overview as landing page)" -ForegroundColor Gray
+Write-Host "  App.tsx (unified /org-chart route)" -ForegroundColor Gray
 
 Write-Host "  OK" -ForegroundColor Green
 
@@ -135,10 +140,20 @@ if (Test-Path $dashPath) {
 Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 8: Build and Push
+# Step 8: Remove old Org Chart files and Build
 #------------------------------------------------------------------------------
 
 Write-Host "`n[8/8] Building and pushing..." -ForegroundColor Yellow
+
+# Remove old org chart files (now replaced by unified OrgChart.tsx)
+if (Test-Path "src\screens\OrgChartHierarchy.tsx") {
+    Remove-Item "src\screens\OrgChartHierarchy.tsx" -Force
+    Write-Host "  Removed old OrgChartHierarchy.tsx" -ForegroundColor Gray
+}
+if (Test-Path "src\screens\OrgChartWorkstream.tsx") {
+    Remove-Item "src\screens\OrgChartWorkstream.tsx" -Force
+    Write-Host "  Removed old OrgChartWorkstream.tsx" -ForegroundColor Gray
+}
 
 # Fix tsconfig excludes
 $tsconfig = Get-Content "tsconfig.json" -Raw | ConvertFrom-Json
@@ -183,21 +198,26 @@ Write-Host "#     $buildStamp                      #" -ForegroundColor White
 Write-Host "#                                                #" -ForegroundColor Magenta
 Write-Host "##################################################" -ForegroundColor Magenta
 Write-Host ""
-Write-Host "v10 - WHAT'S NEW:" -ForegroundColor Cyan
+Write-Host "v11 - WHAT'S NEW:" -ForegroundColor Cyan
 Write-Host ""
-Write-Host "  PROJECT OVERVIEW (NEW LANDING PAGE!):" -ForegroundColor Yellow
-Write-Host "    - Now the FIRST item in sidebar" -ForegroundColor Green
-Write-Host "    - KPI Cards:" -ForegroundColor White
-Write-Host "      * Due This Month" -ForegroundColor White
-Write-Host "      * Due Next 2 Weeks" -ForegroundColor White
-Write-Host "      * Overdue (Late)" -ForegroundColor White
-Write-Host "    - Click KPI -> See deliverable list" -ForegroundColor White
-Write-Host "    - Click deliverable -> See comments & history" -ForegroundColor White
-Write-Host "    - Animated workstream progress bars" -ForegroundColor White
-Write-Host "    - Overall stats cards" -ForegroundColor White
+Write-Host "  BEAUTIFUL ORG CHART:" -ForegroundColor Yellow
+Write-Host "    - Unified single screen (replaces 2 old screens)" -ForegroundColor White
+Write-Host "    - Toggle: Workstreams vs Hierarchy view" -ForegroundColor White
+Write-Host "    - Modern card design with gradients & shadows" -ForegroundColor White
+Write-Host "    - Hover animations (cards lift up)" -ForegroundColor White
+Write-Host "    - Expand/Collapse all buttons" -ForegroundColor White
+Write-Host "    - Workstream cards with colored headers" -ForegroundColor White
+Write-Host "    - Lead badges with star icons" -ForegroundColor White
+Write-Host "    - Title-based color coding:" -ForegroundColor White
+Write-Host "      * Partner     = Orange" -ForegroundColor DarkYellow
+Write-Host "      * Director    = Blue" -ForegroundColor Blue
+Write-Host "      * Sr Manager  = Purple" -ForegroundColor Magenta
+Write-Host "      * Manager     = Green" -ForegroundColor Green
+Write-Host "      * Sr Associate = Cyan" -ForegroundColor Cyan
+Write-Host "      * Associate   = Gray" -ForegroundColor Gray
+Write-Host "    - Stats bar showing team composition" -ForegroundColor White
+Write-Host "    - Hierarchy view with tree lines" -ForegroundColor White
+Write-Host "    - Direct reports count badges" -ForegroundColor White
 Write-Host ""
-Write-Host "  SIDEBAR CHANGES:" -ForegroundColor Yellow
-Write-Host "    - Project Overview moved to TOP" -ForegroundColor White
-Write-Host "    - My Work now second" -ForegroundColor White
-Write-Host "    - Removed Command Center (replaced by Project Overview)" -ForegroundColor White
+Write-Host "  Go to: Org Chart (in sidebar)" -ForegroundColor Green
 Write-Host ""

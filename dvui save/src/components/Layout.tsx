@@ -101,7 +101,7 @@ export default function Layout({ children, title }: LayoutProps) {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/org-chart-hierarchy" className="nav-link">
+              <NavLink to="/org-chart" className="nav-link">
                 <Network className="nav-icon" />
                 <span className="nav-text">Org Chart</span>
               </NavLink>

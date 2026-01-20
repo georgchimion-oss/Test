@@ -21,8 +21,7 @@ import Staff from './screens/Staff'
 import Workstreams from './screens/Workstreams'
 import PTORequests from './screens/PTORequests'
 import HoursTracking from './screens/HoursTracking'
-import OrgChartHierarchy from './screens/OrgChartHierarchy'
-import OrgChartWorkstream from './screens/OrgChartWorkstream'
+import OrgChart from './screens/OrgChart'
 import AdminAnalytics from './screens/AdminAnalytics'
 import ProjectOverview from './screens/ProjectOverview'
 import './App.css'
@@ -138,18 +137,10 @@ function AppRoutes() {
         }
       />
       <Route
-        path="/org-chart-hierarchy"
+        path="/org-chart"
         element={
-          <Layout title="Org Chart - Hierarchy">
-            <OrgChartHierarchy />
-          </Layout>
-        }
-      />
-      <Route
-        path="/org-chart-workstream"
-        element={
-          <Layout title="Org Chart - Workstream">
-            <OrgChartWorkstream />
+          <Layout title="Organization Chart">
+            <OrgChart />
           </Layout>
         }
       />
