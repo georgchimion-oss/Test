@@ -1256,9 +1256,15 @@ export default function Deliverables() {
                     <label className="form-label">Status</label>
                     <select
                       value={formData.status}
-                      onChange={(e) =>
-                        setFormData({ ...formData, status: e.target.value as DeliverableStatus })
-                      }
+                      onChange={(e) => {
+                        const newStatus = e.target.value as DeliverableStatus
+                        // If status is Completed, auto-set progress to 100%
+                        if (newStatus === 'Completed') {
+                          setFormData({ ...formData, status: newStatus, progress: 100 })
+                        } else {
+                          setFormData({ ...formData, status: newStatus })
+                        }
+                      }}
                     >
                       <option value="Not Started">Not Started</option>
                       <option value="In Progress">In Progress</option>
@@ -1321,9 +1327,15 @@ export default function Deliverables() {
                       min="0"
                       max="100"
                       value={formData.progress}
-                      onChange={(e) =>
-                        setFormData({ ...formData, progress: parseInt(e.target.value) || 0 })
-                      }
+                      onChange={(e) => {
+                        const newProgress = parseInt(e.target.value) || 0
+                        // If progress is 100%, auto-set status to Completed
+                        if (newProgress >= 100) {
+                          setFormData({ ...formData, progress: 100, status: 'Completed' })
+                        } else {
+                          setFormData({ ...formData, progress: newProgress })
+                        }
+                      }}
                     />
                   </div>
                 </div>
