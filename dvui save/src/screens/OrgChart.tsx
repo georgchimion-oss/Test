@@ -800,7 +800,7 @@ export default function OrgChart() {
                   onToggle={() => toggleWorkstreamExpand(ws.id)}
                 />
               )
-            }))
+            })
           ) : (
             <div style={{
               background: 'white',
