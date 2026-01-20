@@ -787,8 +787,7 @@ export default function OrgChart() {
       {/* Content */}
       {viewMode === 'workstream' ? (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-          {workstreamTeams.length > 0 ? (
-            workstreamTeams.map((ws) => {
+          {workstreamTeams.length > 0 ? workstreamTeams.map((ws) => {
               const { lead, members, ...baseWorkstream } = ws
               return (
                 <WorkstreamCard
@@ -800,8 +799,7 @@ export default function OrgChart() {
                   onToggle={() => toggleWorkstreamExpand(ws.id)}
                 />
               )
-            })
-          ) : (
+            }) : (
             <div style={{
               background: 'white',
               borderRadius: '20px',
