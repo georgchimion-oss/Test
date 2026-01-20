@@ -1,13 +1,13 @@
 # ============================================================
-# DVUI Build Fix Script v11c - COLOR FIX + CACHE BUST
-# Version: Jan 20, 2026 - 5:30 AM EST
-# - Downloads dataLayer.ts with cache-busting
-# - RED COLORS REMOVED FOR TESTING
+# DVUI Build Fix Script v12 - DISTINCT WORKSTREAM COLORS
+# Version: Jan 20, 2026 - 5:45 AM EST
+# - 20 maximally distinct colors for workstreams
+# - Colors assigned by alphabetical order of workstream name
 # ============================================================
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "DVUI Build Fix Script v11c" -ForegroundColor Cyan
-Write-Host "COLOR FIX + FULL CACHE BUST" -ForegroundColor Yellow
+Write-Host "DVUI Build Fix Script v12" -ForegroundColor Cyan
+Write-Host "DISTINCT WORKSTREAM COLORS" -ForegroundColor Green
 Write-Host "Timestamp: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Yellow
 Write-Host "========================================" -ForegroundColor Cyan
 
@@ -64,7 +64,7 @@ if (-not (Test-Path "src\services")) {
 
 # IMPORTANT: Download dataLayer.ts (contains workstream color logic)
 Invoke-WebRequest -Uri "$baseUrl/src/data/dataLayer.ts?t=$cacheBust" -OutFile "src\data\dataLayer.ts" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
-Write-Host "  dataLayer.ts (workstream colors - NO RED)" -ForegroundColor Green
+Write-Host "  dataLayer.ts (20 distinct workstream colors)" -ForegroundColor Green
 
 Invoke-WebRequest -Uri "$baseUrl/src/services/dataverseService.ts?t=$cacheBust" -OutFile "src\services\dataverseService.ts" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
 Write-Host "  dataverseService.ts" -ForegroundColor Gray
