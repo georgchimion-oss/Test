@@ -1,10 +1,37 @@
 # Claude Context Guide for Project Governance DVUI
 
-**Last Updated:** Jan 21, 2026 - 12:15 AM EST
-**Last Successful Push:** Jan 21, 2026 - 12:15 AM EST (fix-dvui-build.ps1 v17)
+**Last Updated:** Jan 21, 2026 - 12:45 AM EST
+**Last Successful Push:** Jan 21, 2026 - 12:30 AM EST (fix-dvui-build.ps1 v17)
 **Current Script Version:** v17 (STABLE)
 
-## CURRENT STATUS: v17 STABLE - Gantt Chart Fixed
+## CURRENT STATUS: Ready to Implement SUBTASKS Feature
+
+**NEXT TASK: SUBTASKS**
+Georg created a new Dataverse table `crda8_subtask2` with these columns:
+| Column | Dataverse Field | Type | Notes |
+|--------|-----------------|------|-------|
+| Title | `crda8_title` | Text (required) | Primary column - subtask name |
+| Deliverable ID | `crda8_DeliverableID` | Text | Links to parent deliverable (store ID as text) |
+| Assigned To | `crda8_AssignedTo` | Text | Staff email or ID as text |
+| Status | `crda8_status` | Choice | 1=Not Started, 2=In Progress, 3=On Hold, 4=Complete |
+| Start Date | `crda8_startdate` | Date Only | |
+| Due Date | `crda8_duedate` | Date Only | |
+| Completion % | `crda8_completion` | Whole Number | 0-100 |
+| Notes | `crda8_notes` | Multiline Text | |
+
+**BEFORE IMPLEMENTING:**
+1. Georg needs to add the datasource: `pac datasource add --name crda8_subtask2`
+2. Then run `pac code push` to register it
+
+**IMPLEMENTATION PLAN:**
+1. Add `subtasks` to DATAVERSE_TABLES in dataverseConfig.ts
+2. Add Subtask interface to types/index.ts
+3. Add subtask CRUD functions to dataLayer.ts (mapSubtaskRecord, getSubtasks, createSubtask, etc.)
+4. Update Deliverables.tsx:
+   - Add expand/collapse arrow on each deliverable row
+   - Show subtasks inline when expanded
+   - Add "Add Subtask" button
+   - Add/Edit subtask modal
 
 **COMPLETED IN v17:**
 - Gantt: Expand/collapse workstreams (click row to toggle)
@@ -12,7 +39,7 @@
 - Gantt: Time range navigation (prev/next month buttons)
 - Gantt: Zoom in/out (1-12 months view)
 - Gantt: Workstream filter dropdown
-- Fixed duplicate page titles across all screens
+- Fixed duplicate page titles across all screens (including Project Overview)
 - **FIXED**: dataLayer.ts progress calculation now matches Project Overview
   - Dataverse stores progress as 0-1 (0.75 = 75%), now properly scaled to 0-100
   - If status is Completed, progress shows 100%
@@ -77,6 +104,7 @@ Georg is building a **Project Governance Dashboard** as a **Power Apps Code App*
 | Workstreams | `crda8_workstreams` | No color field - colors assigned client-side |
 | Time Off Requests | `crda8_timeoffrequests` | |
 | Weekly Hours | `crda8_weeklyhours` | |
+| **Subtasks** | `crda8_subtask2` | **NEW** - sub-deliverables, no lookups (text IDs) |
 
 ---
 
