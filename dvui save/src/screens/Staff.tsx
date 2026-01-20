@@ -365,12 +365,12 @@ export default function StaffScreen() {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">Skills</label>
+                  <label className="form-label">Skills (comma-separated)</label>
                   <input
                     type="text"
-                    placeholder="Enter skills separated by commas (e.g., Python, SQL, Excel)"
-                    value={(formData.skills || []).join(', ')}
-                    onChange={(e) => {
+                    placeholder="Python, SQL, Excel, PowerBI"
+                    defaultValue={(formData.skills || []).join(', ')}
+                    onBlur={(e) => {
                       const skills = e.target.value
                         .split(',')
                         .map(s => s.trim())
@@ -378,42 +378,9 @@ export default function StaffScreen() {
                       setFormData({ ...formData, skills })
                     }}
                   />
-                  <div style={{ marginTop: '0.5rem', display: 'flex', flexWrap: 'wrap', gap: '0.25rem' }}>
-                    {(formData.skills || []).map((skill, idx) => (
-                      <span
-                        key={idx}
-                        style={{
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: '0.25rem',
-                          padding: '0.125rem 0.5rem',
-                          borderRadius: '4px',
-                          fontSize: '0.75rem',
-                          background: 'var(--bg-hover)',
-                          color: 'var(--text-primary)',
-                        }}
-                      >
-                        {skill}
-                        <button
-                          type="button"
-                          onClick={() => {
-                            const skills = (formData.skills || []).filter((_, i) => i !== idx)
-                            setFormData({ ...formData, skills })
-                          }}
-                          style={{
-                            background: 'none',
-                            border: 'none',
-                            cursor: 'pointer',
-                            padding: 0,
-                            fontSize: '0.875rem',
-                            color: 'var(--text-secondary)',
-                          }}
-                        >
-                          ×
-                        </button>
-                      </span>
-                    ))}
-                  </div>
+                  <small style={{ color: 'var(--text-secondary)', fontSize: '0.75rem' }}>
+                    Type skills separated by commas, then click outside the field
+                  </small>
                 </div>
 
                 <div className="form-group">
