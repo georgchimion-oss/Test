@@ -322,8 +322,29 @@ function mapStaffRecord(item: Record<string, any>): Staff {
   }
 }
 
-// Color palette for workstreams - 8 distinct colors
-const WORKSTREAM_COLORS = ['#D04A02', '#2563eb', '#059669', '#f59e0b', '#7c3aed', '#ec4899', '#06b6d4', '#84cc16']
+// Color palette for workstreams - 20 distinct colors (no repeats for up to 20 workstreams)
+const WORKSTREAM_COLORS = [
+  '#D04A02', // PwC Orange
+  '#2563eb', // Blue
+  '#059669', // Green
+  '#f59e0b', // Amber
+  '#7c3aed', // Purple
+  '#ec4899', // Pink
+  '#06b6d4', // Cyan
+  '#84cc16', // Lime
+  '#ef4444', // Red
+  '#14b8a6', // Teal
+  '#f97316', // Orange
+  '#8b5cf6', // Violet
+  '#22c55e', // Emerald
+  '#eab308', // Yellow
+  '#6366f1', // Indigo
+  '#a855f7', // Fuchsia
+  '#0ea5e9', // Sky
+  '#10b981', // Green-600
+  '#f43f5e', // Rose
+  '#64748b', // Slate
+]
 
 function mapWorkstreamRecord(
   item: Record<string, any>,
