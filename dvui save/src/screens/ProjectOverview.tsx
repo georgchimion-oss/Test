@@ -166,7 +166,13 @@ interface DeliverableListItemProps {
 }
 
 const DeliverableListItem = ({ deliverable, workstreams, staff, onClick }: DeliverableListItemProps) => {
-  const workstream = workstreams.find((w: any) => w.crda8_workstreamsid === deliverable.crda8_workstream);
+  // Match by workstream NAME (crda8_workstream contains name string, not ID)
+  const deliverableWs = deliverable.crda8_workstream || '';
+  const workstream = workstreams.find((w: any) => {
+    const wsName = w.crda8_title || '';
+    return deliverableWs.toLowerCase().includes(wsName.toLowerCase()) ||
+           wsName.toLowerCase().includes(deliverableWs.toLowerCase());
+  });
   const owner = staff.find((s: any) => s.crda8_staff4id === deliverable.crda8_owner);
   // If status is Completed (2), show 100%. Otherwise calculate from completion field.
   const isCompleted = deliverable.crda8_status === 2;
@@ -279,7 +285,13 @@ interface DeliverableDetailProps {
 }
 
 const DeliverableDetail = ({ deliverable, workstreams, staff, onClose }: DeliverableDetailProps) => {
-  const workstream = workstreams.find((w: any) => w.crda8_workstreamsid === deliverable.crda8_workstream);
+  // Match by workstream NAME (crda8_workstream contains name string, not ID)
+  const deliverableWs = deliverable.crda8_workstream || '';
+  const workstream = workstreams.find((w: any) => {
+    const wsName = w.crda8_title || '';
+    return deliverableWs.toLowerCase().includes(wsName.toLowerCase()) ||
+           wsName.toLowerCase().includes(deliverableWs.toLowerCase());
+  });
   const owner = staff.find((s: any) => s.crda8_staff4id === deliverable.crda8_owner);
   // If status is Completed (2), show 100%. Otherwise calculate from completion field.
   const isCompleted = deliverable.crda8_status === 2;
@@ -774,17 +786,15 @@ const ProjectOverview = () => {
             {isLoading ? (
               <div style={{ textAlign: 'center', padding: '16px', opacity: 0.5 }}>Loading...</div>
             ) : (
-              (workstreams as any[]).slice(0, 5).map((ws: any, index: number) => {
-                // Debug: log workstream and deliverable data to understand the matching
-                if (index === 0 && deliverables.length > 0) {
-                  console.log('DEBUG v13 - Workstream Progress:', {
-                    wsId: ws.crda8_workstreamsid,
-                    wsTitle: ws.crda8_title,
-                    firstDeliverable: deliverables[0],
-                    deliverableWorkstreamField: (deliverables[0] as any)?.crda8_workstream,
-                  });
-                }
-                const wsDeliverables = (deliverables as any[]).filter((d: any) => d.crda8_workstream === ws.crda8_workstreamsid);
+              (workstreams as any[]).map((ws: any, index: number) => {
+                // Match by workstream NAME (crda8_workstream contains name string, not ID)
+                const wsName = ws.crda8_title || '';
+                const wsDeliverables = (deliverables as any[]).filter((d: any) => {
+                  const deliverableWs = d.crda8_workstream || '';
+                  // Case-insensitive partial match (handles slight naming differences)
+                  return deliverableWs.toLowerCase().includes(wsName.toLowerCase()) ||
+                         wsName.toLowerCase().includes(deliverableWs.toLowerCase());
+                });
                 const wsProgress = wsDeliverables.length > 0
                   ? Math.round(wsDeliverables.reduce((acc: number, d: any) => {
                       // If completed, count as 100%

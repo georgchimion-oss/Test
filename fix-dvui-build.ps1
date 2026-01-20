@@ -1,13 +1,13 @@
 # ============================================================
-# DVUI Build Fix Script v13 - BIDIRECTIONAL STATUS/PROGRESS
-# Version: Jan 20, 2026 - 9:30 AM EST
-# - Status Completed <-> Progress 100% bidirectional sync
-# - Fixed progress percentage calculation in Project Overview
+# DVUI Build Fix Script v14 - WORKSTREAM PROGRESS FIX
+# Version: Jan 20, 2026 - 10:00 AM EST
+# - Fixed workstream matching (by NAME not ID)
+# - Show ALL workstreams in Project Overview (not just 5)
 # ============================================================
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "DVUI Build Fix Script v13" -ForegroundColor Cyan
-Write-Host "BIDIRECTIONAL STATUS/PROGRESS SYNC" -ForegroundColor Green
+Write-Host "DVUI Build Fix Script v14" -ForegroundColor Cyan
+Write-Host "WORKSTREAM PROGRESS FIX" -ForegroundColor Green
 Write-Host "Timestamp: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Yellow
 Write-Host "========================================" -ForegroundColor Cyan
 
@@ -209,15 +209,16 @@ Write-Host "#     $buildStamp                      #" -ForegroundColor White
 Write-Host "#                                                #" -ForegroundColor Magenta
 Write-Host "##################################################" -ForegroundColor Magenta
 Write-Host ""
-Write-Host "v13 - WHAT'S NEW:" -ForegroundColor Cyan
+Write-Host "v14 - WHAT'S NEW:" -ForegroundColor Cyan
 Write-Host ""
-Write-Host "  BIDIRECTIONAL STATUS/PROGRESS SYNC:" -ForegroundColor Yellow
-Write-Host "    - Set Status to Completed -> Progress auto-sets to 100%" -ForegroundColor White
-Write-Host "    - Set Progress to 100% -> Status auto-sets to Completed" -ForegroundColor White
+Write-Host "  WORKSTREAM PROGRESS FIX:" -ForegroundColor Yellow
+Write-Host "    - Fixed: Now matches by workstream NAME (not ID)" -ForegroundColor White
+Write-Host "    - Shows ALL workstreams (not just 5)" -ForegroundColor White
+Write-Host "    - Progress bars should now show actual percentages" -ForegroundColor White
 Write-Host ""
-Write-Host "  PROJECT OVERVIEW PROGRESS FIX:" -ForegroundColor Yellow
-Write-Host "    - Completed deliverables now correctly show 100%" -ForegroundColor White
-Write-Host "    - Decimal progress values (0.5 = 50%) now handled" -ForegroundColor White
+Write-Host "  BIDIRECTIONAL STATUS/PROGRESS (from v13):" -ForegroundColor Yellow
+Write-Host "    - Status Completed -> Progress 100%" -ForegroundColor White
+Write-Host "    - Progress 100% -> Status Completed" -ForegroundColor White
 Write-Host ""
-Write-Host "  Test: Edit a deliverable, set Status to Completed" -ForegroundColor Green
+Write-Host "  Test: Go to Project Overview, check Workstream Progress" -ForegroundColor Green
 Write-Host ""
