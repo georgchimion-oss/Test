@@ -1,17 +1,18 @@
 # ============================================================
-# DVUI Build Fix Script v11b - COLOR FIX TEST
-# Version: Jan 20, 2026 - 5:15 AM EST
-# - NOW DOWNLOADS dataLayer.ts (was missing before!)
+# DVUI Build Fix Script v11c - COLOR FIX + CACHE BUST
+# Version: Jan 20, 2026 - 5:30 AM EST
+# - Downloads dataLayer.ts with cache-busting
 # - RED COLORS REMOVED FOR TESTING
 # ============================================================
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "DVUI Build Fix Script v11b" -ForegroundColor Cyan
-Write-Host "COLOR FIX TEST - RED REMOVED" -ForegroundColor Yellow
+Write-Host "DVUI Build Fix Script v11c" -ForegroundColor Cyan
+Write-Host "COLOR FIX + FULL CACHE BUST" -ForegroundColor Yellow
 Write-Host "Timestamp: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Yellow
 Write-Host "========================================" -ForegroundColor Cyan
 
-# Using raw GitHub with cache busting
+# Using raw GitHub with cache busting timestamp
+$cacheBust = Get-Date -Format 'yyyyMMddHHmmss'
 $baseUrl = "https://raw.githubusercontent.com/georgchimion-oss/Test/claude/powerapp-sharepoint-deliverables-vbZKv/dvui%20save"
 
 #------------------------------------------------------------------------------
@@ -62,10 +63,10 @@ if (-not (Test-Path "src\services")) {
 }
 
 # IMPORTANT: Download dataLayer.ts (contains workstream color logic)
-Invoke-WebRequest -Uri "$baseUrl/src/data/dataLayer.ts" -OutFile "src\data\dataLayer.ts"
+Invoke-WebRequest -Uri "$baseUrl/src/data/dataLayer.ts?t=$cacheBust" -OutFile "src\data\dataLayer.ts" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
 Write-Host "  dataLayer.ts (workstream colors - NO RED)" -ForegroundColor Green
 
-Invoke-WebRequest -Uri "$baseUrl/src/services/dataverseService.ts" -OutFile "src\services\dataverseService.ts"
+Invoke-WebRequest -Uri "$baseUrl/src/services/dataverseService.ts?t=$cacheBust" -OutFile "src\services\dataverseService.ts" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
 Write-Host "  dataverseService.ts" -ForegroundColor Gray
 Write-Host "  OK" -ForegroundColor Green
 
@@ -75,7 +76,7 @@ Write-Host "  OK" -ForegroundColor Green
 
 Write-Host "`n[4/8] Downloading ThemeContext (15 themes!)..." -ForegroundColor Yellow
 
-Invoke-WebRequest -Uri "$baseUrl/src/context/ThemeContext.tsx" -OutFile "src\context\ThemeContext.tsx"
+Invoke-WebRequest -Uri "$baseUrl/src/context/ThemeContext.tsx?t=$cacheBust" -OutFile "src\context\ThemeContext.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
 Write-Host "  Themes: PwC, 90s Neon, Miami Vice, Chicago Bulls" -ForegroundColor Gray
 Write-Host "          France, Paris, PSG, Matrix, Barbie" -ForegroundColor Gray
 Write-Host "          Ocean, Sunset, Forest, Lakers, Cyberpunk, Retro" -ForegroundColor Gray
@@ -88,28 +89,32 @@ Write-Host "  OK" -ForegroundColor Green
 Write-Host "`n[5/8] Downloading updated screens..." -ForegroundColor Yellow
 
 # Project Overview (Landing page with KPI drill-down)
-Invoke-WebRequest -Uri "$baseUrl/src/screens/ProjectOverview.tsx" -OutFile "src\screens\ProjectOverview.tsx"
+Invoke-WebRequest -Uri "$baseUrl/src/screens/ProjectOverview.tsx?t=$cacheBust" -OutFile "src\screens\ProjectOverview.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
 Write-Host "  ProjectOverview.tsx (KPI landing page)" -ForegroundColor Gray
 
 # NEW: Beautiful Org Chart!
-Invoke-WebRequest -Uri "$baseUrl/src/screens/OrgChart.tsx" -OutFile "src\screens\OrgChart.tsx"
+Invoke-WebRequest -Uri "$baseUrl/src/screens/OrgChart.tsx?t=$cacheBust" -OutFile "src\screens\OrgChart.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
 Write-Host "  OrgChart.tsx (NEW - Beautiful unified org chart!)" -ForegroundColor Green
 
 # Staff (removed Role & Department columns)
-Invoke-WebRequest -Uri "$baseUrl/src/screens/Staff.tsx" -OutFile "src\screens\Staff.tsx"
+Invoke-WebRequest -Uri "$baseUrl/src/screens/Staff.tsx?t=$cacheBust" -OutFile "src\screens\Staff.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
 Write-Host "  Staff.tsx" -ForegroundColor Gray
 
 # DashboardEnhanced (uses ThemeContext)
-Invoke-WebRequest -Uri "$baseUrl/src/screens/DashboardEnhanced.tsx" -OutFile "src\screens\DashboardEnhanced.tsx"
+Invoke-WebRequest -Uri "$baseUrl/src/screens/DashboardEnhanced.tsx?t=$cacheBust" -OutFile "src\screens\DashboardEnhanced.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
 Write-Host "  DashboardEnhanced.tsx" -ForegroundColor Gray
 
 # Deliverables (Quick Update modal)
-Invoke-WebRequest -Uri "$baseUrl/src/screens/Deliverables.tsx" -OutFile "src\screens\Deliverables.tsx"
+Invoke-WebRequest -Uri "$baseUrl/src/screens/Deliverables.tsx?t=$cacheBust" -OutFile "src\screens\Deliverables.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
 Write-Host "  Deliverables.tsx" -ForegroundColor Gray
 
 # Kanban (Dataverse persistence + filters)
-Invoke-WebRequest -Uri "$baseUrl/src/screens/Kanban.tsx" -OutFile "src\screens\Kanban.tsx"
+Invoke-WebRequest -Uri "$baseUrl/src/screens/Kanban.tsx?t=$cacheBust" -OutFile "src\screens\Kanban.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
 Write-Host "  Kanban.tsx" -ForegroundColor Gray
+
+# Workstreams
+Invoke-WebRequest -Uri "$baseUrl/src/screens/Workstreams.tsx?t=$cacheBust" -OutFile "src\screens\Workstreams.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
+Write-Host "  Workstreams.tsx" -ForegroundColor Gray
 
 Write-Host "  OK" -ForegroundColor Green
 
@@ -119,10 +124,10 @@ Write-Host "  OK" -ForegroundColor Green
 
 Write-Host "`n[6/8] Downloading Layout & App..." -ForegroundColor Yellow
 
-Invoke-WebRequest -Uri "$baseUrl/src/components/Layout.tsx" -OutFile "src\components\Layout.tsx"
+Invoke-WebRequest -Uri "$baseUrl/src/components/Layout.tsx?t=$cacheBust" -OutFile "src\components\Layout.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
 Write-Host "  Layout.tsx (single Org Chart nav link)" -ForegroundColor Gray
 
-Invoke-WebRequest -Uri "$baseUrl/src/App.tsx" -OutFile "src\App.tsx"
+Invoke-WebRequest -Uri "$baseUrl/src/App.tsx?t=$cacheBust" -OutFile "src\App.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
 Write-Host "  App.tsx (unified /org-chart route)" -ForegroundColor Gray
 
 Write-Host "  OK" -ForegroundColor Green
