@@ -1,16 +1,14 @@
 # ============================================================
-# DVUI Build Fix Script v17 - GANTT CHART IMPROVEMENTS
-# Version: Jan 20, 2026 - 11:30 PM EST
-# - Gantt: Expand/Collapse workstreams
-# - Gantt: Workstream completion % on header row
-# - Gantt: Time range navigation (prev/next month, zoom in/out)
-# - Gantt: Workstream filter dropdown
-# - Fixed duplicate page titles across screens
+# DVUI Build Fix Script v18 - AI ASSISTANT CHATBOT
+# Version: Jan 21, 2026 - 10:30 AM EST
+# - NEW: AI Assistant chatbot (GPT-4o-mini via PwC GenAI)
+# - Chatbot connected to deliverables/staff/workstreams data
+# - Natural language queries about project status
 # ============================================================
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "DVUI Build Fix Script v17" -ForegroundColor Cyan
-Write-Host "GANTT CHART IMPROVEMENTS" -ForegroundColor Green
+Write-Host "DVUI Build Fix Script v18" -ForegroundColor Cyan
+Write-Host "AI ASSISTANT CHATBOT" -ForegroundColor Green
 Write-Host "Timestamp: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Yellow
 Write-Host "========================================" -ForegroundColor Cyan
 
@@ -102,23 +100,23 @@ Write-Host "`n[5/8] Downloading updated screens..." -ForegroundColor Yellow
 Invoke-WebRequest -Uri "$baseUrl/src/screens/ProjectOverview.tsx?t=$cacheBust" -OutFile "src\screens\ProjectOverview.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
 Write-Host "  ProjectOverview.tsx (KPI landing page)" -ForegroundColor Gray
 
-# NEW: Beautiful Org Chart!
+# Org Chart
 Invoke-WebRequest -Uri "$baseUrl/src/screens/OrgChart.tsx?t=$cacheBust" -OutFile "src\screens\OrgChart.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
-Write-Host "  OrgChart.tsx (NEW - Beautiful unified org chart!)" -ForegroundColor Green
+Write-Host "  OrgChart.tsx" -ForegroundColor Gray
 
-# Staff (removed Role & Department columns)
+# Staff
 Invoke-WebRequest -Uri "$baseUrl/src/screens/Staff.tsx?t=$cacheBust" -OutFile "src\screens\Staff.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
 Write-Host "  Staff.tsx" -ForegroundColor Gray
 
-# DashboardEnhanced (uses ThemeContext)
+# DashboardEnhanced
 Invoke-WebRequest -Uri "$baseUrl/src/screens/DashboardEnhanced.tsx?t=$cacheBust" -OutFile "src\screens\DashboardEnhanced.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
 Write-Host "  DashboardEnhanced.tsx" -ForegroundColor Gray
 
-# Deliverables (Quick Update modal)
+# Deliverables
 Invoke-WebRequest -Uri "$baseUrl/src/screens/Deliverables.tsx?t=$cacheBust" -OutFile "src\screens\Deliverables.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
 Write-Host "  Deliverables.tsx" -ForegroundColor Gray
 
-# Kanban (Dataverse persistence + filters)
+# Kanban
 Invoke-WebRequest -Uri "$baseUrl/src/screens/Kanban.tsx?t=$cacheBust" -OutFile "src\screens\Kanban.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
 Write-Host "  Kanban.tsx" -ForegroundColor Gray
 
@@ -126,9 +124,9 @@ Write-Host "  Kanban.tsx" -ForegroundColor Gray
 Invoke-WebRequest -Uri "$baseUrl/src/screens/Workstreams.tsx?t=$cacheBust" -OutFile "src\screens\Workstreams.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
 Write-Host "  Workstreams.tsx" -ForegroundColor Gray
 
-# Gantt Chart (expand/collapse, time range, filters)
+# Gantt Chart
 Invoke-WebRequest -Uri "$baseUrl/src/screens/Gantt.tsx?t=$cacheBust" -OutFile "src\screens\Gantt.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
-Write-Host "  Gantt.tsx (expand/collapse, time range, filters)" -ForegroundColor Green
+Write-Host "  Gantt.tsx" -ForegroundColor Gray
 
 # PTO Requests
 Invoke-WebRequest -Uri "$baseUrl/src/screens/PTORequests.tsx?t=$cacheBust" -OutFile "src\screens\PTORequests.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
@@ -138,19 +136,23 @@ Write-Host "  PTORequests.tsx" -ForegroundColor Gray
 Invoke-WebRequest -Uri "$baseUrl/src/screens/HoursTracking.tsx?t=$cacheBust" -OutFile "src\screens\HoursTracking.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
 Write-Host "  HoursTracking.tsx" -ForegroundColor Gray
 
+# NEW: AI Assistant Chatbot!
+Invoke-WebRequest -Uri "$baseUrl/src/screens/Chatbot.tsx?t=$cacheBust" -OutFile "src\screens\Chatbot.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
+Write-Host "  Chatbot.tsx (NEW - AI Assistant!)" -ForegroundColor Green
+
 Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 6: Download Layout & App (unified Org Chart route)
+# Step 6: Download Layout & App (with Chatbot route)
 #------------------------------------------------------------------------------
 
 Write-Host "`n[6/8] Downloading Layout & App..." -ForegroundColor Yellow
 
 Invoke-WebRequest -Uri "$baseUrl/src/components/Layout.tsx?t=$cacheBust" -OutFile "src\components\Layout.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
-Write-Host "  Layout.tsx (single Org Chart nav link)" -ForegroundColor Gray
+Write-Host "  Layout.tsx (with AI Assistant nav link)" -ForegroundColor Green
 
 Invoke-WebRequest -Uri "$baseUrl/src/App.tsx?t=$cacheBust" -OutFile "src\App.tsx" -Headers @{"Cache-Control"="no-cache"; "Pragma"="no-cache"}
-Write-Host "  App.tsx (unified /org-chart route)" -ForegroundColor Gray
+Write-Host "  App.tsx (with /chatbot route)" -ForegroundColor Green
 
 Write-Host "  OK" -ForegroundColor Green
 
@@ -173,7 +175,7 @@ if (Test-Path $dashPath) {
 Write-Host "  OK" -ForegroundColor Green
 
 #------------------------------------------------------------------------------
-# Step 8: Remove old Org Chart files and Build
+# Step 8: Build and Push
 #------------------------------------------------------------------------------
 
 Write-Host "`n[8/8] Building and pushing..." -ForegroundColor Yellow
@@ -231,16 +233,14 @@ Write-Host "#     $buildStamp                      #" -ForegroundColor White
 Write-Host "#                                                #" -ForegroundColor Magenta
 Write-Host "##################################################" -ForegroundColor Magenta
 Write-Host ""
-Write-Host "v17 - WHAT'S NEW:" -ForegroundColor Cyan
+Write-Host "v18 - WHAT'S NEW:" -ForegroundColor Cyan
 Write-Host ""
-Write-Host "  GANTT CHART:" -ForegroundColor Yellow
-Write-Host "    - Expand/Collapse workstreams" -ForegroundColor White
-Write-Host "    - Workstream completion % on header row" -ForegroundColor White
-Write-Host "    - Time range navigation (prev/next month)" -ForegroundColor White
-Write-Host "    - Zoom in/out (1-12 months view)" -ForegroundColor White
-Write-Host "    - Workstream filter dropdown" -ForegroundColor White
+Write-Host "  AI ASSISTANT:" -ForegroundColor Yellow
+Write-Host "    - New 'AI Assistant' menu item in sidebar" -ForegroundColor White
+Write-Host "    - Chat with GPT-4o-mini about your project" -ForegroundColor White
+Write-Host "    - Ask: 'What deliverables are overdue?'" -ForegroundColor White
+Write-Host "    - Ask: 'Show me workstream progress'" -ForegroundColor White
+Write-Host "    - Ask: 'Who owns the most deliverables?'" -ForegroundColor White
 Write-Host ""
-Write-Host "  UI CLEANUP:" -ForegroundColor Yellow
-Write-Host "    - Fixed duplicate page titles" -ForegroundColor White
-Write-Host "    - Cleaner headers on all screens" -ForegroundColor White
+Write-Host "  NOTE: Requires PwC network/VPN for GenAI endpoint" -ForegroundColor Gray
 Write-Host ""

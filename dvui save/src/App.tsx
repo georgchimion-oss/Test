@@ -24,6 +24,7 @@ import HoursTracking from './screens/HoursTracking'
 import OrgChart from './screens/OrgChart'
 import AdminAnalytics from './screens/AdminAnalytics'
 import ProjectOverview from './screens/ProjectOverview'
+import Chatbot from './screens/Chatbot'
 import './App.css'
 
 const queryClient = new QueryClient({
@@ -149,6 +150,14 @@ function AppRoutes() {
         element={
           <Layout title="Admin Analytics">
             <AdminAnalytics />
+          </Layout>
+        }
+      />
+      <Route
+        path="/chatbot"
+        element={
+          <Layout title="AI Assistant">
+            <Chatbot />
           </Layout>
         }
       />

@@ -19,6 +19,7 @@ import {
   BarChart3,
   Zap,
   Palette,
+  Bot,
 } from 'lucide-react'
 
 interface LayoutProps {
@@ -104,6 +105,12 @@ export default function Layout({ children, title }: LayoutProps) {
               <NavLink to="/org-chart" className="nav-link">
                 <Network className="nav-icon" />
                 <span className="nav-text">Org Chart</span>
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/chatbot" className="nav-link">
+                <Bot className="nav-icon" />
+                <span className="nav-text">AI Assistant</span>
               </NavLink>
             </li>
             {currentUser?.userRole === 'Admin' && (
