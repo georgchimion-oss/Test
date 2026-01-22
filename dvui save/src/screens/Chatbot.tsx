@@ -74,7 +74,7 @@ function getAppContext() {
     },
     workstreamStats,
     deliverables: deliverables.map(d => ({
-      name: d.name,
+      title: d.title,
       status: d.status,
       progress: d.progress,
       dueDate: d.dueDate,
