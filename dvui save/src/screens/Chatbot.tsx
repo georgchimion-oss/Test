@@ -3,20 +3,12 @@ import { Send, Bot, User, Loader2, AlertCircle, RefreshCw } from 'lucide-react'
 import { getDeliverables, getStaff, getWorkstreams } from '../data/dataLayer'
 import { useTheme } from '../context/ThemeContext'
 
-// Configuration - uses PwC GenAI endpoint
-const OPENAI_BASE_URL = 'https://genai-sharedservice-americas.pwc.com'
-const OPENAI_API_KEY = 'Sk-Vffof0-IPaKEBNKWFjtmvQ'
-const OPENAI_MODEL = 'openai.gpt-4o-mini'
+// Configuration - uses Power Automate Flow as proxy to PwC GenAI
+const FLOW_URL = 'https://deccb38910c54d5c87161093a04538.e1.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/e61311a7738d44a491d36f6e08ae3e83/triggers/manual/paths/invoke?api-version=1'
 
 interface Message {
   role: 'user' | 'assistant' | 'system'
   content: string
-}
-
-function buildChatUrl(base: string): string {
-  const trimmed = base.replace(/\/+$/, '')
-  const withV1 = trimmed.endsWith('/v1') ? trimmed : `${trimmed}/v1`
-  return `${withV1}/chat/completions`
 }
 
 function safeJson(obj: unknown, maxChars = 8000): string {
@@ -97,19 +89,12 @@ function getAppContext() {
 }
 
 async function callChatCompletions(messages: Message[]): Promise<string> {
-  const url = buildChatUrl(OPENAI_BASE_URL)
-
-  const resp = await fetch(url, {
+  const resp = await fetch(FLOW_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${OPENAI_API_KEY}`,
     },
-    body: JSON.stringify({
-      model: OPENAI_MODEL,
-      messages,
-      temperature: 0.3,
-    }),
+    body: JSON.stringify({ messages }),
   })
 
   if (!resp.ok) {
@@ -330,7 +315,7 @@ Current date: ${new Date().toLocaleDateString()}`,
           }}
         >
           <AlertCircle size={16} />
-          Connection issue. The PwC GenAI endpoint may require VPN or internal network access.
+          Connection issue. Check that the Power Automate flow is enabled and you're signed in.
         </div>
       )}
 
